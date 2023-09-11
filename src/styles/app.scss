@@ -1,0 +1,42 @@
+// Font imports
+@import './fonts/dabble/dabble';
+@import './fonts/heartbit/heartbit';
+@import './fonts/tinypixel/tinypixel';
+
+
+
+
+
+:root {
+	--ui-scale: 2;
+}
+
+* {
+	box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+	image-rendering: pixelated;
+	text-overflow: ellipsis;
+	text-rendering: optimizeLegibility;
+
+	@media (prefers-reduced-motion: reduce) {
+		&,
+		&:after,
+		&:before {
+			animation-duration: 0.0001s !important;
+			animation-delay: 0.0001s !important;
+			transition-duration: 0.0001s !important;
+			transition-delay: 0.0001s !important;
+		}
+	}
+}
+
+body, html, #__next {
+	min-height: 100vh;
+	width: 100%;
+}
+
+body {
+	background-color: black;
+	color: white;
+	font-family: 'Heartbit', serif;
+}

@@ -1,0 +1,10 @@
+.game-wrapper {
+	height: 100vh;
+	overflow: hidden;
+	width: 100%;
+
+	canvas {
+		inset: 0;
+		position: absolute;
+	}
+}

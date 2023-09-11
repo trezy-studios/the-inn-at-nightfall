@@ -1,0 +1,21 @@
+.debugger {
+	background-color: black;
+	padding: 10px 20px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 20vw;
+	z-index: 1;
+
+	dd + dt {
+		margin-top: 10px;
+	}
+
+	dd {
+		display: block;
+		overflow: hidden;
+		padding-top: 4px;
+		text-align: right;
+		text-overflow: ellipsis;
+	}
+}

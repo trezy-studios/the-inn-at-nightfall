@@ -1,0 +1,22 @@
+@font-face {
+	font-family: 'Dabble';
+	src: url('./dabble.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+:root {
+	@for $index from 1 to 5 {
+		--fonts-dabble-line-height-#{$index}x: calc((7px * #{$index}) * (var(--ui-scale) - 1));
+		--fonts-dabble-size-#{$index}x: calc((9px * #{$index}) * (var(--ui-scale) - 1) * var(--base-font-size-multiplier));
+	}
+}
+
+@for $index from 1 through 5 {
+	%dabble-#{$index}x {
+		font-family: var(--text-font-face, 'Dabble', monospace);
+		font-size: var(--fonts-dabble-size-#{$index}x);
+		letter-spacing: calc(1px * #{$index} * var(--ui-scale));
+		line-height: var(--fonts-dabble-line-height-#{$index}x);
+	}
+}
