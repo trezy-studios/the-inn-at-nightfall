@@ -1,4 +1,7 @@
 // Font imports
+@import './fonts/fortune-teller/fortune-teller';
+@import './fonts/melted-monster/melted-monster';
+
 @import './fonts/dabble/dabble';
 @import './fonts/heartbit/heartbit';
 @import './fonts/tinypixel/tinypixel';
@@ -38,5 +41,11 @@ body, html, #__next {
 body {
 	background-color: black;
 	color: white;
-	font-family: 'Heartbit', serif;
+	font-family: var(--cormorant-garamond-font), serif;
+	font-weight: 400;
+}
+
+#__next {
+	display: grid;
+	grid-template-rows: 1fr auto;
 }

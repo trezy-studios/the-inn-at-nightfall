@@ -1,0 +1,20 @@
+.footer {
+	align-items: end;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+
+	.trezy-studios-logo {
+		display: grid;
+		grid-template-columns: auto auto;
+		height: 4rem;
+		max-width: 30vw;
+		min-width: 10rem;
+		position: relative;
+
+		img {
+			object-fit: contain;
+			object-position: left;
+		}
+	}
+}

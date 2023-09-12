@@ -16,6 +16,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^6.7.0"
     "@typescript-eslint/parser": "npm:^6.7.0"
     better-docs: "npm:^2.7.2"
+    classnames: "npm:^2.3.2"
     eslint: "npm:^8.49.0"
     eslint-plugin-editorconfig: "npm:^4.0.3"
     eslint-plugin-jsdoc: "npm:^46.6.0"
@@ -1814,6 +1815,13 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: 594754e1303672171cc04e50f6c398ae16128eb134a88f801bf5354fd96f205320f23536a045d9abd8b51024a149696e51231565891d4efdab8846021ecf88e6
+  languageName: node
+  linkType: hard
+
+"classnames@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "classnames@npm:2.3.2"
+  checksum: cd50ead57b4f97436aaa9f9885c6926323efc7c2bea8e3d4eb10e4e972aa6a1cfca1c7a0e06f8a199ca7498d4339e30bb6002e589e61c9f21248cbf3e8b0b18d
   languageName: node
   linkType: hard
 

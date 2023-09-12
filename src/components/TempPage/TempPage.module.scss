@@ -1,0 +1,25 @@
+.temp-page-wrapper {
+	display: grid;
+	grid-template-rows: 1fr auto;
+
+	header {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		font-size: 3rem;
+		justify-content: center;
+		text-align: center;
+	}
+
+	h1 {
+		background: linear-gradient(
+			#eee 40%,
+			red 95%,
+		);
+		background-clip: text;
+		font-family: 'Melted Monster', sans-serif;
+		font-size: 5rem;
+		margin: 2rem 0 3rem;
+		-webkit-text-fill-color: transparent;
+	}
+}
