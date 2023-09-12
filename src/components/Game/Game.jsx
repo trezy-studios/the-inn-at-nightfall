@@ -1,8 +1,4 @@
 // Module imports
-import {
-	BaseTexture,
-	SCALE_MODES,
-} from '@pixi/core'
 import PropTypes from 'prop-types'
 import { useApp } from '@pixi/react'
 import { useEffect } from 'react'
@@ -49,8 +45,6 @@ export function Game(props) {
 	useEffect(() => {
 		pixiApp.resizeTo = resizeToRef.current
 		pixiApp.resize()
-
-		BaseTexture.defaultOptions.scaleMode = SCALE_MODES.NEAREST
 
 		store.set(() => ({
 			viewport: {
