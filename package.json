@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "BSD-3-Clause",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
+  },
   "dependencies": {
     "@pixi/react": "^7.1.1",
     "next": "^13.4.19",
