@@ -2,14 +2,9 @@
 
 // Module imports
 import {
-	Sprite,
-	Stage,
-} from '@pixi/react'
-import {
 	useCallback,
 	useState,
 } from 'react'
-import { Assets } from '@pixi/assets'
 import { useStore } from 'statery'
 
 
@@ -20,15 +15,9 @@ import { useStore } from 'statery'
 import styles from './Debugger.module.scss'
 
 import { AddCharacterForm } from './AddCharacterForm.jsx'
+import { CharacterQueueImage } from './CharacterQueueImage.jsx'
 import { DebuggerPanel } from './DebuggerPanel.jsx'
 import { store } from '../../store/store.js'
-
-
-
-
-
-// Constants
-const stageOptions = { backgroundAlpha: 0 }
 
 
 
@@ -100,15 +89,7 @@ export function CharacterQueue() {
 						</div>
 
 						<div className={styles['sprite-renderer']}>
-							<Stage
-								height={100}
-								options={stageOptions}
-								width={100}>
-								<Sprite
-									height={100}
-									texture={Assets.get(character.sprite)}
-									width={100} />
-							</Stage>
+							<CharacterQueueImage sprite={character.sprite} />
 						</div>
 
 						<div className={styles['info']}>
