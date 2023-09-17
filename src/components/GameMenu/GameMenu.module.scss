@@ -1,0 +1,25 @@
+.game-menu {
+	align-self: stretch;
+	background-color: var(--palette-dark-grey);
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	grid-area: bottom-left;
+	justify-content: space-between;
+	justify-self: start;
+	padding: 1rem;
+}
+
+.bottom,
+.top {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.button {
+	background-color: black;
+	cursor: pointer;
+	padding: 1rem 5rem;
+	text-align: center;
+}

@@ -1,0 +1,58 @@
+.game-dialog {
+	align-self: end;
+	background-color: var(--palette-dark-grey);
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	grid-area: bottom-center;
+	justify-content: space-between;
+	padding: 1rem;
+}
+
+.call {
+	blockquote {
+		margin-top: 1rem;
+		padding-left: 2.5rem;
+		position: relative;
+
+		&:before {
+			content: '\201c';
+			font-size: 4em;
+			left: 0;
+			margin-top: -1rem;
+			opacity: 0.5;
+			position: absolute;
+			top: 0;
+		}
+	}
+}
+
+.response {
+	header {
+		margin-bottom: 1rem;
+	}
+}
+
+.options {
+	li {
+		&:not(:first-of-type) {
+			margin-top: 0.5rem;
+		}
+	}
+
+	button {
+		display: flex;
+		cursor: pointer;
+
+		&::before {
+			color: var(--palette-light-grey);
+			content: counter(list-item) ' -';
+			margin: 0 0.3rem;
+			white-space: nowrap;
+		}
+
+		&:hover {
+			text-shadow: 0 0 0.5rem var(--palette-light-grey);
+		}
+	}
+}

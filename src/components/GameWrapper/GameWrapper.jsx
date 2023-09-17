@@ -8,6 +8,7 @@ import { useRef } from 'react'
 
 // Local imports
 import { Game } from '../Game/Game.jsx'
+import { GameUI } from '../GameUI/GameUI.jsx'
 
 import styles from './GameWrapper.module.scss'
 
@@ -30,6 +31,8 @@ export function GameWrapper() {
 			<Stage>
 				<Game resizeToRef={gameWrapperRef} />
 			</Stage>
+
+			<GameUI />
 		</div>
 	)
 }
