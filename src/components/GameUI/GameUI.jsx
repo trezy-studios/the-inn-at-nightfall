@@ -15,6 +15,7 @@ import { GameClock } from '../GameClock/GameClock.jsx'
 import { GameDialog } from '../GameDialog/GameDialog.jsx'
 import { GameMenu } from '../GameMenu/GameMenu.jsx'
 import { store } from '../../store/store.js'
+import { useDebugMode } from '../../hooks/useDebugMode.js'
 
 
 
@@ -26,17 +27,16 @@ import { store } from '../../store/store.js'
  * @component
  */
 export function GameUI() {
-	const {
-		isInitialized,
-		shouldShowDebugger,
-	} = useStore(store)
+	const { isDebugModeEnabled } = useDebugMode()
+
+	const { isInitialized } = useStore(store)
 
 	const compiledClassName = useMemo(() => {
 		return classnames({
 			[styles['game-ui-wrapper']]: true,
-			[styles['debugger-enabled']]: shouldShowDebugger,
+			[styles['debugger-enabled']]: isDebugModeEnabled,
 		})
-	}, [shouldShowDebugger])
+	}, [isDebugModeEnabled])
 
 	if (!isInitialized) {
 		return null
