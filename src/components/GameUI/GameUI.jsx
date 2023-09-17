@@ -1,4 +1,6 @@
 // Module imports
+import classnames from 'classnames'
+import { useMemo } from 'react'
 import { useStore } from 'statery'
 
 
@@ -24,21 +26,31 @@ import { store } from '../../store/store.js'
  * @component
  */
 export function GameUI() {
-	const { isInitialized } = useStore(store)
+	const {
+		isInitialized,
+		shouldShowDebugger,
+	} = useStore(store)
+
+	const compiledClassName = useMemo(() => {
+		return classnames({
+			[styles['game-ui-wrapper']]: true,
+			[styles['debugger-enabled']]: shouldShowDebugger,
+		})
+	}, [shouldShowDebugger])
 
 	if (!isInitialized) {
 		return null
 	}
 
 	return (
-		<div className={styles['game-ui-wrapper']}>
-			<Debugger />
-
+		<div className={compiledClassName}>
 			<GameMenu />
 
 			<GameDialog />
 
 			<GameClock />
+
+			<Debugger />
 		</div>
 	)
 }

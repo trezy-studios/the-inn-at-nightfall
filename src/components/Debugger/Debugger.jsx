@@ -1,9 +1,4 @@
 // Module imports
-import {
-	useCallback,
-	useState,
-} from 'react'
-import { store } from '../../store/store.js'
 import { useStore } from 'statery'
 
 
@@ -12,6 +7,30 @@ import { useStore } from 'statery'
 
 // Local imports
 import styles from './Debugger.module.scss'
+
+import { Info } from './Info.jsx'
+import { store } from '../../store/store.js'
+
+
+
+
+
+/** Hides the debug panel. */
+function hideDebugger() {
+	store.set(() => ({ shouldShowDebugger: false }))
+}
+
+/** Shows the debug panel. */
+function showDebugger() {
+	store.set(() => ({ shouldShowDebugger: true }))
+}
+
+/** Toggles the debug panel. */
+function toggleDebugger() {
+	store.set(state => {
+		return { shouldShowDebugger: !state.shouldShowDebugger }
+	})
+}
 
 
 
@@ -23,32 +42,7 @@ import styles from './Debugger.module.scss'
  * @component
  */
 export function Debugger() {
-	const [shouldShowDebugger, setShouldShowDebugger] = useState(false)
-
-	const {
-		characterQueue,
-		characterQueueIndex,
-	} = useStore(store)
-
-	const hideDebugger = useCallback(() => {
-		setShouldShowDebugger(false)
-	}, [setShouldShowDebugger])
-
-	const showDebugger = useCallback(() => {
-		setShouldShowDebugger(true)
-	}, [setShouldShowDebugger])
-
-	const toggleDebugger = useCallback(() => {
-		if (shouldShowDebugger) {
-			hideDebugger()
-		} else {
-			showDebugger()
-		}
-	}, [
-		hideDebugger,
-		shouldShowDebugger,
-		showDebugger,
-	])
+	const { shouldShowDebugger } = useStore(store)
 
 	if (typeof window !== 'undefined') {
 		/* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -69,16 +63,7 @@ export function Debugger() {
 
 	return (
 		<div className={styles['debugger']}>
-			<dl>
-				<dt>{'Queue length:'}</dt>
-				<dd>{characterQueue.length}</dd>
-
-				<dt>{'Queue position:'}</dt>
-				<dd>{characterQueueIndex}</dd>
-
-				<dt>{'Name:'}</dt>
-				<dd>{characterQueue[characterQueueIndex].name}</dd>
-			</dl>
+			<Info />
 		</div>
 	)
 }
