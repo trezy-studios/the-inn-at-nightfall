@@ -1,6 +1,6 @@
 // Module imports
-// import { store } from '../../store/store.js'
-// import { useStore } from 'statery'
+import { store } from '../../store/store.js'
+import { useStore } from 'statery'
 
 
 
@@ -19,13 +19,22 @@ import styles from './Debugger.module.scss'
  * @component
  */
 export function Debugger() {
-	// const proxyStore = useStore(store)
+	const {
+		characterQueue,
+		characterQueueIndex,
+	} = useStore(store)
 
 	return (
 		<div className={styles['debugger']}>
 			<dl>
-				<dt>{'Data point:'}</dt>
-				<dd>{'Value'}</dd>
+				<dt>{'Queue length:'}</dt>
+				<dd>{characterQueue.length}</dd>
+
+				<dt>{'Queue position:'}</dt>
+				<dd>{characterQueueIndex}</dd>
+
+				<dt>{'Name:'}</dt>
+				<dd>{characterQueue[characterQueueIndex].name}</dd>
 			</dl>
 		</div>
 	)
