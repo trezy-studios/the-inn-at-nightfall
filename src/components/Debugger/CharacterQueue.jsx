@@ -49,12 +49,38 @@ export function CharacterQueue() {
 
 	const handleAddCharacterClick = useCallback(() => setIsAddingCharacter(true), [setIsAddingCharacter])
 	const handleAddCharacterSubmit = useCallback(() => setIsAddingCharacter(false), [setIsAddingCharacter])
+	const handleNextCharacterClick = useCallback(() => store.set(state => {
+		const patch = {}
+
+		if (state.characterQueueIndex < (state.characterQueue.length - 1)) {
+			patch.characterQueueIndex = state.characterQueueIndex + 1
+		}
+
+		return patch
+	}), [])
+	const handlePreviousCharacterClick = useCallback(() => store.set(state => {
+		const patch = {}
+
+		if (state.characterQueueIndex > 0) {
+			patch.characterQueueIndex = state.characterQueueIndex - 1
+		}
+
+		return patch
+	}), [])
 
 	return (
 		<DebuggerPanel title={'Character Queue'}>
 			<div className={styles['actions']}>
 				<button onClick={handleAddCharacterClick}>
 					{'Add Character'}
+				</button>
+
+				<button onClick={handlePreviousCharacterClick}>
+					{'Previous Character'}
+				</button>
+
+				<button onClick={handleNextCharacterClick}>
+					{'Next Character'}
 				</button>
 			</div>
 

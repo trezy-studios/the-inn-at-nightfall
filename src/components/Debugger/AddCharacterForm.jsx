@@ -54,14 +54,12 @@ export function AddCharacterForm(props) {
 			sprite: `${characterSex}-1`,
 		})
 
-		store.set(state => {
-			return {
-				characterQueue: [
-					...state.characterQueue,
-					character,
-				],
-			}
-		})
+		store.set(state => ({
+			characterQueue: [
+				...state.characterQueue,
+				character,
+			],
+		}))
 
 		onSubmit()
 	}, [
