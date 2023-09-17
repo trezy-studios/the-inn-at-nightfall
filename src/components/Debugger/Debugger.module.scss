@@ -1,11 +1,10 @@
 .debugger {
 	align-self: stretch;
-	background-color: black;
+	background-color: var(--palette-dark-grey);
 	grid-area: debugger;
 	margin-bottom: -1rem;
 	margin-right: -1rem;
 	margin-top: -1rem;
-	padding: 2rem;
 	width: 30vw;
 	z-index: 1;
 
@@ -19,5 +18,17 @@
 		padding-top: 4px;
 		text-align: right;
 		text-overflow: ellipsis;
+	}
+}
+
+.debugger-panel {
+	summary {
+		cursor: pointer;
+		padding: 2rem;
+	}
+
+	.debugger-panel-content {
+		background-color: rgba(white, 0.1);
+		padding: 2rem;
 	}
 }

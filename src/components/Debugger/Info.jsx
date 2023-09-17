@@ -8,6 +8,8 @@ import { useStore } from 'statery'
 // Local imports
 import { store } from '../../store/store.js'
 
+import { DebuggerPanel } from './DebuggerPanel.jsx'
+
 
 
 
@@ -24,9 +26,7 @@ export function Info() {
 	} = useStore(store)
 
 	return (
-		<details>
-			<summary>{'Info'}</summary>
-
+		<DebuggerPanel title={'Info'}>
 			<dl>
 				<dt>{'Queue length:'}</dt>
 				<dd>{characterQueue.length}</dd>
@@ -37,6 +37,6 @@ export function Info() {
 				<dt>{'Name:'}</dt>
 				<dd>{characterQueue[characterQueueIndex].name}</dd>
 			</dl>
-		</details>
+		</DebuggerPanel>
 	)
 }
