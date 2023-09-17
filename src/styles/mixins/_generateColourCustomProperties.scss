@@ -1,0 +1,19 @@
+@mixin generateColourCustomProperties($name, $h, $s, $l, $r, $g, $b) {
+	// $safeName is necessary because $name can be a color literal, but Sass
+	// doesn't like that.
+	$safeName: '' + $name;
+
+	--#{$safeName}-h: calc(#{$h} + var(--hue-shift));
+	--#{$safeName}-s: #{$s};
+	--#{$safeName}-l: #{$l};
+	--#{$safeName}-hsl: var(--#{$safeName}-h), var(--#{$safeName}-s), var(--#{$safeName}-l);
+
+	--#{$safeName}-r: #{$r};
+	--#{$safeName}-g: #{$g};
+	--#{$safeName}-b: #{$b};
+	--#{$safeName}-rgb: var(--#{$safeName}-r), var(--#{$safeName}-g), var(--#{$safeName}-b);
+
+	--#{$safeName}-hex: #{unquote('#' + str_slice(ie_hex_str(rgba($r, $g, $b, 1)), 4))};
+
+	--#{$safeName}: hsl(var(--#{$safeName}-hsl));
+}

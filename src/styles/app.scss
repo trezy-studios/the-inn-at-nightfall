@@ -1,18 +1,28 @@
-// Font imports
-@import './fonts/fortune-teller/fortune-teller';
-@import './fonts/melted-monster/melted-monster';
+/******************************************************************************\
+  Mixins
+\******************************************************************************/
 
-@import './fonts/dabble/dabble';
-@import './fonts/heartbit/heartbit';
-@import './fonts/tinypixel/tinypixel';
-
+@import './mixins/generateColourCustomProperties';
+@import './mixins/generateColourCustomPropertiesFromColour';
 
 
 
 
-:root {
-	--ui-scale: 2;
-}
+
+/******************************************************************************\
+  Variables
+\******************************************************************************/
+
+@import './variables/colors';
+@import './variables/fonts';
+
+
+
+
+
+/******************************************************************************\
+  Root styles
+\******************************************************************************/
 
 * {
 	box-sizing: border-box;
@@ -41,8 +51,10 @@ body, html, #__next {
 body {
 	background-color: black;
 	color: white;
-	font-family: var(--cormorant-garamond-font), serif;
-	font-weight: 400;
+	font-family: var(--base-font-family);
+	font-size: var(--base-font-size);
+	font-weight: var(--base-font-weight);
+	overflow: hidden;
 }
 
 #__next {

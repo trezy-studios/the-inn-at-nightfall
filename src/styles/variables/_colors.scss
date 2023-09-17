@@ -1,0 +1,12 @@
+:root {
+	--hue-shift: 0deg;
+
+	/* Palette */
+	@include generateColourCustomPropertiesFromColour('palette-pure-black', #000);
+	@include generateColourCustomPropertiesFromColour('palette-dark-grey', #222622);
+	@include generateColourCustomPropertiesFromColour('palette-light-grey', #aaaaaa);
+
+	/* Normalised */
+	--background-color: var(--palette-black);
+	--text-color: var(--palette-white);
+}
