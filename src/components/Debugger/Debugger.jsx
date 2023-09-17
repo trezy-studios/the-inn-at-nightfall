@@ -8,6 +8,7 @@ import { useStore } from 'statery'
 // Local imports
 import styles from './Debugger.module.scss'
 
+import { CharacterQueue } from './CharacterQueue.jsx'
 import { Info } from './Info.jsx'
 import { store } from '../../store/store.js'
 
@@ -64,6 +65,7 @@ export function Debugger() {
 	return (
 		<div className={styles['debugger']}>
 			<Info />
+			<CharacterQueue />
 		</div>
 	)
 }

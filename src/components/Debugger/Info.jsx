@@ -7,6 +7,7 @@ import { useStore } from 'statery'
 
 // Local imports
 import { store } from '../../store/store.js'
+import styles from './Debugger.module.scss'
 
 import { DebuggerPanel } from './DebuggerPanel.jsx'
 
@@ -27,16 +28,24 @@ export function Info() {
 
 	return (
 		<DebuggerPanel title={'Info'}>
-			<dl>
-				<dt>{'Queue length:'}</dt>
-				<dd>{characterQueue.length}</dd>
+			<table className={styles['debugger-table']}>
+				<tbody>
+					<tr>
+						<th>{'Queue length:'}</th>
+						<td>{characterQueue.length}</td>
+					</tr>
 
-				<dt>{'Queue position:'}</dt>
-				<dd>{characterQueueIndex}</dd>
+					<tr>
+						<th>{'Queue position:'}</th>
+						<td>{characterQueueIndex}</td>
+					</tr>
 
-				<dt>{'Name:'}</dt>
-				<dd>{characterQueue[characterQueueIndex].name}</dd>
-			</dl>
+					<tr>
+						<th>{'Current name:'}</th>
+						<td>{characterQueue[characterQueueIndex].name}</td>
+					</tr>
+				</tbody>
+			</table>
 		</DebuggerPanel>
 	)
 }

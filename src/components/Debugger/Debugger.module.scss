@@ -1,15 +1,19 @@
 .debugger {
 	align-self: stretch;
 	background-color: var(--palette-dark-grey);
+	font-family: monospace;
+	font-size: 1.4rem;
 	grid-area: debugger;
 	margin-bottom: -1rem;
 	margin-right: -1rem;
 	margin-top: -1rem;
-	width: 30vw;
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 20vw;
 	z-index: 1;
 
 	dd + dt {
-		margin-top: 10px;
+		margin-top: 1rem;
 	}
 
 	dd {
@@ -24,11 +28,70 @@
 .debugger-panel {
 	summary {
 		cursor: pointer;
-		padding: 2rem;
+		padding: 1rem;
 	}
 
 	.debugger-panel-content {
 		background-color: rgba(white, 0.1);
-		padding: 2rem;
+		padding: 1rem;
+	}
+}
+
+.debugger-table {
+	border-collapse: separate;
+	border-spacing: 0.5rem;
+
+	th {
+		text-align: left;
+	}
+
+	.row-handle {
+		align-items: center;
+		color: var(--palette-light-grey);
+		display: flex;
+		justify-content: center;
+
+		&:before {
+			background-color: currentColor;
+			box-shadow:
+				0 -0.4rem 0 currentColor,
+				0 0.4rem 0 currentColor;
+			content: '';
+			display: block;
+			height: 0.15rem;
+			width: 1.2rem;
+		}
+	}
+}
+
+.character-card {
+	background-color: rgba(black, 0.2);
+	display: flex;
+
+	&:not(:last-of-type) {
+		margin-bottom: 0.5rem;
+	}
+
+	.info {
+		padding-bottom: 0.5rem;
+		padding-right: 0.5rem;
+		padding-top: 0.5rem;
+	}
+
+	.index {
+		background-color: rgba(white, 0.1);
+		flex-shrink: 0;
+		padding: 0.5rem;
+
+		&::before {
+			content: '#';
+		}
+	}
+
+	.sprite-renderer {
+		flex-shrink: 0;
+		height: 10rem;
+		position: relative;
+		width: 10rem;
 	}
 }
