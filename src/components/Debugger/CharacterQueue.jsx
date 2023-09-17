@@ -33,11 +33,16 @@ const stageOptions = { backgroundAlpha: 0 }
  * @component
  */
 export function CharacterQueue() {
-	const { characterQueue } = useStore(store)
+	const {
+		characterQueue,
+		characterQueueIndex,
+	} = useStore(store)
 
 	return (
 		<DebuggerPanel title={'Character Queue'}>
 			{characterQueue.map((character, index) => {
+				const isVisible = (index >= characterQueueIndex) && (index < (characterQueueIndex + 5))
+
 				return (
 					<div
 						key={character.id}
@@ -76,6 +81,15 @@ export function CharacterQueue() {
 											className={styles['id']}
 											title={character.id}>
 											{character.id}
+										</td>
+									</tr>
+
+									<tr>
+										<th>{'Visible:'}</th>
+
+										<td>
+											{isVisible && 'Yes'}
+											{!isVisible && 'No'}
 										</td>
 									</tr>
 								</tbody>
