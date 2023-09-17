@@ -4,24 +4,24 @@ export const ASSET_MANIFEST = {
 			name: 'sprites',
 			assets: [
 				{
-					name: 'character-1',
-					srcs: '/sprites/character-1.png',
+					name: 'female-1',
+					srcs: '/sprites/female-1.png',
 				},
 				{
-					name: 'character-2',
-					srcs: '/sprites/character-2.png',
+					name: 'female-2',
+					srcs: '/sprites/female-2.png',
 				},
 				{
-					name: 'character-3',
-					srcs: '/sprites/character-3.png',
+					name: 'male-1',
+					srcs: '/sprites/male-1.png',
 				},
 				{
-					name: 'character-4',
-					srcs: '/sprites/character-4.png',
+					name: 'male-2',
+					srcs: '/sprites/male-2.png',
 				},
 				{
-					name: 'character-5',
-					srcs: '/sprites/character-5.png',
+					name: 'male-3',
+					srcs: '/sprites/male-3.png',
 				},
 			],
 		},

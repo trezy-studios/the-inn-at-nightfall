@@ -23,12 +23,28 @@ export const store = makeStore({
 	assetLoadingProgress: 0,
 
 	/** @type {Character[]} */
-	characterQueue: Array(5)
-		.fill(null)
-		.map((_, index) => new Character({
-			name: faker.person.fullName(),
-			sprite: `character-${index + 1}`,
-		})),
+	characterQueue: [
+		new Character({
+			name: faker.person.fullName({ sex: 'male' }),
+			sprite: 'male-1',
+		}),
+		new Character({
+			name: faker.person.fullName({ sex: 'female' }),
+			sprite: 'female-1',
+		}),
+		new Character({
+			name: faker.person.fullName({ sex: 'female' }),
+			sprite: 'female-2',
+		}),
+		new Character({
+			name: faker.person.fullName({ sex: 'male' }),
+			sprite: 'male-2',
+		}),
+		new Character({
+			name: faker.person.fullName({ sex: 'male' }),
+			sprite: 'male-3',
+		}),
+	],
 
 	characterQueueIndex: 0,
 
