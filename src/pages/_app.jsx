@@ -1,12 +1,5 @@
 // Module imports
-import {
-	Amatic_SC as GoogleFontAmaticSC,
-	Comforter as GoogleFontComforter,
-	Cormorant_Garamond as GoogleFontCormorantGaramond,
-	Montserrat as GoogleFontMontserrat,
-	Neucha as GoogleFontNeucha,
-	Oswald as GoogleFontOswald,
-} from 'next/font/google'
+import localFont from 'next/font/local'
 import PropTypes from 'prop-types'
 
 
@@ -21,60 +14,113 @@ import '../styles/app.scss'
 
 
 
-const googleFontAmaticSC = GoogleFontAmaticSC({
-	style: ['normal'],
-	subsets: ['latin'],
-	weight: [
-		'400',
-		'700',
+// Constants
+const BlackDarkFont = localFont({
+	src: [
+		{
+			path: '../fonts/black-dark.normal.woff2',
+			style: 'normal',
+			weight: '400',
+		},
+		{
+			path: '../fonts/black-dark.italic.woff2',
+			style: 'italic',
+			weight: '400',
+		},
 	],
 })
-const googleFontCormorantGaramond = GoogleFontCormorantGaramond({
-	style: ['normal', 'italic'],
-	subsets: ['latin'],
-	weight: [
-		'300',
-		'400',
-		'500',
-		'600',
-		'700',
-	],
-})
-const googleFontComforter = GoogleFontComforter({
-	style: ['normal'],
-	subsets: ['latin'],
-	weight: ['400'],
-})
-const googleFontMontserrat = GoogleFontMontserrat({
-	style: ['normal', 'italic'],
-	subsets: ['latin'],
-	weight: [
-		'100',
-		'200',
-		'300',
-		'400',
-		'500',
-		'600',
-		'700',
-		'800',
-		'900',
-	],
-})
-const googleFontNeucha = GoogleFontNeucha({
-	style: ['normal'],
-	subsets: ['latin'],
-	weight: ['400'],
-})
-const googleFontOswald = GoogleFontOswald({
-	style: ['normal'],
-	subsets: ['latin'],
-	weight: [
-		'200',
-		'300',
-		'400',
-		'500',
-		'600',
-		'700',
+const YorktenSlabCondensedFont = localFont({
+	src: [
+		{
+			path: '../fonts/yorkten-slab-condensed.normal.100.woff2',
+			style: 'normal',
+			weight: '100',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.normal.200.woff2',
+			style: 'normal',
+			weight: '200',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.normal.300.woff2',
+			style: 'normal',
+			weight: '300',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.normal.400.woff2',
+			style: 'normal',
+			weight: '400',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.normal.500.woff2',
+			style: 'normal',
+			weight: '500',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.normal.600.woff2',
+			style: 'normal',
+			weight: '600',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.normal.700.woff2',
+			style: 'normal',
+			weight: '700',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.normal.800.woff2',
+			style: 'normal',
+			weight: '800',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.normal.900.woff2',
+			style: 'normal',
+			weight: '900',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.italic.100.woff2',
+			style: 'italic',
+			weight: '100',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.italic.200.woff2',
+			style: 'italic',
+			weight: '200',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.italic.300.woff2',
+			style: 'italic',
+			weight: '300',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.italic.400.woff2',
+			style: 'italic',
+			weight: '400',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.italic.500.woff2',
+			style: 'italic',
+			weight: '500',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.italic.600.woff2',
+			style: 'italic',
+			weight: '600',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.italic.700.woff2',
+			style: 'italic',
+			weight: '700',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.italic.800.woff2',
+			style: 'italic',
+			weight: '800',
+		},
+		{
+			path: '../fonts/yorkten-slab-condensed.italic.900.woff2',
+			style: 'italic',
+			weight: '900',
+		},
 	],
 })
 
@@ -100,12 +146,8 @@ export default function App(props) {
 				jsx>
 				{`
 					:root {
-						--amatic-sc-font: ${googleFontAmaticSC.style.fontFamily};
-						--comforter-font: ${googleFontComforter.style.fontFamily};
-						--cormorant-garamond-font: ${googleFontCormorantGaramond.style.fontFamily};
-						--montserrat-font: ${googleFontMontserrat.style.fontFamily};
-						--neucha-font: ${googleFontNeucha.style.fontFamily};
-						--oswald-font: ${googleFontOswald.style.fontFamily};
+						--black-dark-font: ${BlackDarkFont.style.fontFamily};
+						--yorkten-slab-condensed-font: ${YorktenSlabCondensedFont.style.fontFamily};
 					}
 				`}
 			</style>

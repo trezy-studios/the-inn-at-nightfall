@@ -1,5 +1,16 @@
 :root {
-	--base-font-family: var(--cormorant-garamond-font), serif;
-	--base-font-size: 1.4rem;
-	--base-font-weight: 500;
+	--base-font-family: var(--yorkten-slab-condensed-font), serif;
+	--base-font-size: 18pt;
+	--base-font-style: normal;
+	--base-font-weight: 100;
+
+	--heading-font-family: var(--black-dark-font), serif;
+	--heading-font-size: 51pt;
+	--heading-font-style: normal;
+	--heading-font-weight: 400;
+
+	--subheading-font-family: var(--black-dark-font), serif;
+	--subheading-font-size: 36pt;
+	--subheading-font-style: italic;
+	--subheading-font-weight: 400;
 }
