@@ -1,11 +1,13 @@
-/* eslint-disable react/forbid-elements */
+/* eslint-disable @next/next/no-img-element,react/forbid-elements */
 // Module imports
 import {
 	useCallback,
 	useState,
 } from 'react'
+import { Assets } from '@pixi/assets'
 import { faker } from '@faker-js/faker'
 import PropTypes from 'prop-types'
+import { v4 as uuid } from 'uuid'
 
 
 
@@ -15,6 +17,7 @@ import PropTypes from 'prop-types'
 import styles from './Debugger.module.scss'
 
 import { Character } from '../../game/structures/Character.js'
+import { convertFileToDataURI } from '../../helpers/convertFileToDataURI.js'
 import { store } from '../../store/store.js'
 
 
@@ -29,11 +32,15 @@ import { store } from '../../store/store.js'
 export function AddCharacterForm(props) {
 	const { onSubmit } = props
 
+
+	const [characterImageFile, setCharacterImageFile] = useState(null)
 	const [characterSex, setCharacterSex] = useState(/** @type {'female' | 'male' | 'nonbinary'} */ ((Math.random() > 0.5) ? 'male' : 'female'))
 	const [characterName, setCharacterName] = useState(faker.person.fullName({
 		sex: /** @type {'female' | 'male'} */ (characterSex),
 	}))
+	const [isSaving, setIsSaving] = useState(false)
 
+	const handleCharacterImageChange = useCallback(event => setCharacterImageFile(event.target.files[0]), [setCharacterImageFile])
 	const handleCharacterNameChange = useCallback(event => setCharacterName(event.target.value), [setCharacterName])
 	const handleCharacterSexChange = useCallback(event => setCharacterSex(event.target.value), [setCharacterSex])
 	const handleRegenerateName = useCallback(() => {
@@ -48,10 +55,19 @@ export function AddCharacterForm(props) {
 		characterSex,
 		setCharacterName,
 	])
-	const handleSave = useCallback(() => {
+	const handleSave = useCallback(async() => {
+		setIsSaving(true)
+
+		const assetID = uuid()
+		const imageDataURI = await convertFileToDataURI(characterImageFile)
+
+		Assets.add(assetID, imageDataURI)
+
+		await Assets.load(assetID)
+
 		const character = new Character({
 			name: characterName,
-			sprite: `${characterSex}-1`,
+			sprite: assetID,
 		})
 
 		store.set(state => ({
@@ -63,9 +79,10 @@ export function AddCharacterForm(props) {
 
 		onSubmit()
 	}, [
+		characterImageFile,
 		characterName,
-		characterSex,
 		onSubmit,
+		setIsSaving,
 	])
 
 	return (
@@ -76,6 +93,7 @@ export function AddCharacterForm(props) {
 						<th>{'Sex:'}</th>
 						<td>
 							<select
+								disabled={isSaving}
 								onChange={handleCharacterSexChange}
 								value={characterSex}>
 								<option value={'female'}>{'Female'}</option>
@@ -89,6 +107,7 @@ export function AddCharacterForm(props) {
 						<th>{'Name:'}</th>
 						<td>
 							<input
+								disabled={isSaving}
 								onChange={handleCharacterNameChange}
 								value={characterName} />
 							<button onClick={handleRegenerateName}>
@@ -97,11 +116,34 @@ export function AddCharacterForm(props) {
 						</td>
 					</tr>
 
+					<tr>
+						<th>{'Image:'}</th>
+						<td>
+							<input
+								accept={'image/*'}
+								disabled={isSaving}
+								onChange={handleCharacterImageChange}
+								type={'file'} />
+
+							{Boolean(characterImageFile) && (
+								<img
+									alt={''}
+									height={100}
+									hidden
+									src={URL.createObjectURL(characterImageFile)}
+									width={100} />
+							)}
+						</td>
+					</tr>
 				</tbody>
 			</table>
 
-			<button onClick={handleSave}>
-				{'Save'}
+			<button
+				disabled={isSaving}
+				onClick={handleSave}>
+				{!isSaving && 'Save'}
+
+				{isSaving && 'Saving...'}
 			</button>
 		</>
 	)
