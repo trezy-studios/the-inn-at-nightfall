@@ -9,6 +9,7 @@ import { useStore } from 'statery'
 
 
 // Local imports
+import { CharacterQueue } from '../CharacterQueue/CharacterQueue.jsx'
 import { initialize } from '../../game/initialize.js'
 import { store } from '../../store/store.js'
 import { useGameLoop } from '../../hooks/useGameLoop.js'
@@ -61,7 +62,9 @@ export function Game(props) {
 		return null
 	}
 
-	return null
+	return (
+		<CharacterQueue />
+	)
 }
 
 Game.propTypes = {

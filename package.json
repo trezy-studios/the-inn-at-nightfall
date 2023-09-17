@@ -10,9 +10,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@pixi/react": "^7.1.1",
     "@pixi/sound": "^5.2.1",
     "classnames": "^2.3.2",
+    "framer-motion": "^10.16.4",
     "next": "^13.4.19",
     "pixi.js": "^7.2.4",
     "prop-types": "^15.8.1",
@@ -26,6 +28,7 @@
     "@next/eslint-plugin-next": "^13.4.19",
     "@types/node": "20.6.0",
     "@types/react": "^18.2.21",
+    "@types/uuid": "^9.0.3",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
     "better-docs": "^2.7.2",
