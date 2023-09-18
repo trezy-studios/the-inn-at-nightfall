@@ -121,7 +121,6 @@ export function AddCharacterForm(props) {
 								<img
 									alt={''}
 									height={100}
-									hidden
 									src={URL.createObjectURL(characterImageFile)}
 									width={100} />
 							)}
