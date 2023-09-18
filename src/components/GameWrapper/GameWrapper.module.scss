@@ -1,10 +1,12 @@
 .game-wrapper {
+	align-content: stretch;
+	align-items: stretch;
+	display: flex;
 	height: 100vh;
 	overflow: hidden;
 	width: 100%;
 
-	canvas {
-		inset: 0;
-		position: absolute;
+	> * {
+		flex-grow: 1;
 	}
 }

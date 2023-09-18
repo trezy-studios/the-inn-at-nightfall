@@ -1,0 +1,17 @@
+.heading {
+	&.level-1 {
+		font-family: var(--heading-font-family);
+		font-size: var(--heading-font-size);
+		font-style: var(--heading-font-size);
+		font-weight: var(--heading-font-weight);
+	}
+
+	@for $level from 2 through 6 {
+		&.level-#{$level} {
+			font-family: var(--subheading-font-family);
+			font-style: var(--subheading-font-style);
+			font-size: var(--subheading-font-size);
+			font-weight: var(--subheading-font-weight);
+		}
+	}
+}

@@ -1,0 +1,17 @@
+.button {
+	background-color: black;
+	cursor: pointer;
+	padding: 1rem;
+
+	&.align-center {
+		text-align: center;
+	}
+
+	&.align-left {
+		text-align: left;
+	}
+
+	&.align-right {
+		text-align: right;
+	}
+}

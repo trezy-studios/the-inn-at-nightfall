@@ -1,7 +1,7 @@
 // Local imports
 import styles from './GameMenu.module.scss'
 
-import { Button } from '../Button/Button.jsx'
+import { MenuButton } from '../MenuButton/MenuButton.jsx'
 import { useCallback } from 'react'
 
 
@@ -21,31 +21,31 @@ export function GameMenu() {
 	return (
 		<div className={styles['game-menu']}>
 			<div className={styles['top']}>
-				<Button
+				<MenuButton
 					className={styles['button']}
 					onClick={handleMenuClick}>
 					{'Tools'}
-				</Button>
+				</MenuButton>
 
-				<Button
+				<MenuButton
 					className={styles['button']}
 					onClick={handleMenuClick}>
 					{'Journal'}
-				</Button>
+				</MenuButton>
 			</div>
 
 			<div className={styles['bottom']}>
-				<Button
+				<MenuButton
 					className={styles['button']}
 					onClick={handleMenuClick}>
 					{'Settings'}
-				</Button>
+				</MenuButton>
 
-				<Button
+				<MenuButton
 					className={styles['button']}
 					onClick={handleMenuClick}>
 					{'Quit'}
-				</Button>
+				</MenuButton>
 			</div>
 		</div>
 	)

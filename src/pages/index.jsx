@@ -11,7 +11,7 @@ const GameComponent = dynamic(() => {
 		.then(mod => mod.GameWrapper)
 }, {
   // eslint-disable-next-line jsdoc/require-jsdoc
-  loading: () => <p>{'Loading...'}</p>,
+  loading: () => <div>{'Loading...'}</div>,
 })
 
 

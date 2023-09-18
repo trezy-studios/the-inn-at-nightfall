@@ -1,6 +1,15 @@
 export const ASSET_MANIFEST = {
 	bundles: [
 		{
+			name: 'backgrounds',
+			assets: [
+				{
+					name: 'title-background',
+					srcs: '/backgrounds/temp-title.png',
+				},
+			],
+		},
+		{
 			name: 'sprites',
 			assets: [
 				{

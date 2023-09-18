@@ -1,6 +1,5 @@
 // Module imports
 import { DEFAULT_CONTROL_BINDINGS } from '../data/DEFAULT_CONTROL_BINDINGS.js'
-import { faker } from '@faker-js/faker'
 import { makeStore } from 'statery'
 
 
@@ -10,12 +9,11 @@ import { makeStore } from 'statery'
 // Local imports
 import { Character } from '../game/structures/Character.js'
 import { generateInitialControlState } from './helpers/generateInitialControlState.js'
+import { SCREENS } from '../data/SCREENS.js'
 
 
 
 
-
-faker.seed(123456789)
 
 export const store = makeStore({
 	areAssetsLoaded: false,
@@ -46,6 +44,8 @@ export const store = makeStore({
 
 	/** @type {null | number} */
 	lastTick: null,
+
+	screen: SCREENS.LOADING,
 
 	timeRemaining: 3600000,
 

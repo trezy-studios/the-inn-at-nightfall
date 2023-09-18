@@ -1,16 +1,18 @@
 // Module imports
-import { Stage } from '@pixi/react'
-import { useRef } from 'react'
+import { useStore } from 'statery'
 
 
 
 
 
 // Local imports
-import { Game } from '../Game/Game.jsx'
-import { GameUI } from '../GameUI/GameUI.jsx'
-
 import styles from './GameWrapper.module.scss'
+
+import { LoadingScreen } from '../LoadingScreen/LoadingScreen.jsx'
+import { PlayScreen } from '../PlayScreen/PlayScreen.jsx'
+import { SCREENS } from '../../data/SCREENS.js'
+import { store } from '../../store/store.js'
+import { TitleScreen } from '../TitleScreen/TitleScreen.jsx'
 
 
 
@@ -22,17 +24,21 @@ import styles from './GameWrapper.module.scss'
  * @component
  */
 export function GameWrapper() {
-	const gameWrapperRef = useRef(null)
+	const { screen } = useStore(store)
 
 	return (
-		<div
-			ref={gameWrapperRef}
-			className={styles['game-wrapper']}>
-			<Stage>
-				<Game resizeToRef={gameWrapperRef} />
-			</Stage>
+		<div className={styles['game-wrapper']}>
+			{(screen === SCREENS.LOADING) && (
+				<LoadingScreen />
+			)}
 
-			<GameUI />
+			{(screen === SCREENS.PLAY) && (
+				<PlayScreen />
+			)}
+
+			{(screen === SCREENS.TITLE) && (
+				<TitleScreen />
+			)}
 		</div>
 	)
 }

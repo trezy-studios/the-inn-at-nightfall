@@ -9,7 +9,6 @@ import { store } from '../store/store.js'
 // Local imports
 import { addCharacters } from '../store/reducers/addCharacters.js'
 import { Character } from './structures/Character.js'
-import { loadGameAssets } from './loadGameAssets.js'
 
 
 
@@ -18,11 +17,10 @@ import { loadGameAssets } from './loadGameAssets.js'
 /**
  * Initialize game systems.
  */
-export async function initialize() {
+export function initialize() {
 	store.set(() => ({ isInitializing: true }))
 
-	// Images and spritesheets
-	await loadGameAssets()
+	faker.seed(123456789)
 
 	addCharacters(
 		new Character({

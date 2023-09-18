@@ -1,0 +1,32 @@
+.title-screen {
+	display: grid;
+	grid-template-areas:
+		'header'
+		'.'
+		'menu';
+	grid-template-rows: auto 1fr auto;
+	justify-content: space-between;
+	padding: 5rem;
+
+	> * {
+		position: relative;
+	}
+
+	> canvas {
+		inset: 0;
+		position: absolute;
+	}
+}
+
+.header {
+	grid-area: header;
+}
+
+.menu {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	grid-area: menu;
+	justify-self: start;
+	min-width: 20vw;
+}
