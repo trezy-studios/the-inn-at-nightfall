@@ -9,7 +9,6 @@ import {
 	useMemo,
 } from 'react'
 import { Assets } from '@pixi/assets'
-import { Character as CharacterClass } from '../../game/structures/Character.js'
 import PropTypes from 'prop-types'
 import { useStore } from 'statery'
 
