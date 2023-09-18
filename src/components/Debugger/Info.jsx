@@ -1,4 +1,5 @@
 // Module imports
+import { useMemo } from 'react'
 import { useStore } from 'statery'
 
 
@@ -22,9 +23,21 @@ import { DebuggerPanel } from './DebuggerPanel.jsx'
  */
 export function Info() {
 	const {
+		characters,
 		characterQueue,
 		characterQueueIndex,
 	} = useStore(store)
+
+	const currentCharacterName = useMemo(() => {
+		const index = characterQueue[characterQueueIndex]
+		const character = characters[index]
+
+		return character.name
+	}, [
+		characters,
+		characterQueue,
+		characterQueueIndex,
+	])
 
 	return (
 		<DebuggerPanel title={'Info'}>
@@ -42,7 +55,7 @@ export function Info() {
 
 					<tr>
 						<th>{'Current name:'}</th>
-						<td>{characterQueue[characterQueueIndex].name}</td>
+						<td>{currentCharacterName}</td>
 					</tr>
 				</tbody>
 			</table>

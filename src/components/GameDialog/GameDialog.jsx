@@ -24,11 +24,17 @@ import { store } from '../../store/store.js'
  */
 export function GameDialog() {
 	const {
+		characters,
 		characterQueue,
 		characterQueueIndex,
 	} = useStore(store)
 
-	const currentCharacter = useMemo(() => characterQueue[characterQueueIndex], [
+	const currentCharacter = useMemo(() => {
+		const index = characterQueue[characterQueueIndex]
+
+		return characters[index]
+	}, [
+		characters,
 		characterQueue,
 		characterQueueIndex,
 	])

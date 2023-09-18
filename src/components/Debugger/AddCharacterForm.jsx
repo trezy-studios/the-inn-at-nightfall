@@ -16,9 +16,9 @@ import { v4 as uuid } from 'uuid'
 // Local imports
 import styles from './Debugger.module.scss'
 
+import { addCharacters } from '../../store/reducers/addCharacters.js'
 import { Character } from '../../game/structures/Character.js'
 import { convertFileToDataURI } from '../../helpers/convertFileToDataURI.js'
-import { store } from '../../store/store.js'
 
 
 
@@ -65,18 +65,10 @@ export function AddCharacterForm(props) {
 
 		await Assets.load(assetID)
 
-		const character = new Character({
+		addCharacters(new Character({
 			name: characterName,
 			sprite: assetID,
-		})
-
-		store.set(state => ({
-			characterQueue: [
-				...state.characterQueue,
-				character,
-			],
 		}))
-
 		onSubmit()
 	}, [
 		characterImageFile,

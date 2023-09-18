@@ -2,6 +2,10 @@
 
 // Module imports
 import {
+	AnimatePresence,
+	Reorder,
+} from 'framer-motion'
+import {
 	useCallback,
 	useState,
 } from 'react'
@@ -15,9 +19,23 @@ import { useStore } from 'statery'
 import styles from './Debugger.module.scss'
 
 import { AddCharacterForm } from './AddCharacterForm.jsx'
-import { CharacterQueueImage } from './CharacterQueueImage.jsx'
+import { CharacterQueueItem } from './CharacterQueueItem.jsx'
 import { DebuggerPanel } from './DebuggerPanel.jsx'
 import { store } from '../../store/store.js'
+
+
+
+
+
+// Functions
+/**
+ * Updates the order of characters in the queue when reordered in this panel.
+ *
+ * @param {string[]} newCharacterQueue An array of items in their new order.
+ */
+function handleCharacterQueueReorder(newCharacterQueue) {
+	store.set(() => ({ characterQueue: newCharacterQueue }))
+}
 
 
 
@@ -31,10 +49,7 @@ import { store } from '../../store/store.js'
 export function CharacterQueue() {
 	const [isAddingCharacter, setIsAddingCharacter] = useState(false)
 
-	const {
-		characterQueue,
-		characterQueueIndex,
-	} = useStore(store)
+	const { characterQueue } = useStore(store)
 
 	const handleAddCharacterClick = useCallback(() => setIsAddingCharacter(true), [setIsAddingCharacter])
 	const handleAddCharacterSubmit = useCallback(() => setIsAddingCharacter(false), [setIsAddingCharacter])
@@ -77,56 +92,19 @@ export function CharacterQueue() {
 				<AddCharacterForm onSubmit={handleAddCharacterSubmit} />
 			)}
 
-			{characterQueue.map((character, index) => {
-				const isVisible = (index >= characterQueueIndex) && (index < (characterQueueIndex + 5))
-
-				return (
-					<div
-						key={character.id}
-						className={styles['character-card']}>
-						<div className={styles['index']}>
-							{index}
-						</div>
-
-						<div className={styles['sprite-renderer']}>
-							<CharacterQueueImage sprite={character.sprite} />
-						</div>
-
-						<div className={styles['info']}>
-							<table className={styles['debugger-table']}>
-								<tbody>
-									<tr>
-										<th>{'Name:'}</th>
-
-										<td className={styles['name']}>
-											{character.name}
-										</td>
-									</tr>
-
-									<tr>
-										<th>{'ID:'}</th>
-
-										<td
-											className={styles['id']}
-											title={character.id}>
-											{character.id}
-										</td>
-									</tr>
-
-									<tr>
-										<th>{'Visible:'}</th>
-
-										<td>
-											{isVisible && 'Yes'}
-											{!isVisible && 'No'}
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				)
-			})}
+			<AnimatePresence>
+				<Reorder.Group
+					axis={'y'}
+					layoutScroll
+					onReorder={handleCharacterQueueReorder}
+					values={characterQueue}>
+					{characterQueue.map(characterID => (
+						<CharacterQueueItem
+							key={characterID}
+							characterID={characterID} />
+					))}
+				</Reorder.Group>
+			</AnimatePresence>
 		</DebuggerPanel>
 	)
 }

@@ -43,10 +43,12 @@ export function Character(props) {
 	const {
 		characterQueue,
 		characterQueueIndex,
+		characters,
 		viewport,
 	} = useStore(store)
 
-	const { character } = props
+	const { characterID } = props
+	const character = characters[characterID]
 
 	const draw = useCallback(graphics => {
 		graphics.clear()
@@ -61,7 +63,7 @@ export function Character(props) {
 		indexDistance,
 		queueIndex,
 	} = useMemo(() => {
-		const index = characterQueue.indexOf(character)
+		const index = characterQueue.indexOf(character.id)
 
 		return {
 			indexDistance: Math.abs(characterQueueIndex - index),
@@ -128,6 +130,5 @@ export function Character(props) {
 }
 
 Character.propTypes = {
-	/** @type {import('prop-types').Validator<CharacterClass>} */
-	character: PropTypes.instanceOf(CharacterClass).isRequired,
+	characterID: PropTypes.string.isRequired,
 }

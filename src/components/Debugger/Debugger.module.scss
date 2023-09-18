@@ -75,6 +75,58 @@
 		margin-bottom: 0.5rem;
 	}
 
+	.handle {
+		--handle-circle-size: 0.3rem;
+		--handle-circle-gap: 0.1rem;
+		--handle-shadow-offset: calc(var(--handle-circle-size) + var(--handle-circle-gap));
+
+		align-items: center;
+		background-color: rgba(white, 0.1);
+		cursor: pointer;
+		display: flex;
+		flex-shrink: 0;
+		justify-content: center;
+		padding: calc(0.5rem + (var(--handle-circle-size) + var(--handle-circle-gap)));
+
+		&::before {
+			background-color: currentColor;
+			border-radius: var(--handle-circle-size);
+			box-shadow:
+				// Left Top
+				calc(var(--handle-shadow-offset) * -1) calc(var(--handle-shadow-offset) * -1) 0 currentColor,
+
+				// Top
+				0 calc(var(--handle-shadow-offset) * -1) 0 currentColor,
+
+				// Right Top
+				var(--handle-shadow-offset) calc(var(--handle-shadow-offset) * -1) 0 currentColor,
+
+				// Right
+				var(--handle-shadow-offset) 0 0 currentColor,
+
+				// Right Bottom
+				var(--handle-shadow-offset) var(--handle-shadow-offset) 0 currentColor,
+
+				// Bottom
+				0 var(--handle-shadow-offset) 0 currentColor,
+
+				// Left Bottom
+				calc(var(--handle-shadow-offset) * -1)  var(--handle-shadow-offset) 0 currentColor,
+
+				// Left
+				calc(var(--handle-shadow-offset) * -1) 0 0 currentColor;
+			color: var(--palette-light-grey);
+			content: '';
+			display: block;
+			height: var(--handle-circle-size);
+			width: var(--handle-circle-size);
+		}
+
+		&:hover {
+			background-color: rgba(white, 0.2);
+		}
+	}
+
 	.info {
 		padding-bottom: 0.5rem;
 		padding-right: 0.5rem;

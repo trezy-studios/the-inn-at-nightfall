@@ -30,11 +30,11 @@ export function CharacterQueue() {
 		return [...characterQueue]
 			.slice(characterQueueIndex, characterQueueIndex + 5)
 			.reverse()
-			.map(characterData => {
+			.map(characterID => {
 				return (
 					<Character
-						key={characterData.id}
-						character={characterData} />
+						key={characterID}
+						characterID={characterID} />
 				)
 			})
 	}, [

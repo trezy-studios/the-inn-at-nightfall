@@ -19,7 +19,7 @@ export function CharacterQueueImage(props) {
 		<img
 			alt={''}
 			height={100}
-			src={Assets.get(sprite)?.baseTexture?.resource?.src}
+			src={Assets.get(sprite).baseTexture.resource.src}
 			width={100} />
 	)
 }
