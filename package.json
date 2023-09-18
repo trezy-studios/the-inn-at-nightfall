@@ -14,7 +14,7 @@
     "@pixi/react": "^7.1.1",
     "@pixi/sound": "^5.2.1",
     "classnames": "^2.3.2",
-    "framer-motion": "^10.16.4",
+    "framer-motion": "10.12.7",
     "next": "^13.4.19",
     "pixi.js": "^7.2.4",
     "prop-types": "^15.8.1",

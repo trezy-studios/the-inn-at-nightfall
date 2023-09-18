@@ -33,7 +33,7 @@ __metadata:
     eslint-plugin-security: "npm:^1.7.1"
     eslint-plugin-sort-class-members: "npm:^1.18.0"
     eslint-plugin-unused-imports: "npm:^3.0.0"
-    framer-motion: "npm:^10.16.4"
+    framer-motion: "npm:10.12.7"
     next: "npm:^13.4.19"
     pixi.js: "npm:^7.2.4"
     prop-types: "npm:^15.8.1"
@@ -2764,9 +2764,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^10.16.4":
-  version: 10.16.4
-  resolution: "framer-motion@npm:10.16.4"
+"framer-motion@npm:10.12.7":
+  version: 10.12.7
+  resolution: "framer-motion@npm:10.12.7"
   dependencies:
     "@emotion/is-prop-valid": "npm:^0.8.2"
     tslib: "npm:^2.4.0"
@@ -2781,7 +2781,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: a50f2124fbb585ec0a73d8ba7538cef3fb5deec463ae813d7e15c0893aa55d2f0919d432a33770cab38a1df81fa2c7e29a4834f2ba6e3713bc9c29dd6a98f3af
+  checksum: fef8d125b0a694fa0c27cffa94c0d8d5d2d069b4efb4e3184df7189f5d4a910c0c67322030b1ad8cd4487793bacf2dfa2958357f0e5275207b359782ba3011ab
   languageName: node
   linkType: hard
 
