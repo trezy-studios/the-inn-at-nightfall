@@ -19,15 +19,7 @@ import { useStore } from 'statery'
 // Local imports
 import { store } from '../../store/store.js'
 
-
-
-
-
-// Constants
-const anchor = {
-	x: 0.5,
-	y: 0.5,
-}
+import { ANCHORS } from '../../data/ANCHORS.js'
 
 
 
@@ -82,8 +74,8 @@ export function Character(props) {
 		let scale = 1
 
 		if (queueIndex !== characterQueueIndex) {
-			offset.x += 30 + (indexDistance * 100)
-			offset.y += (50 + (indexDistance * 20)) * -1
+			offset.x += 20 + (indexDistance * 80)
+			offset.y += 30 + (indexDistance * 15)
 			scale -= 0.1 * indexDistance
 		}
 
@@ -114,13 +106,13 @@ export function Character(props) {
 			y={containerStyles.position.y}>
 			{!sprite && (
 				<Graphics
-					anchor={anchor}
+					anchor={ANCHORS.CENTER_CENTER}
 					draw={draw} />
 			)}
 
 			{Boolean(sprite) && (
 				<Sprite
-					anchor={anchor}
+					anchor={ANCHORS.CENTER_CENTER}
 					scale={0.5}
 					texture={sprite} />
 			)}

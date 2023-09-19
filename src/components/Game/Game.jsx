@@ -11,6 +11,7 @@ import { useStore } from 'statery'
 // Local imports
 import { CharacterQueue } from '../CharacterQueue/CharacterQueue.jsx'
 import { initialize } from '../../game/initialize.js'
+import { InteriorMidground } from '../InteriorMidground/InteriorMidground.jsx'
 import { store } from '../../store/store.js'
 import { useGameLoop } from '../../hooks/useGameLoop.js'
 
@@ -63,7 +64,10 @@ export function Game(props) {
 	}
 
 	return (
-		<CharacterQueue />
+		<>
+			<CharacterQueue />
+			<InteriorMidground />
+		</>
 	)
 }
 

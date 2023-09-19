@@ -16,6 +16,13 @@ import PropTypes from 'prop-types'
 
 
 
+// Local imports
+import { ANCHORS } from '../../data/ANCHORS.js'
+
+
+
+
+
 /**
  * Renders the title screen background.
  *
@@ -29,12 +36,14 @@ export function Background(props) {
 	const asset = Assets.get('title-background')
 
 	const filters = useMemo(() => {
+		const blurFilter = new BlurFilter(10)
+
 		const colorMatrixFilter = new ColorMatrixFilter
 		colorMatrixFilter.brightness(0.5, true)
 		colorMatrixFilter.saturate(-0.5, true)
 
 		return [
-			new BlurFilter(10),
+			blurFilter,
 			colorMatrixFilter,
 		]
 	}, [])
@@ -42,25 +51,30 @@ export function Background(props) {
 	const {
 		height,
 		width,
+		x,
+		y,
 	} = useMemo(() => {
-		const spriteSize = {
+		const spriteData = {
 			height: asset.orig.height,
 			width: asset.orig.width,
+			x: pixiApp.screen.width / 2,
+			y: pixiApp.screen.height / 2,
 		}
 
 		const resizeToElement = resizeToRef.current
 
 		if (resizeToElement.clientHeight < resizeToElement.clientWidth) {
-			spriteSize.height = resizeToElement.clientHeight
-			spriteSize.width = resizeToElement.clientWidth * (asset.orig.width / asset.orig.height)
+			spriteData.width = resizeToElement.clientWidth
+			spriteData.height = resizeToElement.clientHeight * (asset.orig.width / asset.orig.height)
 		} else {
-			spriteSize.width = resizeToElement.clientWidth
-			spriteSize.height = resizeToElement.clientHeight * (asset.orig.height / asset.orig.width)
+			spriteData.height = resizeToElement.clientHeight
+			spriteData.width = resizeToElement.clientWidth * (asset.orig.height / asset.orig.width)
 		}
 
-		return spriteSize
+		return spriteData
 	}, [
 		asset,
+		pixiApp,
 		resizeToRef,
 	])
 
@@ -74,10 +88,13 @@ export function Background(props) {
 
 	return (
 		<Sprite
+			anchor={ANCHORS.CENTER_CENTER}
 			filters={filters}
 			height={height}
 			texture={asset}
-			width={width} />
+			width={width}
+			x={x}
+			y={y} />
 	)
 }
 
