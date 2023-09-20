@@ -34,7 +34,7 @@ export function InteriorMidground() {
 		anchor: ANCHORS.CENTER_CENTER,
 		scale: 0.25,
 		x: pixiApp.screen.width / 2,
-		y: (pixiApp.screen.height / 2) - 150,
+		y: (pixiApp.screen.height / 2) - 100,
 	}
 
 	return (

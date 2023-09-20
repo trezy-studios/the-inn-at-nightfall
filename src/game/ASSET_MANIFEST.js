@@ -4,24 +4,33 @@ export const ASSET_MANIFEST = {
 			name: 'backgrounds',
 			assets: [
 				{
-					name: 'interior-door-closed',
+					name: 'sky',
+					srcs: '/backgrounds/sky.png',
+				},
+				{
+					name: 'title',
+					srcs: '/backgrounds/temp-title.png',
+				},
+			],
+		},
+		{
+			name: 'interior',
+			assets: [
+				{
+					name: 'door-closed',
 					srcs: '/backgrounds/interior.door.closed.png',
 				},
 				{
-					name: 'interior-door-open',
+					name: 'door-open',
 					srcs: '/backgrounds/interior.door.open.png',
 				},
 				{
-					name: 'interior-shelf',
+					name: 'shelf',
 					srcs: '/backgrounds/interior.shelf.png',
 				},
 				{
-					name: 'interior-wall',
+					name: 'wall',
 					srcs: '/backgrounds/interior.wall.png',
-				},
-				{
-					name: 'title-background',
-					srcs: '/backgrounds/temp-title.png',
 				},
 			],
 		},

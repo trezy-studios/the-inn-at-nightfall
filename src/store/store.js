@@ -47,7 +47,9 @@ export const store = makeStore({
 
 	screen: SCREENS.LOADING,
 
-	timeRemaining: 3600000,
+	timeAvailable: 10 * 60 * 1000,
+
+	timeRemaining: 10 * 60 * 1000,
 
 	viewport: {
 		height: 0,

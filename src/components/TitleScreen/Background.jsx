@@ -33,7 +33,7 @@ export function Background(props) {
 
 	const pixiApp = useApp()
 
-	const asset = Assets.get('title-background')
+	const asset = Assets.get('backgrounds-title')
 
 	const filters = useMemo(() => {
 		const blurFilter = new BlurFilter(10)

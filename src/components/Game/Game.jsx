@@ -12,6 +12,7 @@ import { useStore } from 'statery'
 import { CharacterQueue } from '../CharacterQueue/CharacterQueue.jsx'
 import { initialize } from '../../game/initialize.js'
 import { InteriorMidground } from '../InteriorMidground/InteriorMidground.jsx'
+import { SkyBackground } from '../SkyBackground/SkyBackground.jsx'
 import { store } from '../../store/store.js'
 import { useGameLoop } from '../../hooks/useGameLoop.js'
 
@@ -65,6 +66,7 @@ export function Game(props) {
 
 	return (
 		<>
+			<SkyBackground />
 			<CharacterQueue />
 			<InteriorMidground />
 		</>
