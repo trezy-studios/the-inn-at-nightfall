@@ -15,20 +15,7 @@ import {
 } from '../MenuButton/MenuButton.jsx'
 import { Background } from './Background.jsx'
 import { Heading } from '../Heading/Heading.jsx'
-import { SCREENS } from '../../data/SCREENS.js'
-import { store } from '../../store/store.js'
-
-
-
-
-
-// Functions
-/**
- * updates the game state when the play button is clicked.
- */
-function handlePlayClick() {
-	store.set(() => ({ screen: SCREENS.PLAY }))
-}
+import { startRound } from '../../store/reducers/startRound.js'
 
 
 
@@ -59,19 +46,19 @@ export function TitleScreen() {
 			<div className={styles['menu']}>
 				<MenuButton
 					align={ALIGNMENT.LEFT}
-					onClick={handlePlayClick}>
+					onClick={startRound}>
 					{'Play'}
 				</MenuButton>
 
 				<MenuButton
 					align={ALIGNMENT.LEFT}
-					onClick={handlePlayClick}>
+					onClick={startRound}>
 					{'Settings'}
 				</MenuButton>
 
 				<MenuButton
 					align={ALIGNMENT.LEFT}
-					onClick={handlePlayClick}>
+					onClick={startRound}>
 					{'Credits'}
 				</MenuButton>
 			</div>

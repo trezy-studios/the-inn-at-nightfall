@@ -42,14 +42,18 @@ export const store = makeStore({
 
 	isInitializing: false,
 
+	isRoundOver: false,
+
 	/** @type {null | number} */
 	lastTick: null,
 
 	screen: SCREENS.LOADING,
 
-	timeAvailable: 10 * 60 * 1000,
+	/** @type {null | number} */
+	timeAvailable: null,
 
-	timeRemaining: 10 * 60 * 1000,
+	/** @type {null | number} */
+	timeRemaining: null,
 
 	viewport: {
 		height: 0,

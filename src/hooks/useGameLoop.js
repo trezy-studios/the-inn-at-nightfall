@@ -1,5 +1,6 @@
 // Local imports
 import { clockSystem } from '../game/systems/clockSystem.js'
+import { roundManagementSystem } from '../game/systems/roundManagementSystem.js'
 import { store } from '../store/store.js'
 import { useTick } from '@pixi/react'
 
@@ -25,5 +26,6 @@ export function useGameLoop() {
 		}
 
 		clockSystem()
+		roundManagementSystem()
 	})
 }
