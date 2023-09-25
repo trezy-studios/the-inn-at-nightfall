@@ -14,6 +14,15 @@ export const ASSET_MANIFEST = {
 			],
 		},
 		{
+			name: 'exterior',
+			assets: [
+				{
+					name: 'day',
+					srcs: '/backgrounds/exterior.day.jpg',
+				},
+			],
+		},
+		{
 			name: 'interior',
 			assets: [
 				{
