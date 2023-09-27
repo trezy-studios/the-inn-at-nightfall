@@ -4,21 +4,16 @@ export const ASSET_MANIFEST = {
 			name: 'backgrounds',
 			assets: [
 				{
+					name: 'exterior',
+					srcs: '/backgrounds/exterior.jpg',
+				},
+				{
 					name: 'sky',
 					srcs: '/backgrounds/sky.png',
 				},
 				{
 					name: 'title',
 					srcs: '/backgrounds/temp-title.png',
-				},
-			],
-		},
-		{
-			name: 'exterior',
-			assets: [
-				{
-					name: 'day',
-					srcs: '/backgrounds/exterior.day.jpg',
 				},
 			],
 		},

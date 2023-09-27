@@ -32,7 +32,8 @@ export function InteriorMidground() {
 
 	const spriteProps = {
 		anchor: ANCHORS.CENTER_CENTER,
-		scale: 0.25,
+		height: 1105.5,
+		width: 3750,
 		x: pixiApp.screen.width / 2,
 		y: (pixiApp.screen.height / 2) - 100,
 	}
