@@ -1,15 +1,12 @@
 // Module imports
 import {
 	Container,
-	Graphics,
 	Sprite,
+	useApp,
 } from '@pixi/react'
-import {
-	useCallback,
-	useMemo,
-} from 'react'
 import { Assets } from '@pixi/assets'
 import PropTypes from 'prop-types'
+import { useMemo } from 'react'
 import { useStore } from 'statery'
 
 
@@ -38,17 +35,10 @@ export function Character(props) {
 		viewport,
 	} = useStore(store)
 
+	const pixiApp = useApp()
+
 	const { characterID } = props
 	const character = characters[characterID]
-
-	const draw = useCallback(graphics => {
-		graphics.clear()
-		graphics.lineStyle(2, 0x000000)
-		graphics.beginFill(0x00ff00)
-		graphics.drawRect(-50, -200, 100, 200)
-		graphics.drawRect(-50, -200, 100, 200)
-		graphics.endFill()
-	}, [])
 
 	const {
 		indexDistance,
@@ -82,7 +72,7 @@ export function Character(props) {
 		return {
 			position: {
 				x: (viewport.width / 2) + offset.x,
-				y: (viewport.height / 2) + offset.y,
+				y: (viewport.height / 2) + offset.y + 150,
 			},
 			scale,
 		}
@@ -94,28 +84,31 @@ export function Character(props) {
 		viewport.width,
 	])
 
-	const sprite = useMemo(() => {
-		return Assets.get(character.sprite)
-	}, [character.sprite])
+	const spriteProps = useMemo(() => {
+		const texture = Assets.get(character.sprite)
+		const height = pixiApp.screen.height * 0.8
 
+		const scale = height / texture.orig.height
+		const width = texture.orig.width * scale
+
+		return {
+			height,
+			texture,
+			width,
+		}
+	}, [
+		character.sprite,
+		pixiApp,
+	])
 
 	return (
 		<Container
 			scale={containerStyles.scale}
 			x={containerStyles.position.x}
 			y={containerStyles.position.y}>
-			{!sprite && (
-				<Graphics
-					anchor={ANCHORS.CENTER_CENTER}
-					draw={draw} />
-			)}
-
-			{Boolean(sprite) && (
-				<Sprite
-					anchor={ANCHORS.CENTER_CENTER}
-					scale={0.5}
-					texture={sprite} />
-			)}
+			<Sprite
+				anchor={ANCHORS.CENTER_CENTER}
+				{...spriteProps} />
 		</Container>
 	)
 }

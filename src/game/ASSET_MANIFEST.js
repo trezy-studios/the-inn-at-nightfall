@@ -4,12 +4,12 @@ export const ASSET_MANIFEST = {
 			name: 'backgrounds',
 			assets: [
 				{
-					name: 'exterior',
-					srcs: '/backgrounds/exterior.jpg',
+					name: 'creepy-hands',
+					srcs: '/backgrounds/creepy-hands.png',
 				},
 				{
-					name: 'sky',
-					srcs: '/backgrounds/sky.png',
+					name: 'exterior',
+					srcs: '/backgrounds/exterior.jpg',
 				},
 				{
 					name: 'title',
@@ -42,24 +42,24 @@ export const ASSET_MANIFEST = {
 			name: 'sprites',
 			assets: [
 				{
-					name: 'female-1',
-					srcs: '/sprites/female-1.png',
+					name: 'ambrose-blackwood',
+					srcs: '/sprites/ambrose-blackwood.png',
 				},
 				{
-					name: 'female-2',
-					srcs: '/sprites/female-2.png',
+					name: 'benedict-caldwell',
+					srcs: '/sprites/benedict-caldwell.png',
 				},
 				{
-					name: 'male-1',
-					srcs: '/sprites/male-1.png',
+					name: 'cedric-holloway',
+					srcs: '/sprites/cedric-holloway.png',
 				},
 				{
-					name: 'male-2',
-					srcs: '/sprites/male-2.png',
+					name: 'eleanor-whitfield',
+					srcs: '/sprites/eleanor-whitfield.png',
 				},
 				{
-					name: 'male-3',
-					srcs: '/sprites/male-3.png',
+					name: 'lillian-featherstone',
+					srcs: '/sprites/lillian-featherstone.png',
 				},
 			],
 		},

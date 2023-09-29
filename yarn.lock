@@ -13,6 +13,7 @@ __metadata:
     "@next/eslint-plugin-next": "npm:^13.4.19"
     "@pixi/react": "npm:^7.1.1"
     "@pixi/sound": "npm:^5.2.1"
+    "@types/js-yaml": "npm:^4"
     "@types/node": "npm:20.6.0"
     "@types/react": "npm:^18.2.21"
     "@types/uuid": "npm:^9.0.3"
@@ -34,6 +35,7 @@ __metadata:
     eslint-plugin-sort-class-members: "npm:^1.18.0"
     eslint-plugin-unused-imports: "npm:^3.0.0"
     framer-motion: "npm:10.12.7"
+    js-yaml: "npm:^4.1.0"
     next: "npm:^13.4.19"
     pixi.js: "npm:^7.2.4"
     prop-types: "npm:^15.8.1"
@@ -1066,6 +1068,13 @@ __metadata:
   version: 2.0.4
   resolution: "@types/istanbul-lib-coverage@npm:2.0.4"
   checksum: af5f6b64e788331ed3f7b2e2613cb6ca659c58b8500be94bbda8c995ad3da9216c006f1cfe6f66b321c39392b1bda18b16e63cef090a77d24a00b4bd5ba3b018
+  languageName: node
+  linkType: hard
+
+"@types/js-yaml@npm:^4":
+  version: 4.0.6
+  resolution: "@types/js-yaml@npm:4.0.6"
+  checksum: e2e3ccdde9979973ea0afc357e753ddcd1a586cfccfeafcf5c17ab1ea3314c73faf7555d0af4da237c0c32c29cd4bc0f6a659a5e5085fe3f1fdc94d20fb19683
   languageName: node
   linkType: hard
 

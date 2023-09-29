@@ -10,10 +10,10 @@ import { useStore } from 'statery'
 
 // Local imports
 import { CharacterQueue } from '../CharacterQueue/CharacterQueue.jsx'
+import { CreepyHandsBackground } from '../CreepyHandsBackground/CreepyHandsBackground.jsx'
 import { ExteriorBackground } from '../ExteriorBackground/ExteriorBackground.jsx'
 import { initialize } from '../../game/initialize.js'
 import { InteriorMidground } from '../InteriorMidground/InteriorMidground.jsx'
-import { SkyBackground } from '../SkyBackground/SkyBackground.jsx'
 import { store } from '../../store/store.js'
 import { useGameLoop } from '../../hooks/useGameLoop.js'
 
@@ -68,7 +68,7 @@ export function Game(props) {
 	return (
 		<>
 			<ExteriorBackground />
-			<SkyBackground />
+			<CreepyHandsBackground />
 			<CharacterQueue />
 			<InteriorMidground />
 		</>
