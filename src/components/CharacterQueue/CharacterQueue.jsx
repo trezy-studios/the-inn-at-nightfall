@@ -1,4 +1,5 @@
 // Module imports
+import { checkMerchantPresence } from '../../store/reducers/checkMerchantPresence.js'
 import { Container } from '@pixi/react'
 import { useMemo } from 'react'
 import { useStore } from 'statery'
@@ -21,12 +22,22 @@ import { store } from '../../store/store.js'
  * @component
  */
 export function CharacterQueue() {
+	const proxyStore = useStore(store)
 	const {
 		characterQueue,
 		characterQueueIndex,
-	} = useStore(store)
+		characters,
+	} = proxyStore
+
+	const isMerchantPresent = checkMerchantPresence(proxyStore)
 
 	const renderedCharacterQueue = useMemo(() => {
+		if (isMerchantPresent) {
+			return (
+				<Character characterID={characters[characterQueue[0]].id} />
+			)
+		}
+
 		return [...characterQueue]
 			.slice(characterQueueIndex, characterQueueIndex + 5)
 			.reverse()
@@ -40,6 +51,8 @@ export function CharacterQueue() {
 	}, [
 		characterQueue,
 		characterQueueIndex,
+		characters,
+		isMerchantPresent,
 	])
 
 	return (

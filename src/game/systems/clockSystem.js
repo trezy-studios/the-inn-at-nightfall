@@ -1,4 +1,5 @@
 // Local imports
+import { checkMerchantPresence } from '../../store/reducers/checkMerchantPresence.js'
 import { store } from '../../store/store.js'
 
 
@@ -10,6 +11,12 @@ import { store } from '../../store/store.js'
  */
 export function clockSystem() {
 	const { isRoundOver } = store.state
+
+	const isMerchantPresent = checkMerchantPresence(store.state)
+
+	if (isMerchantPresent) {
+		return
+	}
 
 	if (isRoundOver) {
 		return
