@@ -5,6 +5,7 @@ import {
 	useApp,
 } from '@pixi/react'
 import { Assets } from '@pixi/assets'
+import { ColorMatrixFilter } from '@pixi/filter-color-matrix'
 import PropTypes from 'prop-types'
 import { useMemo } from 'react'
 import { useStore } from 'statery'
@@ -32,6 +33,8 @@ export function Character(props) {
 		characterQueue,
 		characterQueueIndex,
 		characters,
+		timeAvailable,
+		timeRemaining,
 		viewport,
 	} = useStore(store)
 
@@ -39,6 +42,11 @@ export function Character(props) {
 
 	const { characterID } = props
 	const character = characters[characterID]
+
+	const timeLeft = useMemo(() => timeRemaining / timeAvailable, [
+		timeAvailable,
+		timeRemaining,
+	])
 
 	const {
 		indexDistance,
@@ -85,6 +93,12 @@ export function Character(props) {
 	])
 
 	const spriteProps = useMemo(() => {
+		const colorMatrixFilter = new ColorMatrixFilter
+		colorMatrixFilter.resolution = window.devicePixelRatio
+		colorMatrixFilter.brightness(Math.max(1 - (indexDistance * (1 - timeLeft)), 0.05), true)
+
+		const filters = [colorMatrixFilter]
+
 		const texture = Assets.get(character.sprite)
 		const height = pixiApp.screen.height * 0.8
 
@@ -92,13 +106,16 @@ export function Character(props) {
 		const width = texture.orig.width * scale
 
 		return {
+			filters,
 			height,
 			texture,
 			width,
 		}
 	}, [
 		character.sprite,
+		indexDistance,
 		pixiApp,
+		timeLeft,
 	])
 
 	return (
