@@ -26,30 +26,36 @@ import { ANCHORS } from '../../data/ANCHORS.js'
 export function ExteriorBackground() {
 	const pixiApp = useApp()
 
-	const asset = useMemo(() => Assets.get('backgrounds-exterior'), [])
-
 	const spriteProps = useMemo(() => {
-		const spriteData = {
-			height: asset.orig.height,
-			width: asset.orig.width,
+		const texture = Assets.get('backgrounds-exterior')
+
+		let scale = pixiApp.screen.height / texture.orig.height
+
+		let height = texture.orig.height * scale
+		let width = texture.orig.width * scale
+
+		if (pixiApp.screen.width > width) {
+			scale = pixiApp.screen.width / width
+
+			height = height * scale
+			width = width * scale
 		}
 
-		spriteData.width = pixiApp.screen.width
-		spriteData.height = asset.orig.height * (pixiApp.screen.width / asset.orig.width)
+		// spriteData.y = -200
 
-		spriteData.y = -200
-
-		return spriteData
-	}, [
-		asset,
-		pixiApp,
-	])
+		return {
+			anchor: ANCHORS.BOTTOM_CENTER,
+			height,
+			texture,
+			width,
+			x: pixiApp.screen.width / 2,
+			y: pixiApp.screen.height,
+		}
+	}, [pixiApp])
 
 	return (
-		<Container anchor={ANCHORS.BOTTOM_CENTER}>
-			<Sprite
-				{...spriteProps}
-				texture={asset} />
+		<Container>
+			<Sprite {...spriteProps} />
 		</Container>
 	)
 }

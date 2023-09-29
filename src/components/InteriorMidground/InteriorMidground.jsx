@@ -4,8 +4,11 @@ import {
 	Sprite,
 	useApp,
 } from '@pixi/react'
+import {
+	useCallback,
+	useMemo,
+} from 'react'
 import { Assets } from '@pixi/assets'
-import { useMemo } from 'react'
 
 
 
@@ -30,25 +33,34 @@ export function InteriorMidground() {
 	const shelfAsset = useMemo(() => Assets.get('interior-shelf'), [])
 	const wallAsset = useMemo(() => Assets.get('interior-wall'), [])
 
-	const spriteProps = {
-		anchor: ANCHORS.CENTER_CENTER,
-		height: 1105.5,
-		width: 3750,
-		x: pixiApp.screen.width / 2,
-		y: (pixiApp.screen.height / 2) - 100,
-	}
+	const getSpriteProps = useCallback(texture => {
+		let scale = (pixiApp.screen.height * 1.2) / texture.orig.height
+
+		let height = texture.orig.height * scale
+		let width = texture.orig.width * scale
+
+		if (pixiApp.screen.width > width) {
+			scale = pixiApp.screen.width / width
+
+			height = height * scale
+			width = width * scale
+		}
+
+		return {
+			anchor: ANCHORS.BOTTOM_CENTER,
+			height,
+			texture,
+			width,
+			x: pixiApp.screen.width / 2,
+			y: pixiApp.screen.height,
+		}
+	}, [pixiApp])
 
 	return (
 		<Container>
-			<Sprite
-				{...spriteProps}
-				texture={wallAsset} />
-			<Sprite
-				{...spriteProps}
-				texture={doorOpenAsset} />
-			<Sprite
-				{...spriteProps}
-				texture={shelfAsset} />
+			<Sprite {...getSpriteProps(wallAsset)} />
+			<Sprite {...getSpriteProps(doorOpenAsset)} />
+			<Sprite {...getSpriteProps(shelfAsset)} />
 		</Container>
 	)
 }

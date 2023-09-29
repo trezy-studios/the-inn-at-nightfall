@@ -33,45 +33,31 @@ export function CreepyHandsBackground() {
 
 	const pixiApp = useApp()
 
-	const asset = useMemo(() => Assets.get('backgrounds-creepy-hands'), [])
+	const spriteProps = useMemo(() => {
+		const texture = Assets.get('backgrounds-creepy-hands')
 
-	const {
-		height,
-		width,
-		x,
-		y,
-	} = useMemo(() => {
-		const spriteData = {
-			height: asset.orig.height,
-			width: asset.orig.width,
-			x: (pixiApp.screen.width / 2) / 2,
-			y: pixiApp.screen.height / 2,
+		const width = pixiApp.screen.width * 0.8
+
+		const scale = width / texture.orig.width
+		const height = texture.orig.height * scale
+
+		return {
+			anchor: ANCHORS.BOTTOM_CENTER,
+			height,
+			texture,
+			width,
+			x: pixiApp.screen.width / 2,
+			y: pixiApp.screen.height + (pixiApp.screen.height * (timeRemaining / timeAvailable)),
 		}
-
-		spriteData.width = pixiApp.screen.width / 2
-		spriteData.height = asset.orig.height * (pixiApp.screen.width / asset.orig.width) / 2
-
-		const spriteTraveldistance = spriteData.height - pixiApp.screen.height
-
-		spriteData.y = (spriteTraveldistance - (spriteTraveldistance * (timeRemaining / timeAvailable))) * -1
-
-		return spriteData
 	}, [
-		asset,
 		pixiApp,
-		timeRemaining,
 		timeAvailable,
+		timeRemaining,
 	])
 
 	return (
-		<Container
-			anchor={ANCHORS.TOP_CENTER}
-			x={x}
-			y={y}>
-			<Sprite
-				height={height}
-				texture={asset}
-				width={width} />
+		<Container>
+			<Sprite {...spriteProps} />
 		</Container>
 	)
 }
