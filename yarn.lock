@@ -45,6 +45,7 @@ __metadata:
     statery: "npm:^0.7.1"
     typescript: "npm:^5.2.2"
     uuid: "npm:^9.0.0"
+    xstate: "npm:^4.38.2"
   languageName: unknown
   linkType: soft
 
@@ -5846,6 +5847,13 @@ __metadata:
   version: 1.0.2
   resolution: "wrappy@npm:1.0.2"
   checksum: 56fece1a4018c6a6c8e28fbc88c87e0fbf4ea8fd64fc6c63b18f4acc4bd13e0ad2515189786dd2c30d3eec9663d70f4ecf699330002f8ccb547e4a18231fc9f0
+  languageName: node
+  linkType: hard
+
+"xstate@npm:^4.38.2":
+  version: 4.38.2
+  resolution: "xstate@npm:4.38.2"
+  checksum: ce6186dd1f5ea647c4fe44b3df397b8d4e5b523ba043138201487beefb7591632232f4e2618225fb97950456115b08671ce1fee02d66e7f269f73c39a5968642
   languageName: node
   linkType: hard
 

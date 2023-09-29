@@ -159,7 +159,10 @@ module.exports = {
 
 		// jsdoc
 		'jsdoc/check-tag-names': ['error', {
-			definedTags: ['component'],
+			definedTags: [
+				'component',
+				'xstate-layout',
+			],
 		}],
 		'jsdoc/require-jsdoc': ['error', {
 			require: {

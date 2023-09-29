@@ -23,7 +23,8 @@
     "react-dom": "^18.2.0",
     "sass": "^1.66.1",
     "statery": "^0.7.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "xstate": "^4.38.2"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.4.19",
