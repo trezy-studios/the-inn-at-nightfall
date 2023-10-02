@@ -1,4 +1,4 @@
-.game-wrapper {
+.app-wrapper {
 	align-content: stretch;
 	align-items: stretch;
 	display: flex;
@@ -8,5 +8,6 @@
 
 	> * {
 		flex-grow: 1;
+		flex-shrink: 1;
 	}
 }

@@ -48,7 +48,6 @@ export function Game(props) {
 
 	useEffect(() => {
 		pixiApp.resizeTo = resizeToRef.current
-		pixiApp.resize()
 
 		store.set(() => ({
 			viewport: {

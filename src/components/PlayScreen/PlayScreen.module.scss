@@ -1,6 +1,17 @@
 .play-screen {
-	canvas {
-		inset: 0;
-		position: absolute;
+	display: grid;
+	grid-template-areas: 'stage dialog';
+	grid-template-columns: 1fr 40rem;
+	height: 100vh;
+	width: 100vw;
+
+	&.debugger-enabled {
+		grid-template-areas: 'stage dialog debugger';
+		grid-template-columns: 1fr 40rem auto;
+	}
+
+	.stage-wrapper {
+		display: flex;
+		grid-area: stage;
 	}
 }

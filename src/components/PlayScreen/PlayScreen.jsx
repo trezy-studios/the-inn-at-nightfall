@@ -1,6 +1,10 @@
 // Module imports
+import {
+	useMemo,
+	useRef,
+} from 'react'
+import classnames from 'classnames'
 import { Stage } from '@pixi/react'
-import { useRef } from 'react'
 
 
 
@@ -9,8 +13,10 @@ import { useRef } from 'react'
 // Local imports
 import styles from './PlayScreen.module.scss'
 
+import { Debugger } from '../Debugger/Debugger.jsx'
 import { Game } from '../Game/Game.jsx'
-import { GameUI } from '../GameUI/GameUI.jsx'
+import { GameDialog } from '../GameDialog/GameDialog.jsx'
+import { useDebugMode } from '../../hooks/useDebugMode.js'
 
 
 
@@ -22,17 +28,28 @@ import { GameUI } from '../GameUI/GameUI.jsx'
  * @component
  */
 export function PlayScreen() {
+	const { isDebugModeEnabled } = useDebugMode()
+
 	const gameWrapperRef = useRef(null)
 
-	return (
-		<div
-			ref={gameWrapperRef}
-			className={styles['play-screen']}>
-			<Stage>
-				<Game resizeToRef={gameWrapperRef} />
-			</Stage>
+	const compiledClassName = useMemo(() => classnames({
+		[styles['play-screen']]: true,
+		[styles['debugger-enabled']]: isDebugModeEnabled,
+	}), [isDebugModeEnabled])
 
-			<GameUI />
+	return (
+		<div className={compiledClassName}>
+			<div
+				ref={gameWrapperRef}
+				className={styles['stage-wrapper']}>
+				<Stage>
+					<Game resizeToRef={gameWrapperRef} />
+				</Stage>
+			</div>
+
+			<GameDialog />
+
+			<Debugger />
 		</div>
 	)
 }

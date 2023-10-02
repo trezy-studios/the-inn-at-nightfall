@@ -6,7 +6,7 @@ import { useStore } from 'statery'
 
 
 // Local imports
-import styles from './GameWrapper.module.scss'
+import styles from './AppWrapper.module.scss'
 
 import { LoadingScreen } from '../LoadingScreen/LoadingScreen.jsx'
 import { PlayScreen } from '../PlayScreen/PlayScreen.jsx'
@@ -23,11 +23,11 @@ import { TitleScreen } from '../TitleScreen/TitleScreen.jsx'
  *
  * @component
  */
-export function GameWrapper() {
+export function AppWrapper() {
 	const { screen } = useStore(store)
 
 	return (
-		<div className={styles['game-wrapper']}>
+		<div className={styles['app-wrapper']}>
 			{(screen === SCREENS.LOADING) && (
 				<LoadingScreen />
 			)}

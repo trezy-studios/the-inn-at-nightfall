@@ -6,9 +6,9 @@ import dynamic from 'next/dynamic'
 
 
 // Constants
-const GameComponent = dynamic(() => {
-	return import('../components/GameWrapper/GameWrapper.jsx')
-		.then(mod => mod.GameWrapper)
+const App = dynamic(() => {
+	return import('../components/AppWrapper/AppWrapper.jsx')
+		.then(mod => mod.AppWrapper)
 }, {
   // eslint-disable-next-line jsdoc/require-jsdoc
   loading: () => <div>{'Loading...'}</div>,
@@ -25,6 +25,6 @@ const GameComponent = dynamic(() => {
  */
 export default function HomePage() {
 	return (
-		<GameComponent />
+		<App />
 	)
 }

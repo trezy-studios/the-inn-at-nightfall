@@ -1,5 +1,4 @@
 // Module imports
-import { useMemo } from 'react'
 import { useStore } from 'statery'
 
 
@@ -7,10 +6,11 @@ import { useStore } from 'statery'
 
 
 // Local imports
-import { store } from '../../store/store.js'
 import styles from './Debugger.module.scss'
 
 import { DebuggerPanel } from './DebuggerPanel.jsx'
+import { getCurrentCharacter } from '../../store/reducers/getCurrentCharacter.js'
+import { store } from '../../store/store.js'
 
 
 
@@ -22,22 +22,13 @@ import { DebuggerPanel } from './DebuggerPanel.jsx'
  * @component
  */
 export function Info() {
+	const proxyStore = useStore(store)
 	const {
-		characters,
 		characterQueue,
 		characterQueueIndex,
-	} = useStore(store)
+	} = proxyStore
 
-	const currentCharacterName = useMemo(() => {
-		const index = characterQueue[characterQueueIndex]
-		const character = characters[index]
-
-		return character.name
-	}, [
-		characters,
-		characterQueue,
-		characterQueueIndex,
-	])
+	const currentCharacter = getCurrentCharacter(proxyStore)
 
 	return (
 		<DebuggerPanel title={'Info'}>
@@ -55,7 +46,7 @@ export function Info() {
 
 					<tr>
 						<th>{'Current name:'}</th>
-						<td>{currentCharacterName}</td>
+						<td>{Boolean(currentCharacter) && currentCharacter.name}</td>
 					</tr>
 				</tbody>
 			</table>
