@@ -11,10 +11,6 @@ export const ASSET_MANIFEST = {
 					name: 'exterior',
 					srcs: '/backgrounds/exterior.jpg',
 				},
-				{
-					name: 'title',
-					srcs: '/backgrounds/temp-title.png',
-				},
 			],
 		},
 		{

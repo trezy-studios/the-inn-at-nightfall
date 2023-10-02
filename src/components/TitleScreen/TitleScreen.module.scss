@@ -1,4 +1,7 @@
 .title-screen {
+	background-image: url('/backgrounds/title.png');
+	background-position: center;
+	background-size: cover;
 	display: grid;
 	grid-template-areas:
 		'header'
@@ -20,6 +23,12 @@
 
 .header {
 	grid-area: header;
+	letter-spacing: 0.5rem;
+	margin-top: 10rem;
+
+	> h1.title {
+		font-size: 4em;
+	}
 }
 
 .menu {
