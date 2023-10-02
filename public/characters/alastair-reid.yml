@@ -7,9 +7,9 @@ dialog:
     greeting:
       conversation:
         - author: Alastair Reid
-          message: Well hello there, innkeeper! I’ve brought your daily supplies!
+          message: Well hello there! I've brought your daily supplies!
 
-        - author: Innkeeper
+        - author: You
           message: Thank you, Alastair.
 
         - author: Alastair Reid
@@ -20,54 +20,54 @@ dialog:
           target: No
           transitionID: ANSWER_NO
 
-        - message: I don’t really care for gossip…
+        - message: I don't really care for gossip…
           target: Not Interested
           transitionID: ANSWER_NOT_INTERESTED
 
     No:
       conversation:
-        - author: Innkeeper
+        - author: You
           message: No, please do tell!
 
       next: Weird Happenings
 
     Not Interested:
       conversation:
-        - author: Innkeeper
-          message: I don’t really care for gossip…
+        - author: You
+          message: I don't really care for gossip…
 
       next: Weird Happenings
 
     Weird Happenings:
       conversation:
         - author: Alastair Reid
-          message: Well, it’s mighty concerning! Folks have been going missing in the night!
+          message: Well, it's mighty concerning! Folks have been going missing in the night!
 
         - author: Alastair Reid
-          message: Some turn up dead the next day and other folks… well they’re just … different from before…
+          message: Some turn up dead the next day and other folks… well they're just … different from before…
 
         - author: Alastair Reid
           message: No one knows what is causing the trouble. I think it might be some kind of creature that can disguise itself as a person!
 
       response:
-        - message: Empathetic Response
+        - message: That’s terrible!
           target: Empathetic Response
           transitionID: ANSWER_EMPATHETIC
 
-        - message: Skeptical Response
+        - message: Uh huh…
           target: Skeptical Response
           transitionID: ANSWER_SKEPTICAL
 
     Empathetic Response:
       conversation:
-        - author: Innkeeper
-          message: Oh! That’s terrible!
+        - author: You
+          message: Oh! That's terrible!
 
       next: Warning
 
     Skeptical Response:
       conversation:
-        - author: Innkeeper
+        - author: You
           message: Uh huh…
 
       next: Warning
@@ -78,27 +78,27 @@ dialog:
           message: Well the important part is to be inside by nightfall. Now I know you get plenty of travelers who come by here.
 
         - author: Alastair Reid
-          message: Be wary of who you allow to be guests! I’d say look for anyone with a strange appearance or manner to them.
+          message: Be wary of who you allow to be guests! I'd say look for anyone with a strange appearance or manner to them.
 
       response:
-        - message: Acknowledge Warning
+        - message: Of course.
           target: Acknowledge Warning
           transitionID: ANSWER_ACKNOWLEDGE_WARNING
 
-        - message: Excuse Odd Travelers
+        - message: That's quite normal.
           target: Excuse Odd Travelers
           transitionID: ANSWER_EXCUSE_ODD_TRAVELERS
 
     Acknowledge Warning:
       conversation:
-        - author: Innkeeper
+        - author: You
           message: Oh yes, of course.
 
       next: Goodbye
 
     Excuse Odd Travelers:
       conversation:
-        - author: Innkeeper
+        - author: You
           message: Well most travelers will arrive not appearing their best.
 
       next: Goodbye
@@ -106,26 +106,26 @@ dialog:
     Goodbye:
       conversation:
         - author: Alastair Reid
-          message: Well just be careful now. You wouldn’t want yourself and all stayin at the inn to turn up dead in the morning!
+          message: Well just be careful now. You wouldn't want yourself and all stayin at the inn to turn up dead in the morning!
 
       response:
-        - message: Thanks
+        - message: Thank you!
           target: Thanks
           transitionID: ANSWER_THANKS
 
-        - message: Unimpressed Farewell
+        - message: Very well.
           target: Unimpressed Farewell
           transitionID: ANSWER_UNIMPRESSED_FAREWELL
 
     Thanks:
       conversation:
-        - author: Innkeeper
+        - author: You
           message: Thank you so much Alastair!
 
     Unimpressed Farewell:
       conversation:
-        - author: Innkeeper
+        - author: You
           action: sighs...
 
-        - author: Innkeeper
+        - author: You
           message: Very well Alastair. Good day to you!
