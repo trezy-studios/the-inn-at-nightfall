@@ -9,9 +9,45 @@ import { store } from '../../store/store.js'
  * Updates the clock.
  */
 export function roundManagementSystem() {
-	const { timeRemaining } = store.state
+	const {
+		characterQueue,
+		characterQueueIndex,
+		isRoundOver,
+		timeRemaining,
+	} = store.state
 
-	if (timeRemaining <= 0) {
-		store.set(() => ({ isRoundOver: true }))
+	const travelersRemaining = characterQueue.length - characterQueueIndex
+
+	if (!isRoundOver && ((travelersRemaining === 0) || (timeRemaining <= 0))) {
+		store.set(state => {
+			const {
+				allowedCharacters,
+				characters,
+				wallet,
+			} = state
+
+			let newWallet = wallet
+			let failed = false
+
+			const humansAllowedCount = allowedCharacters
+				.filter(characterID => {
+					const character = characters[characterID]
+
+					return !(character.isVampire || character.isMerchant)
+				})
+				.length
+
+			if (humansAllowedCount === allowedCharacters.length) {
+				newWallet += humansAllowedCount * 10
+			} else {
+				failed = true
+			}
+
+			return {
+				failed,
+				isRoundOver: true,
+				wallet: newWallet,
+			}
+		})
 	}
 }

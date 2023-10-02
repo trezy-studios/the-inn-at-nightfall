@@ -94,6 +94,8 @@ export class Character {
 
 	#isMerchant = false
 
+	#isVampire = false
+
 	#name
 
 	#sprite
@@ -118,6 +120,10 @@ export class Character {
 
 		if (config.dialog) {
 			this.#dialogMachine = Character.compileDialogMachine(config)
+		}
+
+		if (!this.#isMerchant) {
+			this.#isVampire = Math.random() > 0.9
 		}
 	}
 
@@ -169,6 +175,11 @@ export class Character {
 	/** @returns {boolean} Whether the character is a merchant. */
 	get isMerchant() {
 		return this.#isMerchant
+	}
+
+	/** @returns {boolean} Whether the character is a vampire. */
+	get isVampire() {
+		return this.#isVampire
 	}
 
 	/** @returns {string} The character's name. */

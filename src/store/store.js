@@ -39,6 +39,8 @@ export const store = makeStore({
 
 	deltaMS: 0,
 
+	failed: false,
+
 	isLoadingAssets: false,
 
 	isInitialized: false,
@@ -62,6 +64,8 @@ export const store = makeStore({
 		height: 0,
 		width: 0,
 	},
+
+	wallet: 0,
 })
 
 if (typeof window !== 'undefined') {
