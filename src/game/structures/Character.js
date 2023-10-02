@@ -17,6 +17,7 @@ import { ENTRY_STATE } from '../../data/ENTRY_STATE.js'
 /**
  * @typedef {object} CharacterConfig
  * @property {object} [dialog] The dialog for the character, if available.
+ * @property {boolean} [isMerchant] Whether this character is a merchant.
  * @property {string} name The character's name.
  * @property {string} sprite The name of the character's sprite.
  */
@@ -91,6 +92,8 @@ export class Character {
 
 	#id = uuid()
 
+	#isMerchant = false
+
 	#name
 
 	#sprite
@@ -109,6 +112,7 @@ export class Character {
 	 * @param {CharacterConfig} config All configuration.
 	 */
 	constructor(config) {
+		this.#isMerchant = config.isMerchant
 		this.#name = config.name
 		this.#sprite = config.sprite
 
@@ -160,6 +164,11 @@ export class Character {
 	/** @returns {string} The character's unique identifier. */
 	get id() {
 		return this.#id
+	}
+
+	/** @returns {boolean} Whether the character is a merchant. */
+	get isMerchant() {
+		return this.#isMerchant
 	}
 
 	/** @returns {string} The character's name. */

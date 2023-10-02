@@ -32,22 +32,25 @@ export function CharacterQueue() {
 	const isMerchantPresent = checkMerchantPresence(proxyStore)
 
 	const renderedCharacterQueue = useMemo(() => {
+		const characterQueueToRender = [...characterQueue]
+			.slice(characterQueueIndex, characterQueueIndex + 5)
+			.reverse()
+
+		if (!characterQueueToRender.length) {
+			return null
+		}
+
 		if (isMerchantPresent) {
 			return (
 				<Character characterID={characters[characterQueue[0]].id} />
 			)
 		}
 
-		return [...characterQueue]
-			.slice(characterQueueIndex, characterQueueIndex + 5)
-			.reverse()
-			.map(characterID => {
-				return (
-					<Character
-						key={characterID}
-						characterID={characterID} />
-				)
-			})
+		return characterQueueToRender.map(characterID => (
+			<Character
+				key={characterID}
+				characterID={characterID} />
+		))
 	}, [
 		characterQueue,
 		characterQueueIndex,

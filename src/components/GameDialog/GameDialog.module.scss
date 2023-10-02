@@ -27,34 +27,23 @@
 	}
 }
 
-.response {
-	padding: 2rem;
-
-	header {
-		margin-bottom: 1rem;
-	}
-}
-
 .options {
-	li {
-		&:not(:first-of-type) {
-			margin-top: 0.5rem;
-		}
-	}
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 0 2rem 2rem;
 
 	button {
+		border-left: 2px white solid;
 		display: flex;
 		cursor: pointer;
-
-		&::before {
-			color: var(--palette-light-grey);
-			content: counter(list-item) ' -';
-			margin: 0 0.3rem;
-			white-space: nowrap;
-		}
+		padding: 1rem 2rem;
+		transition-duration: 0.1s;
+		transition-property: border-left-width;
+		width: 100%;
 
 		&:hover {
-			text-shadow: 0 0 0.5rem var(--palette-light-grey);
+			border-left-width: 0.5rem;
 		}
 	}
 }

@@ -1,4 +1,5 @@
 name: Alastair Reid
+isMerchant: true
 sprite: alastair-reid
 dialog:
   initial: greeting

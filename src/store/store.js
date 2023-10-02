@@ -16,6 +16,9 @@ import { SCREENS } from '../data/SCREENS.js'
 
 
 export const store = makeStore({
+	/** @type {string[]} */
+	allowedCharacters: [],
+
 	areAssetsLoaded: false,
 
 	assetLoadingProgress: 0,
