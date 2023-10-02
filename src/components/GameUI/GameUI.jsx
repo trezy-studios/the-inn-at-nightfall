@@ -11,10 +11,10 @@ import { useStore } from 'statery'
 import styles from './GameUI.module.scss'
 
 import { Debugger } from '../Debugger/Debugger.jsx'
-import { GameClock } from '../GameClock/GameClock.jsx'
+// import { GameClock } from '../GameClock/GameClock.jsx'
 import { GameDialog } from '../GameDialog/GameDialog.jsx'
-import { GameMenu } from '../GameMenu/GameMenu.jsx'
-import { RoundScore } from '../RoundScore/RoundScore.jsx'
+// import { GameMenu } from '../GameMenu/GameMenu.jsx'
+// import { RoundScore } from '../RoundScore/RoundScore.jsx'
 import { store } from '../../store/store.js'
 import { useDebugMode } from '../../hooks/useDebugMode.js'
 
@@ -32,7 +32,7 @@ export function GameUI() {
 
 	const {
 		isInitialized,
-		isRoundOver,
+		// isRoundOver,
 	} = useStore(store)
 
 	const compiledClassName = useMemo(() => {
@@ -48,15 +48,15 @@ export function GameUI() {
 
 	return (
 		<div className={compiledClassName}>
-			<GameMenu />
+			{/* <GameMenu /> */}
 
 			<GameDialog />
 
-			<GameClock />
+			{/* <GameClock /> */}
 
-			{isRoundOver && (
+			{/* {isRoundOver && (
 				<RoundScore />
-			)}
+			)} */}
 
 			<Debugger />
 		</div>

@@ -1,15 +1,18 @@
 .game-dialog {
-	align-self: end;
+	align-content: stretch;
+	align-items: stretch;
 	background-color: var(--palette-dark-grey);
 	display: flex;
 	flex-direction: column;
-	gap: 4rem;
-	grid-area: bottom-center;
-	justify-content: space-between;
-	padding: 1rem;
+	grid-area: dialog;
+	height: 100vh;
 }
 
 .call {
+	flex-grow: 1;
+	overflow-y: auto;
+	padding: 2rem;
+
 	blockquote {
 		margin-top: 1rem;
 		padding-left: 2.5rem;
@@ -28,6 +31,8 @@
 }
 
 .response {
+	padding: 2rem;
+
 	header {
 		margin-bottom: 1rem;
 	}

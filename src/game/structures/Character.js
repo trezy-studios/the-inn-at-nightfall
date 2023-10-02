@@ -1,5 +1,5 @@
 // Module imports
-import { interpret } from 'xstate'
+import { createMachine } from 'xstate'
 import { v4 as uuid } from 'uuid'
 
 
@@ -16,7 +16,7 @@ import { ENTRY_STATE } from '../../data/ENTRY_STATE.js'
 // Types
 /**
  * @typedef {object} CharacterConfig
- * @property {import('xstate').StateMachine} [dialogMachine] The character's name.
+ * @property {object} [dialog] The dialog for the character, if available.
  * @property {string} name The character's name.
  * @property {string} sprite The name of the character's sprite.
  */
@@ -29,6 +29,58 @@ import { ENTRY_STATE } from '../../data/ENTRY_STATE.js'
  * Represents a character in the game.
  */
 export class Character {
+	/****************************************************************************\
+	 * Public static methods
+	\****************************************************************************/
+
+	/**
+	 * Takes the characters config and generates a finite state machine
+	 * representing the character's conversation tree.
+	 *
+	 * @param {object} config The base character config.
+	 * @returns {import('xstate').StateMachine} The compiled state machine.
+	 */
+	static compileDialogMachine(config) {
+		const stateEntries = Object.entries(config.dialog.content)
+		const states = stateEntries.reduce((accumulator, [stateKey, stateData]) => {
+			const state = {
+				meta: {
+					dialog: stateData.conversation,
+				},
+			}
+
+			if ('response' in stateData) {
+				state.meta.response = stateData.response.map(responseData => ({
+					message: responseData.message,
+					transitionID: responseData.transitionID,
+				}))
+
+				state.on = stateData.response.reduce((responseAccumulator, responseData) => {
+					responseAccumulator[responseData.transitionID] = { target: responseData.target }
+					return responseAccumulator
+				}, {})
+			} else if ('next' in stateData) {
+				state.after = { 1: stateData.next }
+			} else {
+				state.type = 'final'
+			}
+
+			accumulator[stateKey] = state
+
+			return accumulator
+		}, {})
+
+		return createMachine({
+			id: config.name,
+			initial: config.dialog.initial,
+			states,
+		})
+	}
+
+
+
+
+
 	/****************************************************************************\
 	 * Private instance properties
 	\****************************************************************************/
@@ -60,8 +112,8 @@ export class Character {
 		this.#name = config.name
 		this.#sprite = config.sprite
 
-		if (config.dialogMachine) {
-			this.#dialogMachine = interpret(config.dialogMachine)
+		if (config.dialog) {
+			this.#dialogMachine = Character.compileDialogMachine(config)
 		}
 	}
 
@@ -95,7 +147,7 @@ export class Character {
 	 * Public instance getters/setters
 	\****************************************************************************/
 
-	/** @returns {object} The character's dialog state machine. */
+	/** @returns {import('xstate').StateMachine} The character's dialog state machine. */
 	get dialogMachine() {
 		return this.#dialogMachine
 	}

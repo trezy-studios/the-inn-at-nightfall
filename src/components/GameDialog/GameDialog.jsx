@@ -1,6 +1,11 @@
 // Module imports
-import { faker } from '@faker-js/faker'
-import { useMemo } from 'react'
+import {
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+} from 'react'
+import { useMachine } from '@xstate/react'
 import { useStore } from 'statery'
 
 
@@ -11,6 +16,7 @@ import { useStore } from 'statery'
 import styles from './GameDialog.module.scss'
 
 import { Button } from '../Button/Button.jsx'
+import { getCurrentCharacter } from '../../store/reducers/getCurrentCharacter.js'
 import { store } from '../../store/store.js'
 
 
@@ -23,64 +29,87 @@ import { store } from '../../store/store.js'
  * @component
  */
 export function GameDialog() {
-	const {
-		characters,
-		characterQueue,
-		characterQueueIndex,
-	} = useStore(store)
+	const proxyStore = useStore(store)
+	const currentCharacter = getCurrentCharacter(proxyStore)
+	const callRef = useRef(null)
 
-	const currentCharacter = useMemo(() => {
-		const index = characterQueue[characterQueueIndex]
+	const [dialogContent, setDialogContent] = useState([])
 
-		return characters[index]
+	const [dialogMachine, send] = useMachine(currentCharacter.dialogMachine)
+
+	const dialogMachineMetaKey = `${dialogMachine.machine.id}.${dialogMachine.value}`
+
+	const dialogMachineMeta = dialogMachine.meta[dialogMachineMetaKey]
+
+	const renderedMessages = useMemo(() => {
+		return dialogContent.map((line, index) => {
+			return (
+				<p key={`${dialogMachineMetaKey}:${index}`}>
+					<strong>{`${line.author}: `}</strong>
+					{Boolean(line.action) && (
+						<em>{line.action}</em>
+					)}
+					{!line.action && line.message}
+				</p>
+			)
+		})
 	}, [
-		characters,
-		characterQueue,
-		characterQueueIndex,
+		dialogContent,
+		dialogMachineMetaKey,
 	])
 
-	const dialogContent = useMemo(() => ({
-		message: faker.lorem.sentences({
-			max: 3,
-			min: 1,
-		}),
-		responses: [
-			faker.lorem.sentences(1),
-			faker.lorem.sentences(1),
-			faker.lorem.sentences(1),
-		],
-	}), [])
+	const renderedResponses = useMemo(() => {
+		if (!dialogMachineMeta.response) {
+			return null
+		}
+
+		return dialogMachineMeta
+			.response
+			.filter(response => dialogMachine.can(response.transitionID))
+			.map((response, index) => {
+				return (
+					<li key={`${dialogMachineMetaKey}:${index}`}>
+						<Button
+							// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+							onClick={() => send(response.transitionID)}>
+							{response.message}
+						</Button>
+					</li>
+				)
+			})
+	}, [
+		dialogMachine,
+		dialogMachineMeta,
+		dialogMachineMetaKey,
+		send,
+	])
+
+	useEffect(() => {
+		setDialogContent(previousState => [
+			...previousState,
+			...dialogMachineMeta.dialog,
+		])
+		setTimeout(() => callRef.current.querySelector('p:last-child').scrollIntoView({ behavior: 'smooth' }), 0)
+	}, [
+		dialogMachineMeta,
+		setDialogContent,
+	])
 
 	return (
-		<div className={styles['game-dialog']}>
+		<div
+			ref={callRef}
+			className={styles['game-dialog']}>
 			<div className={styles['call']}>
-				<header>
-					{`${currentCharacter.name} says...`}
-				</header>
-
-				<blockquote>
-					<p>{dialogContent.message}</p>
-				</blockquote>
+				{renderedMessages}
 			</div>
 
-			<div className={styles['response']}>
-				<header>
-					{'How would you like to respond?'}
-				</header>
-
-				<ol className={styles['options']}>
-					{dialogContent.responses.map((response, index) => {
-						return (
-							<li key={index}>
-								{/* eslint-disable-next-line react-perf/jsx-no-new-function-as-prop */}
-								<Button onClick={() => {}}>
-									{response}
-								</Button>
-							</li>
-						)
-					})}
-				</ol>
-			</div>
+			{Boolean(renderedResponses) && (
+				<div className={styles['response']}>
+					<ol className={styles['options']}>
+						{renderedResponses}
+					</ol>
+				</div>
+			)}
 		</div>
 	)
 }

@@ -1,0 +1,130 @@
+name: Alastair Reid
+sprite: alastair-reid
+dialog:
+  initial: greeting
+  content:
+    greeting:
+      conversation:
+        - author: Alastair Reid
+          message: Well hello there, innkeeper! I’ve brought your daily supplies!
+
+        - author: Innkeeper
+          message: Thank you, Alastair.
+
+        - author: Alastair Reid
+          message: Have you heard the news going through town?
+
+      response:
+        - message: No, please do tell!
+          target: No
+          transitionID: ANSWER_NO
+
+        - message: I don’t really care for gossip…
+          target: Not Interested
+          transitionID: ANSWER_NOT_INTERESTED
+
+    No:
+      conversation:
+        - author: Innkeeper
+          message: No, please do tell!
+
+      next: Weird Happenings
+
+    Not Interested:
+      conversation:
+        - author: Innkeeper
+          message: I don’t really care for gossip…
+
+      next: Weird Happenings
+
+    Weird Happenings:
+      conversation:
+        - author: Alastair Reid
+          message: Well, it’s mighty concerning! Folks have been going missing in the night!
+
+        - author: Alastair Reid
+          message: Some turn up dead the next day and other folks… well they’re just … different from before…
+
+        - author: Alastair Reid
+          message: No one knows what is causing the trouble. I think it might be some kind of creature that can disguise itself as a person!
+
+      response:
+        - message: Empathetic Response
+          target: Empathetic Response
+          transitionID: ANSWER_EMPATHETIC
+
+        - message: Skeptical Response
+          target: Skeptical Response
+          transitionID: ANSWER_SKEPTICAL
+
+    Empathetic Response:
+      conversation:
+        - author: Innkeeper
+          message: Oh! That’s terrible!
+
+      next: Warning
+
+    Skeptical Response:
+      conversation:
+        - author: Innkeeper
+          message: Uh huh…
+
+      next: Warning
+
+    Warning:
+      conversation:
+        - author: Alastair Reid
+          message: Well the important part is to be inside by nightfall. Now I know you get plenty of travelers who come by here.
+
+        - author: Alastair Reid
+          message: Be wary of who you allow to be guests! I’d say look for anyone with a strange appearance or manner to them.
+
+      response:
+        - message: Acknowledge Warning
+          target: Acknowledge Warning
+          transitionID: ANSWER_ACKNOWLEDGE_WARNING
+
+        - message: Excuse Odd Travelers
+          target: Excuse Odd Travelers
+          transitionID: ANSWER_EXCUSE_ODD_TRAVELERS
+
+    Acknowledge Warning:
+      conversation:
+        - author: Innkeeper
+          message: Oh yes, of course.
+
+      next: Goodbye
+
+    Excuse Odd Travelers:
+      conversation:
+        - author: Innkeeper
+          message: Well most travelers will arrive not appearing their best.
+
+      next: Goodbye
+
+    Goodbye:
+      conversation:
+        - author: Alastair Reid
+          message: Well just be careful now. You wouldn’t want yourself and all stayin at the inn to turn up dead in the morning!
+
+      response:
+        - message: Thanks
+          target: Thanks
+          transitionID: ANSWER_THANKS
+
+        - message: Unimpressed Farewell
+          target: Unimpressed Farewell
+          transitionID: ANSWER_UNIMPRESSED_FAREWELL
+
+    Thanks:
+      conversation:
+        - author: Innkeeper
+          message: Thank you so much Alastair!
+
+    Unimpressed Farewell:
+      conversation:
+        - author: Innkeeper
+          action: sighs...
+
+        - author: Innkeeper
+          message: Very well Alastair. Good day to you!

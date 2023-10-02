@@ -58,7 +58,7 @@ export const ASSET_MANIFEST = {
 					srcs: '/sprites/lillian-featherstone.png',
 				},
 				{
-					name: 'merchant',
+					name: 'alastair-reid',
 					srcs: '/sprites/merchant.png',
 				},
 			],

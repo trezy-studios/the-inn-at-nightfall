@@ -102,10 +102,11 @@ export function Character(props) {
 		const texture = Assets.get(character.sprite)
 		const height = pixiApp.screen.height * 0.8
 
-		const scale = height / texture.orig.height
-		const width = texture.orig.width * scale
+		const scale = height / texture?.orig.height
+		const width = texture?.orig.width * scale
 
 		return {
+			anchor: ANCHORS.CENTER_CENTER,
 			filters,
 			height,
 			texture,
@@ -123,9 +124,7 @@ export function Character(props) {
 			scale={containerStyles.scale}
 			x={containerStyles.position.x}
 			y={containerStyles.position.y}>
-			<Sprite
-				anchor={ANCHORS.CENTER_CENTER}
-				{...spriteProps} />
+			<Sprite {...spriteProps} />
 		</Container>
 	)
 }
