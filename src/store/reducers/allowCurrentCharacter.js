@@ -13,12 +13,20 @@ import { store } from '../store.js'
 export function allowCurrentCharacter() {
 	const currentCharacter = getCurrentCharacter(store.state)
 
-	store.set(state => ({
-		allowedCharacters: [
-			...state.allowedCharacters,
-			currentCharacter.id,
-		],
-	}))
+	store.set(state => {
+		const patch = {
+			allowedCharacters: [
+				...state.allowedCharacters,
+				currentCharacter.id,
+			],
+		}
+
+		if (!currentCharacter.isVampire) {
+			patch.totalGuestsAllowed = state.totalGuestsAllowed + 1
+		}
+
+		return patch
+	})
 
 	goToNextCharacter()
 }

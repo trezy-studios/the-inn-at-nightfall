@@ -44,21 +44,15 @@ export function TitleScreen() {
 			</header>
 
 			<div className={styles['menu']}>
-				<MenuButton
-					align={ALIGNMENT.LEFT}
-					onClick={startRound}>
+				<MenuButton onClick={startRound}>
 					{'Play'}
 				</MenuButton>
 
-				<MenuButton
-					align={ALIGNMENT.LEFT}
-					onClick={startRound}>
+				<MenuButton onClick={startRound}>
 					{'Settings'}
 				</MenuButton>
 
-				<MenuButton
-					align={ALIGNMENT.LEFT}
-					onClick={startRound}>
+				<MenuButton onClick={startRound}>
 					{'Credits'}
 				</MenuButton>
 			</div>

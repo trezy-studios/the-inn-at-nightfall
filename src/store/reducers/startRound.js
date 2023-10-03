@@ -15,6 +15,8 @@ export function startRound() {
 	store.set(state => {
 		const allCharacters = Object.values(state.characters)
 
+		allCharacters.forEach(character => character.reset())
+
 		const nonMerchantCharacterIDs = allCharacters
 			.filter(character => !character.isMerchant)
 			.map(character => character.id)
@@ -27,6 +29,7 @@ export function startRound() {
 		}
 
 		return {
+			allowedCharacters: [],
 			characterQueue,
 			characterQueueIndex: 0,
 			currentRound: state.currentRound + 1,

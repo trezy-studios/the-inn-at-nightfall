@@ -1,7 +1,23 @@
 .button {
-	background-color: black;
+	border-color: white;
+	border-width: 0;
+	border-style: solid;
 	cursor: pointer;
-	padding: 1rem;
+	display: flex;
+	padding: 1rem 2rem;
+	position: relative;
+
+	&:before {
+		background-color: white;
+		bottom: 0;
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		transition-duration: 0.1s;
+		transition-property: width;
+		width: 0.2rem;
+	}
 
 	&.align-center {
 		text-align: center;
@@ -9,9 +25,25 @@
 
 	&.align-left {
 		text-align: left;
+
+		&:before {
+			left: 0;
+		}
+
+		&:hover:before {
+			width: 0.5rem;
+		}
 	}
 
 	&.align-right {
 		text-align: right;
+
+		&:before {
+			right: 0;
+		}
+
+		&:hover:before {
+			width: 0.5rem;
+		}
 	}
 }

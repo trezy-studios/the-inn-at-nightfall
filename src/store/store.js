@@ -62,6 +62,8 @@ export const store = makeStore({
 	/** @type {null | number} */
 	timeRemaining: null,
 
+	totalGuestsAllowed: 0,
+
 	viewport: {
 		height: 0,
 		width: 0,

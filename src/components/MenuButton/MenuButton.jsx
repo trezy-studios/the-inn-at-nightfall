@@ -61,7 +61,7 @@ export function MenuButton(props) {
 }
 
 MenuButton.defaultProps = {
-	align: 'center',
+	align: ALIGNMENT.LEFT,
 	className: '',
 }
 

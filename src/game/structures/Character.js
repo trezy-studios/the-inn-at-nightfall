@@ -127,17 +127,7 @@ export class Character {
 			this.#dialogMachine = createMachine({ id: config.name })
 		}
 
-		if (!this.#isMerchant) {
-			this.#isVampire = Math.random() > 0.8
-		}
-
-		if (this.#isVampire) {
-			const stateKeys = Object.keys(CHARACTER_STATES)
-			const stateKeyIndex = Math.floor(stateKeys.length * Math.random())
-			const selectedStateKey = stateKeys[stateKeyIndex]
-
-			this.#state = CHARACTER_STATES[selectedStateKey]
-		}
+		this.reset()
 	}
 
 
@@ -160,6 +150,23 @@ export class Character {
 	 */
 	denyEntry() {
 		this.#entryState = ENTRY_STATE.DENIED
+	}
+
+	/**
+	 * Resets the character. This allows them to become a vampire.
+	 */
+	reset() {
+		if (!this.#isMerchant) {
+			this.#isVampire = Math.random() > 0.8
+
+			if (this.#isVampire) {
+				const stateKeys = Object.keys(CHARACTER_STATES)
+				const stateKeyIndex = Math.floor(stateKeys.length * Math.random())
+				const selectedStateKey = stateKeys[stateKeyIndex]
+
+				this.#state = CHARACTER_STATES[selectedStateKey]
+			}
+		}
 	}
 
 

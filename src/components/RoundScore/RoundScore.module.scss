@@ -1,4 +1,16 @@
-.round-score-wrapper {
+.failure-message {
+	align-items: center;
+	background-color: black;
+	color: red;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	grid-area: message;
+	margin-bottom: 2rem;
+	padding: 2rem;
+}
+
+.round-score-backdrop {
 	align-items: center;
 	background-color: rgba(black, 0.8);
 	display: flex;
@@ -7,7 +19,35 @@
 	position: absolute;
 }
 
+.round-score-wrapper {
+	column-gap: 2rem;
+	display: grid;
+	grid-template-areas:
+		'message	options'
+		'score		options';
+	grid-template-columns: auto auto;
+}
+
 .round-score {
 	background-color: black;
+	grid-area: score;
+	max-width: 80ch;
 	padding: 2rem;
+
+	table {
+		border-collapse: separate;
+		border-spacing: 0.5rem;
+
+		th {
+			text-align: left;
+		}
+	}
+}
+
+.options {
+	grid-area: options;
+
+	.option + .option {
+		margin-top: 1rem;
+	}
 }
