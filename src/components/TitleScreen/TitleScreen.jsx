@@ -8,11 +8,8 @@ import { useRef } from 'react'
 // Local imports
 import styles from './TitleScreen.module.scss'
 
-import {
-	ALIGNMENT,
-	MenuButton,
-} from '../MenuButton/MenuButton.jsx'
 import { Heading } from '../Heading/Heading.jsx'
+import { MenuButton } from '../MenuButton/MenuButton.jsx'
 import { startRound } from '../../store/reducers/startRound.js'
 import { useLoopingTrack } from '../../hooks/useLoopingTrack.js'
 
