@@ -8,6 +8,7 @@ import { Assets } from '@pixi/assets'
 
 // Local imports
 import { ASSET_MANIFEST } from './ASSET_MANIFEST.js'
+import { AudioLibrary } from './structures/AudioLibrary.js'
 import { store } from '../store/store.js'
 
 
@@ -50,6 +51,8 @@ export async function loadGameAssets() {
 
 		bundleIndex += 1
 	}
+
+	await AudioLibrary.load()
 
 	store.set(() => ({
 		assetLoadingProgress: bundleNames.length,

@@ -12,10 +12,10 @@
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
     "@pixi/react": "^7.1.1",
-    "@pixi/sound": "^5.2.1",
     "@xstate/react": "^3.2.2",
     "classnames": "^2.3.2",
     "framer-motion": "10.12.7",
+    "howler": "^2.2.4",
     "js-yaml": "^4.1.0",
     "next": "^13.4.19",
     "pixi.js": "^7.2.4",
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.4.19",
+    "@types/howler": "^2",
     "@types/js-yaml": "^4",
     "@types/node": "20.6.0",
     "@types/react": "^18.2.21",

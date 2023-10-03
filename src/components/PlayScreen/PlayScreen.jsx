@@ -20,6 +20,7 @@ import { GameDialog } from '../GameDialog/GameDialog.jsx'
 import { RoundScore } from '../RoundScore/RoundScore.jsx'
 import { store } from '../../store/store.js'
 import { useDebugMode } from '../../hooks/useDebugMode.js'
+import { useLoopingTrack } from '../../hooks/useLoopingTrack.js'
 
 
 
@@ -34,6 +35,8 @@ export function PlayScreen() {
 	const { isDebugModeEnabled } = useDebugMode()
 	const { isRoundOver } = useStore(store)
 	const gameWrapperRef = useRef(null)
+
+	useLoopingTrack('nightfall')
 
 	const compiledClassName = useMemo(() => classnames({
 		[styles['play-screen']]: true,

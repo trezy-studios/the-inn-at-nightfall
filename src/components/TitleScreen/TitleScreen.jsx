@@ -14,6 +14,7 @@ import {
 } from '../MenuButton/MenuButton.jsx'
 import { Heading } from '../Heading/Heading.jsx'
 import { startRound } from '../../store/reducers/startRound.js'
+import { useLoopingTrack } from '../../hooks/useLoopingTrack.js'
 
 
 
@@ -26,6 +27,8 @@ import { startRound } from '../../store/reducers/startRound.js'
  */
 export function TitleScreen() {
 	const screenWrapperRef = useRef(null)
+
+	useLoopingTrack('title')
 
 	return (
 		<div

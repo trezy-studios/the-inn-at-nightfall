@@ -7,6 +7,8 @@ import { useStore } from 'statery'
 
 
 // Local imports
+import styles from './LoadingScreen.module.scss'
+
 import { loadGameAssets } from '../../game/loadGameAssets.js'
 import { SCREENS } from '../../data/SCREENS.js'
 import { store } from '../../store/store.js'
@@ -40,7 +42,7 @@ export function LoadingScreen() {
 	])
 
 	return (
-		<div>
+		<div className={styles['loading']}>
 			{'Loading...'}
 		</div>
 	)

@@ -12,7 +12,7 @@ __metadata:
     "@faker-js/faker": "npm:^8.0.2"
     "@next/eslint-plugin-next": "npm:^13.4.19"
     "@pixi/react": "npm:^7.1.1"
-    "@pixi/sound": "npm:^5.2.1"
+    "@types/howler": "npm:^2"
     "@types/js-yaml": "npm:^4"
     "@types/node": "npm:20.6.0"
     "@types/react": "npm:^18.2.21"
@@ -36,6 +36,7 @@ __metadata:
     eslint-plugin-sort-class-members: "npm:^1.18.0"
     eslint-plugin-unused-imports: "npm:^3.0.0"
     framer-motion: "npm:10.12.7"
+    howler: "npm:^2.2.4"
     js-yaml: "npm:^4.1.0"
     next: "npm:^13.4.19"
     pixi.js: "npm:^7.2.4"
@@ -901,16 +902,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/sound@npm:^5.2.1":
-  version: 5.2.1
-  resolution: "@pixi/sound@npm:5.2.1"
-  peerDependencies:
-    "@pixi/assets": ^7.0.0
-    "@pixi/core": ^7.0.0
-  checksum: a50958b6e95cf9a2a99241d6e95e4966a64f4836a030c2a3dfd0fb2175030edfdf5ef3a4a39542be645812ec320c3897506666e652debc750382bea85e17514a
-  languageName: node
-  linkType: hard
-
 "@pixi/sprite-animated@npm:7.2.4":
   version: 7.2.4
   resolution: "@pixi/sprite-animated@npm:7.2.4"
@@ -1063,6 +1054,13 @@ __metadata:
   version: 2.1.1
   resolution: "@types/earcut@npm:2.1.1"
   checksum: 116981995aca0805a8eb5cc771f16438bb7d72fd7820b210d93e45a694e1ae29732ca6d5dc419a8dc37c7fa4ab0c62bf211a7c8ea5b256b47dcbe5cd2772d28e
+  languageName: node
+  linkType: hard
+
+"@types/howler@npm:^2":
+  version: 2.2.9
+  resolution: "@types/howler@npm:2.2.9"
+  checksum: 85a41bf310b770d1402a3e029f4b51254280d28ceaaeb74c72c5c3ac59965f01fcfb984d1fc58c9aef950462acb5a1bc1f19a250c8a95987d26e1e10f5185610
   languageName: node
   linkType: hard
 
@@ -3149,6 +3147,13 @@ __metadata:
   bin:
     he: bin/he
   checksum: a27d478befe3c8192f006cdd0639a66798979dfa6e2125c6ac582a19a5ebfec62ad83e8382e6036170d873f46e4536a7e795bf8b95bf7c247f4cc0825ccc8c17
+  languageName: node
+  linkType: hard
+
+"howler@npm:^2.2.4":
+  version: 2.2.4
+  resolution: "howler@npm:2.2.4"
+  checksum: 74a295f56fd9b2abce122b27ed12c33fa195fb8a76832803e92d8e462a1eca803b55f44c14db052211d0cfab85c7c5249664c68d95bbbc16c775fac73866c6ef
   languageName: node
   linkType: hard
 
