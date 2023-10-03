@@ -35,6 +35,15 @@ export const ASSET_MANIFEST = {
 			],
 		},
 		{
+			name: 'alastair-reid',
+			assets: [
+				{
+					name: 'normal',
+					srcs: '/sprites/alastair-reid.normal.png',
+				},
+			],
+		},
+		{
 			name: 'ambrose-blackwood',
 			assets: [
 				{

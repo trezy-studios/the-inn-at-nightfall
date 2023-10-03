@@ -132,11 +132,11 @@ export class Character {
 		}
 
 		if (this.#isVampire) {
-			const states = Object.keys(CHARACTER_STATES)
-			const stateIndex = Math.floor(states.length * Math.random())
-			const selectedState = states[stateIndex]
+			const stateKeys = Object.keys(CHARACTER_STATES)
+			const stateKeyIndex = Math.floor(stateKeys.length * Math.random())
+			const selectedStateKey = stateKeys[stateKeyIndex]
 
-			this.#state = CHARACTER_STATES[selectedState]
+			this.#state = CHARACTER_STATES[selectedStateKey]
 		}
 	}
 
@@ -202,10 +202,6 @@ export class Character {
 
 	/** @returns {string} The name of the character's sprite. */
 	get sprite() {
-		if (this.#isMerchant) {
-			return this.#sprite
-		}
-
 		return `${this.#sprite}-${this.#state}`
 	}
 
