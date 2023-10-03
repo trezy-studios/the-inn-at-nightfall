@@ -18,5 +18,5 @@ export function checkMerchantPresence(state) {
 		return false
 	}
 
-	return getCurrentCharacter(state).name === 'Alastair Reid'
+	return Boolean(getCurrentCharacter(state)?.isMerchant)
 }

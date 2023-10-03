@@ -35,6 +35,8 @@ export const store = makeStore({
 
 	controlState: generateInitialControlState(),
 
+	currentRound: 0,
+
 	delta: 0,
 
 	deltaMS: 0,

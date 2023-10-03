@@ -19,12 +19,6 @@ export function addCharacters(...characters) {
 			...state.characters,
 		})
 
-		return {
-			characters: newCharactersDictionary,
-			characterQueue: [
-				...state.characterQueue,
-				...characters.map(character => character.id),
-			],
-		}
+		return { characters: newCharactersDictionary }
 	})
 }

@@ -1,14 +1,17 @@
 // Module imports
 import '@pixi/spritesheet'
 import { Assets } from '@pixi/assets'
+import yaml from 'js-yaml'
 
 
 
 
 
 // Local imports
+import { addCharacters } from '../store/reducers/addCharacters.js'
 import { ASSET_MANIFEST } from './ASSET_MANIFEST.js'
 import { AudioLibrary } from './structures/AudioLibrary.js'
+import { Character } from './structures/Character.js'
 import { store } from '../store/store.js'
 
 
@@ -43,6 +46,7 @@ export async function loadGameAssets() {
 		})
 	}
 
+	// Load Pixi assets
 	while (bundleIndex < bundleNames.length) {
 		const bundleName = bundleNames[bundleIndex]
 
@@ -52,7 +56,27 @@ export async function loadGameAssets() {
 		bundleIndex += 1
 	}
 
+	// Load audio assets
 	await AudioLibrary.load()
+
+	// Load character data
+	const characterManifestRequest = await fetch('/characters/MANIFEST.json')
+	const characterManifest = await characterManifestRequest.json()
+
+	let characterManifestIndex = 0
+
+	while (characterManifestIndex < characterManifest.length) {
+		const characterFileName = characterManifest[characterManifestIndex]
+
+		const characterFile = await fetch(`/characters/${characterFileName}`)
+		const characterFileText = await characterFile.text()
+
+		const characterData = /** @type {import('./structures/Character.js').CharacterConfig} */ (yaml.load(characterFileText))
+
+		addCharacters(new Character(characterData))
+
+		characterManifestIndex += 1
+	}
 
 	store.set(() => ({
 		assetLoadingProgress: bundleNames.length,

@@ -6,8 +6,11 @@ import { useStore } from 'statery'
 
 
 // Local imports
-import { store } from '../../store/store.js'
 import styles from './RoundScore.module.scss'
+
+import { MenuButton } from '../MenuButton/MenuButton.jsx'
+import { startRound } from '../../store/reducers/startRound.js'
+import { store } from '../../store/store.js'
 import { useMemo } from 'react'
 
 
@@ -74,6 +77,10 @@ export function RoundScore() {
 						</tr>
 					</tbody>
 				</table>
+
+				<MenuButton onClick={startRound}>
+					{'Next Round'}
+				</MenuButton>
 			</div>
 		</div>
 	)

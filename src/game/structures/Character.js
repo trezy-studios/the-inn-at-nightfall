@@ -7,6 +7,7 @@ import { v4 as uuid } from 'uuid'
 
 
 // Local imports
+import { CHARACTER_STATES } from '../../data/CHARACTER_STATES.js'
 import { ENTRY_STATE } from '../../data/ENTRY_STATE.js'
 
 
@@ -46,7 +47,7 @@ export class Character {
 		const states = stateEntries.reduce((accumulator, [stateKey, stateData]) => {
 			const state = {
 				meta: {
-					dialog: stateData.conversation,
+					dialog: stateData.conversation || [],
 				},
 			}
 
@@ -100,6 +101,8 @@ export class Character {
 
 	#sprite
 
+	#state = 'normal'
+
 
 
 
@@ -120,10 +123,20 @@ export class Character {
 
 		if (config.dialog) {
 			this.#dialogMachine = Character.compileDialogMachine(config)
+		} else {
+			this.#dialogMachine = createMachine({ id: config.name })
 		}
 
 		if (!this.#isMerchant) {
-			this.#isVampire = Math.random() > 0.9
+			this.#isVampire = Math.random() > 0.8
+		}
+
+		if (this.#isVampire) {
+			const states = Object.keys(CHARACTER_STATES)
+			const stateIndex = Math.floor(states.length * Math.random())
+			const selectedState = states[stateIndex]
+
+			this.#state = CHARACTER_STATES[selectedState]
 		}
 	}
 
@@ -174,12 +187,12 @@ export class Character {
 
 	/** @returns {boolean} Whether the character is a merchant. */
 	get isMerchant() {
-		return this.#isMerchant
+		return Boolean(this.#isMerchant)
 	}
 
 	/** @returns {boolean} Whether the character is a vampire. */
 	get isVampire() {
-		return this.#isVampire
+		return Boolean(this.#isVampire)
 	}
 
 	/** @returns {string} The character's name. */
@@ -189,6 +202,15 @@ export class Character {
 
 	/** @returns {string} The name of the character's sprite. */
 	get sprite() {
-		return this.#sprite
+		if (this.#isMerchant) {
+			return this.#sprite
+		}
+
+		return `${this.#sprite}-${this.#state}`
+	}
+
+	/** @returns {string} The character's current state. */
+	get state() {
+		return this.#state
 	}
 }

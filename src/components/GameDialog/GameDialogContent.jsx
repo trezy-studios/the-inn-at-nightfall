@@ -82,7 +82,7 @@ export function GameDialogContent() {
 	const renderedResponses = useMemo(() => {
 		const responses = []
 
-		if (dialogMachineMeta.response) {
+		if (dialogMachineMeta?.response) {
 			dialogMachineMeta
 				.response
 				.filter(response => dialogMachine.can(response.transitionID))
@@ -99,7 +99,7 @@ export function GameDialogContent() {
 				})
 		}
 
-		if (dialogMachine.done) {
+		if (!dialogMachine || dialogMachine?.done) {
 			if (currentCharacter.isMerchant) {
 				responses.push((
 					<li key={'continue'}>
@@ -146,10 +146,12 @@ export function GameDialogContent() {
 	])
 
 	useEffect(() => {
-		setDialogContent(previousState => [
-			...previousState,
-			...dialogMachineMeta.dialog,
-		])
+		if (dialogMachineMeta) {
+			setDialogContent(previousState => [
+				...previousState,
+				...dialogMachineMeta.dialog,
+			])
+		}
 	}, [
 		dialogMachineMeta,
 		setDialogContent,
