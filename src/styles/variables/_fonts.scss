@@ -1,15 +1,28 @@
 :root {
 	--base-font-family: var(--yorkten-slab-condensed-font), serif;
+	--base-font-letter-spacing: 0;
+	--base-font-line-height: 1;
 	--base-font-size: 18pt;
 	--base-font-style: normal;
 	--base-font-weight: 100;
 
+	--body-font-family: var(--yorkten-slab-condensed-font), serif;
+	--body-font-letter-spacing: 0;
+	--body-font-line-height: 1.2;
+	--body-font-size: #{18pt * 0.8};
+	--body-font-style: normal;
+	--body-font-weight: 100;
+
 	--heading-font-family: var(--black-dark-font), serif;
+	--heading-font-letter-spacing: 0;
+	--heading-font-line-height: 1;
 	--heading-font-size: 51pt;
 	--heading-font-style: normal;
 	--heading-font-weight: 400;
 
 	--subheading-font-family: var(--black-dark-font), serif;
+	--subheading-font-letter-spacing: 0;
+	--subheading-font-line-height: 1;
 	--subheading-font-size: 36pt;
 	--subheading-font-style: italic;
 	--subheading-font-weight: 400;

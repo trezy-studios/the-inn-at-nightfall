@@ -3,11 +3,12 @@
 	background-color: var(--palette-dark-grey);
 	display: flex;
 	flex-direction: column;
-	font-size: 0.8em;
+	font-size: var(--body-font-size);
 	grid-area: dialog;
 	height: 100vh;
 	justify-content: space-between;
-	line-height: 1.2;
+	line-height: var(--body-font-line-height);
+	letter-spacing: var(--body-font-letter-spacing);
 }
 
 .call {

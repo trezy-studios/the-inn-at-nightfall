@@ -23,7 +23,7 @@
 
 .header {
 	grid-area: header;
-	letter-spacing: 0.5rem;
+	letter-spacing: var(--heading-font-letter-spacing);
 	margin-top: 10rem;
 
 	> h1.title {

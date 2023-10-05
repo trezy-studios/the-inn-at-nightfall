@@ -4,6 +4,8 @@
 		font-size: var(--heading-font-size);
 		font-style: var(--heading-font-size);
 		font-weight: var(--heading-font-weight);
+		letter-spacing: var(--heading-font-letter-spacing);
+		line-height: var(--heading-font-line-height);
 	}
 
 	@for $level from 2 through 6 {
@@ -12,6 +14,8 @@
 			font-style: var(--subheading-font-style);
 			font-size: var(--subheading-font-size);
 			font-weight: var(--subheading-font-weight);
+			letter-spacing: var(--subheading-font-letter-spacing);
+			line-height: var(--subheading-font-line-height);
 		}
 	}
 }
