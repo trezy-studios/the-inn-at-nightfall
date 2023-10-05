@@ -13,6 +13,7 @@ import {
 import styles from './Debugger.module.scss'
 
 import { DebuggerPanel } from './DebuggerPanel.jsx'
+import { NumberInput } from '../NumberInput/NumberInput.jsx'
 
 
 
@@ -124,10 +125,11 @@ export function Fonts() {
 										value={baseSize} />
 								</td>
 								<td>
-									<input
+									<NumberInput
 										onChange={handleBaseSizeChange}
+										precision={1}
 										step={0.1}
-										type={'number'}
+										suffix={'pt'}
 										value={baseSize} />
 								</td>
 							</tr>
@@ -144,10 +146,11 @@ export function Fonts() {
 										value={baseTracking} />
 								</td>
 								<td>
-									<input
+									<NumberInput
 										onChange={handleBaseTrackingChange}
+										precision={2}
 										step={0.01}
-										type={'number'}
+										suffix={'px'}
 										value={baseTracking} />
 								</td>
 							</tr>
@@ -164,10 +167,10 @@ export function Fonts() {
 										value={baseLeading} />
 								</td>
 								<td>
-									<input
+									<NumberInput
 										onChange={handleBaseLeadingChange}
+										precision={2}
 										step={0.01}
-										type={'number'}
 										value={baseLeading} />
 								</td>
 							</tr>
@@ -192,10 +195,11 @@ export function Fonts() {
 										value={bodySize} />
 								</td>
 								<td>
-									<input
+									<NumberInput
 										onChange={handleBodySizeChange}
+										precision={1}
 										step={0.1}
-										type={'number'}
+										suffix={'pt'}
 										value={bodySize} />
 								</td>
 							</tr>
@@ -212,10 +216,11 @@ export function Fonts() {
 										value={bodyTracking} />
 								</td>
 								<td>
-									<input
+									<NumberInput
 										onChange={handleBodyTrackingChange}
+										precision={2}
 										step={0.01}
-										type={'number'}
+										suffix={'px'}
 										value={bodyTracking} />
 								</td>
 							</tr>
@@ -232,10 +237,10 @@ export function Fonts() {
 										value={bodyLeading} />
 								</td>
 								<td>
-									<input
+									<NumberInput
 										onChange={handleBodyLeadingChange}
+										precision={2}
 										step={0.01}
-										type={'number'}
 										value={bodyLeading} />
 								</td>
 							</tr>

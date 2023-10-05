@@ -1,0 +1,37 @@
+.base-input {
+	input {
+		appearance: none;
+		background-color: transparent;
+		border: none;
+		border-bottom-color: rgba(white, 0.5);
+		border-bottom-width: 0.1rem;
+		border-bottom-style: solid;
+		color: inherit;
+		display: inline;
+		flex-grow: 1;
+		flex-shrink: 1;
+		float: left;
+		font-family: inherit;
+		font-size: inherit;
+		line-height: inherit;
+		letter-spacing: inherit;
+		max-width: 100%;
+		min-width: 0;
+		outline: none;
+		overflow: auto;
+		padding: 0;
+		text-overflow: clip;
+		width: 100%;
+
+		&:focus,
+		&:hover {
+			border-bottom-color: rgba(white, 1);
+		}
+	}
+}
+
+.content-measure {
+	pointer-events: none;
+	position: absolute;
+	visibility: hidden;
+}
