@@ -1,3 +1,11 @@
 .link {
-	color: red;
+	color: inherit;
+	text-decoration-color: transparent;
+	transition-delay: 0.05s;
+	transition-duration: 0.1s;
+	transition-property: text-decoration-color;
+
+	&:hover {
+		text-decoration-color: var(--palette-light-grey);
+	}
 }
