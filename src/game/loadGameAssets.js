@@ -1,6 +1,5 @@
 // Module imports
-import '@pixi/spritesheet'
-import { Assets } from '@pixi/assets'
+import { Assets } from 'pixi.js'
 import yaml from 'js-yaml'
 
 

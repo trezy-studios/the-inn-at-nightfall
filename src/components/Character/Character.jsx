@@ -1,11 +1,13 @@
 // Module imports
 import {
+	Assets,
+	ColorMatrixFilter,
+} from 'pixi.js'
+import {
 	Container,
 	Sprite,
 	useApp,
 } from '@pixi/react'
-import { Assets } from '@pixi/assets'
-import { ColorMatrixFilter } from '@pixi/filter-color-matrix'
 import PropTypes from 'prop-types'
 import { useMemo } from 'react'
 import { useStore } from 'statery'

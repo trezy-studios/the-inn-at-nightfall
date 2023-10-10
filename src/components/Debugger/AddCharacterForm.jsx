@@ -4,7 +4,7 @@ import {
 	useCallback,
 	useState,
 } from 'react'
-import { Assets } from '@pixi/assets'
+import { Assets } from 'pixi.js'
 import { faker } from '@faker-js/faker'
 import PropTypes from 'prop-types'
 import { v4 as uuid } from 'uuid'

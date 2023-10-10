@@ -1,5 +1,5 @@
 // Module imports
-import { Assets } from '@pixi/assets'
+import { Assets } from 'pixi.js'
 import PropTypes from 'prop-types'
 
 
