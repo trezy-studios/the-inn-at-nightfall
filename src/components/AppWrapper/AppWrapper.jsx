@@ -1,4 +1,5 @@
 // Module imports
+import { AnimatePresence } from 'framer-motion'
 import { useStore } from 'statery'
 
 
@@ -28,22 +29,24 @@ export function AppWrapper() {
 	const { screen } = useStore(store)
 
 	return (
-		<div className={styles['app-wrapper']}>
-			{(screen === SCREENS.CREDITS) && (
-				<CreditsScreen />
-			)}
+		<AnimatePresence>
+			<div className={styles['app-wrapper']}>
+				{(screen === SCREENS.CREDITS) && (
+					<CreditsScreen />
+				)}
 
-			{(screen === SCREENS.LOADING) && (
-				<LoadingScreen />
-			)}
+				{(screen === SCREENS.LOADING) && (
+					<LoadingScreen />
+				)}
 
-			{(screen === SCREENS.PLAY) && (
-				<PlayScreen />
-			)}
+				{(screen === SCREENS.PLAY) && (
+					<PlayScreen />
+				)}
 
-			{(screen === SCREENS.TITLE) && (
-				<TitleScreen />
-			)}
-		</div>
+				{(screen === SCREENS.TITLE) && (
+					<TitleScreen />
+				)}
+			</div>
+		</AnimatePresence>
 	)
 }

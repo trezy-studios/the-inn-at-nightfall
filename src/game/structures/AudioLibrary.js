@@ -1,7 +1,6 @@
 // Module imports
 import { Howl } from 'howler'
 import { setLoadingItem } from '../../store/reducers/setLoadingItem.js'
-import { store } from '../../store/store.js'
 
 
 

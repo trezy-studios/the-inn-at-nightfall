@@ -1,8 +1,14 @@
-.credits {
+.credits-screen {
 	align-items: center;
 	background-color: #181818;
+	flex-direction: column;
+	overflow-y: hidden;
+}
+
+.credits {
 	display: flex;
 	flex-direction: column;
+	max-height: 100vh;
 	padding: 2rem;
 	overflow-y: hidden;
 

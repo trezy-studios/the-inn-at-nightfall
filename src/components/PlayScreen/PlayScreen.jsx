@@ -18,9 +18,11 @@ import { Debugger } from '../Debugger/Debugger.jsx'
 import { Game } from '../Game/Game.jsx'
 import { GameDialog } from '../GameDialog/GameDialog.jsx'
 import { RoundScore } from '../RoundScore/RoundScore.jsx'
+import { Screen } from '../Screen/Screen.jsx'
 import { store } from '../../store/store.js'
 import { useDebugMode } from '../../hooks/useDebugMode.js'
 import { useLoopingTrack } from '../../hooks/useLoopingTrack.js'
+import { Vignette } from '../Vignette/Vignette.jsx'
 
 
 
@@ -44,13 +46,15 @@ export function PlayScreen() {
 	}), [isDebugModeEnabled])
 
 	return (
-		<div className={compiledClassName}>
+		<Screen className={compiledClassName}>
 			<div
 				ref={gameWrapperRef}
 				className={styles['stage-wrapper']}>
 				<Stage>
 					<Game resizeToRef={gameWrapperRef} />
 				</Stage>
+
+				<Vignette />
 			</div>
 
 			<GameDialog />
@@ -60,6 +64,7 @@ export function PlayScreen() {
 			{isRoundOver && (
 				<RoundScore />
 			)}
-		</div>
+
+		</Screen>
 	)
 }

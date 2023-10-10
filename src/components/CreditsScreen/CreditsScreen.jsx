@@ -16,6 +16,7 @@ import styles from './CreditsScreen.module.scss'
 
 import { CREDITS } from '../../data/CREDITS.js'
 import { Link } from '../Link/Link.jsx'
+import { Screen } from '../Screen/Screen.jsx'
 import { Vignette } from '../Vignette/Vignette.jsx'
 
 
@@ -88,60 +89,62 @@ export function CreditsScreen() {
 	}, [scrawlIsPaused])
 
 	return (
-		<div
-			ref={containerRef}
-			className={styles['credits']}>
-			<Vignette />
+		<Screen className={styles['credits-screen']}>
+			<div
+				ref={containerRef}
+				className={styles['credits']}>
+				<Vignette />
 
-			{CREDITS.map(section => (
-				<section key={section.title}>
-					<header>
-						{section.title}
-					</header>
+				{CREDITS.map(section => (
+					<section key={section.title}>
+						<header>
+							{section.title}
+						</header>
 
-					{Boolean(section.credits) && (
-						<dl>
-							{section.credits.map(credit => (
-								<Fragment key={credit.title}>
-									<dt>{credit.title}</dt>
+						{Boolean(section.credits) && (
+							<dl>
+								{section.credits.map(credit => (
+									<Fragment key={credit.title}>
+										<dt>{credit.title}</dt>
 
-									{credit.people.map((person, index) => (
-										<dd key={`${credit.title}::${index}`}>
-											{Boolean(person.url) && (
-												<Link
-													href={person.url}
-													onMouseOut={handleLinkMouseOut}
-													onMouseOver={handleLinkMouseOver}>
-													{person.name}
-												</Link>
-											)}
+										{credit.people.map((person, index) => (
+											<dd key={`${credit.title}::${index}`}>
+												{Boolean(person.url) && (
+													<Link
+														href={person.url}
+														onMouseOut={handleLinkMouseOut}
+														onMouseOver={handleLinkMouseOver}>
+														{person.name}
+													</Link>
+												)}
 
-											{!person.url && person.name}
-										</dd>
-									))}
-								</Fragment>
-							))}
-						</dl>
-					)}
+												{!person.url && person.name}
+											</dd>
+										))}
+									</Fragment>
+								))}
+							</dl>
+						)}
 
-					{Boolean(section.people) && (
-						<ul>
-							{section.people.map(person => (
-								<li key={person.name}>
-									{person.name}
-								</li>
-							))}
-						</ul>
-					)}
+						{Boolean(section.people) && (
+							<ul>
+								{section.people.map(person => (
+									<li key={person.name}>
+										{person.name}
+									</li>
+								))}
+							</ul>
+						)}
 
-					{Boolean(section.quotes) && section.quotes.map((quote, index) => (
-						<blockquote key={index}>
-							<p>{quote.content}</p>
-							<cite>{quote.author.name}</cite>
-						</blockquote>
-					))}
-				</section>
-			))}
-		</div>
+						{Boolean(section.quotes) && section.quotes.map((quote, index) => (
+							<blockquote key={index}>
+								<p>{quote.content}</p>
+								<cite>{quote.author.name}</cite>
+							</blockquote>
+						))}
+					</section>
+				))}
+			</div>
+		</Screen>
 	)
 }

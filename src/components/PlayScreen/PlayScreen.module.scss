@@ -10,8 +10,10 @@
 		grid-template-columns: 1fr 40rem auto;
 	}
 
-	.stage-wrapper {
-		display: flex;
-		grid-area: stage;
-	}
+}
+
+.stage-wrapper {
+	display: flex;
+	grid-area: stage;
+	position: relative;
 }

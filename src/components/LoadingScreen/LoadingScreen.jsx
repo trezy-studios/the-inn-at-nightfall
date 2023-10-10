@@ -10,8 +10,10 @@ import { useStore } from 'statery'
 import styles from './LoadingScreen.module.scss'
 
 import { loadGameAssets } from '../../game/loadGameAssets.js'
+import { Screen } from '../Screen/Screen.jsx'
 import { SCREENS } from '../../data/SCREENS.js'
 import { store } from '../../store/store.js'
+import { Vignette } from '../Vignette/Vignette.jsx'
 
 
 
@@ -44,7 +46,7 @@ export function LoadingScreen() {
 	])
 
 	return (
-		<div className={styles['loading']}>
+		<Screen className={styles['loading']}>
 			{!currentLoadingCategory && (
 				<p>{'Loading...'}</p>
 			)}
@@ -60,6 +62,8 @@ export function LoadingScreen() {
 					)}
 				</>
 			)}
-		</div>
+
+			<Vignette />
+		</Screen>
 	)
 }
