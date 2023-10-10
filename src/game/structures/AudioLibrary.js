@@ -1,5 +1,7 @@
 // Module imports
 import { Howl } from 'howler'
+import { setLoadingItem } from '../../store/reducers/setLoadingItem.js'
+import { store } from '../../store/store.js'
 
 
 
@@ -111,6 +113,8 @@ export const AudioLibrary = new class AudioLibraryClass {
 				outro,
 				url,
 			} = music[index]
+
+			setLoadingItem(`${alias} (${url})`)
 
 			await this.add({
 				alias,

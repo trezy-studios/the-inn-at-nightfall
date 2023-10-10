@@ -12,6 +12,8 @@ import { addCharacters } from '../store/reducers/addCharacters.js'
 import { ASSET_MANIFEST } from './ASSET_MANIFEST.js'
 import { AudioLibrary } from './structures/AudioLibrary.js'
 import { Character } from './structures/Character.js'
+import { setLoadingCategory } from '../store/reducers/setLoadingCategory.js'
+import { setLoadingItem } from '../store/reducers/setLoadingItem.js'
 import { store } from '../store/store.js'
 
 
@@ -46,9 +48,13 @@ export async function loadGameAssets() {
 		})
 	}
 
+	setLoadingCategory('images')
+
 	// Load Pixi assets
 	while (bundleIndex < bundleNames.length) {
 		const bundleName = bundleNames[bundleIndex]
+
+		setLoadingItem(bundleName)
 
 		const bundle = await Assets.loadBundle(bundleName, handleProgress)
 		bundles.push(bundle)
@@ -56,8 +62,12 @@ export async function loadGameAssets() {
 		bundleIndex += 1
 	}
 
+	setLoadingCategory('audio')
+
 	// Load audio assets
 	await AudioLibrary.load()
+
+	setLoadingCategory('character data', 'manifest.json')
 
 	// Load character data
 	const characterManifestRequest = await fetch('/characters/MANIFEST.json')
@@ -67,6 +77,8 @@ export async function loadGameAssets() {
 
 	while (characterManifestIndex < characterManifest.length) {
 		const characterFileName = characterManifest[characterManifestIndex]
+
+		setLoadingItem(characterFileName)
 
 		const characterFile = await fetch(`/characters/${characterFileName}`)
 		const characterFileText = await characterFile.text()
@@ -80,6 +92,8 @@ export async function loadGameAssets() {
 
 	store.set(() => ({
 		assetLoadingProgress: bundleNames.length,
+		currentLoadingCategory: null,
+		currentLoadingItem: null,
 		isLoadingAssets: false,
 	}))
 

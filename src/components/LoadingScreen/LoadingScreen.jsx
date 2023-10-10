@@ -25,6 +25,8 @@ import { store } from '../../store/store.js'
 export function LoadingScreen() {
 	const {
 		areAssetsLoaded,
+		currentLoadingCategory,
+		currentLoadingItem,
 		isLoadingAssets,
 	} = useStore(store)
 
@@ -43,7 +45,21 @@ export function LoadingScreen() {
 
 	return (
 		<div className={styles['loading']}>
-			{'Loading...'}
+			{!currentLoadingCategory && (
+				<p>{'Loading...'}</p>
+			)}
+
+			{Boolean(currentLoadingCategory) && (
+				<>
+					<p>{`Loading ${currentLoadingCategory}...`}</p>
+
+					{Boolean(currentLoadingItem) && (
+						<p className={styles['loading-item']}>
+							{currentLoadingItem}
+						</p>
+					)}
+				</>
+			)}
 		</div>
 	)
 }

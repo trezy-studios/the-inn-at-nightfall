@@ -35,6 +35,12 @@ export const store = makeStore({
 
 	controlState: generateInitialControlState(),
 
+	/** @type {null | string} */
+	currentLoadingCategory: null,
+
+	/** @type {null | string} */
+	currentLoadingItem: null,
+
 	currentRound: 0,
 
 	delta: 0,
