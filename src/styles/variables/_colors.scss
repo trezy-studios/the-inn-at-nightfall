@@ -2,9 +2,14 @@
 	--hue-shift: 0deg;
 
 	/* Palette */
+
+	// Blacks
 	@include generateColourCustomPropertiesFromColour('palette-pure-black', #000);
-	@include generateColourCustomPropertiesFromColour('palette-dark-grey', #222622);
+
+	// Greys
+	@include generateColourCustomPropertiesFromColour('palette-dark-grey', #181818);
 	@include generateColourCustomPropertiesFromColour('palette-light-grey', #aaaaaa);
+	@include generateColourCustomPropertiesFromColour('palette-grey', #282828);
 
 	/* Normalised */
 	--background-color: var(--palette-black);
