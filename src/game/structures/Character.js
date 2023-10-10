@@ -45,10 +45,14 @@ export class Character {
 	static compileDialogMachine(config) {
 		const stateEntries = Object.entries(config.dialog.content)
 		const states = stateEntries.reduce((accumulator, [stateKey, stateData]) => {
+			const dialog = (stateData.conversation || [])
+				.map(message => ({
+					...message,
+					id: uuid(),
+				}))
+
 			const state = {
-				meta: {
-					dialog: stateData.conversation || [],
-				},
+				meta: { dialog },
 			}
 
 			if ('response' in stateData) {

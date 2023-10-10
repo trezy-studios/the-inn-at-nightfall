@@ -11,5 +11,6 @@ import { store } from '../store.js'
 export function goToNextCharacter() {
 	store.set(state => ({
 		characterQueueIndex: state.characterQueueIndex + 1,
+		currentDialogHistory: new Map,
 	}))
 }

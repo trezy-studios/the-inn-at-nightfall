@@ -4,7 +4,6 @@ import {
 	useEffect,
 	useMemo,
 	useRef,
-	useState,
 } from 'react'
 import { useMachine } from '@xstate/react'
 import { useStore } from 'statery'
@@ -16,9 +15,11 @@ import { useStore } from 'statery'
 // Local imports
 import styles from './GameDialog.module.scss'
 
+import { addMessagesToDialog } from '../../store/reducers/addMessagesToDialog.js'
 import { allowCurrentCharacter } from '../../store/reducers/allowCurrentCharacter.js'
 import { Button } from '../Button/Button.jsx'
 import { getCurrentCharacter } from '../../store/reducers/getCurrentCharacter.js'
+import { getCurrentDialog } from '../../store/reducers/getCurrentDialog.js'
 import { goToNextCharacter } from '../../store/reducers/goToNextCharacter.js'
 import { store } from '../../store/store.js'
 
@@ -34,9 +35,9 @@ import { store } from '../../store/store.js'
 export function GameDialogContent() {
 	const proxyStore = useStore(store)
 	const currentCharacter = getCurrentCharacter(proxyStore)
-	const callRef = useRef(null)
+	const currentDialog = getCurrentDialog(proxyStore)
 
-	const [dialogContent, setDialogContent] = useState([])
+	const callRef = useRef(null)
 
 	const [dialogMachine, send] = useMachine(currentCharacter.dialogMachine)
 
@@ -48,36 +49,28 @@ export function GameDialogContent() {
 	const handleContinueClick = useCallback(() => goToNextCharacter(), [])
 	const handleDenyClick = useCallback(() => goToNextCharacter(), [])
 
-	const renderedMessages = useMemo(() => {
-		return [...dialogContent]
-			.reverse()
-			.map((line, index, allLines) => {
-				const nextLine = allLines[index + 1]
-				const shouldShowAuthor = !nextLine || nextLine.author !== line.author
+	const renderedMessages = useMemo(() => currentDialog.map((messageGroup, index, allMessageGroups) => (
+		<div
+			key={messageGroup.id}
+			className={styles['message-group']}
+			// eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
+			style={{ order: allMessageGroups.length - index }}>
+			<div className={styles['author']}>
+				<strong>{messageGroup.author}</strong>
+			</div>
 
-				return (
-					<div
-						key={`${dialogMachineMetaKey}:${index}`}
-						className={styles['message']}>
-						{shouldShowAuthor && (
-							<div className={styles['author']}>
-								<strong>{line.author}</strong>
-							</div>
+			<div className={styles['content']}>
+				{messageGroup.messages.map(message => (
+					<p key={message.id}>
+						{Boolean(message.action) && (
+							<em>{message.action}</em>
 						)}
-
-						<div className={styles['content']}>
-							{Boolean(line.action) && (
-								<em>{line.action}</em>
-							)}
-							{!line.action && line.message}
-						</div>
-					</div>
-				)
-			})
-	}, [
-		dialogContent,
-		dialogMachineMetaKey,
-	])
+						{!message.action && message.message}
+					</p>
+				))}
+			</div>
+		</div>
+	)), [currentDialog])
 
 	const renderedResponses = useMemo(() => {
 		const responses = []
@@ -147,14 +140,11 @@ export function GameDialogContent() {
 
 	useEffect(() => {
 		if (dialogMachineMeta) {
-			setDialogContent(previousState => [
-				...previousState,
-				...dialogMachineMeta.dialog,
-			])
+			addMessagesToDialog(dialogMachineMeta.dialog)
 		}
 	}, [
+		dialogMachine,
 		dialogMachineMeta,
-		setDialogContent,
 	])
 
 	return (

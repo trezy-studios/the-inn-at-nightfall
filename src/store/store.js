@@ -35,6 +35,9 @@ export const store = makeStore({
 
 	controlState: generateInitialControlState(),
 
+	/** @type {Map<string, import('../types/DialogMessage.js').DialogMessage>} */
+	currentDialogHistory: new Map,
+
 	/** @type {null | string} */
 	currentLoadingCategory: null,
 
