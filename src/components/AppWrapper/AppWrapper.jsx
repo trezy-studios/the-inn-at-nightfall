@@ -10,6 +10,7 @@ import { useStore } from 'statery'
 import styles from './AppWrapper.module.scss'
 
 import { CreditsScreen } from '../CreditsScreen/CreditsScreen.jsx'
+import { FilmGrain } from '../FilmGrain/FilmGrain.jsx'
 import { LoadingScreen } from '../LoadingScreen/LoadingScreen.jsx'
 import { PlayScreen } from '../PlayScreen/PlayScreen.jsx'
 import { SCREENS } from '../../data/SCREENS.js'
@@ -29,24 +30,28 @@ export function AppWrapper() {
 	const { screen } = useStore(store)
 
 	return (
-		<AnimatePresence>
-			<div className={styles['app-wrapper']}>
-				{(screen === SCREENS.CREDITS) && (
-					<CreditsScreen />
-				)}
+		<>
+			<AnimatePresence>
+				<div className={styles['app-wrapper']}>
+					{(screen === SCREENS.CREDITS) && (
+						<CreditsScreen />
+					)}
 
-				{(screen === SCREENS.LOADING) && (
-					<LoadingScreen />
-				)}
+					{(screen === SCREENS.LOADING) && (
+						<LoadingScreen />
+					)}
 
-				{(screen === SCREENS.PLAY) && (
-					<PlayScreen />
-				)}
+					{(screen === SCREENS.PLAY) && (
+						<PlayScreen />
+					)}
 
-				{(screen === SCREENS.TITLE) && (
-					<TitleScreen />
-				)}
-			</div>
-		</AnimatePresence>
+					{(screen === SCREENS.TITLE) && (
+						<TitleScreen />
+					)}
+				</div>
+			</AnimatePresence>
+
+			<FilmGrain />
+		</>
 	)
 }
