@@ -99,12 +99,10 @@ export function Responses() {
 	])
 
 	return (
-		<div className={styles['response']}>
-			<ol className={styles['options']}>
-				<AnimatePresence>
-					{renderedResponses}
-				</AnimatePresence>
-			</ol>
-		</div>
+		<ol className={styles['responses']}>
+			<AnimatePresence>
+				{renderedResponses}
+			</AnimatePresence>
+		</ol>
 	)
 }

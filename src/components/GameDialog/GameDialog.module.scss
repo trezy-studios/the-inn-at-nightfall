@@ -11,7 +11,7 @@
 	letter-spacing: var(--body-font-letter-spacing);
 }
 
-.call {
+.messages {
 	display: flex;
 	flex-direction: column-reverse;
 	flex-grow: 1;
@@ -28,10 +28,10 @@
 	}
 }
 
-.options {
-	display: flex;
-	flex-direction: column;
+.responses {
+	display: grid;
 	gap: 1rem;
+	grid-template-rows: repeat(2, 1fr);
 	padding: 0 2rem 2rem;
 
 	button {

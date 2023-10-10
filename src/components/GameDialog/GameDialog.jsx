@@ -8,8 +8,9 @@ import { useStore } from 'statery'
 // Local imports
 import styles from './GameDialog.module.scss'
 
-import { GameDialogContent } from './GameDialogContent.jsx'
 import { getCurrentCharacter } from '../../store/reducers/getCurrentCharacter.js'
+import { Messages } from './Messages.jsx'
+import { Responses } from './Responses.jsx'
 import { store } from '../../store/store.js'
 
 
@@ -28,7 +29,10 @@ export function GameDialog() {
 	return (
 		<div className={styles['game-dialog']}>
 			{Boolean(currentCharacter) && (
-				<GameDialogContent />
+				<>
+					<Messages />
+					<Responses />
+				</>
 			)}
 		</div>
 	)
