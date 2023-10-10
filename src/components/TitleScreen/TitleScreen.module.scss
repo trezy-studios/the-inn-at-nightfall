@@ -3,13 +3,14 @@
 	background-position: top right;
 	background-size: cover;
 	display: grid;
+	gap: 5rem;
 	grid-template-areas:
 		'header'
 		'.'
 		'menu';
 	grid-template-rows: auto 1fr auto;
 	justify-content: space-between;
-	padding: 5rem;
+	padding: 10rem;
 
 	> canvas {
 		inset: 0;
@@ -20,7 +21,7 @@
 .header {
 	grid-area: header;
 	letter-spacing: var(--heading-font-letter-spacing);
-	margin-top: 10rem;
+	margin-top: 5rem;
 
 	> h1.title {
 		font-size: 4em;
