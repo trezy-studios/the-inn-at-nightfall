@@ -14,7 +14,9 @@ import {
 // Local imports
 import styles from './CreditsScreen.module.scss'
 
+import { Button } from '../Button/Button.jsx'
 import { CREDITS } from '../../data/CREDITS.js'
+import { goToTitle } from '../../store/reducers/goToTitle.js'
 import { Link } from '../Link/Link.jsx'
 import { Screen } from '../Screen/Screen.jsx'
 import { Vignette } from '../Vignette/Vignette.jsx'
@@ -88,6 +90,12 @@ export function CreditsScreen() {
 		}
 	}, [scrawlIsPaused])
 
+	useEffect(() => {
+		return () => {
+			scrawlProgress = 0
+		}
+	}, [])
+
 	return (
 		<Screen className={styles['credits-screen']}>
 			<div
@@ -145,6 +153,12 @@ export function CreditsScreen() {
 					</section>
 				))}
 			</div>
+
+			<Button
+				className={styles['back-button']}
+				onClick={goToTitle}>
+				{'Back'}
+			</Button>
 		</Screen>
 	)
 }
