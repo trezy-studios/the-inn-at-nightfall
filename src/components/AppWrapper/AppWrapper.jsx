@@ -9,6 +9,7 @@ import { useStore } from 'statery'
 // Local imports
 import styles from './AppWrapper.module.scss'
 
+import { AudioContextProvider } from '../AudioContext/AudioContext.jsx'
 import { CreditsScreen } from '../CreditsScreen/CreditsScreen.jsx'
 import { FilmGrain } from '../FilmGrain/FilmGrain.jsx'
 import { LoadingScreen } from '../LoadingScreen/LoadingScreen.jsx'
@@ -30,7 +31,7 @@ export function AppWrapper() {
 	const { screen } = useStore(store)
 
 	return (
-		<>
+		<AudioContextProvider>
 			<AnimatePresence>
 				<div className={styles['app-wrapper']}>
 					{(screen === SCREENS.CREDITS) && (
@@ -52,6 +53,6 @@ export function AppWrapper() {
 			</AnimatePresence>
 
 			<FilmGrain />
-		</>
+		</AudioContextProvider>
 	)
 }

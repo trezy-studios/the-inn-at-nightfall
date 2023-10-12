@@ -1,17 +1,12 @@
 // Module imports
-import {
-	useCallback,
-	useEffect,
-	useMemo,
-	useState,
-} from 'react'
+import { useEffect } from 'react'
 
 
 
 
 
 // Local imports
-import { AudioLibrary } from '../game/structures/AudioLibrary.js'
+import { useAudioContext } from '../components/AudioContext/AudioContext.jsx'
 
 
 
@@ -23,47 +18,32 @@ import { AudioLibrary } from '../game/structures/AudioLibrary.js'
  * @param {string} trackAlias The alias of the track in the audio library.
  * @param {object} [options] All options.
  * @param {number} [options.fadeDuration] The duration (in milliseconds) over which the track should fade out on unmount.
+ * @param {boolean} [options.stopOnUnmount] Whether to stop the track when the parent component is unmounted.
  */
 export function useLoopingTrack(trackAlias, options = {}) {
 	const {
 		fadeDuration = 1000,
+		stopOnUnmount = false,
 	} = options
 
-	const [soundID, setSoundID] = useState(null)
-
-	const titleTrack = useMemo(() => AudioLibrary.get(trackAlias), [trackAlias])
-
-	const handleClose = useCallback(() => {
-		titleTrack.fade(1, 0, fadeDuration, soundID)
-		titleTrack.once('fade', () => {
-			titleTrack.stop(soundID)
-			setSoundID(null)
-		})
-	}, [
-		fadeDuration,
-		soundID,
-		titleTrack,
-	])
-
-	const handleIntroEnd = useCallback(() => {
-		titleTrack.stop(soundID)
-		setSoundID(titleTrack.play('loop'))
-	}, [
-		soundID,
-		titleTrack,
-	])
+	const {
+		playTrack,
+		stopTrack,
+	} = useAudioContext()
 
 	useEffect(() => {
-		if (!soundID) {
-			setSoundID(titleTrack.play('intro'))
-			titleTrack.once('end', handleIntroEnd)
+		playTrack(trackAlias)
+
+		return () => {
+			if (stopOnUnmount) {
+				stopTrack(fadeDuration)
+			}
 		}
 	}, [
-		handleIntroEnd,
-		setSoundID,
-		soundID,
-		titleTrack,
+		fadeDuration,
+		playTrack,
+		stopOnUnmount,
+		stopTrack,
+		trackAlias,
 	])
-
-	useEffect(() => () => handleClose(), [handleClose])
 }
