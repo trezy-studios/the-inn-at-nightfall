@@ -1,7 +1,7 @@
 .failure-message {
 	align-items: center;
 	background-color: black;
-	color: red;
+	color: var(--palette-red);
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;

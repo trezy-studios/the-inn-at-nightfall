@@ -48,15 +48,10 @@
 	}
 
 	header {
-		background: linear-gradient(
-			red 40%,
-			rgb(168, 0, 0) 90%,
-		);
-		background-clip: text;
+		color: var(--palette-red);
 		font-family: var(--heading-font-family);
 		font-size: var(--subheading-font-size);
 		margin-bottom: 2rem;
-		-webkit-text-fill-color: transparent;
 	}
 
 	section {

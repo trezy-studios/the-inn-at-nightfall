@@ -11,6 +11,9 @@
 	@include generateColourCustomPropertiesFromColour('palette-light-grey', #aaaaaa);
 	@include generateColourCustomPropertiesFromColour('palette-grey', #282828);
 
+	// Reds
+	@include generateColourCustomPropertiesFromColour('palette-red', red);
+
 	/* Normalised */
 	--background-color: var(--palette-black);
 	--text-color: var(--palette-white);
