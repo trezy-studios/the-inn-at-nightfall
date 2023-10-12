@@ -20,7 +20,7 @@ import { useDialog } from '../../hooks/useDialog.js'
 
 
 /**
- * Renders the game dialogs.
+ * Renders all messages in the current game dialog.
  *
  * @component
  */

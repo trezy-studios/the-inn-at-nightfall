@@ -3,7 +3,7 @@
  * @property {string} action The action being taken.
  * @property {string} id The message's unique identifier.
  * @property {string} message The message body.
-*/
+ */
 
 /**
  * @typedef {object} DialogMessageGroup

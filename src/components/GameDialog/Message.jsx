@@ -1,17 +1,20 @@
 // Module imports
+import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
+import { useMemo } from 'react'
 
 
 
 
 
 /**
- * Renders the game dialogs.
+ * Renders a single message.
  *
  * @component
  */
 export function Message(props) {
 	const {
+		index,
 		message: {
 			action,
 			id,
@@ -19,17 +22,38 @@ export function Message(props) {
 		},
 	} = props
 
+	const variants = useMemo(() => ({
+		animate: {
+			x: 0,
+			opacity: 1,
+			transition: {
+				delay: index * 0.1,
+				tween: 1,
+				type: 'tween',
+			},
+		},
+		initial: {
+			x: 100,
+			opacity: 0,
+		},
+	}), [index])
+
 	return (
-		<p key={id}>
+		<motion.p
+			key={id}
+			animate={'animate'}
+			initial={'initial'}
+			variants={variants}>
 			{Boolean(action) && (
 				<em>{action}</em>
 			)}
 			{!action && message}
-		</p>
+		</motion.p>
 	)
 }
 
 Message.propTypes = {
+	index: PropTypes.number.isRequired,
 	message: PropTypes.shape({
 		action: PropTypes.string,
 		id: PropTypes.string.isRequired,

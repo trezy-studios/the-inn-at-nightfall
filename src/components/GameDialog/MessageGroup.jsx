@@ -1,4 +1,5 @@
 // Module imports
+import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
 import { useMemo } from 'react'
 
@@ -16,7 +17,7 @@ import { Message } from './Message.jsx'
 
 
 /**
- * Renders the game dialogs.
+ * Renders a group of messages belonging to a character.
  *
  * @component
  */
@@ -30,28 +31,56 @@ export function MessageGroup(props) {
 		order,
 	} = props
 
-	const renderedMessages = useMemo(() => {
-		return messages.map(message => (
-			<Message
-				key={message.id}
-				message={message} />
-		))
-	}, [messages])
+	const variants = useMemo(() => ({
+		animate: {
+			height: 'auto',
+			opacity: 1,
+			transition: {
+				tween: 1.5,
+				type: 'tween',
+				when: 'beforeChildren',
+			},
+		},
+		exit: {
+			x: -100,
+			opacity: 0,
+			transition: {
+				tween: 1.5,
+				type: 'tween',
+			},
+		},
+		initial: {
+			height: 0,
+			opacity: 0,
+		},
+	}), [])
+
+	const compiledStyle = useMemo(() => ({ order }), [order])
+
+	const renderedMessages = useMemo(() => messages.map((message, messageIndex) => (
+		<Message
+			key={message.id}
+			index={messageIndex}
+			message={message} />
+	)), [messages])
 
 	return (
-		<div
+		<motion.div
 			key={id}
+			animate={'animate'}
 			className={styles['message-group']}
-			// eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
-			style={{ order }}>
-			<div className={styles['author']}>
+			exit={'exit'}
+			initial={'initial'}
+			style={compiledStyle}
+			variants={variants}>
+			<motion.div className={styles['author']}>
 				<strong>{author}</strong>
-			</div>
+			</motion.div>
 
 			<div className={styles['content']}>
 				{renderedMessages}
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 
