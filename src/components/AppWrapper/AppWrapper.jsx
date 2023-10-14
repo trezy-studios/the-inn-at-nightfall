@@ -15,6 +15,7 @@ import { FilmGrain } from '../FilmGrain/FilmGrain.jsx'
 import { LoadingScreen } from '../LoadingScreen/LoadingScreen.jsx'
 import { PlayScreen } from '../PlayScreen/PlayScreen.jsx'
 import { SCREENS } from '../../data/SCREENS.js'
+import { SettingsScreen } from '../SettingsScreen/SettingsScreen.jsx'
 import { store } from '../../store/store.js'
 import { TitleScreen } from '../TitleScreen/TitleScreen.jsx'
 
@@ -44,6 +45,10 @@ export function AppWrapper() {
 
 					{(screen === SCREENS.PLAY) && (
 						<PlayScreen />
+					)}
+
+					{(screen === SCREENS.SETTINGS) && (
+						<SettingsScreen />
 					)}
 
 					{(screen === SCREENS.TITLE) && (

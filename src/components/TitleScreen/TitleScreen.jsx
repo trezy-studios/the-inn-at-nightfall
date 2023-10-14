@@ -2,6 +2,7 @@
 import styles from './TitleScreen.module.scss'
 
 import { goToCredits } from '../../store/reducers/goToCredits.js'
+import { goToSettings } from '../../store/reducers/goToSettings.js'
 import { Heading } from '../Heading/Heading.jsx'
 import { MenuButton } from '../MenuButton/MenuButton.jsx'
 import { Screen } from '../Screen/Screen.jsx'
@@ -37,7 +38,7 @@ export function TitleScreen() {
 					{'Play'}
 				</MenuButton>
 
-				<MenuButton onClick={startRound}>
+				<MenuButton onClick={goToSettings}>
 					{'Settings'}
 				</MenuButton>
 

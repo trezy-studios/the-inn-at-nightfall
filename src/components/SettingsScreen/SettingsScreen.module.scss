@@ -1,0 +1,28 @@
+.settings-screen {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+	padding: 10rem;
+
+	.back-button {
+		background-color: transparent;
+		cursor: pointer;
+		left: 6rem;
+		padding: 1rem 2rem;
+		position: absolute;
+		top: 6rem;
+		transition-duration: 0.2s;
+		transition-property: background-color;
+		z-index: 1;
+
+		&::before {
+			content: '☜';
+			margin-right: 1rem;
+		}
+
+		&:hover {
+			background-color: rgba(white, 0.1);
+		}
+	}
+}
