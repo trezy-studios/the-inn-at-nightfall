@@ -4,7 +4,7 @@ import {
 	Sprite,
 	useApp,
 } from '@pixi/react'
-import { Assets } from '@pixi/assets'
+import { Assets } from 'pixi.js'
 import { useMemo } from 'react'
 
 

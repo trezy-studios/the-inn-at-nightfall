@@ -8,7 +8,7 @@ import {
 	useCallback,
 	useMemo,
 } from 'react'
-import { Assets } from '@pixi/assets'
+import { Assets } from 'pixi.js'
 
 
 
