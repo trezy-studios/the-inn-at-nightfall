@@ -1,0 +1,13 @@
+.app {
+	align-content: stretch;
+	align-items: stretch;
+	display: flex;
+	height: 100vh;
+	overflow: hidden;
+	width: 100%;
+
+	> * {
+		flex-grow: 1;
+		flex-shrink: 1;
+	}
+}

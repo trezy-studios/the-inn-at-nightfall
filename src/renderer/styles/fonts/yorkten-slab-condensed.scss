@@ -1,0 +1,14 @@
+$styles: normal, italic;
+
+@for $index from 1 to 9 {
+	$weight: #{$index * 100};
+
+	@each $style in $styles {
+		@font-face {
+			font-family: 'Yorkten Slab Condensed';
+			font-style: #{$style};
+			font-weight: #{$weight};
+			src: url('/fonts/yorkten-slab-condensed/yorkten-slab-condensed.#{$style}.#{$weight}.woff2') format('woff2');
+		}
+	}
+}

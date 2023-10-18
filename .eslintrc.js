@@ -5,10 +5,16 @@ module.exports = {
 	env: {
 		browser: true,
 		es2022: true,
+    node: true,
 	},
 	extends: [
 		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
 		'plugin:editorconfig/all',
+    'plugin:import/recommended',
+    'plugin:import/electron',
+    'plugin:import/typescript',
 		'plugin:jsdoc/recommended',
 		'plugin:jsx-a11y/recommended',
 		'plugin:optimize-regex/recommended',
@@ -19,9 +25,6 @@ module.exports = {
 		'plugin:react-perf/recommended',
 		'plugin:react-prefer-function-component/recommended',
 		'plugin:security/recommended',
-		'plugin:@next/next/recommended',
-		'plugin:@typescript-eslint/recommended',
-		'plugin:@next/next/recommended',
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
