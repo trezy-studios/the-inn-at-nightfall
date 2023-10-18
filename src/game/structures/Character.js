@@ -165,8 +165,8 @@ export class Character {
 
 			if (this.#isVampire) {
 				const stateKeys = Object.keys(CHARACTER_STATES)
-				const stateKeyIndex = Math.floor(stateKeys.length * Math.random())
-				const selectedStateKey = stateKeys[stateKeyIndex]
+				const stateKeyIndex = Math.floor((stateKeys.length - 1) * Math.random())
+				const selectedStateKey = stateKeys[stateKeyIndex + 1]
 
 				this.#state = CHARACTER_STATES[selectedStateKey]
 			}
