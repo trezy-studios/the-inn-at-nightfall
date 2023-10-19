@@ -4,7 +4,6 @@ import {
 	useRef,
 } from 'react'
 import classnames from 'classnames'
-import { Stage } from '@pixi/react'
 import { useStore } from 'statery'
 
 
@@ -17,6 +16,7 @@ import styles from './PlayScreen.module.scss'
 import { Debugger } from '../Debugger/Debugger.jsx'
 import { Game } from '../Game/Game.jsx'
 import { GameDialog } from '../GameDialog/GameDialog.jsx'
+import { PixiStage } from '../PixiStage/PixiStage.jsx'
 import { RoundScore } from '../RoundScore/RoundScore.jsx'
 import { Screen } from '../Screen/Screen.jsx'
 import { store } from '../../store/store.js'
@@ -50,9 +50,9 @@ export function PlayScreen() {
 			<div
 				ref={gameWrapperRef}
 				className={styles['stage-wrapper']}>
-				<Stage>
+				<PixiStage>
 					<Game resizeToRef={gameWrapperRef} />
-				</Stage>
+				</PixiStage>
 
 				<Vignette />
 			</div>
