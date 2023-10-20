@@ -2,6 +2,7 @@
 import installExtension, {
 	REACT_DEVELOPER_TOOLS,
 } from 'electron-devtools-installer'
+import { session } from 'electron'
 
 
 
@@ -9,6 +10,7 @@ import installExtension, {
 
 // Local imports
 import { createWindow } from './createWindow.js'
+import { handleHeadersReceived } from './handleHeadersReceived.js'
 
 
 
@@ -18,6 +20,8 @@ import { createWindow } from './createWindow.js'
  * Executes when the window is ready.
  */
 export function handleWindowReady() {
+	session.defaultSession.webRequest.onHeadersReceived(handleHeadersReceived)
+
 	createWindow()
 
 	// React Dev Tools
