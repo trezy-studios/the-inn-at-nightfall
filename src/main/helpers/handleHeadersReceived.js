@@ -31,6 +31,9 @@ export function handleHeadersReceived(details, callback) {
 			'file:',
 			{ development: ['data:'] },
 		],
+		'script-src': [
+			{ development: ['\'unsafe-eval\''] },
+		],
 		'script-src-elem': [
 			'file:',
 			{ development: ['\'self\''] },
@@ -65,7 +68,9 @@ export function handleHeadersReceived(details, callback) {
 			.flat()
 			.join(' ')
 
-		accumulator += `${key} ${compiledValue}`
+		if (compiledValue) {
+			accumulator += `${key} ${compiledValue}`
+		}
 
 		return accumulator
 	}, '')
