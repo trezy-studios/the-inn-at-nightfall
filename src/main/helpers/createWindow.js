@@ -1,3 +1,5 @@
+/* global MAIN_WINDOW_VITE_DEV_SERVER_URL, MAIN_WINDOW_VITE_NAME */
+
 // Module imports
 import {
 	BrowserWindow,
