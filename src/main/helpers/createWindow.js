@@ -9,6 +9,13 @@ import path from 'path'
 
 
 
+// Local imports
+import packageData from '../../../package.json'
+
+
+
+
+
 // Constants
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -33,7 +40,7 @@ export function createWindow() {
 		backgroundColor: '#000000',
 		height: display.workArea.height,
 		show: false,
-		title: 'The Inn at Nightfall',
+		title: packageData.productName,
 		webPreferences: {
 			backgroundThrottling: false,
 			contextIsolation: false,

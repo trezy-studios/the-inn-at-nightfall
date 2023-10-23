@@ -2,24 +2,56 @@
 
 // Module imports
 const { MakerDeb } = require('@electron-forge/maker-deb')
+const { MakerDMG } = require('@electron-forge/maker-dmg')
 const { MakerRpm } = require('@electron-forge/maker-rpm')
 const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
 const { MakerZIP } = require('@electron-forge/maker-zip')
+const { PublisherGithub } = require('@electron-forge/publisher-github')
 const { VitePlugin } = require('@electron-forge/plugin-vite')
 
 
 
 
 
+// Local import
+const packageData = require('./package.json')
+
+
+
+
+
+let makers
+
+switch (process.platform) {
+	case 'darwin':
+		makers = [
+			new MakerDMG({}),
+			new MakerZIP({}, ['darwin']),
+		]
+		break
+
+	case 'linux':
+		makers = [
+			new MakerDeb({}),
+			new MakerRpm({}),
+		]
+		break
+
+	case 'win32':
+		makers = [
+			new MakerSquirrel({}),
+		]
+		break
+
+	default:
+}
+
 module.exports = {
-	packagerConfig: {},
+	packagerConfig: {
+		executableName: packageData.name,
+	},
 	rebuildConfig: {},
-	makers: [
-		new MakerDeb({}),
-		new MakerRpm({}),
-		new MakerSquirrel({}),
-		new MakerZIP({}, ['darwin']),
-	],
+	makers,
 	plugins: [
 		new VitePlugin({
 			build: [
@@ -38,6 +70,15 @@ module.exports = {
 					config: 'vite.renderer.config.js',
 				},
 			],
+		}),
+	],
+	publishers: [
+		new PublisherGithub({
+			repository: {
+				owner: 'trezy-studios',
+				name: 'the-inn-at-nightfall',
+			},
+			prerelease: true,
 		}),
 	],
 }
