@@ -25,6 +25,7 @@
     "target": "ESNext",
   },
   "include": [
+    "src",
     "**/*.js",
     "**/*.jsx",
     "**/*.ts",

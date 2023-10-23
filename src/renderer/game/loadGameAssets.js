@@ -69,7 +69,7 @@ export async function loadGameAssets() {
 	setLoadingCategory('character data', 'manifest.json')
 
 	// Load character data
-	const characterManifestRequest = await fetch('/characters/MANIFEST.json')
+	const characterManifestRequest = await fetch('characters/MANIFEST.json')
 	const characterManifest = await characterManifestRequest.json()
 
 	let characterManifestIndex = 0
@@ -79,7 +79,7 @@ export async function loadGameAssets() {
 
 		setLoadingItem(characterFileName)
 
-		const characterFile = await fetch(`/characters/${characterFileName}`)
+		const characterFile = await fetch(`characters/${characterFileName}`)
 		const characterFileText = await characterFile.text()
 
 		const characterData = /** @type {import('./structures/Character.js').CharacterConfig} */ (yaml.load(characterFileText))

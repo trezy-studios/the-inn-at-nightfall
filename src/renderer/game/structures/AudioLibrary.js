@@ -12,31 +12,31 @@ const music = [
 		alias: 'day',
 		intro: [0, 18000],
 		outro: [48000, 64052],
-		url: '/music/day.mp3',
+		url: 'music/day.mp3',
 	},
 	{
 		alias: 'dusk',
 		intro: [0, 18000],
 		outro: [48000, 65750],
-		url: '/music/dusk.mp3',
+		url: 'music/dusk.mp3',
 	},
 	{
 		alias: 'nightfall',
 		intro: [0, 18000],
 		outro: [48000, 67213],
-		url: '/music/nightfall.mp3',
+		url: 'music/nightfall.mp3',
 	},
 	{
 		alias: 'summary',
 		intro: [0, 18000],
 		outro: [48000, 64052],
-		url: '/music/summary.mp3',
+		url: 'music/summary.mp3',
 	},
 	{
 		alias: 'title',
 		intro: [0, 18000],
 		outro: [48000, 64052],
-		url: '/music/title.mp3',
+		url: 'music/title.mp3',
 	},
 ]
 

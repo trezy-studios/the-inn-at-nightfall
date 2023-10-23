@@ -1,11 +1,21 @@
-/* global MAIN_WINDOW_VITE_DEV_SERVER_URL, MAIN_WINDOW_VITE_NAME */
-
 // Module imports
 import {
 	BrowserWindow,
 	screen,
 } from 'electron'
 import path from 'path'
+
+
+
+
+
+// Constants
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const MAIN_WINDOW_DEV_SERVER_URL = MAIN_WINDOW_VITE_DEV_SERVER_URL
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const MAIN_WINDOW_NAME = MAIN_WINDOW_VITE_NAME
 
 
 
@@ -25,20 +35,19 @@ export function createWindow() {
 		show: false,
 		title: 'The Inn at Nightfall',
 		webPreferences: {
-			preload: path.join(__dirname, 'preload.js'),
 			backgroundThrottling: false,
 			contextIsolation: false,
-			nodeIntegration: false,
+			preload: path.join(__dirname, 'preload.js'),
 		},
 		width: display.workArea.width,
 		x: display.workArea.x,
 		y: display.workArea.y,
 	})
 
-	if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-		mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL)
+	if (MAIN_WINDOW_DEV_SERVER_URL) {
+		mainWindow.loadURL(MAIN_WINDOW_DEV_SERVER_URL)
 	} else {
-		mainWindow.loadFile(path.join(__dirname, '..', '..', 'renderer', MAIN_WINDOW_VITE_NAME, 'index.html'))
+		mainWindow.loadFile(path.join(__dirname, '..', 'renderer', MAIN_WINDOW_NAME, 'index.html'))
 	}
 
 	mainWindow.once('ready-to-show', () => mainWindow.show())

@@ -5,16 +5,16 @@ module.exports = {
 	env: {
 		browser: true,
 		es2022: true,
-    node: true,
+		node: true,
 	},
 	extends: [
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
+		'plugin:@typescript-eslint/eslint-recommended',
 		'plugin:editorconfig/all',
-    'plugin:import/recommended',
-    'plugin:import/electron',
-    'plugin:import/typescript',
+		'plugin:import/recommended',
+		'plugin:import/electron',
+		'plugin:import/typescript',
 		'plugin:jsdoc/recommended',
 		'plugin:jsx-a11y/recommended',
 		'plugin:optimize-regex/recommended',
@@ -26,6 +26,10 @@ module.exports = {
 		'plugin:react-prefer-function-component/recommended',
 		'plugin:security/recommended',
 	],
+	globals: {
+		MAIN_WINDOW_VITE_DEV_SERVER_URL: 'readonly',
+		MAIN_WINDOW_VITE_NAME: 'readonly',
+	},
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaFeatures: {
@@ -98,6 +102,10 @@ module.exports = {
 		'no-unused-expressions': ['error'],
 		'no-unused-labels': ['error'],
 		'no-unused-private-class-members': ['error'],
+		'no-unused-vars': ['warn', {
+			args: 'after-used',
+			argsIgnorePattern: '^_',
+		}],
 		'no-use-before-define': ['error'],
 		'no-useless-call': ['error'],
 		'no-useless-computed-key': ['error'],

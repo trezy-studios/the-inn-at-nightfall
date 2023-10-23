@@ -58,7 +58,7 @@ export function Vignette() {
 				isLoadedSingleton = true
 				setIsLoaded(true)
 			})
-			image.src = '/backgrounds/vignette.png'
+			image.src = 'backgrounds/vignette.png'
 			image.decode()
 		}
 	}, [
