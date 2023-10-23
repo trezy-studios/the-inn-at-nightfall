@@ -1,4 +1,6 @@
 // Module imports
+import '@pixi/unsafe-eval'
+
 import { useTick } from '@pixi/react'
 
 

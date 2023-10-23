@@ -52,7 +52,7 @@ export function FilmGrain() {
 			loop
 			muted
 			preload={'auto'}
-			src={'/backgrounds/film-grain.webm'}
+			src={'backgrounds/film-grain.webm'}
 			variants={VARIANTS} />
 	)
 }

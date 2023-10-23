@@ -5,11 +5,11 @@ export const ASSET_MANIFEST = {
 			assets: [
 				{
 					name: 'creepy-hands',
-					srcs: '/backgrounds/creepy-hands.png',
+					srcs: 'backgrounds/creepy-hands.png',
 				},
 				{
 					name: 'exterior',
-					srcs: '/backgrounds/exterior.jpg',
+					srcs: 'backgrounds/exterior.jpg',
 				},
 			],
 		},
@@ -18,19 +18,19 @@ export const ASSET_MANIFEST = {
 			assets: [
 				{
 					name: 'door-closed',
-					srcs: '/backgrounds/interior.door.closed.png',
+					srcs: 'backgrounds/interior.door.closed.png',
 				},
 				{
 					name: 'door-open',
-					srcs: '/backgrounds/interior.door.open.png',
+					srcs: 'backgrounds/interior.door.open.png',
 				},
 				{
 					name: 'shelf',
-					srcs: '/backgrounds/interior.shelf.png',
+					srcs: 'backgrounds/interior.shelf.png',
 				},
 				{
 					name: 'wall',
-					srcs: '/backgrounds/interior.wall.png',
+					srcs: 'backgrounds/interior.wall.png',
 				},
 			],
 		},
@@ -39,7 +39,7 @@ export const ASSET_MANIFEST = {
 			assets: [
 				{
 					name: 'normal',
-					srcs: '/sprites/alastair-reid.normal.png',
+					srcs: 'sprites/alastair-reid.normal.png',
 				},
 			],
 		},
@@ -48,39 +48,39 @@ export const ASSET_MANIFEST = {
 			assets: [
 				{
 					name: 'bitten',
-					srcs: '/sprites/ambrose-blackwood.bitten.png',
+					srcs: 'sprites/ambrose-blackwood.bitten.png',
 				},
 				{
 					name: 'dirty',
-					srcs: '/sprites/ambrose-blackwood.dirty.png',
+					srcs: 'sprites/ambrose-blackwood.dirty.png',
 				},
 				{
 					name: 'fangs',
-					srcs: '/sprites/ambrose-blackwood.fangs.png',
+					srcs: 'sprites/ambrose-blackwood.fangs.png',
 				},
 				{
 					name: 'nervous',
-					srcs: '/sprites/ambrose-blackwood.nervous.png',
+					srcs: 'sprites/ambrose-blackwood.nervous.png',
 				},
 				{
 					name: 'normal',
-					srcs: '/sprites/ambrose-blackwood.normal.png',
+					srcs: 'sprites/ambrose-blackwood.normal.png',
 				},
 				{
 					name: 'sick',
-					srcs: '/sprites/ambrose-blackwood.sick.png',
+					srcs: 'sprites/ambrose-blackwood.sick.png',
 				},
 				{
 					name: 'suspicious',
-					srcs: '/sprites/ambrose-blackwood.suspicious.png',
+					srcs: 'sprites/ambrose-blackwood.suspicious.png',
 				},
 				{
 					name: 'sweating',
-					srcs: '/sprites/ambrose-blackwood.sweating.png',
+					srcs: 'sprites/ambrose-blackwood.sweating.png',
 				},
 				{
 					name: 'upset',
-					srcs: '/sprites/ambrose-blackwood.upset.png',
+					srcs: 'sprites/ambrose-blackwood.upset.png',
 				},
 			],
 		},
@@ -89,39 +89,39 @@ export const ASSET_MANIFEST = {
 			assets: [
 				{
 					name: 'bitten',
-					srcs: '/sprites/benedict-caldwell.bitten.png',
+					srcs: 'sprites/benedict-caldwell.bitten.png',
 				},
 				{
 					name: 'dirty',
-					srcs: '/sprites/benedict-caldwell.dirty.png',
+					srcs: 'sprites/benedict-caldwell.dirty.png',
 				},
 				{
 					name: 'fangs',
-					srcs: '/sprites/benedict-caldwell.fangs.png',
+					srcs: 'sprites/benedict-caldwell.fangs.png',
 				},
 				{
 					name: 'nervous',
-					srcs: '/sprites/benedict-caldwell.nervous.png',
+					srcs: 'sprites/benedict-caldwell.nervous.png',
 				},
 				{
 					name: 'normal',
-					srcs: '/sprites/benedict-caldwell.normal.png',
+					srcs: 'sprites/benedict-caldwell.normal.png',
 				},
 				{
 					name: 'sick',
-					srcs: '/sprites/benedict-caldwell.sick.png',
+					srcs: 'sprites/benedict-caldwell.sick.png',
 				},
 				{
 					name: 'suspicious',
-					srcs: '/sprites/benedict-caldwell.suspicious.png',
+					srcs: 'sprites/benedict-caldwell.suspicious.png',
 				},
 				{
 					name: 'sweating',
-					srcs: '/sprites/benedict-caldwell.sweating.png',
+					srcs: 'sprites/benedict-caldwell.sweating.png',
 				},
 				{
 					name: 'upset',
-					srcs: '/sprites/benedict-caldwell.upset.png',
+					srcs: 'sprites/benedict-caldwell.upset.png',
 				},
 			],
 		},
@@ -130,39 +130,39 @@ export const ASSET_MANIFEST = {
 			assets: [
 				{
 					name: 'bitten',
-					srcs: '/sprites/cedric-holloway.bitten.png',
+					srcs: 'sprites/cedric-holloway.bitten.png',
 				},
 				{
 					name: 'dirty',
-					srcs: '/sprites/cedric-holloway.dirty.png',
+					srcs: 'sprites/cedric-holloway.dirty.png',
 				},
 				{
 					name: 'fangs',
-					srcs: '/sprites/cedric-holloway.fangs.png',
+					srcs: 'sprites/cedric-holloway.fangs.png',
 				},
 				{
 					name: 'nervous',
-					srcs: '/sprites/cedric-holloway.nervous.png',
+					srcs: 'sprites/cedric-holloway.nervous.png',
 				},
 				{
 					name: 'normal',
-					srcs: '/sprites/cedric-holloway.normal.png',
+					srcs: 'sprites/cedric-holloway.normal.png',
 				},
 				{
 					name: 'sick',
-					srcs: '/sprites/cedric-holloway.sick.png',
+					srcs: 'sprites/cedric-holloway.sick.png',
 				},
 				{
 					name: 'suspicious',
-					srcs: '/sprites/cedric-holloway.suspicious.png',
+					srcs: 'sprites/cedric-holloway.suspicious.png',
 				},
 				{
 					name: 'sweating',
-					srcs: '/sprites/cedric-holloway.sweating.png',
+					srcs: 'sprites/cedric-holloway.sweating.png',
 				},
 				{
 					name: 'upset',
-					srcs: '/sprites/cedric-holloway.upset.png',
+					srcs: 'sprites/cedric-holloway.upset.png',
 				},
 			],
 		},
@@ -171,39 +171,39 @@ export const ASSET_MANIFEST = {
 			assets: [
 				{
 					name: 'bitten',
-					srcs: '/sprites/eleanor-whitfield.bitten.png',
+					srcs: 'sprites/eleanor-whitfield.bitten.png',
 				},
 				{
 					name: 'dirty',
-					srcs: '/sprites/eleanor-whitfield.dirty.png',
+					srcs: 'sprites/eleanor-whitfield.dirty.png',
 				},
 				{
 					name: 'fangs',
-					srcs: '/sprites/eleanor-whitfield.fangs.png',
+					srcs: 'sprites/eleanor-whitfield.fangs.png',
 				},
 				{
 					name: 'nervous',
-					srcs: '/sprites/eleanor-whitfield.nervous.png',
+					srcs: 'sprites/eleanor-whitfield.nervous.png',
 				},
 				{
 					name: 'normal',
-					srcs: '/sprites/eleanor-whitfield.normal.png',
+					srcs: 'sprites/eleanor-whitfield.normal.png',
 				},
 				{
 					name: 'sick',
-					srcs: '/sprites/eleanor-whitfield.sick.png',
+					srcs: 'sprites/eleanor-whitfield.sick.png',
 				},
 				{
 					name: 'suspicious',
-					srcs: '/sprites/eleanor-whitfield.suspicious.png',
+					srcs: 'sprites/eleanor-whitfield.suspicious.png',
 				},
 				{
 					name: 'sweating',
-					srcs: '/sprites/eleanor-whitfield.sweating.png',
+					srcs: 'sprites/eleanor-whitfield.sweating.png',
 				},
 				{
 					name: 'upset',
-					srcs: '/sprites/eleanor-whitfield.upset.png',
+					srcs: 'sprites/eleanor-whitfield.upset.png',
 				},
 			],
 		},
@@ -212,39 +212,39 @@ export const ASSET_MANIFEST = {
 			assets: [
 				{
 					name: 'bitten',
-					srcs: '/sprites/lillian-featherstone.bitten.png',
+					srcs: 'sprites/lillian-featherstone.bitten.png',
 				},
 				{
 					name: 'dirty',
-					srcs: '/sprites/lillian-featherstone.dirty.png',
+					srcs: 'sprites/lillian-featherstone.dirty.png',
 				},
 				{
 					name: 'fangs',
-					srcs: '/sprites/lillian-featherstone.fangs.png',
+					srcs: 'sprites/lillian-featherstone.fangs.png',
 				},
 				{
 					name: 'nervous',
-					srcs: '/sprites/lillian-featherstone.nervous.png',
+					srcs: 'sprites/lillian-featherstone.nervous.png',
 				},
 				{
 					name: 'normal',
-					srcs: '/sprites/lillian-featherstone.normal.png',
+					srcs: 'sprites/lillian-featherstone.normal.png',
 				},
 				{
 					name: 'sick',
-					srcs: '/sprites/lillian-featherstone.sick.png',
+					srcs: 'sprites/lillian-featherstone.sick.png',
 				},
 				{
 					name: 'suspicious',
-					srcs: '/sprites/lillian-featherstone.suspicious.png',
+					srcs: 'sprites/lillian-featherstone.suspicious.png',
 				},
 				{
 					name: 'sweating',
-					srcs: '/sprites/lillian-featherstone.sweating.png',
+					srcs: 'sprites/lillian-featherstone.sweating.png',
 				},
 				{
 					name: 'upset',
-					srcs: '/sprites/lillian-featherstone.upset.png',
+					srcs: 'sprites/lillian-featherstone.upset.png',
 				},
 			],
 		},

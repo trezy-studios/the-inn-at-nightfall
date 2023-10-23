@@ -9,17 +9,9 @@ import sassDts from 'vite-plugin-sass-dts'
 
 
 export default defineConfig({
-	base: path.resolve(process.cwd(), 'public'),
+	publicDir: path.resolve(process.cwd(), 'public'),
 	plugins: [
 		sassDts(),
 		react({ include: /\.jsx$/u }),
 	],
-	resolve: {
-		browserField: false,
-		mainFields: [
-			'module',
-			'jsnext:main',
-			'jsnext',
-		],
-	},
 })
