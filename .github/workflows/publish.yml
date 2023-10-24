@@ -1,20 +1,102 @@
 name: Publish
-
-on: push
-# on:
-#   workflow_dispatch:
-#   workflow_run:
-#     workflows:
-#       - Test
-#     branches:
-#       - alpha
-#       - beta
-#       - next
-#       - main
-#     types:
-#       - completed
+on:
+  push:
+    branches:
+      - main
+      - beta
+    paths-ignore:
+      - '**.md'
+      - .editorconfig
+      - .gitignore
+      - .yarnrc
+      - LICENSE
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      - .editorconfig
+      - .gitignore
+      - .yarnrc
+      - LICENSE
 
 jobs:
+  get-next-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install Packages
+        run: yarn install
+
+      - run: npx semantic-release --dry-run
+        id: get-next-version
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+
+    outputs:
+      new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
+      new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
+
+  draft:
+    needs: [get-next-version]
+    runs-on: ubuntu-latest
+    if: needs.get-next-version.outputs.new-release-published == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Show version
+        run: echo "Next version is ${{ needs.get-next-version.outputs.new-release-version }} (${{ github.ref_name }})"
+
+      - name: Get last git tag
+        id: tag
+        run: echo "last-tag=$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})" >> $GITHUB_OUTPUT
+
+      - name: Generate release notes
+        uses: ./.github/actions/release-notes
+        id: release-note
+        with:
+          from: ${{ steps.tag.outputs.last-tag }}
+          to: ${{ github.ref }}
+          include-commit-body: true
+          include-abbreviated-commit: true
+
+      - name: Delete outdated drafts
+        uses: hugo19941994/delete-draft-releases@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release Draft
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+        with:
+          prerelease: true
+          draft: true
+          tag_name: v${{ needs.get-next-version.outputs.new-release-version }}
+          name: v${{ needs.get-next-version.outputs.new-release-version }}
+          body: ${{ steps.release-note.outputs.release-note }}
+
+    outputs:
+      release-note: ${{ steps.release-note.outputs.release-note }}
+      version: ${{ needs.get-next-version.outputs.new-release-version }}
+
   publish:
     strategy:
       matrix:
@@ -25,20 +107,13 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    # permissions:
-    #   contents: write
-    #   issues: write
-    #   pull-requests: write
-    #   id-token: write
-
     # if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        # with:
-        #   fetch-depth: 0
-        #   ref: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v3
