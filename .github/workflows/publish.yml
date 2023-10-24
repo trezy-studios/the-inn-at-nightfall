@@ -45,7 +45,7 @@ jobs:
       new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
       new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
 
-  draft:
+  draft-release:
     needs: [get-next-version]
     runs-on: ubuntu-latest
     if: needs.get-next-version.outputs.new-release-published == 'true'
@@ -68,22 +68,13 @@ jobs:
         id: tag
         run: echo "last-tag=$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})" >> $GITHUB_OUTPUT
 
-      - name: Generate release notes
-        uses: ./.github/actions/release-notes
-        id: release-note
-        with:
-          from: ${{ steps.tag.outputs.last-tag }}
-          to: ${{ github.ref }}
-          include-commit-body: true
-          include-abbreviated-commit: true
-
       - name: Delete outdated drafts
         uses: hugo19941994/delete-draft-releases@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release Draft
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v0.1.15
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
@@ -91,13 +82,13 @@ jobs:
           draft: true
           tag_name: v${{ needs.get-next-version.outputs.new-release-version }}
           name: v${{ needs.get-next-version.outputs.new-release-version }}
-          body: ${{ steps.release-note.outputs.release-note }}
+          body_path: CHANGELOG.md
 
     outputs:
-      release-note: ${{ steps.release-note.outputs.release-note }}
       version: ${{ needs.get-next-version.outputs.new-release-version }}
 
   publish:
+    needs: [draft-release]
     strategy:
       matrix:
         os:

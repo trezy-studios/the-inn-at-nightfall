@@ -9,7 +9,6 @@ module.exports = {
 	plugins: [
 		'@semantic-release/commit-analyzer',
 		'@semantic-release/release-notes-generator',
-		'@semantic-release/changelog',
 		'semantic-release-export-data',
 		['@semantic-release/npm', {
 			npmPublish: false,
