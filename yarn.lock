@@ -7909,10 +7909,9 @@ scheduler@^0.23.0:
   dependencies:
     loose-envify "^1.1.0"
 
-semantic-release-export-data@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/semantic-release-export-data/-/semantic-release-export-data-1.0.1.tgz#4356a36a2f02d3a6d32c5edeca2d862df2459f49"
-  integrity sha512-6vlgrrzzcMi/REhQd65Bh4dfSKmgwXOJ/Q2RVlT9WsU4Ya1T2qGpkSrMfG/n6oFRrqBdbDlyZgxNd94ziW+vSg==
+"semantic-release-export-data@git+https://github.com/trezy-studios/semantic-release-export-data.git#add-release-notes":
+  version "0.0.0-development"
+  resolved "git+https://github.com/trezy-studios/semantic-release-export-data.git#1543fb0dd2144b96f2d320bab74f7598a0935f04"
   dependencies:
     "@actions/core" "^1.10.0"
 

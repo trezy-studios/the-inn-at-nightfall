@@ -44,6 +44,7 @@ jobs:
     outputs:
       new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
       new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
+      new-release-notes: ${{ steps.get-next-version.outputs.new-release-notes }}
 
   draft-release:
     needs: [get-next-version]
@@ -82,7 +83,7 @@ jobs:
           draft: true
           tag_name: v${{ needs.get-next-version.outputs.new-release-version }}
           name: v${{ needs.get-next-version.outputs.new-release-version }}
-          body_path: CHANGELOG.md
+          body: ${{ needs.get-next-version.outputs.new-release-notes }}
 
     outputs:
       version: ${{ needs.get-next-version.outputs.new-release-version }}
