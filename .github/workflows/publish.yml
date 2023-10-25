@@ -99,8 +99,6 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    # if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -119,6 +117,9 @@ jobs:
       - name: Install Flatpak
         run: sudo apt-get install -y flatpak flatpak-builder elfutils
         if: ${{ matrix.os == 'ubuntu-latest' }}
+
+      - name: Update the version
+        run: yarn version --new-version ${{ needs.draft-release.outputs.version }} --no-commit-hooks --no-git-tag-version
 
       - name: Publish
         run: yarn run publish
