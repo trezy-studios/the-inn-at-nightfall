@@ -3,7 +3,7 @@
 // Module imports
 const { MakerDeb } = require('@electron-forge/maker-deb')
 const { MakerDMG } = require('@electron-forge/maker-dmg')
-const { MakerFlatpak } = require('@electron-forge/maker-flatpak')
+// const { MakerFlatpak } = require('@electron-forge/maker-flatpak')
 const { MakerRpm } = require('@electron-forge/maker-rpm')
 const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
 const { MakerZIP } = require('@electron-forge/maker-zip')
@@ -34,12 +34,12 @@ switch (process.platform) {
 	case 'linux':
 		makers = [
 			new MakerDeb({}),
-			new MakerFlatpak({
-				options: {
-					categories: ['Game'],
-					files: [],
-				},
-			}),
+			// new MakerFlatpak({
+			// 	options: {
+			// 		categories: ['Game'],
+			// 		files: [],
+			// 	},
+			// }),
 			new MakerRpm({}),
 		]
 		break
