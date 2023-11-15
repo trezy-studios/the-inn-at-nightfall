@@ -5,3 +5,4 @@
  * @property {string} id The message's unique identifier.
  * @property {string} message The message body.
  */
+export const DialogMessage = {}

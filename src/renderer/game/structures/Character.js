@@ -1,5 +1,4 @@
 // Module imports
-import { createMachine } from 'xstate'
 import { v4 as uuid } from 'uuid'
 
 
@@ -17,8 +16,9 @@ import { ENTRY_STATE } from '../../data/ENTRY_STATE.js'
 // Types
 /**
  * @typedef {object} CharacterConfig
- * @property {object} [dialog] The dialog for the character, if available.
+ * @property {string} [background] The character background.
  * @property {boolean} [isMerchant] Whether this character is a merchant.
+ * @property {import('xstate').StateMachine} machine The dialog machine for the character.
  * @property {string} name The character's name.
  * @property {string} sprite The name of the character's sprite.
  */
@@ -31,62 +31,6 @@ import { ENTRY_STATE } from '../../data/ENTRY_STATE.js'
  * Represents a character in the game.
  */
 export class Character {
-	/****************************************************************************\
-	 * Public static methods
-	\****************************************************************************/
-
-	/**
-	 * Takes the characters config and generates a finite state machine
-	 * representing the character's conversation tree.
-	 *
-	 * @param {object} config The base character config.
-	 * @returns {import('xstate').StateMachine} The compiled state machine.
-	 */
-	static compileDialogMachine(config) {
-		const stateEntries = Object.entries(config.dialog.content)
-		const states = stateEntries.reduce((accumulator, [stateKey, stateData]) => {
-			const dialog = (stateData.conversation || [])
-				.map(message => ({
-					...message,
-					id: uuid(),
-				}))
-
-			const state = {
-				meta: { dialog },
-			}
-
-			if ('response' in stateData) {
-				state.meta.response = stateData.response.map(responseData => ({
-					message: responseData.message,
-					transitionID: responseData.transitionID,
-				}))
-
-				state.on = stateData.response.reduce((responseAccumulator, responseData) => {
-					responseAccumulator[responseData.transitionID] = { target: responseData.target }
-					return responseAccumulator
-				}, {})
-			} else if ('next' in stateData) {
-				state.after = { 1: stateData.next }
-			} else {
-				state.type = 'final'
-			}
-
-			accumulator[stateKey] = state
-
-			return accumulator
-		}, {})
-
-		return createMachine({
-			id: config.name,
-			initial: config.dialog.initial,
-			states,
-		})
-	}
-
-
-
-
-
 	/****************************************************************************\
 	 * Private instance properties
 	\****************************************************************************/
@@ -124,12 +68,7 @@ export class Character {
 		this.#isMerchant = config.isMerchant
 		this.#name = config.name
 		this.#sprite = config.sprite
-
-		if (config.dialog) {
-			this.#dialogMachine = Character.compileDialogMachine(config)
-		} else {
-			this.#dialogMachine = createMachine({ id: config.name })
-		}
+		this.#dialogMachine = config.machine
 
 		this.reset()
 	}

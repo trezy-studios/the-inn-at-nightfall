@@ -34,7 +34,8 @@
     "react-dom": "^18.2.0",
     "statery": "^0.7.1",
     "uuid": "^9.0.1",
-    "xstate": "^4.38.2"
+    "xstate": "^4.38.3",
+    "yarn-spinner-xstate": "^1.0.0-beta.6"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.4.2",

@@ -1,7 +1,9 @@
 // Module imports
 import {
+	useCallback,
 	useEffect,
 	useMemo,
+	useState,
 } from 'react'
 import { useMachine } from '@xstate/react'
 
@@ -10,7 +12,8 @@ import { useMachine } from '@xstate/react'
 
 
 // Local imports
-import { addMessagesToDialog } from '../store/reducers/addMessagesToDialog.js'
+import { addMessageToDialog } from '../store/reducers/addMessageToDialog.js'
+import { goToNextCharacter } from '../store/reducers/goToNextCharacter.js'
 import { useCharacter } from './useCharacter.js'
 
 
@@ -24,25 +27,97 @@ import { useCharacter } from './useCharacter.js'
  */
 export function useDialogMachine() {
 	const currentCharacter = useCharacter()
-	const [dialogMachine, sendDialogEvent] = useMachine(currentCharacter.dialogMachine)
 
-	const dialogMeta = useMemo(() => {
-		const metaKey = `${dialogMachine.machine.id}.${dialogMachine.value}`
-		return dialogMachine.meta[metaKey]
-	}, [dialogMachine])
+	const [state, sendEvent] = useMachine(currentCharacter.dialogMachine)
+	const [isDone, setIsDone] = useState(false)
 
-	useEffect(() => {
-		if (dialogMeta) {
-			addMessagesToDialog(dialogMeta.dialog)
+	const sendNext = useCallback(optionID => {
+		let eventName = 'next'
+
+		if (optionID) {
+			eventName += `::${optionID}`
+		}
+
+		if (state.can({ type: eventName })) {
+			sendEvent({ type: eventName })
 		}
 	}, [
-		dialogMachine,
-		dialogMeta,
+		sendEvent,
+		state,
+	])
+
+	const createOptionSelectHandler = useCallback(optionID => () => sendNext(optionID), [sendNext])
+
+	const {
+		lineMeta,
+		nodeMeta,
+		options,
+	} = useMemo(() => {
+		const [
+			nodeID,
+			lineID,
+		] = Object.entries(state.value)[0]
+
+		const nodeMetaKey = `${state.machine.id}.${nodeID}`
+		const lineMetaKey = `${nodeMetaKey}.${lineID}`
+
+		const result = { nodeMeta: state.meta[nodeMetaKey] }
+
+		if (typeof lineID === 'string') {
+			result.lineMeta = {
+				...state.meta[lineMetaKey],
+				id: lineID,
+			}
+		} else {
+			const parallelStateID = Object.keys(lineID)[0]
+			const childStateIDs = Object.keys(lineID[parallelStateID])
+
+			result.options = childStateIDs.map(id => {
+				return {
+					handleSelect: createOptionSelectHandler(id),
+					id,
+					...state.meta[`${nodeMetaKey}.${parallelStateID}.${id}`],
+				}
+			})
+		}
+
+		return result
+	}, [
+		createOptionSelectHandler,
+		state,
+	])
+
+	const dialogMeta = useMemo(() => {
+		const metaKey = `${state.machine.id}.${state.value}`
+		return state.meta[metaKey]
+	}, [state])
+
+	useEffect(() => {
+		if (lineMeta && !state.done) {
+			addMessageToDialog(lineMeta)
+		}
+
+		if (state.done) {
+			setIsDone(true)
+
+			if (currentCharacter.isMerchant) {
+				goToNextCharacter()
+			}
+		}
+	}, [
+		currentCharacter,
+		lineMeta,
+		sendNext,
+		state,
 	])
 
 	return {
-		dialogMachine,
 		dialogMeta,
-		sendDialogEvent,
+		isDone,
+		meta: nodeMeta,
+		options,
+		sendEvent,
+		sendNext,
+		state,
 	}
 }

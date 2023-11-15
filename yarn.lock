@@ -2482,6 +2482,11 @@ base64-js@^1.3.1, base64-js@^1.5.1:
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
   integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
 
+bbcode-ast@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/bbcode-ast/-/bbcode-ast-1.1.0.tgz#9e96b3bf754fdebdcccce30eaa9bf91fc4a7cdf6"
+  integrity sha512-dYnAxpiB6Vjjhs7+LFjXQ7VPHuozaVyY4r2FegqpkzNzoT397aKmNGp96BKNfUuNTl6LObItMbObmebAcUFvNw==
+
 before-after-hook@^2.2.0:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/before-after-hook/-/before-after-hook-2.2.3.tgz#c51e809c81a4e354084422b9b26bad88249c517c"
@@ -9247,10 +9252,10 @@ xmlbuilder@^15.1.1:
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-15.1.1.tgz#9dcdce49eea66d8d10b42cae94a79c3c8d0c2ec5"
   integrity sha512-yMqGBqtXyeN1e3TGYvgNgDVZ3j84W4cwkOXQswghol6APgZWaff9lnbvN7MHYJOiXsvGPXtjTYJEiC9J2wv9Eg==
 
-xstate@^4.38.2:
-  version "4.38.2"
-  resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.38.2.tgz#1b74544fc9c8c6c713ba77f81c6017e65aa89804"
-  integrity sha512-Fba/DwEPDLneHT3tbJ9F3zafbQXszOlyCJyQqqdzmtlY/cwE2th462KK48yaANf98jHlP6lJvxfNtN0LFKXPQg==
+xstate@^4.38.3:
+  version "4.38.3"
+  resolved "https://registry.yarnpkg.com/xstate/-/xstate-4.38.3.tgz#4e15e7ad3aa0ca1eea2010548a5379966d8f1075"
+  integrity sha512-SH7nAaaPQx57dx6qvfcIgqKRXIh4L0A1iYEqim4s1u7c9VoCgzZc+63FY90AKU4ZzOC2cfJzTnpO4zK7fCUzzw==
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.2"
@@ -9350,6 +9355,14 @@ yarn-or-npm@^3.0.1:
   dependencies:
     cross-spawn "^6.0.5"
     pkg-dir "^4.2.0"
+
+yarn-spinner-xstate@^1.0.0-beta.6:
+  version "1.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/yarn-spinner-xstate/-/yarn-spinner-xstate-1.0.0-beta.6.tgz#7678a9bff04ad1f793950496f4eec7ad1375182d"
+  integrity sha512-fbrX6JsOGFBfpOWJN0hjEUY52N5brQSemBbctSbQA5EIvbUlQTuLNQF4jrIIf8fZ7dFCFHgftJ40CvmfbJkTow==
+  dependencies:
+    bbcode-ast "^1.1.0"
+    uuid "^9.0.1"
 
 yauzl@^2.10.0:
   version "2.10.0"

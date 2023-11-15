@@ -8,10 +8,10 @@ import { useStore } from 'statery'
 // Local imports
 import styles from './GameDialog.module.scss'
 
-import { getCurrentCharacter } from '../../store/reducers/getCurrentCharacter.js'
 import { Messages } from './Messages.jsx'
 import { Responses } from './Responses.jsx'
 import { store } from '../../store/store.js'
+import { useCharacter } from '../../hooks/useCharacter.js'
 
 
 
@@ -23,12 +23,12 @@ import { store } from '../../store/store.js'
  * @component
  */
 export function GameDialog() {
-	const proxyStore = useStore(store)
-	const currentCharacter = getCurrentCharacter(proxyStore)
+	const { isSwappingCharacters } = useStore(store)
+	const character = useCharacter()
 
 	return (
 		<div className={styles['game-dialog']}>
-			{Boolean(currentCharacter) && (
+			{(Boolean(character) && !isSwappingCharacters) && (
 				<>
 					<Messages />
 					<Responses />

@@ -1,0 +1,113 @@
+title: greeting
+position: -4,-239
+---
+Alastair Reid: Well hello there! I've brought your daily supplies!
+You: Thank you, Alastair.
+Alastair Reid: Have you heard the news going through town?
+
+	-> No, please do tell!
+		<<jump no>>
+
+	-> I don't really care for gossip…
+		<<jump notInterested>>
+===
+
+title: no
+position: -115,-56
+---
+You: No, please do tell!
+
+<<jump weirdHappenings>>
+===
+
+title: notInterested
+position: 90,-56
+---
+You: I don't really care for gossip…
+
+<<jump weirdHappenings>>
+===
+
+title: weirdHappenings
+position: -24,244
+---
+Alastair Reid: Well, it's mighty concerning! Folks have been going missing in the night!
+Alastair Reid: Some turn up dead the next day and other folks… well they're just … different from before…
+Alastair Reid: No one knows what is causing the trouble. I think it might be some kind of creature that can disguise itself as a person!
+
+	-> That's terrible!
+		<<jump empatheticResponse>>
+
+	-> Uh huh…
+		<<jump skepticalResponse>>
+===
+
+title: empatheticResponse
+position: -146,464
+---
+You: Oh! That's terrible!
+
+<<jump warning>>
+===
+
+title: skepticalResponse
+position: 77,466
+---
+You: Uh huh…
+
+<<jump warning>>
+===
+
+title: warning
+position: -27,711
+---
+Alastair Reid: Well the important part is to be inside by nightfall. Now I know you get plenty of travelers who come by here.
+Alastair Reid: Be wary of who you allow to be guests! I'd say look for anyone with a strange appearance or manner to them.
+
+	-> Of course.
+		<<jump acknowledgeWarning>>
+
+	-> That's quite normal.
+		<<jump excuseOddTravelers>>
+===
+
+title: acknowledgeWarning
+position: -134,921
+---
+You: Oh yes, of course.
+
+<<jump goodbye>>
+===
+
+title: excuseOddTravelers
+position: 74,922
+---
+You: Well most travelers will arrive not appearing their best.
+
+<<jump goodbye>>
+===
+
+title: goodbye
+position: -29,1135
+---
+Alastair Reid: Well just be careful now. You wouldn't want yourself and all stayin at the inn to turn up dead in the morning!
+
+	-> Thank you!
+		<<jump thanks>>
+
+	-> Very well.
+		<<jump unimpressedFarewell>>
+===
+
+title: thanks
+position: -135,1327
+---
+You: Thank you so much Alastair!
+===
+
+title: unimpressedFarewell
+position: 69,1327
+---
+[action]You sigh...[/action]
+You: Very well Alastair. Good day to you!
+===

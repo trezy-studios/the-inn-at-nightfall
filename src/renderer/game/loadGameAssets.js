@@ -1,6 +1,5 @@
 // Module imports
 import { Assets } from 'pixi.js'
-import yaml from 'js-yaml'
 
 
 
@@ -11,6 +10,7 @@ import { addCharacters } from '../store/reducers/addCharacters.js'
 import { ASSET_MANIFEST } from './ASSET_MANIFEST.js'
 import { AudioLibrary } from './structures/AudioLibrary.js'
 import { Character } from './structures/Character.js'
+import { parseScript } from 'yarn-spinner-xstate'
 import { setLoadingCategory } from '../store/reducers/setLoadingCategory.js'
 import { setLoadingItem } from '../store/reducers/setLoadingItem.js'
 import { store } from '../store/store.js'
@@ -79,12 +79,20 @@ export async function loadGameAssets() {
 
 		setLoadingItem(characterFileName)
 
-		const characterFile = await fetch(`characters/${characterFileName}`)
-		const characterFileText = await characterFile.text()
+		const [
+			characterDetailsResponse,
+			characterDialogResponse,
+		] = await Promise.all([
+			fetch(`characters/${characterFileName}.json`),
+			fetch(`characters/${characterFileName}.yarn`),
+		])
+		const characterDetails = await characterDetailsResponse.json()
+		const characterDialogText = await characterDialogResponse.text()
 
-		const characterData = /** @type {import('./structures/Character.js').CharacterConfig} */ (yaml.load(characterFileText))
-
-		addCharacters(new Character(characterData))
+		addCharacters(new Character({
+			...characterDetails,
+			machine: parseScript(characterDialogText),
+		}))
 
 		characterManifestIndex += 1
 	}

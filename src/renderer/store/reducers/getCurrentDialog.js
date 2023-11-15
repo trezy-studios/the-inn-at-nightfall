@@ -15,16 +15,16 @@ export function getCurrentDialog(state) {
 		if (mostRecentMessageGroup && (message.author === mostRecentMessageGroup.author)) {
 			mostRecentMessageGroup.messages.push({
 				action: message.action,
+				body: message.body,
 				id: message.id,
-				message: message.message,
 			})
 		} else {
 			const newMessageGroup = {
 				author: message.author,
 				messages: [{
 					action: message.action,
+					body: message.body,
 					id: message.id,
-					message: message.message,
 				}],
 			}
 			newMessageGroup.id = message.id

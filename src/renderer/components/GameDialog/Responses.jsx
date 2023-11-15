@@ -31,36 +31,20 @@ export function Responses() {
 	const currentCharacter = useCharacter()
 
 	const {
-		dialogMachine,
-		dialogMeta,
-		sendDialogEvent,
+		isDone,
+		options,
+		sendNext,
 	} = useDialogMachine()
 
 	const handleAllowClick = useCallback(() => allowCurrentCharacter(), [])
-	const handleContinueClick = useCallback(() => goToNextCharacter(), [])
+	const handleContinueClick = useCallback(() => sendNext(), [sendNext])
 	const handleDenyClick = useCallback(() => goToNextCharacter(), [])
 
 	const renderedResponses = useMemo(() => {
 		const responses = []
 
-		if (dialogMeta?.response) {
-			dialogMeta
-				.response
-				.filter(response => dialogMachine.can(response.transitionID))
-				.forEach(response => {
-					responses.push((
-						<Response
-							key={response.transitionID}
-							// eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-							onClick={() => sendDialogEvent(response.transitionID)}>
-							{response.message}
-						</Response>
-					))
-				})
-		}
-
-		if (!dialogMachine || dialogMachine?.done) {
-			if (currentCharacter.isMerchant) {
+		if (!options) {
+			if (!isDone) {
 				responses.push((
 					<Response
 						key={'continue'}
@@ -68,34 +52,45 @@ export function Responses() {
 						{'Continue'}
 					</Response>
 				))
-			} else {
-				responses.push((
-					<Response
-						key={'allow'}
-						onClick={handleAllowClick}>
-						{'Allow'}
-					</Response>
-				))
-
-				responses.push((
-					<Response
-						key={'deny'}
-						onClick={handleDenyClick}>
-						{'Deny'}
-					</Response>
-				))
 			}
+		} else {
+			options.forEach(option => {
+				responses.push((
+					<Response
+						key={option.id}
+						onClick={option.handleSelect}>
+						{option.body}
+					</Response>
+				))
+			})
+		}
+
+		if (!currentCharacter.isMerchant) {
+			responses.push((
+				<Response
+					key={'allow'}
+					onClick={handleAllowClick}>
+					{'Allow'}
+				</Response>
+			))
+
+			responses.push((
+				<Response
+					key={'deny'}
+					onClick={handleDenyClick}>
+					{'Deny'}
+				</Response>
+			))
 		}
 
 		return responses
 	}, [
 		currentCharacter,
-		dialogMachine,
-		dialogMeta,
 		handleAllowClick,
 		handleContinueClick,
 		handleDenyClick,
-		sendDialogEvent,
+		isDone,
+		options,
 	])
 
 	return (

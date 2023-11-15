@@ -17,8 +17,8 @@ export function Message(props) {
 		index,
 		message: {
 			action,
+			body,
 			id,
-			message,
 		},
 	} = props
 
@@ -47,7 +47,7 @@ export function Message(props) {
 			{Boolean(action) && (
 				<em>{action}</em>
 			)}
-			{!action && message}
+			{!action && body}
 		</motion.p>
 	)
 }
@@ -56,7 +56,7 @@ Message.propTypes = {
 	index: PropTypes.number.isRequired,
 	message: PropTypes.shape({
 		action: PropTypes.string,
+		body: PropTypes.string,
 		id: PropTypes.string.isRequired,
-		message: PropTypes.string,
 	}).isRequired,
 }

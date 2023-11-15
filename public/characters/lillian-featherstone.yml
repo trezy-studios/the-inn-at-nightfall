@@ -1,8 +1,0 @@
-name: Miss Lillian "Lily" Featherstone
-background: A young and vibrant woman on her way to Bramblewick to work as a governess. She's curious, a bit naive, and carries a locket that's been in her family for generations.
-sprite: lillian-featherstone
-dialog:
-  initial: initial
-  content:
-    initial:
-      conversation:

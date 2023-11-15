@@ -60,6 +60,8 @@ export const store = makeStore({
 
 	isRoundOver: false,
 
+	isSwappingCharacters: false,
+
 	/** @type {null | number} */
 	lastTick: null,
 
