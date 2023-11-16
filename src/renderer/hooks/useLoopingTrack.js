@@ -32,13 +32,13 @@ export function useLoopingTrack(trackAlias, options = {}) {
 	} = useAudioContext()
 
 	useEffect(() => {
-		playTrack(trackAlias)
+		// playTrack(trackAlias)
 
-		return () => {
-			if (stopOnUnmount) {
-				stopTrack(fadeDuration)
-			}
-		}
+		// return () => {
+		// 	if (stopOnUnmount) {
+		// 		stopTrack(fadeDuration)
+		// 	}
+		// }
 	}, [
 		fadeDuration,
 		playTrack,
