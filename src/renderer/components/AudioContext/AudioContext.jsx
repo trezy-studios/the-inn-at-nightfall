@@ -26,6 +26,7 @@ export const AudioContext = createContext({
 
 	// eslint-disable-next-line jsdoc/require-jsdoc, @typescript-eslint/no-unused-vars
 	playTrack: trackID => {},
+
 	// eslint-disable-next-line jsdoc/require-jsdoc, @typescript-eslint/no-unused-vars
 	stopTrack: fadeDuration => {},
 })

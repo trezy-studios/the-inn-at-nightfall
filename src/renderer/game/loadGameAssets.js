@@ -11,6 +11,7 @@ import { ASSET_MANIFEST } from './ASSET_MANIFEST.js'
 import { AudioLibrary } from './structures/AudioLibrary.js'
 import { Character } from './structures/Character.js'
 import { parseScript } from 'yarn-spinner-xstate'
+import { preloadSettings } from './preloadSettings.js'
 import { setLoadingCategory } from '../store/reducers/setLoadingCategory.js'
 import { setLoadingItem } from '../store/reducers/setLoadingItem.js'
 import { store } from '../store/store.js'
@@ -96,6 +97,9 @@ export async function loadGameAssets() {
 
 		characterManifestIndex += 1
 	}
+
+	setLoadingCategory('settings')
+	await preloadSettings()
 
 	store.set(() => ({
 		assetLoadingProgress: bundleNames.length,

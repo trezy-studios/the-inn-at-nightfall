@@ -1,6 +1,16 @@
 // Module imports
-import { Howl } from 'howler'
+import {
+	Howl,
+	Howler,
+} from 'howler'
 import { setLoadingItem } from '../../store/reducers/setLoadingItem.js'
+
+
+
+
+
+// Local imports
+import { store } from '../../store/store.js'
 
 
 
@@ -58,7 +68,26 @@ export const AudioLibrary = new class AudioLibraryClass {
 
 
 	/****************************************************************************\
-	 * Pbulic instance methods
+	 * Constructor
+	\****************************************************************************/
+
+	/**
+	 * Creates a new AudioLibrary.
+	 */
+	constructor() {
+		store.subscribe(updates => {
+			if ('mainVolume' in updates) {
+				Howler.volume(updates.mainVolume)
+			}
+		})
+	}
+
+
+
+
+
+	/****************************************************************************\
+	 * Public instance methods
 	\****************************************************************************/
 
 	/**

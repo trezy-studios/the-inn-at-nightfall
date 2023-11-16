@@ -43,8 +43,10 @@ export function createWindow() {
 		title: packageData.productName,
 		webPreferences: {
 			backgroundThrottling: false,
-			contextIsolation: false,
+			contextIsolation: true,
+			nodeIntegration: false,
 			preload: path.join(__dirname, 'preload.js'),
+			sandbox: false,
 		},
 		width: display.workArea.width,
 		x: display.workArea.x,

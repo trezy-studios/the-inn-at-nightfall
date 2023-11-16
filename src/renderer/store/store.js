@@ -9,6 +9,7 @@ import { makeStore } from 'statery'
 // Local imports
 import { Character } from '../game/structures/Character.js'
 import { generateInitialControlState } from './helpers/generateInitialControlState.js'
+import { Innkeeper } from '../helpers/Innkeeper.js'
 import { SCREENS } from '../data/SCREENS.js'
 
 
@@ -65,6 +66,10 @@ export const store = makeStore({
 	/** @type {null | number} */
 	lastTick: null,
 
+	mainVolume: 0,
+
+	musicVolume: 0,
+
 	screen: SCREENS.LOADING,
 
 	/** @type {null | number} */
@@ -88,3 +93,13 @@ if (typeof window !== 'undefined') {
 	// @ts-ignore
 	window.store = store
 }
+
+store.subscribe(updates => {
+	if ('mainVolume' in updates) {
+		Innkeeper.setConfig('settings.sound.mainVolume', updates.mainVolume)
+	}
+
+	if ('musicVolume' in updates) {
+		Innkeeper.setConfig('settings.sound.musicVolume', updates.musicVolume)
+	}
+})

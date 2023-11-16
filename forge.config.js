@@ -56,11 +56,11 @@ module.exports = {
 		new VitePlugin({
 			build: [
 				{
-					entry: 'src/main.js',
+					entry: 'src/main/main.js',
 					config: 'vite.main.config.js',
 				},
 				{
-					entry: 'src/preload.js',
+					entry: 'src/preload/preload.js',
 					config: 'vite.preload.config.js',
 				},
 			],
