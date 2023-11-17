@@ -25,7 +25,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-tags: true
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -41,87 +41,90 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
 
+      - name: Show version
+        run: echo "Next version is ${{ steps.get-next-version.outputs.new-release-version }} (${{ github.ref_name }})"
+
     outputs:
       new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
       new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
       new-release-notes: ${{ steps.get-next-version.outputs.new-release-notes }}
 
-  draft-release:
-    needs: [get-next-version]
-    runs-on: ubuntu-latest
-    if: needs.get-next-version.outputs.new-release-published == 'true'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+  # draft-release:
+  #   needs: [get-next-version]
+  #   runs-on: ubuntu-latest
+  #   if: needs.get-next-version.outputs.new-release-published == 'true'
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-tags: true
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version-file: '.nvmrc'
+  #         cache: 'yarn'
 
-      - name: Show version
-        run: echo "Next version is ${{ needs.get-next-version.outputs.new-release-version }} (${{ github.ref_name }})"
+  #     - name: Show version
+  #       run: echo "Next version is ${{ needs.get-next-version.outputs.new-release-version }} (${{ github.ref_name }})"
 
-      - name: Get last git tag
-        id: tag
-        run: echo "last-tag=$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})" >> $GITHUB_OUTPUT
+  #     - name: Get last git tag
+  #       id: tag
+  #       run: echo "last-tag=$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})" >> $GITHUB_OUTPUT
 
-      - name: Delete outdated drafts
-        uses: hugo19941994/delete-draft-releases@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Delete outdated drafts
+  #       uses: hugo19941994/delete-draft-releases@v1.0.1
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create Release Draft
-        uses: softprops/action-gh-release@v0.1.15
-        env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
-        with:
-          prerelease: true
-          draft: true
-          tag_name: v${{ needs.get-next-version.outputs.new-release-version }}
-          name: v${{ needs.get-next-version.outputs.new-release-version }}
-          body: ${{ needs.get-next-version.outputs.new-release-notes }}
+  #     - name: Create Release Draft
+  #       uses: softprops/action-gh-release@v0.1.15
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.github_token }}
+  #       with:
+  #         prerelease: true
+  #         draft: true
+  #         tag_name: v${{ needs.get-next-version.outputs.new-release-version }}
+  #         name: v${{ needs.get-next-version.outputs.new-release-version }}
+  #         body: ${{ needs.get-next-version.outputs.new-release-notes }}
 
-    outputs:
-      version: ${{ needs.get-next-version.outputs.new-release-version }}
+  #   outputs:
+  #     version: ${{ needs.get-next-version.outputs.new-release-version }}
 
-  publish:
-    needs: [draft-release]
-    strategy:
-      matrix:
-        os:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
+  # publish:
+  #   needs: [draft-release]
+  #   strategy:
+  #     matrix:
+  #       os:
+  #         - macos-latest
+  #         - ubuntu-latest
+  #         - windows-latest
 
-    runs-on: ${{ matrix.os }}
+  #   runs-on: ${{ matrix.os }}
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version-file: '.nvmrc'
+  #         cache: 'yarn'
 
-      - name: Install Packages
-        run: yarn install
+  #     - name: Install Packages
+  #       run: yarn install
 
-      - name: Install Flatpak
-        run: sudo apt-get install -y flatpak flatpak-builder elfutils
-        if: ${{ matrix.os == 'ubuntu-latest' }}
+  #     - name: Install Flatpak
+  #       run: sudo apt-get install -y flatpak flatpak-builder elfutils
+  #       if: ${{ matrix.os == 'ubuntu-latest' }}
 
-      - name: Update the version
-        run: yarn version --new-version ${{ needs.draft-release.outputs.version }} --no-commit-hooks --no-git-tag-version
+  #     - name: Update the version
+  #       run: yarn version --new-version ${{ needs.draft-release.outputs.version }} --no-commit-hooks --no-git-tag-version
 
-      - name: Publish
-        run: yarn run publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Publish
+  #       run: yarn run publish
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
