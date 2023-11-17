@@ -29,7 +29,10 @@ import { TitleScreen } from '../TitleScreen/TitleScreen.jsx'
  * @component
  */
 export function App() {
-	const { screen } = useStore(store)
+	const {
+		enableFilmGrain,
+		screen,
+	} = useStore(store)
 
 	return (
 		<AudioContextProvider>
@@ -57,7 +60,9 @@ export function App() {
 				</div>
 			</AnimatePresence>
 
-			<FilmGrain />
+			{enableFilmGrain && (
+				<FilmGrain />
+			)}
 		</AudioContextProvider>
 	)
 }

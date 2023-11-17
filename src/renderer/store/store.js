@@ -51,6 +51,8 @@ export const store = makeStore({
 
 	deltaMS: 0,
 
+	enableFilmGrain: true,
+
 	failed: false,
 
 	isLoadingAssets: false,
@@ -96,6 +98,10 @@ if (typeof window !== 'undefined') {
 
 store.subscribe(updates => {
 	const patch = {}
+
+	if ('enableFilmGrain' in updates) {
+		patch['settings::graphics::enableFilmGrain'] = updates.enableFilmGrain
+	}
 
 	if ('mainVolume' in updates) {
 		patch['settings::sound::mainVolume'] = updates.mainVolume

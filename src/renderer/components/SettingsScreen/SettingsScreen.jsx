@@ -21,6 +21,15 @@ import { Vignette } from '../Vignette/Vignette.jsx'
 
 
 /**
+ * Toggles the film grain.
+ *
+ * @param {import('react').ChangeEvent<HTMLInputElement>} event The change event.
+ */
+function handleEnableFilmGrainChange(event) {
+	store.set(() => ({ enableFilmGrain: event.target.checked }))
+}
+
+/**
  * Updaes the music volume.
  *
  * @param {import('react').ChangeEvent<HTMLInputElement>} event The change event.
@@ -39,7 +48,10 @@ function handleMainVolumeChange(event) {
  * @component
  */
 export function SettingsScreen() {
-	const { mainVolume } = useStore(store)
+	const {
+		enableFilmGrain,
+		mainVolume,
+	} = useStore(store)
 
 	useLoopingTrack('title')
 
@@ -52,6 +64,21 @@ export function SettingsScreen() {
 					{'Settings'}
 				</Heading>
 			</header>
+
+			<section>
+				<Heading level={2}>
+					{'Graphics'}
+				</Heading>
+
+				<form className={styles['settings-form']}>
+					<label>{'Film Grain'}</label>
+
+					<input
+						checked={enableFilmGrain}
+						onChange={handleEnableFilmGrainChange}
+						type={'checkbox'} />
+				</form>
+			</section>
 
 			<section>
 				<Heading level={2}>
