@@ -11,7 +11,7 @@ import {
 contextBridge.exposeInMainWorld('Innkeeper', {
 	// Invocations
 	/**
-	 * Gets a config value from electron-store.
+	 * Gets a config value from disk.
 	 *
 	 * @param {string} key The config key to be retrieved.
 	 * @returns {Promise<*>} The value of the config.
@@ -19,7 +19,7 @@ contextBridge.exposeInMainWorld('Innkeeper', {
 	getConfig: key => ipcRenderer.invoke('getConfig', key),
 
 	/**
-	 * Sets a config value via electron-store.
+	 * Persists a config value to disk.
 	 *
 	 * @param {string} key The config key to be set.
 	 * @param {*} value The new config value.

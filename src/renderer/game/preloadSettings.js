@@ -7,13 +7,22 @@ import { store } from '../store/store.js'
 
 
 /**
- * Preloads settings from electron-store into the Statery store.
+ * Preloads settings from disk into the Statery store.
  */
 export async function preloadSettings() {
-	const settings = await Innkeeper.getConfig('settings')
+	const [
+		enableFilmGrain,
+		mainVolume,
+		musicVolume,
+	] = await Promise.all([
+		Innkeeper.getConfig('settings::graphics::enableFilmGrain'),
+		Innkeeper.getConfig('settings::sound::mainVolume'),
+		Innkeeper.getConfig('settings::sound::musicVolume'),
+	])
 
 	store.set(() => ({
-		mainVolume: settings.sound.mainVolume,
-		musicVolume: settings.sound.musicVolume,
+		enableFilmGrain,
+		mainVolume,
+		musicVolume,
 	}))
 }

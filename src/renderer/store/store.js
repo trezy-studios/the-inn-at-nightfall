@@ -95,11 +95,17 @@ if (typeof window !== 'undefined') {
 }
 
 store.subscribe(updates => {
+	const patch = {}
+
 	if ('mainVolume' in updates) {
-		Innkeeper.setConfig('settings.sound.mainVolume', updates.mainVolume)
+		patch['settings::sound::mainVolume'] = updates.mainVolume
 	}
 
 	if ('musicVolume' in updates) {
-		Innkeeper.setConfig('settings.sound.musicVolume', updates.musicVolume)
+		patch['settings::sound::musicVolume'] = updates.musicVolume
+	}
+
+	if (Object.keys(patch).length) {
+		Innkeeper.setConfig(patch)
 	}
 })

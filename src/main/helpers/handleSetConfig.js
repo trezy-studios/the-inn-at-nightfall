@@ -6,7 +6,7 @@ import { configStore } from './configStore.js'
 
 
 /**
- * Updates user a config via electron-store.
+ * Updates user settings on disk.
  *
  * @param {*} _
  * @param {string} key The config key to be updated.

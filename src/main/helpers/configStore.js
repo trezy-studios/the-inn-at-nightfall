@@ -1,41 +1,15 @@
 // Module imports
-import ConfigStore from 'electron-store'
+import { DiskStore } from './DiskStore.js'
 
 
 
 
 
 // Variables
-export const configStore = new ConfigStore({
+export const configStore = new DiskStore({
 	defaults: {
-		settings: {
-			sound: {
-				mainVolume: 0.8,
-				musicVolume: 0.8,
-			},
-		},
+		'settings::graphics::enableFilmGrain': true,
+		'settings::sound::mainVolume': 0.8,
+		'settings::sound::musicVolume': 0.8,
 	},
-	schema: {
-		settings: {
-			type: 'object',
-			properties: {
-				sound: {
-					type: 'object',
-					properties: {
-						musicVolume: {
-							maximum: 1,
-							minimum: 0,
-							type: 'number',
-						},
-						mainVolume: {
-							maximum: 1,
-							minimum: 0,
-							type: 'number',
-						},
-					},
-				},
-			},
-		},
-	},
-	watch: true,
 })

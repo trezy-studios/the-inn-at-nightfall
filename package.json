@@ -25,7 +25,6 @@
     "@xstate/react": "^3.2.2",
     "classnames": "^2.3.2",
     "electron-squirrel-startup": "^1.0.0",
-    "electron-store": "^8.1.0",
     "framer-motion": "10.16.4",
     "howler": "^2.2.4",
     "js-yaml": "^4.1.0",

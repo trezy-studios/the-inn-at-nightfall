@@ -6,11 +6,11 @@ import { configStore } from './configStore.js'
 
 
 /**
- * Rerieves uiser settings from electron-store.
+ * Retrieves user settings from disk.
  *
  * @param {*} _
  * @param {string} key The key of the config to be retrieved.
- * @returns {object} All settings
+ * @returns {*} The value at the requested key in the config store.
  */
 export function handleGetConfig(_, key) {
 	return configStore.get(key)

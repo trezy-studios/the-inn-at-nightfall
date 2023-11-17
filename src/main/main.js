@@ -9,7 +9,6 @@ import {
 
 
 // Local imports
-import './helpers/configStore.js'
 import { handleActivate } from './helpers/handleActivate.js'
 import { handleAllWindowsClosed } from './helpers/handleAllWindowsClosed.js'
 import { handleGetConfig } from './helpers/handleGetConfig.js'
