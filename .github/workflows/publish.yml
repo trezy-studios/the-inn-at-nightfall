@@ -48,6 +48,9 @@ jobs:
         id: tag
         run: echo "last-tag=$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})" >> $GITHUB_OUTPUT
 
+      - name: Show last tag
+        run: echo "Last tag is ${{ steps.tag.outputs.last-tag }}"
+
     outputs:
       new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
       new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
