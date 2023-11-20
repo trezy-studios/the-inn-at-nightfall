@@ -44,6 +44,10 @@ jobs:
       - name: Show version
         run: echo "Next version is ${{ steps.get-next-version.outputs.new-release-version }} (${{ github.ref_name }})"
 
+      - name: Get last git tag
+        id: tag
+        run: echo "last-tag=$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})" >> $GITHUB_OUTPUT
+
     outputs:
       new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
       new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
