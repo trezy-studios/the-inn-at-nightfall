@@ -5,7 +5,6 @@ const { MakerDeb } = require('@electron-forge/maker-deb')
 const { MakerDMG } = require('@electron-forge/maker-dmg')
 const { MakerRpm } = require('@electron-forge/maker-rpm')
 const { MakerSquirrel } = require('@electron-forge/maker-squirrel')
-const { MakerZIP } = require('@electron-forge/maker-zip')
 const { PublisherGithub } = require('@electron-forge/publisher-github')
 const { VitePlugin } = require('@electron-forge/plugin-vite')
 
@@ -20,27 +19,20 @@ const packageData = require('./package.json')
 
 
 
-let makers
+const makers = []
 
 switch (process.platform) {
 	case 'darwin':
-		makers = [
-			new MakerDMG({}),
-			new MakerZIP({}, ['darwin']),
-		]
+		makers.push(new MakerDMG({}))
 		break
 
 	case 'linux':
-		makers = [
-			new MakerDeb({}),
-			new MakerRpm({}),
-		]
+		makers.push(new MakerDeb({}))
+		makers.push(new MakerRpm({}))
 		break
 
 	case 'win32':
-		makers = [
-			new MakerSquirrel({}),
-		]
+		makers.push(new MakerSquirrel({}))
 		break
 
 	default:
