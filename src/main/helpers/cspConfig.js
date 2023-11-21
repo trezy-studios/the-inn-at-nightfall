@@ -5,8 +5,8 @@ export const cspConfig = {
 	],
 
 	'connect-src': [
+		'data:',
 		{ development: ['\'self\''] },
-		{ development: ['data:'] },
 	],
 	'font-src': [
 		'file:',
