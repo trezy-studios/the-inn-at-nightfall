@@ -6,7 +6,6 @@ import {
 import {
 	Container,
 	Sprite,
-	useApp,
 } from '@pixi/react'
 import PropTypes from 'prop-types'
 import { useMemo } from 'react'
@@ -39,8 +38,6 @@ export function Character(props) {
 		timeRemaining,
 		viewport,
 	} = useStore(store)
-
-	const pixiApp = useApp()
 
 	const { characterID } = props
 	const character = characters[characterID]
@@ -90,8 +87,7 @@ export function Character(props) {
 		characterQueueIndex,
 		indexDistance,
 		queueIndex,
-		viewport.height,
-		viewport.width,
+		viewport,
 	])
 
 	const spriteProps = useMemo(() => {
@@ -102,7 +98,7 @@ export function Character(props) {
 		const filters = [colorMatrixFilter]
 
 		const texture = Assets.get(character.sprite)
-		const height = pixiApp.screen.height * 0.8
+		const height = viewport.height * 0.8
 
 		const scale = height / texture?.orig.height
 		const width = texture?.orig.width * scale
@@ -117,8 +113,8 @@ export function Character(props) {
 	}, [
 		character.sprite,
 		indexDistance,
-		pixiApp,
 		timeLeft,
+		viewport,
 	])
 
 	return (

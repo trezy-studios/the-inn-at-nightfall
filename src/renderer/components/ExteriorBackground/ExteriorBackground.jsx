@@ -2,10 +2,10 @@
 import {
 	Container,
 	Sprite,
-	useApp,
 } from '@pixi/react'
 import { Assets } from 'pixi.js'
 import { useMemo } from 'react'
+import { useStore } from 'statery'
 
 
 
@@ -13,6 +13,7 @@ import { useMemo } from 'react'
 
 // Local imports
 import { ANCHORS } from '../../data/ANCHORS.js'
+import { store } from '../../store/store.js'
 
 
 
@@ -24,18 +25,18 @@ import { ANCHORS } from '../../data/ANCHORS.js'
  * @component
  */
 export function ExteriorBackground() {
-	const pixiApp = useApp()
+	const { viewport } = useStore(store)
 
 	const spriteProps = useMemo(() => {
 		const texture = Assets.get('backgrounds-exterior')
 
-		let scale = pixiApp.screen.height / texture.orig.height
+		let scale = viewport.height / texture.orig.height
 
 		let height = texture.orig.height * scale
 		let width = texture.orig.width * scale
 
-		if (pixiApp.screen.width > width) {
-			scale = pixiApp.screen.width / width
+		if (viewport.width > width) {
+			scale = viewport.width / width
 
 			height = height * scale
 			width = width * scale
@@ -48,10 +49,10 @@ export function ExteriorBackground() {
 			height,
 			texture,
 			width,
-			x: pixiApp.screen.width / 2,
-			y: pixiApp.screen.height,
+			x: viewport.width / 2,
+			y: viewport.height,
 		}
-	}, [pixiApp])
+	}, [viewport])
 
 	return (
 		<Container>

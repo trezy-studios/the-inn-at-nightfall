@@ -2,13 +2,13 @@
 import {
 	Container,
 	Sprite,
-	useApp,
 } from '@pixi/react'
 import {
 	useCallback,
 	useMemo,
 } from 'react'
 import { Assets } from 'pixi.js'
+import { useStore } from 'statery'
 
 
 
@@ -16,6 +16,7 @@ import { Assets } from 'pixi.js'
 
 // Local imports
 import { ANCHORS } from '../../data/ANCHORS.js'
+import { store } from '../../store/store.js'
 
 
 
@@ -27,20 +28,20 @@ import { ANCHORS } from '../../data/ANCHORS.js'
  * @component
  */
 export function InteriorMidground() {
-	const pixiApp = useApp()
+	const { viewport } = useStore(store)
 
 	const doorOpenAsset = useMemo(() => Assets.get('interior-door-open'), [])
 	const shelfAsset = useMemo(() => Assets.get('interior-shelf'), [])
 	const wallAsset = useMemo(() => Assets.get('interior-wall'), [])
 
 	const getSpriteProps = useCallback(texture => {
-		let scale = (pixiApp.screen.height * 1.2) / texture.orig.height
+		let scale = (viewport.height * 1.2) / texture.orig.height
 
 		let height = texture.orig.height * scale
 		let width = texture.orig.width * scale
 
-		if (pixiApp.screen.width > width) {
-			scale = pixiApp.screen.width / width
+		if (viewport.width > width) {
+			scale = viewport.width / width
 
 			height = height * scale
 			width = width * scale
@@ -51,10 +52,10 @@ export function InteriorMidground() {
 			height,
 			texture,
 			width,
-			x: pixiApp.screen.width / 2,
-			y: pixiApp.screen.height,
+			x: viewport.width / 2,
+			y: viewport.height,
 		}
-	}, [pixiApp])
+	}, [viewport])
 
 	return (
 		<Container>

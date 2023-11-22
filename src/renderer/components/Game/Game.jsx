@@ -22,6 +22,25 @@ import { useGameLoop } from '../../hooks/useGameLoop.js'
 
 
 /**
+ * Updates the viewport size in state.
+ *
+ * @param {number} screenWidth The new screen width.
+ * @param {number} screenHeight The new screen height.
+ */
+function handleResize(screenWidth, screenHeight) {
+	store.set(() => ({
+		viewport: {
+			height: screenHeight,
+			width: screenWidth,
+		},
+	}))
+}
+
+
+
+
+
+/**
  * Renders the game.
  *
  * @component
@@ -49,12 +68,13 @@ export function Game(props) {
 	useEffect(() => {
 		pixiApp.resizeTo = resizeToRef.current
 
-		store.set(() => ({
-			viewport: {
-				height: pixiApp.screen.height,
-				width: pixiApp.screen.width,
-			},
-		}))
+		handleResize(pixiApp.screen.height, pixiApp.screen.width)
+
+		pixiApp.renderer.on('resize', handleResize)
+
+		return () => {
+			pixiApp.renderer?.removeListener('resize', handleResize)
+		}
 	}, [
 		pixiApp,
 		resizeToRef,
