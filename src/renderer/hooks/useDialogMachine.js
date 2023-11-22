@@ -21,11 +21,28 @@ import { useCharacter } from './useCharacter.js'
 
 
 /**
+ * @typedef {object} useDialogMachineProps
+ * @property {object} dialogMeta Metadata for the parent state machine.
+ * @property {boolean} isDone Whether the state machine has reached a final state.
+ * @property {object} meta Metadata for the current node.
+ * @property {Array} options A list of options if we've reached a parallel state.
+ * @property {Function} sendEvent Send an arbitrary event to the machine.
+ * @property {Function} sendNext Send the next event to the machine.
+ * @property {import('xstate').StateConfig} state The machine's current state.
+ */
+
+/**
  * Retrieves the dialog machine for the current character.
  *
- * @component
+ * @param {object} [options] All options.
+ * @param {boolean} [options.autoadvance] Whether to automatically advance when the new state has only a `next` event.
+ * @returns {useDialogMachineProps} All props.
  */
-export function useDialogMachine() {
+export function useDialogMachine(options = {}) {
+	const {
+		autoadvance = true,
+	} = options
+
 	const currentCharacter = useCharacter()
 
 	const [state, sendEvent] = useMachine(currentCharacter.dialogMachine)
@@ -51,7 +68,7 @@ export function useDialogMachine() {
 	const {
 		lineMeta,
 		nodeMeta,
-		options,
+		options: resultOptions,
 	} = useMemo(() => {
 		const [
 			nodeID,
@@ -111,11 +128,26 @@ export function useDialogMachine() {
 		state,
 	])
 
+	useEffect(() => {
+		if (
+			!state.done
+			&& autoadvance
+			&& (state.nextEvents.length === 1)
+			&& (state.nextEvents[0] === 'next')
+		) {
+			sendNext()
+		}
+	}, [
+		autoadvance,
+		sendNext,
+		state,
+	])
+
 	return {
 		dialogMeta,
 		isDone,
 		meta: nodeMeta,
-		options,
+		options: resultOptions,
 		sendEvent,
 		sendNext,
 		state,
