@@ -6,7 +6,9 @@
 	padding: 10rem;
 
 	.back-button {
-		background-color: transparent;
+		--background-opacity: 0;
+
+		background-color: rgba(var(--palette-pure-white-rgb), var(--background-opacity));
 		cursor: pointer;
 		left: 6rem;
 		padding: 1rem 2rem;
@@ -22,13 +24,37 @@
 		}
 
 		&:hover {
-			background-color: rgba(white, 0.1);
+			--background-opacity: 0.1;
 		}
 	}
 }
 
 .settings-form {
-	display: grid;
-	gap: 5rem;
-	grid-template-columns: 1fr 1fr;
+	display: flex;
+	flex-direction: column;
+	max-width: 80rem;
+	width: 100%;
+
+	&:not(:last-of-type) {
+		margin-bottom: 5rem;
+	}
+
+	.form-field {
+		--background-opacity: 0;
+
+		background-color: rgba(var(--palette-pure-white-rgb), var(--background-opacity));
+		cursor: pointer;
+		display: flex;
+		justify-content: space-between;
+		margin-top: 2rem;
+		padding: 1rem;
+
+		&:hover {
+			--background-opacity: 0.1;
+		}
+
+		input {
+			cursor: inherit;
+		}
+	}
 }

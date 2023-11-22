@@ -1,9 +1,11 @@
 .base-input {
 	input {
+		--background-opacity: 0.5;
+
 		appearance: none;
 		background-color: transparent;
 		border: none;
-		border-bottom-color: rgba(white, 0.5);
+		border-bottom-color: rgba(var(--palette-pure-white-rgb), var(--background-opacity));
 		border-bottom-width: 0.1rem;
 		border-bottom-style: solid;
 		color: inherit;
@@ -25,7 +27,7 @@
 
 		&:focus,
 		&:hover {
-			border-bottom-color: rgba(white, 1);
+			--background-opacity: 1;
 		}
 	}
 }

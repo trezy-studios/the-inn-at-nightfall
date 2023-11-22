@@ -1,5 +1,5 @@
 .button {
-	border-color: white;
+	border-color: var(--text-color);
 	border-width: 0;
 	border-style: solid;
 	cursor: pointer;
@@ -8,7 +8,7 @@
 	position: relative;
 
 	&:before {
-		background-color: white;
+		background-color: var(--text-color);
 		bottom: 0;
 		content: '';
 		display: block;

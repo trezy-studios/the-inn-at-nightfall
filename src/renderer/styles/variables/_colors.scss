@@ -4,7 +4,8 @@
 	/* Palette */
 
 	// Blacks
-	@include generateColourCustomPropertiesFromColour('palette-pure-black', #000);
+	@include generateColourCustomPropertiesFromColour('palette-pure-black', #000000);
+	@include generateColourCustomPropertiesFromColour('palette-pure-white', #ffffff);
 
 	// Greys
 	@include generateColourCustomPropertiesFromColour('palette-dark-grey', #181818);
@@ -15,6 +16,6 @@
 	@include generateColourCustomPropertiesFromColour('palette-red', red);
 
 	/* Normalised */
-	--background-color: var(--palette-black);
-	--text-color: var(--palette-white);
+	--background-color: var(--palette-pure-black);
+	--text-color: var(--palette-pure-white);
 }

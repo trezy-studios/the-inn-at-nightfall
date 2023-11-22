@@ -75,13 +75,15 @@ export function SettingsScreen() {
 				</Heading>
 			</header>
 
-			<section>
+			<form className={styles['settings-form']}>
 				<Heading level={2}>
 					{'Gameplay'}
 				</Heading>
 
-				<form className={styles['settings-form']}>
-					<label>{'Dialog Delay'}</label>
+				<label className={styles['form-field']}>
+					<span>
+						{'Dialog Delay'}
+					</span>
 
 					<input
 						max={1}
@@ -90,31 +92,35 @@ export function SettingsScreen() {
 						step={0.1}
 						type={'range'}
 						value={dialogDelay} />
-				</form>
-			</section>
+				</label>
+			</form>
 
-			<section>
+			<form className={styles['settings-form']}>
 				<Heading level={2}>
 					{'Graphics'}
 				</Heading>
 
-				<form className={styles['settings-form']}>
-					<label>{'Film Grain'}</label>
+				<label className={styles['form-field']}>
+					<span>
+						{'Film Grain Enabled'}
+					</span>
 
 					<input
 						checked={enableFilmGrain}
 						onChange={handleEnableFilmGrainChange}
 						type={'checkbox'} />
-				</form>
-			</section>
+				</label>
+			</form>
 
-			<section>
+			<form className={styles['settings-form']}>
 				<Heading level={2}>
 					{'Audio'}
 				</Heading>
 
-				<form className={styles['settings-form']}>
-					<label>{'Main Volume'}</label>
+				<label className={styles['form-field']}>
+					<span>
+						{'Main Volume'}
+					</span>
 
 					<input
 						max={1}
@@ -123,8 +129,8 @@ export function SettingsScreen() {
 						step={0.01}
 						type={'range'}
 						value={mainVolume} />
-				</form>
-			</section>
+				</label>
+			</form>
 
 			<Button
 				className={styles['back-button']}

@@ -5,6 +5,9 @@
 	overflow-y: hidden;
 
 	.back-button {
+		--background-opacity: 0;
+
+		background-color: rgba(var(--palette-pure-white), var(--background-opacity));
 		background-color: transparent;
 		cursor: pointer;
 		left: 6rem;
@@ -21,7 +24,7 @@
 		}
 
 		&:hover {
-			background-color: rgba(white, 0.1);
+			--background-opacity: 0.1;
 		}
 	}
 }
