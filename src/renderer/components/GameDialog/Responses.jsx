@@ -34,32 +34,17 @@ export function Responses() {
 
 	const { dialogDelay } = useStore(store)
 
-	const {
-		isDone,
-		options,
-		sendNext,
-	} = useDialogMachine({
+	const { options } = useDialogMachine({
 		autoadvanceDelay: dialogDelay * 1000,
 	})
 
 	const handleAllowClick = useCallback(() => allowCurrentCharacter(), [])
-	const handleContinueClick = useCallback(() => sendNext(), [sendNext])
 	const handleDenyClick = useCallback(() => goToNextCharacter(), [])
 
 	const renderedResponses = useMemo(() => {
 		const responses = []
 
-		if (!options) {
-			if (!isDone) {
-				responses.push((
-					<Response
-						key={'continue'}
-						onClick={handleContinueClick}>
-						{'Continue'}
-					</Response>
-				))
-			}
-		} else {
+		if (options) {
 			options.forEach(option => {
 				responses.push((
 					<Response
@@ -93,9 +78,7 @@ export function Responses() {
 	}, [
 		currentCharacter,
 		handleAllowClick,
-		handleContinueClick,
 		handleDenyClick,
-		isDone,
 		options,
 	])
 
