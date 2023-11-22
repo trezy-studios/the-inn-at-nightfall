@@ -4,6 +4,7 @@ import {
 	useMemo,
 } from 'react'
 import { AnimatePresence } from 'framer-motion'
+import { useStore } from 'statery'
 
 
 
@@ -15,6 +16,7 @@ import styles from './GameDialog.module.scss'
 import { allowCurrentCharacter } from '../../store/reducers/allowCurrentCharacter.js'
 import { goToNextCharacter } from '../../store/reducers/goToNextCharacter.js'
 import { Response } from './Response.jsx'
+import { store } from '../../store/store.js'
 import { useCharacter } from '../../hooks/useCharacter.js'
 import { useDialogMachine } from '../../hooks/useDialogMachine.js'
 
@@ -30,11 +32,15 @@ import { useDialogMachine } from '../../hooks/useDialogMachine.js'
 export function Responses() {
 	const currentCharacter = useCharacter()
 
+	const { dialogDelay } = useStore(store)
+
 	const {
 		isDone,
 		options,
 		sendNext,
-	} = useDialogMachine()
+	} = useDialogMachine({
+		autoadvanceDelay: dialogDelay * 1000,
+	})
 
 	const handleAllowClick = useCallback(() => allowCurrentCharacter(), [])
 	const handleContinueClick = useCallback(() => sendNext(), [sendNext])

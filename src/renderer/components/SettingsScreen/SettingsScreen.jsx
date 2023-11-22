@@ -25,6 +25,15 @@ import { Vignette } from '../Vignette/Vignette.jsx'
  *
  * @param {import('react').ChangeEvent<HTMLInputElement>} event The change event.
  */
+function handleDialogDelayChange(event) {
+	store.set(() => ({ dialogDelay: Number(event.target.value) }))
+}
+
+/**
+ * Toggles the film grain.
+ *
+ * @param {import('react').ChangeEvent<HTMLInputElement>} event The change event.
+ */
 function handleEnableFilmGrainChange(event) {
 	store.set(() => ({ enableFilmGrain: event.target.checked }))
 }
@@ -49,6 +58,7 @@ function handleMainVolumeChange(event) {
  */
 export function SettingsScreen() {
 	const {
+		dialogDelay,
 		enableFilmGrain,
 		mainVolume,
 	} = useStore(store)
@@ -64,6 +74,24 @@ export function SettingsScreen() {
 					{'Settings'}
 				</Heading>
 			</header>
+
+			<section>
+				<Heading level={2}>
+					{'Gameplay'}
+				</Heading>
+
+				<form className={styles['settings-form']}>
+					<label>{'Dialog Delay'}</label>
+
+					<input
+						max={1}
+						min={0}
+						onChange={handleDialogDelayChange}
+						step={0.1}
+						type={'range'}
+						value={dialogDelay} />
+				</form>
+			</section>
 
 			<section>
 				<Heading level={2}>

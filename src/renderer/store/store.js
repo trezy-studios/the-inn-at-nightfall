@@ -51,6 +51,8 @@ export const store = makeStore({
 
 	deltaMS: 0,
 
+	dialogDelay: 0,
+
 	enableFilmGrain: true,
 
 	failed: false,
@@ -99,8 +101,8 @@ if (typeof window !== 'undefined') {
 store.subscribe(updates => {
 	const patch = {}
 
-	if ('enableFilmGrain' in updates) {
-		patch['settings::graphics::enableFilmGrain'] = updates.enableFilmGrain
+	if ('dialogDelay' in updates) {
+		patch['settings::gameplay::dialogDelay'] = updates.dialogDelay
 	}
 
 	if ('mainVolume' in updates) {
