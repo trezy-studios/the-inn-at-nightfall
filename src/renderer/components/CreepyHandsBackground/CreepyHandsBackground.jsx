@@ -2,7 +2,6 @@
 import {
 	Container,
 	Sprite,
-	useApp,
 } from '@pixi/react'
 import { Assets } from 'pixi.js'
 import { useMemo } from 'react'
@@ -29,14 +28,13 @@ export function CreepyHandsBackground() {
 	const {
 		timeAvailable,
 		timeRemaining,
+		viewport,
 	} = useStore(store)
-
-	const pixiApp = useApp()
 
 	const spriteProps = useMemo(() => {
 		const texture = Assets.get('backgrounds-creepy-hands')
 
-		const width = pixiApp.screen.width * 0.8
+		const width = viewport.width * 0.8
 
 		const scale = width / texture.orig.width
 		const height = texture.orig.height * scale
@@ -46,13 +44,13 @@ export function CreepyHandsBackground() {
 			height,
 			texture,
 			width,
-			x: pixiApp.screen.width / 2,
-			y: pixiApp.screen.height + (pixiApp.screen.height * (timeRemaining / timeAvailable)),
+			x: viewport.width / 2,
+			y: viewport.height + (viewport.height * (timeRemaining / timeAvailable)),
 		}
 	}, [
-		pixiApp,
 		timeAvailable,
 		timeRemaining,
+		viewport,
 	])
 
 	return (
