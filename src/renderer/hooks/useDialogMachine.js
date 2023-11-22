@@ -36,11 +36,13 @@ import { useCharacter } from './useCharacter.js'
  *
  * @param {object} [options] All options.
  * @param {boolean} [options.autoadvance] Whether to automatically advance when the new state has only a `next` event.
+ * @param {number} [options.autoadvanceDelay] The time to wait (in milliseconds) before automatically advancing to the next line.
  * @returns {useDialogMachineProps} All props.
  */
 export function useDialogMachine(options = {}) {
 	const {
 		autoadvance = true,
+		autoadvanceDelay = 250,
 	} = options
 
 	const currentCharacter = useCharacter()
@@ -129,16 +131,18 @@ export function useDialogMachine(options = {}) {
 	])
 
 	useEffect(() => {
-		if (
-			!state.done
-			&& autoadvance
-			&& (state.nextEvents.length === 1)
-			&& (state.nextEvents[0] === 'next')
-		) {
-			sendNext()
+		if (autoadvance && !state.done) {
+			const timeoutID = setTimeout(() => {
+				if ((state.nextEvents[0] === 'next') && (state.nextEvents.length === 1)) {
+					sendNext()
+				}
+			}, autoadvanceDelay)
+
+			return () => clearTimeout(timeoutID)
 		}
 	}, [
 		autoadvance,
+		autoadvanceDelay,
 		sendNext,
 		state,
 	])
