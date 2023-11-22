@@ -1,0 +1,16 @@
+.title-social-links {
+	align-items: flex-end;
+	display: flex;
+	grid-area: social;
+
+	a {
+		padding: 1rem;
+		transform: scale(1);
+		transition-duration: 0.1s;
+		transition-property: transform;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+}

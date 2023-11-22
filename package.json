@@ -20,6 +20,11 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.2.0",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@pixi/react": "^7.1.1",
     "@pixi/unsafe-eval": "^7.3.2",
     "@xstate/react": "^3.2.2",
