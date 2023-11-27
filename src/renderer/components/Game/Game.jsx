@@ -67,10 +67,9 @@ export function Game(props) {
 
 	useEffect(() => {
 		pixiApp.resizeTo = resizeToRef.current
-
-		handleResize(pixiApp.screen.height, pixiApp.screen.width)
-
 		pixiApp.renderer.on('resize', handleResize)
+
+		setTimeout(() => handleResize(pixiApp.screen.height, pixiApp.screen.width), 100)
 
 		return () => {
 			pixiApp.renderer?.removeListener('resize', handleResize)
