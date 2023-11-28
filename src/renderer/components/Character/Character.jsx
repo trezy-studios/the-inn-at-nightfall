@@ -7,8 +7,13 @@ import {
 	Container,
 	Sprite,
 } from '@pixi/react'
+import {
+	useCallback,
+	useEffect,
+	useMemo,
+	useState,
+} from 'react'
 import PropTypes from 'prop-types'
-import { useMemo } from 'react'
 import { useStore } from 'statery'
 
 
@@ -19,6 +24,8 @@ import { useStore } from 'statery'
 import { store } from '../../store/store.js'
 
 import { ANCHORS } from '../../data/ANCHORS.js'
+import { EVENTS as CharacterEvents } from '../../game/structures/Character.js'
+import { useCharacter } from '../../hooks/useCharacter.js'
 
 
 
@@ -30,17 +37,18 @@ import { ANCHORS } from '../../data/ANCHORS.js'
  * @component
  */
 export function Character(props) {
+	const { characterID } = props
+
 	const {
 		characterQueue,
 		characterQueueIndex,
-		characters,
 		timeAvailable,
 		timeRemaining,
 		viewport,
 	} = useStore(store)
+	const character = useCharacter(characterID)
 
-	const { characterID } = props
-	const character = characters[characterID]
+	const [spriteName, setSpriteName] = useState(character.sprite)
 
 	const timeLeft = useMemo(() => timeRemaining / timeAvailable, [
 		timeAvailable,
@@ -97,7 +105,7 @@ export function Character(props) {
 
 		const filters = [colorMatrixFilter]
 
-		const texture = Assets.get(character.sprite)
+		const texture = Assets.get(spriteName)
 		const height = viewport.height * 0.8
 
 		const scale = height / texture?.orig.height
@@ -111,10 +119,24 @@ export function Character(props) {
 			width,
 		}
 	}, [
-		character.sprite,
 		indexDistance,
+		spriteName,
 		timeLeft,
 		viewport,
+	])
+
+	const handleStateChanged = useCallback(() => setSpriteName(character.sprite), [
+		character,
+		setSpriteName,
+	])
+
+	useEffect(() => {
+		const unsubscribe = character.on(CharacterEvents.STATE_CHANGED, handleStateChanged)
+
+		return () => unsubscribe()
+	}, [
+		character,
+		handleStateChanged,
 	])
 
 	return (

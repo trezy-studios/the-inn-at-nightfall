@@ -1,19 +1,16 @@
-// Module imports
-import { v4 as uuid } from 'uuid'
-
-
-
-
-
 // Local imports
 import { CHARACTER_STATES } from '../../data/CHARACTER_STATES.js'
-import { ENTRY_STATE } from '../../data/ENTRY_STATE.js'
+import { EventEmitter } from './EventEmitter.js'
 
 
 
 
 
 // Types
+/** @event Character#stateChanged */
+
+/** @typedef {string} Event */
+
 /**
  * @typedef {object} CharacterConfig
  * @property {string} [background] The character background.
@@ -27,10 +24,20 @@ import { ENTRY_STATE } from '../../data/ENTRY_STATE.js'
 
 
 
+// Constants
+/** @enum {Event} */
+export const EVENTS = {
+	STATE_CHANGED: 'STATE_CHANGED',
+}
+
+
+
+
+
 /**
  * Represents a character in the game.
  */
-export class Character {
+export class Character extends EventEmitter {
 	/****************************************************************************\
 	 * Private instance properties
 	\****************************************************************************/
@@ -39,7 +46,7 @@ export class Character {
 
 	#entryState = null
 
-	#id = uuid()
+	#id
 
 	#isMerchant = false
 
@@ -65,12 +72,32 @@ export class Character {
 	 * @param {CharacterConfig} config All configuration.
 	 */
 	constructor(config) {
+		super()
+
+		this.#id = config.sprite
 		this.#isMerchant = config.isMerchant
 		this.#name = config.name
 		this.#sprite = config.sprite
 		this.#dialogMachine = config.machine
+	}
 
-		this.reset()
+
+
+
+
+	/****************************************************************************\
+	 * Private instance methods
+	\****************************************************************************/
+
+	/**
+	 * Bites this character, affecting them with vampirism.
+	 *
+	 * @param {import('../../data/CHARACTER_STATES.js').CharacterState} state The new state.
+	 * @fires Character#STATE_CHANGED
+	 */
+	#setState(state) {
+		this.#state = state
+		this.emit(EVENTS.STATE_CHANGED)
 	}
 
 
@@ -82,33 +109,12 @@ export class Character {
 	\****************************************************************************/
 
 	/**
-	 * Allows the character to enter the inn.
+	 * Bites this character, affecting them with vampirism.
 	 */
-	allowEntry() {
-		this.#entryState = ENTRY_STATE.ALLOWED
-	}
-
-	/**
-	 * Prevents the character from entering the inn.
-	 */
-	denyEntry() {
-		this.#entryState = ENTRY_STATE.DENIED
-	}
-
-	/**
-	 * Resets the character. This allows them to become a vampire.
-	 */
-	reset() {
+	bite() {
 		if (!this.#isMerchant) {
-			this.#isVampire = Math.random() > 0.8
-
-			if (this.#isVampire) {
-				const stateKeys = Object.keys(CHARACTER_STATES)
-				const stateKeyIndex = Math.floor((stateKeys.length - 1) * Math.random())
-				const selectedStateKey = stateKeys[stateKeyIndex + 1]
-
-				this.#state = CHARACTER_STATES[selectedStateKey]
-			}
+			this.#isVampire = true
+			this.#setState(CHARACTER_STATES.BITTEN)
 		}
 	}
 

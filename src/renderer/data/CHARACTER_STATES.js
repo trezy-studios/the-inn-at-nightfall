@@ -1,3 +1,6 @@
+/** @typedef {string} CharacterState */
+
+/** @enum {CharacterState} */
 export const CHARACTER_STATES = {
 	BITTEN: 'bitten',
 	DIRTY: 'dirty',
