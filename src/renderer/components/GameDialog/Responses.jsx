@@ -39,7 +39,7 @@ export function Responses() {
 	})
 
 	const handleAllowClick = useCallback(() => allowCurrentCharacter(), [])
-	const handleDenyClick = useCallback(() => goToNextCharacter(), [])
+	const handleDenyClick = useCallback(() => goToNextCharacter(true), [])
 
 	const renderedResponses = useMemo(() => {
 		const responses = []
