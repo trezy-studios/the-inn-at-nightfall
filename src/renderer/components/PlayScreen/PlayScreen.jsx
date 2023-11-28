@@ -64,7 +64,6 @@ export function PlayScreen() {
 			{isRoundOver && (
 				<RoundScore />
 			)}
-
 		</Screen>
 	)
 }
