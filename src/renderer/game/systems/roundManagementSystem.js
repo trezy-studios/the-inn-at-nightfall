@@ -37,6 +37,16 @@ export function roundManagementSystem() {
 				})
 				.length
 
+			// Bite all characters that are still outside.
+			characterQueue
+				.slice(characterQueueIndex + 1)
+				.forEach(characterID => {
+					if (!allowedCharacters.includes(characterID)) {
+						const character = characters[characterID]
+						character.bite()
+					}
+				})
+
 			if (humansAllowedCount === allowedCharacters.length) {
 				newWallet += humansAllowedCount * 10
 			} else {
