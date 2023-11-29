@@ -69,7 +69,7 @@ export function Game(props) {
 		pixiApp.resizeTo = resizeToRef.current
 		pixiApp.renderer.on('resize', handleResize)
 
-		setTimeout(() => handleResize(pixiApp.screen.height, pixiApp.screen.width), 100)
+		handleResize(pixiApp.screen.width, pixiApp.screen.height)
 
 		return () => {
 			pixiApp.renderer?.removeListener('resize', handleResize)
