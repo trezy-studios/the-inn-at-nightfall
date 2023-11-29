@@ -9,11 +9,14 @@
 		grid-template-areas: 'stage dialog debugger';
 		grid-template-columns: 1fr 40rem auto;
 	}
-
 }
 
 .stage-wrapper {
+	bottom: 0;
 	display: flex;
 	grid-area: stage;
-	position: relative;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: calc(100vw - 40rem);
 }
