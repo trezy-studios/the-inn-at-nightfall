@@ -18,6 +18,7 @@ import { Button } from '../Button/Button.jsx'
 import { CREDITS } from '../../data/CREDITS.js'
 import { goToTitle } from '../../store/reducers/goToTitle.js'
 import { Link } from '../Link/Link.jsx'
+import { Paragraph } from '../Paragraph/Paragraph.jsx'
 import { Screen } from '../Screen/Screen.jsx'
 import { Vignette } from '../Vignette/Vignette.jsx'
 
@@ -146,7 +147,7 @@ export function CreditsScreen() {
 
 						{Boolean(section.quotes) && section.quotes.map((quote, index) => (
 							<blockquote key={index}>
-								<p>{quote.content}</p>
+								<Paragraph>{quote.content}</Paragraph>
 								<cite>{quote.author.name}</cite>
 							</blockquote>
 						))}

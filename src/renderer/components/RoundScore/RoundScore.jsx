@@ -10,6 +10,7 @@ import styles from './RoundScore.module.scss'
 
 import { Heading } from '../Heading/Heading.jsx'
 import { MenuButton } from '../MenuButton/MenuButton.jsx'
+import { Paragraph } from '../Paragraph/Paragraph.jsx'
 import { quitGame } from '../../store/reducers/quitGame.js'
 import { startRound } from '../../store/reducers/startRound.js'
 import { store } from '../../store/store.js'
@@ -29,7 +30,6 @@ export function RoundScore() {
 		allowedCharacters,
 		characters,
 		failed,
-		totalGuestsAllowed,
 		wallet,
 	} = useStore(store)
 
@@ -42,131 +42,47 @@ export function RoundScore() {
 		characters,
 	])
 
-	const vampiresAllowedCount = useMemo(() => {
-		return allowedCharacters
-			.filter(characterID => characters[characterID].isVampire)
-			.length
-	}, [
-		allowedCharacters,
-		characters,
-	])
-
 	return (
 		<div className={styles['round-score-backdrop']}>
 			<div className={styles['round-score-wrapper']}>
-				{failed && (
-					<div className={styles['failure-message']}>
-						<Heading level={1}>
-							{'Game Over'}
+				{!failed && (
+					<div className={styles['round-score']}>
+						<Heading level={2}>
+							{'Ho-hum! The night has come and our day is done!'}
 						</Heading>
 
-						<p>{'Darkness sweeps over the inn as an unnatural silence descends.'}</p>
-						<p>{'You realize, too late, that you\'ve allowed a creature of the night to cross the threshold.'}</p>
-						<p>{'The safety of the inn and its guests is compromised.'}</p>
+						<Paragraph>{'Rest easy, for all is well this evening.'}</Paragraph>
+						<Paragraph><strong>{humansAllowedCount}</strong>{' guests are relaxing by the fire, enjoying their drink and the company.'}</Paragraph>
+						<Paragraph>{'You have earned '}<strong>{`£${wallet}`}</strong>{' for the day\'s work.'}</Paragraph>
+
+						<div className={styles['options']}>
+							<MenuButton onClick={quitGame}>
+								{'Menu'}
+							</MenuButton>
+
+							<MenuButton onClick={startRound}>
+								{'Continue'}
+							</MenuButton>
+						</div>
 					</div>
 				)}
 
-				<div className={styles['round-score']}>
-					{failed && (
-						<>
-							<header>
-								<Heading level={2}>
-									{'Final Score'}
-								</Heading>
-							</header>
+				{failed && (
+					<div className={styles['round-score']}>
+						<Heading level={2}>
+							{'Nightfall brings the cold kiss of death'}
+						</Heading>
 
-							<table>
-								<tbody>
-									<tr>
-										<th>{'Total Guests:'}</th>
+						<Paragraph>
+							{'Dearly departed, you have invited the evil to enter your inn.'}<br/>
+							{'The sun no longer rises for you and your guests.'}
+						</Paragraph>
 
-										<td>
-											{totalGuestsAllowed}
-										</td>
-									</tr>
-
-									<tr>
-										<th>{'Vampires Allowed:'}</th>
-
-										<td>
-											{vampiresAllowedCount}
-										</td>
-									</tr>
-
-									<tr>
-										<th>{'Final Balance:'}</th>
-
-										<td>
-											{`$${wallet}`}
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</>
-					)}
-
-					{!failed && (
-						<>
-							<header>
-								<Heading level={2}>
-									{'Round Score'}
-								</Heading>
-							</header>
-
-							<table>
-								<tbody>
-									<tr>
-										<th>{'Total Guests:'}</th>
-
-										<td>
-											{totalGuestsAllowed}
-										</td>
-									</tr>
-
-									<tr>
-										<th>{'New Guests This Round:'}</th>
-
-										<td>
-											{humansAllowedCount}
-										</td>
-									</tr>
-
-									<tr>
-										<th>{'Vampires Allowed:'}</th>
-
-										<td>
-											{vampiresAllowedCount}
-										</td>
-									</tr>
-
-									<tr>
-										<th>{'New Balance:'}</th>
-
-										<td>
-											{`$${wallet}`}
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</>
-					)}
-				</div>
-
-				<ul className={styles['options']}>
-					{!failed && (
-						<li className={styles['option']}>
-							<MenuButton onClick={startRound}>
-								{'Next Round'}
-							</MenuButton>
-						</li>
-					)}
-
-					<li className={styles['option']}>
 						<MenuButton onClick={quitGame}>
 							{'Return to Main Menu'}
 						</MenuButton>
-					</li>
-				</ul>
+					</div>
+				)}
 			</div>
 		</div>
 	)

@@ -4,6 +4,5 @@ declare const classNames: {
   readonly "round-score-wrapper": "round-score-wrapper";
   readonly "round-score": "round-score";
   readonly options: "options";
-  readonly option: "option";
 };
 export = classNames;

@@ -16,38 +16,28 @@
 	display: flex;
 	inset: 0;
 	justify-content: center;
+	padding-right: var(--ui-dialog-width);
 	position: absolute;
 }
 
 .round-score-wrapper {
-	column-gap: 2rem;
-	display: grid;
-	grid-template-areas:
-		'message	options'
-		'score		options';
-	grid-template-columns: auto auto;
+	background-color: var(--palette-dark-grey);
+	font-size: var(--body-font-size);
+	padding: 5rem;
 }
 
 .round-score {
-	background-color: black;
-	grid-area: score;
-	max-width: 80ch;
-	padding: 2rem;
-
-	table {
-		border-collapse: separate;
-		border-spacing: 0.5rem;
-
-		th {
-			text-align: left;
-		}
-	}
+	align-items: center;
+	background-color: var(--palette-grey);
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+	padding: 4rem 6rem;
+	text-align: center;
 }
 
 .options {
-	grid-area: options;
-
-	.option + .option {
-		margin-top: 1rem;
-	}
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 }
