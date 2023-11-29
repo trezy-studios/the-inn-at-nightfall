@@ -1,7 +1,7 @@
 // Local imports
+import { ROUND_CONFIGS } from '../../data/ROUND_CONFIGS.js'
 import { ROUND_DEFAULTS } from '../../data/ROUND_DEFAULTS.js'
 import { SCREENS } from '../../data/SCREENS.js'
-import { shuffleArray } from '../../helpers/shuffleArray.js'
 import { store } from '../store.js'
 
 
@@ -13,19 +13,17 @@ import { store } from '../store.js'
  */
 export function startRound() {
 	store.set(state => {
-		const allCharacters = Object.values(state.characters)
+		const {
+			characters,
+			currentRound,
+		} = state
 
-		allCharacters.forEach(character => character.reset())
+		const characterQueue = []
+		const roundConfig = ROUND_CONFIGS[currentRound]
 
-		const nonMerchantCharacterIDs = allCharacters
-			.filter(character => !character.isMerchant)
-			.map(character => character.id)
-
-		const characterQueue = shuffleArray(nonMerchantCharacterIDs)
-
-		if (state.currentRound === 0) {
-			const merchant = allCharacters.find(character => character.isMerchant)
-			characterQueue.unshift(merchant.id)
+		if (roundConfig) {
+			roundConfig.add?.forEach(characterID => characterQueue.push(characterID))
+			roundConfig.bite?.forEach(characterID => characters[characterID].bite())
 		}
 
 		return {
