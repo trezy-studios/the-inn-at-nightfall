@@ -55,6 +55,7 @@ export function roundManagementSystem() {
 
 			return {
 				failed,
+				isPaused: false,
 				isRoundOver: true,
 				wallet: newWallet,
 			}

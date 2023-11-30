@@ -1,4 +1,4 @@
-.round-score-backdrop {
+.modal-backdrop {
 	align-items: center;
 	background-color: rgba(black, 0.8);
 	display: flex;
@@ -8,13 +8,13 @@
 	position: absolute;
 }
 
-.round-score-wrapper {
+.modal-wrapper {
 	background-color: var(--palette-dark-grey);
 	font-size: var(--body-font-size);
 	padding: 5rem;
 }
 
-.round-score {
+.modal {
 	align-items: center;
 	background-color: var(--palette-grey);
 	display: flex;
@@ -22,11 +22,4 @@
 	gap: 3rem;
 	padding: 4rem 6rem;
 	text-align: center;
-}
-
-.options {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	width: 100%;
 }

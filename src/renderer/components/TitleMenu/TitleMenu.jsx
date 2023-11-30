@@ -3,6 +3,7 @@ import styles from './TitleMenu.module.scss'
 
 import { goToCredits } from '../../store/reducers/goToCredits.js'
 import { goToSettings } from '../../store/reducers/goToSettings.js'
+import { Menu } from '../Menu/Menu.jsx'
 import { MenuButton } from '../MenuButton/MenuButton.jsx'
 import { startRound } from '../../store/reducers/startRound.js'
 
@@ -17,7 +18,7 @@ import { startRound } from '../../store/reducers/startRound.js'
  */
 export function TitleMenu() {
 	return (
-		<div className={styles['title-menu']}>
+		<Menu className={styles['title-menu']}>
 			<MenuButton onClick={startRound}>
 				{'Play'}
 			</MenuButton>
@@ -29,6 +30,6 @@ export function TitleMenu() {
 			<MenuButton onClick={goToCredits}>
 				{'Credits'}
 			</MenuButton>
-		</div>
+		</Menu>
 	)
 }

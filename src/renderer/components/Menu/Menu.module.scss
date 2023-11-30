@@ -1,0 +1,25 @@
+.menu {
+	.menu-item {
+		position: relative;
+		transition-duration: 0.2s;
+		transition-property: opacity;
+	}
+
+	&:hover .menu-item:not(.is-active) {
+		opacity: 0.4;
+	}
+}
+
+.target-indicator-wrapper {
+	position: relative;
+}
+
+.target-indicator {
+	background-color: red;
+	height: 10px;
+	position: absolute;
+	right: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 10px;
+}

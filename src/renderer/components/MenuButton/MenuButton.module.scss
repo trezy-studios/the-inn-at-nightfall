@@ -4,19 +4,21 @@
 	border-style: solid;
 	cursor: pointer;
 	display: flex;
-	padding: 1rem 2rem;
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+	padding-left: 0;
+	padding-right: 0;
 	position: relative;
+	transition-duration: 0.2s;
+	transition-property:
+		font-weight,
+		padding-left,
+		padding-right;
+	width: 100%;
 
-	&:before {
-		background-color: var(--text-color);
-		bottom: 0;
-		content: '';
-		display: block;
-		position: absolute;
-		top: 0;
-		transition-duration: 0.1s;
-		transition-property: width;
-		width: 0.2rem;
+	&:hover {
+		font-weight: bold;
+		padding-left: 1rem;
 	}
 
 	&.align-center {
@@ -26,24 +28,16 @@
 	&.align-left {
 		text-align: left;
 
-		&:before {
-			left: 0;
-		}
-
-		&:hover:before {
-			width: 0.5rem;
+		&:hover {
+			padding-left: 1rem;
 		}
 	}
 
 	&.align-right {
 		text-align: right;
 
-		&:before {
-			right: 0;
-		}
-
-		&:hover:before {
-			width: 0.5rem;
+		&:hover {
+			padding-right: 1rem;
 		}
 	}
 }

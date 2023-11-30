@@ -10,7 +10,10 @@ import { store } from '../../store/store.js'
  * Updates the clock.
  */
 export function clockSystem() {
-	const { isRoundOver } = store.state
+	const {
+		isPaused,
+		isRoundOver,
+	} = store.state
 
 	const isMerchantPresent = checkMerchantPresence(store.state)
 
@@ -19,6 +22,10 @@ export function clockSystem() {
 	}
 
 	if (isRoundOver) {
+		return
+	}
+
+	if (isPaused) {
 		return
 	}
 

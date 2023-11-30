@@ -63,6 +63,8 @@ export const store = makeStore({
 
 	isInitializing: false,
 
+	isPaused: false,
+
 	isRoundOver: false,
 
 	isSwappingCharacters: false,

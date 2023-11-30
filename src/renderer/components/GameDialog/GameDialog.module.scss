@@ -34,22 +34,5 @@
 }
 
 .responses {
-	display: grid;
-	gap: 1rem;
-	grid-template-rows: repeat(2, 1fr);
-	padding: 0 2rem 2rem;
-
-	button {
-		border-left: 2px var(--text-color) solid;
-		display: flex;
-		cursor: pointer;
-		padding: 1rem 2rem;
-		transition-duration: 0.1s;
-		transition-property: border-left-width;
-		width: 100%;
-
-		&:hover {
-			border-left-width: 0.5rem;
-		}
-	}
+	padding: 0 2rem 5rem;
 }

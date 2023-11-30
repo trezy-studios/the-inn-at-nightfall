@@ -3,7 +3,6 @@ import {
 	useCallback,
 	useMemo,
 } from 'react'
-import { AnimatePresence } from 'framer-motion'
 import { useStore } from 'statery'
 
 
@@ -15,7 +14,8 @@ import styles from './GameDialog.module.scss'
 
 import { allowCurrentCharacter } from '../../store/reducers/allowCurrentCharacter.js'
 import { goToNextCharacter } from '../../store/reducers/goToNextCharacter.js'
-import { Response } from './Response.jsx'
+import { Menu } from '../Menu/Menu.jsx'
+import { MenuButton } from '../MenuButton/MenuButton.jsx'
 import { store } from '../../store/store.js'
 import { useCharacter } from '../../hooks/useCharacter.js'
 import { useDialogMachine } from '../../hooks/useDialogMachine.js'
@@ -34,9 +34,7 @@ export function Responses() {
 
 	const { dialogDelay } = useStore(store)
 
-	const { options } = useDialogMachine({
-		autoadvanceDelay: dialogDelay * 1000,
-	})
+	const { options } = useDialogMachine({ autoadvanceDelay: dialogDelay * 1000 })
 
 	const handleAllowClick = useCallback(() => allowCurrentCharacter(), [])
 	const handleDenyClick = useCallback(() => goToNextCharacter(true), [])
@@ -47,30 +45,30 @@ export function Responses() {
 		if (options) {
 			options.forEach(option => {
 				responses.push((
-					<Response
+					<MenuButton
 						key={option.id}
 						onClick={option.handleSelect}>
 						{option.body}
-					</Response>
+					</MenuButton>
 				))
 			})
 		}
 
 		if (!currentCharacter.isMerchant) {
 			responses.push((
-				<Response
+				<MenuButton
 					key={'allow'}
 					onClick={handleAllowClick}>
 					{'Allow'}
-				</Response>
+				</MenuButton>
 			))
 
 			responses.push((
-				<Response
+				<MenuButton
 					key={'deny'}
 					onClick={handleDenyClick}>
 					{'Deny'}
-				</Response>
+				</MenuButton>
 			))
 		}
 
@@ -83,10 +81,8 @@ export function Responses() {
 	])
 
 	return (
-		<ol className={styles['responses']}>
-			<AnimatePresence>
-				{renderedResponses}
-			</AnimatePresence>
-		</ol>
+		<Menu className={styles['responses']}>
+			{renderedResponses}
+		</Menu>
 	)
 }

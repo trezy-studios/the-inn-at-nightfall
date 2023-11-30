@@ -31,6 +31,7 @@ export function startRound() {
 			characterQueue,
 			characterQueueIndex: 0,
 			currentRound: state.currentRound + 1,
+			isPaused: false,
 			isRoundOver: false,
 			screen: SCREENS.PLAY,
 			timeAvailable: ROUND_DEFAULTS.LENGTH_MS,
