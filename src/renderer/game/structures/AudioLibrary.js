@@ -19,33 +19,17 @@ import { store } from '../../store/store.js'
 // Constants
 const music = [
 	{
-		alias: 'day',
-		intro: [0, 18000],
-		outro: [48000, 64052],
-		url: 'music/day.mp3',
-	},
-	{
-		alias: 'dusk',
-		intro: [0, 18000],
-		outro: [48000, 65750],
-		url: 'music/dusk.mp3',
-	},
-	{
 		alias: 'nightfall',
-		intro: [0, 18000],
-		outro: [48000, 67213],
+		intro: [0, 16039],
+		loop: [16039, 32052],
+		outro: [48091, 16039],
 		url: 'music/nightfall.mp3',
 	},
 	{
-		alias: 'summary',
-		intro: [0, 18000],
-		outro: [48000, 64052],
-		url: 'music/summary.mp3',
-	},
-	{
 		alias: 'title',
-		intro: [0, 18000],
-		outro: [48000, 64052],
+		intro: [0, 16039],
+		loop: [16039, 32052],
+		outro: [48091, 16039],
 		url: 'music/title.mp3',
 	},
 ]
@@ -138,6 +122,7 @@ export const AudioLibrary = new class AudioLibraryClass {
 			const {
 				alias,
 				intro,
+				loop,
 				outro,
 				url,
 			} = music[index]
@@ -148,7 +133,7 @@ export const AudioLibrary = new class AudioLibraryClass {
 				alias,
 				sprite: {
 					intro,
-					loop: [intro[1], outro[0], true],
+					loop: [...loop, true],
 					outro,
 				},
 				url,
