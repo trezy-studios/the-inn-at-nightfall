@@ -9,15 +9,17 @@
 	padding-left: 0;
 	padding-right: 0;
 	position: relative;
-	transition-duration: 0.2s;
+	transition-duration: 0.3s;
 	transition-property:
 		font-weight,
 		padding-left,
 		padding-right;
 	width: 100%;
 
+	&:focus,
 	&:hover {
 		font-weight: bold;
+		outline: none;
 		padding-left: 1rem;
 	}
 
@@ -28,6 +30,7 @@
 	&.align-left {
 		text-align: left;
 
+		&:focus,
 		&:hover {
 			padding-left: 1rem;
 		}
@@ -36,6 +39,7 @@
 	&.align-right {
 		text-align: right;
 
+		&:focus,
 		&:hover {
 			padding-right: 1rem;
 		}

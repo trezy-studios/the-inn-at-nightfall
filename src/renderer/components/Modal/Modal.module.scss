@@ -21,5 +21,62 @@
 	flex-direction: column;
 	gap: 3rem;
 	padding: 4rem 6rem;
+	position: relative;
 	text-align: center;
+
+	.bottom-frame,
+	.top-frame {
+		background-image: url('/ui/floating-frame.fill.svg');
+		background-position: center;
+		background-repeat: repeat-x;
+		height: 5rem;
+		left: 0;
+		position: absolute;
+		right: 0;
+
+		.center-decoration,
+		&:after,
+		&:before {
+			background-repeat: no-repeat;
+			bottom: 0;
+			position: absolute;
+			top: 0;
+		}
+
+		.center-decoration {
+			background-image: url('/ui/floating-frame.center.svg');
+			background-position: center;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 6rem;
+		}
+
+		&:after,
+		&:before {
+			background-image: url('/ui/floating-frame.end.svg');
+			background-position: center right;
+			content: '';
+			width: 4rem;
+		}
+
+		&:before {
+			right: 100%;
+		}
+
+		&:after {
+			left: 100%;
+			transform: scaleX(-1);
+		}
+	}
+
+	.bottom-frame {
+		margin-top: -0.3rem;
+		top: 100%;
+		transform: rotate(180deg);
+	}
+
+	.top-frame {
+		bottom: 100%;
+		margin-bottom: -0.3rem;
+	}
 }
