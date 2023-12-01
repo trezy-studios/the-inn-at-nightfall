@@ -107,6 +107,10 @@ store.subscribe(updates => {
 		patch['settings::gameplay::dialogDelay'] = updates.dialogDelay
 	}
 
+	if ('enableFilmGrain' in updates) {
+		patch['settings::graphics::enableFilmGrain'] = updates.enableFilmGrain
+	}
+
 	if ('mainVolume' in updates) {
 		patch['settings::sound::mainVolume'] = updates.mainVolume
 	}
