@@ -48,7 +48,15 @@ export function Modal(props) {
 			variants={VARIANTS}>
 			<div className={styles['modal-wrapper']}>
 				<div className={compiledClassName}>
+					<div className={styles['top-frame']}>
+						<div className={styles['center-decoration']} />
+					</div>
+
 					{children}
+
+					<div className={styles['bottom-frame']}>
+						<div className={styles['center-decoration']} />
+					</div>
 				</div>
 			</div>
 		</motion.div>

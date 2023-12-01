@@ -27,13 +27,15 @@ export function GameDialog() {
 	const character = useCharacter()
 
 	return (
-		<div className={styles['game-dialog']}>
-			{(Boolean(character) && !isSwappingCharacters) && (
-				<>
-					<Messages />
-					<Responses />
-				</>
-			)}
+		<div className={styles['game-dialog-wrapper']}>
+			<div className={styles['game-dialog']}>
+				{(Boolean(character) && !isSwappingCharacters) && (
+					<>
+						<Messages />
+						<Responses />
+					</>
+				)}
+			</div>
 		</div>
 	)
 }
