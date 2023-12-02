@@ -1,0 +1,41 @@
+title: greeting
+position: 190,-334
+---
+Martin Butler: Hi there. My stagecoach broke down just a jog down the road to Bramblewick. I was assaulted by thieves on my walk here and I don't have anything to pay with. If you let me stay for free tonight I promise to require stops here with my weathy patrons to or from Duskmire.
+
+<<jump options>>
+===
+
+title: options
+position: 190,-147
+---
+	-> Where are you coming from?
+		<<jump sourceAnswer>>
+
+	-> Where are you headed?
+		<<jump destinationAnswer>>
+
+	-> You were attacked?
+		<<jump healthAnswer>>
+===
+
+title: sourceAnswer
+position: -87,55
+---
+Me: Where were you riding from?
+Martin Butler: I just dropped off a regular patron at the docks from Stonehearth.
+===
+
+title: destinationAnswer
+position: 173,61
+---
+Me: Where are you headed?
+Martin Butler: I'll be padding the hoof back to Duskmire to get the supplies to fix my stagecoach, then I'll be back.
+===
+
+title: healthAnswer
+position: 495,58
+---
+Me: You were attacked?
+Martin Butler: Yes. One of the wheels on the stagecoach was off kilter after I hit a big rock in the road, so I stopped to see if I could repair it. Thieves jumped out of the treeline and hooked it with all my coin, my horse, and some of my repair tools. Blimey, I'm glad they didn't want my life too, the scoundrels.
+===
