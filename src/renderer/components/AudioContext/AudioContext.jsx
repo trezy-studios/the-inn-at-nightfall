@@ -1,12 +1,12 @@
 // Module imports
 import {
 	createContext,
-	useCallback,
 	useContext,
+	useEffect,
 	useMemo,
-	useState,
 } from 'react'
 import PropTypes from 'prop-types'
+import { useStore } from 'statery'
 
 
 
@@ -14,23 +14,15 @@ import PropTypes from 'prop-types'
 
 // Local imports
 import { AudioLibrary } from '../../game/structures/AudioLibrary.js'
+import { SCREENS } from '../../data/SCREENS.js'
+import { store } from '../../store/store.js'
 
 
 
 
 
 // Constants
-export const AudioContext = createContext({
-	currentTrack: null,
-	currentTrackID: null,
-
-	// eslint-disable-next-line jsdoc/require-jsdoc, @typescript-eslint/no-unused-vars
-	playTrack: trackID => {},
-
-	// eslint-disable-next-line jsdoc/require-jsdoc, @typescript-eslint/no-unused-vars
-	stopTrack: fadeDuration => {},
-})
-const DEFAULT_FADE_DURATION = 1000
+export const AudioContext = createContext({})
 
 
 
@@ -44,64 +36,17 @@ const DEFAULT_FADE_DURATION = 1000
 export function AudioContextProvider(props) {
 	const { children } = props
 
-	const [currentTrackID, setCurrentTrackID] = useState(null)
-	const [currentTrack, setCurrentTrack] = useState(null)
-	const [soundID, setSoundID] = useState(null)
+	const { screen } = useStore(store)
 
-	const stopTrack = useCallback((fadeDuration = DEFAULT_FADE_DURATION) => {
-		setCurrentTrackID(null)
+	const providerState = useMemo(() => ({}), [])
 
-		currentTrack.fade(1, 0, fadeDuration, soundID)
-		currentTrack.once('fade', () => {
-			currentTrack.stop(soundID)
-			setSoundID(null)
-		})
-	}, [
-		currentTrack,
-		setCurrentTrackID,
-		setSoundID,
-		soundID,
-	])
-
-	const playTrack = useCallback(trackID => {
-		if (trackID !== currentTrackID) {
-			if (currentTrackID) {
-				stopTrack()
-			}
-
-			const track = AudioLibrary.get(trackID)
-			const playID = track.play('intro')
-
-			setSoundID(playID)
-			track.on('end', () => {
-				track.stop(playID)
-				setSoundID(track.play('loop'))
-			})
-
-			setCurrentTrackID(trackID)
-			setCurrentTrack(track)
+	useEffect(() => {
+		if ([SCREENS.SETTINGS, SCREENS.TITLE].includes(screen)) {
+			AudioLibrary.play('title')
+		} else if (screen === SCREENS.PLAY) {
+			AudioLibrary.play('nightfall')
 		}
-	}, [
-		currentTrackID,
-		setCurrentTrack,
-		setCurrentTrackID,
-		setSoundID,
-		stopTrack,
-	])
-
-	const providerState = useMemo(() => {
-		return {
-			currentTrack,
-			currentTrackID,
-			playTrack,
-			stopTrack,
-		}
-	}, [
-		currentTrack,
-		currentTrackID,
-		playTrack,
-		stopTrack,
-	])
+	}, [screen])
 
 	return (
 		<AudioContext.Provider value={providerState}>
