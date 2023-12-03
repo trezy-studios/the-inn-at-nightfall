@@ -9,14 +9,14 @@ Benedict Caldwell: Evening. I've been on the road a spell and wouldn't mind a pl
 title: options
 position: 190,-147
 ---
-	-> Where are you coming from?
-		<<jump sourceAnswer>>
+  -> Where are you coming from?
+    <<jump sourceAnswer>>
 
-	-> Where are you headed?
-		<<jump destinationAnswer>>
+  -> Where are you headed?
+    <<jump destinationAnswer>>
 
-	-> Are you in good health?
-		<<jump healthAnswer>>
+  -> Are you in good health?
+    <<jump healthAnswer>>
 ===
 
 title: sourceAnswer
@@ -90,15 +90,13 @@ position: -104,1020
 ---
 
   -> Can't say that I remember a Kady Amertine.
-  <<jump lookingNoChatty>>
+  	<<jump lookingNoChatty>>
 
   -> No.
-  <<jump lookingNoShort>>
+  	<<jump lookingNoShort>>
 
   -> I couldn't tell you if I did.
-  <<jump lookingNoAbrasive>>
-
-<<jump looking>>
+  	<<jump lookingNoAbrasive>>
 
 ===
 
