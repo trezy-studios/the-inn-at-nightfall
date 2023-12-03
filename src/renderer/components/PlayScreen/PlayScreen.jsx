@@ -27,7 +27,6 @@ import { RoundScore } from '../RoundScore/RoundScore.jsx'
 import { Screen } from '../Screen/Screen.jsx'
 import { store } from '../../store/store.js'
 import { useDebugMode } from '../../hooks/useDebugMode.js'
-import { useLoopingTrack } from '../../hooks/useLoopingTrack.js'
 import { Vignette } from '../Vignette/Vignette.jsx'
 
 
@@ -47,8 +46,6 @@ export function PlayScreen() {
 
 	const { isDebugModeEnabled } = useDebugMode()
 	const gameWrapperRef = useRef(null)
-
-	useLoopingTrack('nightfall')
 
 	const compiledClassName = useMemo(() => classnames({
 		[styles['play-screen']]: true,

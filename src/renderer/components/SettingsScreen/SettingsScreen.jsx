@@ -13,7 +13,6 @@ import { goToTitle } from '../../store/reducers/goToTitle.js'
 import { Heading } from '../Heading/Heading.jsx'
 import { Screen } from '../Screen/Screen.jsx'
 import { store } from '../../store/store.js'
-import { useLoopingTrack } from '../../hooks/useLoopingTrack.js'
 import { Vignette } from '../Vignette/Vignette.jsx'
 
 
@@ -62,8 +61,6 @@ export function SettingsScreen() {
 		enableFilmGrain,
 		mainVolume,
 	} = useStore(store)
-
-	useLoopingTrack('title')
 
 	return (
 		<Screen className={styles['settings-screen']}>
