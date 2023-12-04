@@ -11,30 +11,33 @@ title: options
 position: 190,-147
 ---
   -> Where are you coming from?
-    You: Where are you coming from?
     <<jump sourceAnswer>>
 
   -> Where are you headed?
-    You: Where are you headed
     <<jump destinationAnswer>>
 
   -> Are you in good health?
-    You: Are you in good health?
     <<jump healthAnswer>>
-  
+
   -> What's your deal?
-    You: What's your deal?
     <<jump confrontAnswer>>
 ===
 
 title: sourceAnswer
 position: 519,-60
 ---
+You: Where are you coming from?
 Ambrose Blackwood: I've just finished a rather exhilerating deal with a gentleman in Moorfield.
 
-  -> Moorfield? Exhilerating? 
-    You: Moorfield? What could possibly be "exhilerating" in a two bit town like, Moorfield?
-    Ambrose Blackwood: I'm afraid I'm not at liberty to discuss an active transaction any further. Perhap I've already said too much.
+  -> Moorfield? Exhilerating?
+    <<jump questionMoorfield>>
+===
+
+title: questionMoorfield
+position: 519,-60
+---
+You: Moorfield? What could possibly be "exhilerating" in a two bit town like, Moorfield?
+Ambrose Blackwood: I'm afraid I'm not at liberty to discuss an active transaction any further. Perhap I've already said too much.
 
 <<jump options>>
 ===
@@ -42,6 +45,7 @@ Ambrose Blackwood: I've just finished a rather exhilerating deal with a gentlema
 title: destinationAnswer
 position: 519,-214
 ---
+You: Where are you headed?
 Ambrose Blackwood: Can't say I've decided. Might stay a couple nights until I make up my mind, assuming you have space available.
 <<jump options>>
 ===
@@ -49,7 +53,8 @@ Ambrose Blackwood: Can't say I've decided. Might stay a couple nights until I ma
 title: healthAnswer
 position: 519,-367
 ---
-Ambrose Blackwood: I assure you I'm in the best health of my life. The unique charm of the area is doing wonders for my business, and my constitution.
+You: Are you in good health?
+Ambrose Blackwood: I assure you I'm in the best health of my life. The unique charm of the area is doing wonders for my business... and my constitution.
 
 <<jump options>>
 ===
@@ -57,6 +62,7 @@ Ambrose Blackwood: I assure you I'm in the best health of my life. The unique ch
 title: confrontAnswer
 position: 519,107
 ---
+You: What's your deal?
 Ambrose Blackwood: My deal? I specialize in procuring and dispensing my unique wares only to the right person, at the right time, for the right price, of course. On my journies I pick up numerous bits of interesting information most people would ignore. Maybe it can be of some use to someone in your position. That is if I'm able to stay and return in the future.
 You: What kind of wares?
 Ambrose Blackwood: Unfortunately for your curiosity, but possibly fortunately otherwise, I have nothing for you currently. I have a feeling I'll be passing back through soon.
