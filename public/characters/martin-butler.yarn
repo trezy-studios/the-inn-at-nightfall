@@ -16,7 +16,7 @@ position: 190,-147
 	-> Where are you headed?
 		<<jump destinationAnswer>>
 
-	-> Telle me about the attack.
+	-> Tell me about the attack.
 		<<jump healthAnswer>>
 ===
 
@@ -25,6 +25,8 @@ position: -87,55
 ---
 Me: Where were you riding from?
 Martin Butler: I just dropped off one of my regulars at the docks in Stonehearth. Said they were, "off towards adventure!" Whatever that means.
+
+<<jump options>>
 ===
 
 title: destinationAnswer
@@ -32,11 +34,15 @@ position: 173,61
 ---
 Me: Where are you headed?
 Martin Butler: I'll be padding the hoof back to Duskmire to get the supplies to fix my stagecoach, then I'll be back here. As we both know, it's not exactly [italic]desirable[/italic] to be out past nightfall around here.
+
+<<jump options>>
 ===
 
 title: healthAnswer
 position: 495,58
 ---
 Me: You were attacked?
-Martin Butler: I was! One of my wheels was off kilter after hitting big rock in the road. I stopped to see if I could repair it. and thieves jumped out of the treeline. They hooked it with all my coin, my horse, and some of my tools. I'm just glad the scoundrels didn't want my life, too.
+Martin Butler: I was! One of my wheels was off kilter after hitting big rock in the road. I stopped to see if I could repair it. Just then thieves jumped out of the treeline. They hooked it with all my coin, my horse, and some of my tools. I'm just glad the scoundrels didn't want my life, too.
+
+<<jump options>>
 ===
