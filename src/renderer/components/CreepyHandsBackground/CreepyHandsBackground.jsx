@@ -34,7 +34,7 @@ export function CreepyHandsBackground() {
 	const spriteProps = useMemo(() => {
 		const texture = Assets.get('backgrounds-creepy-hands')
 
-		const width = viewport.width * 0.8
+		const width = viewport.width * 0.6
 
 		const scale = width / texture.orig.width
 		const height = texture.orig.height * scale
