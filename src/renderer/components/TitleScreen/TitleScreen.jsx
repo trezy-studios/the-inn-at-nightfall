@@ -5,7 +5,6 @@ import { Heading } from '../Heading/Heading.jsx'
 import { Screen } from '../Screen/Screen.jsx'
 import { TitleMenu } from '../TitleMenu/TitleMenu.jsx'
 import { TitleSocialLinks } from '../TitleSocialLinks/TitleSocialLinks.jsx'
-import { useLoopingTrack } from '../../hooks/useLoopingTrack.js'
 import { Vignette } from '../Vignette/Vignette.jsx'
 
 
@@ -18,8 +17,6 @@ import { Vignette } from '../Vignette/Vignette.jsx'
  * @component
  */
 export function TitleScreen() {
-	useLoopingTrack('title')
-
 	return (
 		<Screen className={styles['title-screen']}>
 			<header className={styles['header']}>

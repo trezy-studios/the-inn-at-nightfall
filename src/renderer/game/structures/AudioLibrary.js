@@ -17,6 +17,7 @@ import { store } from '../../store/store.js'
 
 
 // Constants
+const DEFAULT_FADE_DURATION = 1000
 const music = [
 	{
 		alias: 'nightfall',
@@ -43,6 +44,12 @@ export const AudioLibrary = new class AudioLibraryClass {
 	/****************************************************************************\
 	 * Private instance properties
 	\****************************************************************************/
+
+	/** @type {number} */
+	#currentSoundID
+
+	/** @type {Howl} */
+	#currentTrack
 
 	/** @type {{ [key: string]: Howl }} */
 	#library = {}
@@ -141,5 +148,42 @@ export const AudioLibrary = new class AudioLibraryClass {
 
 			index += 1
 		}
+	}
+
+	/**
+	 * Plays a music track.
+	 *
+	 * @param {string} trackID The ID of the track to play.
+	 */
+	play(trackID) {
+		const track = this.get(trackID)
+
+		if (this.#currentTrack === track) {
+			return
+		}
+
+		if (this.#currentSoundID) {
+			this.stop(this.#currentTrack, this.#currentSoundID)
+		}
+
+		this.#currentSoundID = track.play('intro')
+		this.#currentTrack = track
+
+		track.once('end', () => {
+			track.stop(this.#currentSoundID)
+			this.#currentSoundID = track.play('loop')
+		})
+	}
+
+	/**
+	 * Stops a music track.
+	 *
+	 * @param {Howl} track The track the sound belongs to.
+	 * @param {number} soundID The ID of the sound to be stopped.
+	 * @param {number} [fadeDuration] The length of the fade in milliseconds.
+	 */
+	stop(track, soundID, fadeDuration = DEFAULT_FADE_DURATION) {
+		track.fade(1, 0, fadeDuration, soundID)
+		track.once('fade', () => track.stop(soundID))
 	}
 }
