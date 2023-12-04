@@ -7,6 +7,7 @@ export const cspConfig = {
 	'connect-src': [
 		'data:',
 		{ development: ['\'self\''] },
+		{ production: 'file:' },
 	],
 	'font-src': [
 		'file:',
