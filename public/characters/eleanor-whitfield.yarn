@@ -1,4 +1,87 @@
 title: greeting
 ---
 Eleanor Whitfield: Good evening. I am Eleanor Whitfield. I find myself in need of rest as I journey to address my late husband's matters. Might your inn afford me a quiet refuge for the night? And perhaps a touch of solace for a weary soul?
+
+<<jump options>>
+===
+
+title: options
+position: 2,228
+---
+	-> Where are you coming from?
+		<<jump sourceAnswer>>
+
+	-> Where are you headed?
+		<<jump destinationAnswer>>
+
+	-> Are you in good health?
+		<<jump healthAnswer>>
+===
+
+title: sourceAnswer
+position: -256,415
+---
+You: Where are you traveling from?
+Eleanor Whitfield: My husband's, I mean my home in Duskmire.
+
+<<jump options>>
+===
+
+title: destinationAnswer
+position: 1,425
+---
+You: Where are you headed?
+Eleanor Whitfield: Stonehearth to settle my husband's estate, the late Lord Simon Whitfield, Captain of Eleanor's Grace. Mayhaps you've heard of him?
+  
+  -> Oh sure, Captain Whitfield, who hasn't?
+    <<jump options>>
+
+  -> Can't say I have.
+    <<jump options>>
+
+  -> I have other questions.
+    <<jump options>>
+===
+
+title: healthAnswer
+group: health
+position: 342,393
+---
+You: Are you in good health?
+Eleanor Whitfield: To be honest, I'm absolutely heartbroken. Simon may have been well loved but none loved him more than I. I'd give anything to be with him again.
+
+  -> I'm sorry for your loss.
+    You: I'm sorry for your loss Lady Eleanor.
+    <<jump physicalHealth>>
+
+  -> Are you in good health... physically?
+    You: Erm, are you in good health... physically?
+    <<jump physicalHealth>>
+
+  -> How did he die?
+    <<jump husbandDeathQuestions>>
+===
+
+title: physicalHealth
+group: health
+position: 348,648
+---
+Eleanor Whitfield: Oh goodness. Of course that's what you meant. People don't realize how lonely grief is. Everyone dances around you like you're made of fine china and not a soul will come right out and ask you anything. I was refreshed by the daring of a stranger.
+Eleanor Whitfield: I'm only suffereing from a broken heart, unfortunately.
+
+  -> How did he pass?
+    You: How did your husband pass?
+    <<jump husbandDeathQuestions>>
+
+  -> I see. (moving on)
+    You: I see.
+    <<jump options>>
+===
+
+title: husbandDeathQuestions
+group: health
+position: 612,653
+---
+Eleanor Whitfield: No one asks, but it's rather upsetting and I wish I had someone to talk to about it. He just dissappeared. They think he may have slipped on the dock or the boat and slipped into the water. But they haven't found any sign of him. He was always so careful. He always promised he'd only work on the boat when someone was there but no one saw him that morning until his crew reported him missing around noon.
+<<jump options>>
 ===
