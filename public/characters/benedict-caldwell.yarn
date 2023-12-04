@@ -2,7 +2,7 @@ title: greeting
 position: 190,-334
 ---
 Benedict Caldwell: Evening. The name's Benedict Caldwell. I've been on the road a spell and wouldn't mind a place to bunk down for the night. A quiet room, if you have one... walls can be too thin for an old soldier's liking.
-Benedict Caldwell: I might chance continuting walking a bit longer to the next town, but my gut is telling me it'll be bad to be caught out here when night falls. And I always follow my gut...
+Benedict Caldwell: I could take a chance and continue on to the next town, but I always follow my gut and it's telling me gettin' caught out here when night falls would spell trouble.
 
 <<jump options>>
 ===
@@ -32,7 +32,6 @@ Benedict Caldwell: You always ask guests so many questions?
 title: questionsOptions
 position: -106,342
 ---
-
 	-> Beg your pardon, just making conversation.
 		<<jump questionsChatty>>
 
@@ -47,7 +46,7 @@ title: questionsChatty
 position: -415,617
 ---
 
-You: Beg your pardon. Other than making conversation with guests, it's mostly cleaning and cooking. Just enjoying the best part of the day, chatting with the guests.
+You: Beg your pardon. Making conversation with guests is the highlight of my day. Otherwise, it's just cleaning and cooking.
 
 <<jump questionsAnswer>>
 
@@ -67,7 +66,8 @@ title: questionsAbrasive
 position: 199,641
 ---
 
-You: You'd have to walk through the night to get to the next inn. I'm the one asking questions here. Answer 'em, or take your chances on the road.
+You: You're right. It's quite dangerous at night, and you'd be walking well past dusk to get to the next inn.
+You: Now I'll be the one asking questions here. Answer 'em, or take your chances on the road.
 
 <<jump questionsAnswer>>
 
@@ -90,8 +90,8 @@ title: lookingOptions
 position: -104,1020
 ---
 
-  -> Can't say that I remember a Kady Amertine.
-  	<<jump lookingNoChatty>>
+  -> Can't say I remember a Kady Amertine.
+  	<<jump lookingNoDontRemember>>
 
   -> No.
   	<<jump lookingNoShort>>
@@ -101,16 +101,40 @@ position: -104,1020
 
 ===
 
-title: lookingNoChatty
+title: lookingNoDontRemember
 position: -381,1201
 ---
 
-You: Sorry, I can't say I remember a Kady Amertine. There's only 4 roads from here though.
-You: Stonehearth is the port town you came from to the West.
-You: To the north is Bramblewick. That's the biggest town around. Mix of all sorts of people up north. Closest thing we have to a big city.
-You: To the East is Duskmire is mostly farms, and the people who work those farms. Then there's the people that own the farms with their big houses on the outside of town.
-You: To the South is Moorfield. They're just doing the best they can with what they've got down there, which isn't much.
-Benedict Caldwell: Well at least I have a little to go off of now. Thanks.
+You: Sorry, I can't say I remember a Kady Amertine...
+Benedict Caldwell: Look, I could really use some help here. If you could tell me about the area, I'd really appreciate it.
+
+  -> Sure.
+    <<jump aboutTheAreaSure>>
+
+  -> No.
+    <<jump aboutTheAreaNo>>
+
+===
+
+title: aboutTheAreaNo
+---
+
+You: I'm sure you can manage.
+[action]Benedict scowls.[/action]
+
+<<jump options>>
+
+===
+
+title: aboutTheAreaSure
+---
+
+You: Sure, I'd be happy to help.
+You: Stonehearth is the port town you just came from. There's not much else to the West other than the sea.
+You: To the north you'll find Bramblewick. It's a bit of a melting pot up there. Closest thing we have to a big city.
+You: To the East is Duskmire. It's mostly farms and the people who work them. Some of the wealthier folks around like to build their giant estates just outside of town.
+You: Moorfield is to the South. It's a pretty small settlement. They're just doing the best they can with what little they've got.
+Benedict Caldwell: Thank you. Now I actually have something to work with.
 
 <<jump options>>
 
@@ -131,7 +155,7 @@ title: lookingNoAbrasive
 position: 191,1200
 ---
 
-You: There's nary a way to be the only inn at this crossroads by making a point of telling anyone who traipeses through everyone else's business. I wouldn't tell you one way or the other. Just like I'd stay mum if some other traveler asked about your comings and goings.
+You: I'd stay mum if some other traveler asked about your comings and goings, so I'll hold my tongue about other travelers as well. I didn't earn my reputation by sharing everyone's business with anyone traipsing through the area.
 Benedict Caldwell: I understand.
 
 <<jump options>>
