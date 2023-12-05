@@ -54,6 +54,8 @@ export const AudioLibrary = new class AudioLibraryClass {
 				Howler.volume(updates.mainVolume)
 			}
 		})
+
+		Howler.volume(store.state.mainVolume)
 	}
 
 
