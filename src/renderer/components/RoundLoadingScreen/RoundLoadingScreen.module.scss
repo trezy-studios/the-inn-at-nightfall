@@ -1,0 +1,25 @@
+.round-loading-screen {
+	align-items: center;
+	flex-direction: column;
+	gap: 5rem;
+	justify-content: center;
+
+	blockquote {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		text-align: center;
+	}
+
+	h1 {
+		color: var(--palette-red);
+		text-transform: uppercase;
+	}
+}
+
+.round-loading-progress {
+	bottom: 6rem;
+	left: 5rem;
+	position: absolute;
+	right: 5rem;
+}

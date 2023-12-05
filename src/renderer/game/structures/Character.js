@@ -15,7 +15,6 @@ import { EventEmitter } from './EventEmitter.js'
  * @typedef {object} CharacterConfig
  * @property {string} [background] The character background.
  * @property {boolean} [isMerchant] Whether this character is a merchant.
- * @property {import('xstate').StateMachine} machine The dialog machine for the character.
  * @property {string} name The character's name.
  * @property {string} sprite The name of the character's sprite.
  */
@@ -42,8 +41,6 @@ export class Character extends EventEmitter {
 	 * Private instance properties
 	\****************************************************************************/
 
-	#dialogMachine
-
 	#entryState = null
 
 	#id
@@ -57,6 +54,17 @@ export class Character extends EventEmitter {
 	#sprite
 
 	#state = 'normal'
+
+
+
+
+
+	/****************************************************************************\
+	 * Public instance properties
+	\****************************************************************************/
+
+	/** @type {import('xstate').StateMachine} */
+	dialogMachine
 
 
 
@@ -78,7 +86,6 @@ export class Character extends EventEmitter {
 		this.#isMerchant = config.isMerchant
 		this.#name = config.name
 		this.#sprite = config.sprite
-		this.#dialogMachine = config.machine
 	}
 
 
@@ -126,11 +133,6 @@ export class Character extends EventEmitter {
 	 * Public instance getters/setters
 	\****************************************************************************/
 
-	/** @returns {import('xstate').StateMachine} The character's dialog state machine. */
-	get dialogMachine() {
-		return this.#dialogMachine
-	}
-
 	/** @returns {string} Whether the character has been allowed or denied access to the inn. If they haven't been processed, will be `undefined`. */
 	get entryState() {
 		return this.#entryState
@@ -158,7 +160,7 @@ export class Character extends EventEmitter {
 
 	/** @returns {string} The name of the character's sprite. */
 	get sprite() {
-		return `${this.#sprite}-${this.#state}`
+		return `${this.#sprite}::${this.#state}`
 	}
 
 	/** @returns {string} The character's current state. */
