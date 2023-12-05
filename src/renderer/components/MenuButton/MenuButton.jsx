@@ -37,6 +37,7 @@ export function MenuButton(props) {
 		align,
 		children,
 		className,
+		isDisabled,
 		onClick,
 	} = props
 
@@ -54,6 +55,7 @@ export function MenuButton(props) {
 	return (
 		<Button
 			className={compiledClassName}
+			isDisabled={isDisabled}
 			onClick={onClick}>
 			{children}
 		</Button>
@@ -63,6 +65,7 @@ export function MenuButton(props) {
 MenuButton.defaultProps = {
 	align: ALIGNMENT.LEFT,
 	className: '',
+	isDisabled: false,
 }
 
 MenuButton.propTypes = {
@@ -73,5 +76,6 @@ MenuButton.propTypes = {
 	]),
 	children: PropTypes.node.isRequired,
 	className: PropTypes.string,
+	isDisabled: PropTypes.bool,
 	onClick: PropTypes.func.isRequired,
 }

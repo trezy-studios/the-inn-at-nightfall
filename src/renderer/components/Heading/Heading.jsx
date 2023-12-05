@@ -1,5 +1,6 @@
 // Module imports
 import classnames from 'classnames'
+import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
 import { useMemo } from 'react'
 
@@ -21,63 +22,75 @@ import styles from './Heading.module.scss'
  */
 export function Heading(props) {
 	const {
+		animate,
 		children,
 		className,
+		exit,
+		initial,
 		level,
+		variants,
 	} = props
 
-	const compiledClassName = useMemo(() => {
-		return classnames(
+	const headingProps = useMemo(() => ({
+		animate,
+		className: classnames(
 			styles['heading'],
 			styles[`level-${level}`],
 			className,
-		)
-	}, [
+		),
+		exit,
+		initial,
+		variants,
+	}), [
+		animate,
 		className,
+		exit,
+		initial,
 		level,
+		variants,
 	])
 
 	switch (level) {
 		case 1:
 			return (
-				<h1 className={compiledClassName}>
+				<motion.h1 {...headingProps}>
 					{children}
-				</h1>
+				</motion.h1>
 			)
 
 		case 2:
 			return (
-				<h2 className={compiledClassName}>
+				<motion.h2 {...headingProps}>
 					{children}
-				</h2>
+				</motion.h2>
 			)
 
 		case 3:
 			return (
-				<h3 className={compiledClassName}>
+				<motion.h3 {...headingProps}>
 					{children}
-				</h3>
+				</motion.h3>
 			)
 
 		case 4:
 			return (
-				<h4 className={compiledClassName}>
+				<motion.h4 {...headingProps}>
 					{children}
-				</h4>
+				</motion.h4>
 			)
 
 		case 5:
 			return (
-				<h5 className={compiledClassName}>
+				<motion.h5 {...headingProps}>
 					{children}
-				</h5>
+				</motion.h5>
 			)
 
 		case 6:
 			return (
-				<h6 className={compiledClassName}>
+				<motion.h6 {...headingProps}>
 					{children}
-				</h6>
+				</motion.h6>
 			)
 
 		default:
@@ -86,12 +99,29 @@ export function Heading(props) {
 }
 
 Heading.defaultProps = {
+	animate: 'animate',
 	children: null,
 	className: '',
+	exit: 'exit',
+	initial: 'initial',
+	variants: {},
 }
 
 Heading.propTypes = {
+	animate: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	children: PropTypes.node,
 	className: PropTypes.string,
+	exit: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	initial: PropTypes.oneOfType([
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]).isRequired,
+	variants: PropTypes.object,
 }

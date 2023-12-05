@@ -1,0 +1,73 @@
+[
+	{
+		"alias": "vignette",
+		"src": "backgrounds/vignette.png",
+		"type": "image",
+		"loadingCategory": "user interface sprites"
+	},
+	{
+		"alias": "floating frame (center)",
+		"src": "ui/floating-frame.center.svg",
+		"type": "image",
+		"loadingCategory": "user interface sprites"
+	},
+	{
+		"alias": "floating frame (end)",
+		"src": "ui/floating-frame.end.svg",
+		"type": "image",
+		"loadingCategory": "user interface sprites"
+	},
+	{
+		"alias": "floating frame (fill)",
+		"src": "ui/floating-frame.fill.svg",
+		"type": "image",
+		"loadingCategory": "user interface sprites"
+	},
+	{
+		"alias": "selection indicator",
+		"src": "ui/target-indicator.svg",
+		"type": "image",
+		"loadingCategory": "user interface sprites"
+	},
+	{
+		"alias": "title screen background",
+		"src": "backgrounds/title.png",
+		"type": "image",
+		"loadingCategory": "user interface sprites"
+	},
+	{
+		"alias": "title",
+		"src": "music/title.mp3",
+		"type": "audio",
+		"loadingCategory": "music",
+		"sprites": {
+			"intro": [0, 16039],
+			"loop": [16039, 32052, true],
+			"outro": [48091, 16039]
+		}
+	},
+	{
+		"alias": "dialogDelay",
+		"loadingCategory": "settings",
+		"path": "settings::gameplay::dialogDelay",
+		"type": "setting"
+	},
+	{
+		"alias": "enableFilmGrain",
+		"loadingCategory": "settings",
+		"path": "settings::graphics::enableFilmGrain",
+		"type": "setting"
+	},
+	{
+		"alias": "mainVolume",
+		"loadingCategory": "settings",
+		"path": "settings::sound::mainVolume",
+		"type": "setting"
+	},
+	{
+		"alias": "musicVolume",
+		"loadingCategory": "settings",
+		"path": "settings::sound::musicVolume",
+		"type": "setting"
+	}
+]

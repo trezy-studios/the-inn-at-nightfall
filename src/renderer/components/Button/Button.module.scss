@@ -8,6 +8,14 @@
 	font-weight: inherit;
 	line-height: inherit;
 	margin: 0;
+	opacity: 1;
 	padding: 0;
 	text-align: inherit;
+	transition-duration: 0.3s;
+	transition-property: opacity;
+}
+
+.is-disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
 }
