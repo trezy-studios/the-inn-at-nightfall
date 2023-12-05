@@ -3,7 +3,6 @@ import {
 	Howl,
 	Howler,
 } from 'howler'
-import { setLoadingItem } from '../../store/reducers/setLoadingItem.js'
 
 
 
@@ -111,7 +110,7 @@ export const AudioLibrary = new class AudioLibraryClass {
 	async load(assetData) {
 		await this.add({
 			alias: assetData.alias,
-			sprite: assetData.sprite,
+			sprite: assetData.sprites,
 			url: assetData.src,
 		})
 	}
