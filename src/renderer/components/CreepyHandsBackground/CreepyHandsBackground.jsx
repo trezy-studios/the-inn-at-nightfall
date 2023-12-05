@@ -32,7 +32,7 @@ export function CreepyHandsBackground() {
 	} = useStore(store)
 
 	const spriteProps = useMemo(() => {
-		const texture = Assets.get('backgrounds-creepy-hands')
+		const texture = Assets.get('background::creepy-hands')
 
 		const width = viewport.width * 0.6
 

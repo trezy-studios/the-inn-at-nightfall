@@ -1,18 +1,11 @@
-// Module imports
-import { useLayoutEffect } from 'react'
-import { useStore } from 'statery'
-
-
-
-
-
 // Local imports
 import styles from './LoadingScreen.module.scss'
 
-import { loadGameAssets } from '../../game/loadGameAssets.js'
+import { LoadingProgress } from '../LoadingProgress/LoadingProgress.jsx'
 import { Screen } from '../Screen/Screen.jsx'
 import { SCREENS } from '../../data/SCREENS.js'
 import { store } from '../../store/store.js'
+import { useLoadAssets } from '../../hooks/useLoadAssets.js'
 import { Vignette } from '../Vignette/Vignette.jsx'
 
 
@@ -25,43 +18,14 @@ import { Vignette } from '../Vignette/Vignette.jsx'
  * @component
  */
 export function LoadingScreen() {
-	const {
-		areAssetsLoaded,
-		currentLoadingCategory,
-		currentLoadingItem,
-		isLoadingAssets,
-	} = useStore(store)
-
-	useLayoutEffect(() => {
-		if (!areAssetsLoaded && !isLoadingAssets) {
-			loadGameAssets()
-		}
-
-		if (areAssetsLoaded) {
-			store.set(() => ({ screen: SCREENS.TITLE }))
-		}
-	}, [
-		areAssetsLoaded,
-		isLoadingAssets,
-	])
+	useLoadAssets('critical', {
+		// eslint-disable-next-line jsdoc/require-jsdoc
+		onDone: () => store.set(() => ({ screen: SCREENS.TITLE })),
+	})
 
 	return (
 		<Screen className={styles['loading']}>
-			{!currentLoadingCategory && (
-				<p>{'Loading...'}</p>
-			)}
-
-			{Boolean(currentLoadingCategory) && (
-				<>
-					<p>{`Loading ${currentLoadingCategory}...`}</p>
-
-					{Boolean(currentLoadingItem) && (
-						<p className={styles['loading-item']}>
-							{currentLoadingItem}
-						</p>
-					)}
-				</>
-			)}
+			<LoadingProgress className={styles['loading-progress']} />
 
 			<Vignette />
 		</Screen>

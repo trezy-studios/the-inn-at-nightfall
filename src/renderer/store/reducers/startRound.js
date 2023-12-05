@@ -16,13 +16,18 @@ export function startRound() {
 		const {
 			characters,
 			currentRound,
+			dialogs,
 		} = state
 
 		const characterQueue = []
 		const roundConfig = ROUND_CONFIGS[currentRound]
 
 		if (roundConfig) {
-			roundConfig.add?.forEach(characterID => characterQueue.push(characterID))
+			roundConfig.add?.forEach(([characterID, dialogAlias]) => {
+				const character = characters[characterID]
+				character.dialogMachine = dialogs[dialogAlias]
+				characterQueue.push(characterID)
+			})
 			roundConfig.bite?.forEach(characterID => characters[characterID].bite())
 		}
 
