@@ -6,6 +6,7 @@ import {
 	useState,
 } from 'react'
 import classnames from 'classnames'
+import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
 
 
@@ -28,8 +29,12 @@ import { MenuItem } from './MenuItem.jsx'
  */
 export function Menu(props) {
 	const {
+		animate,
 		children,
 		className,
+		exit,
+		initial,
+		variants,
 	} = props
 
 	const [currentTargetIndex, setCurrentTargetIndex] = useState(null)
@@ -66,18 +71,31 @@ export function Menu(props) {
 	])
 
 	return (
-		<ul className={compiledClassName}>
+		<motion.ul
+			animate={animate}
+			className={compiledClassName}
+			exit={exit}
+			initial={initial}
+			variants={variants}>
 			{parsedChildren}
-		</ul>
+		</motion.ul>
 	)
 }
 
 Menu.defaultProps = {
+	animate: 'animate',
 	children: null,
 	className: '',
+	exit: 'exit',
+	initial: 'initial',
+	variants: {},
 }
 
 Menu.propTypes = {
+	animate: PropTypes.string,
 	children: PropTypes.node,
 	className: PropTypes.string,
+	exit: PropTypes.string,
+	initial: PropTypes.string,
+	variants: PropTypes.object,
 }

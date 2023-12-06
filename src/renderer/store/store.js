@@ -53,6 +53,8 @@ export const store = makeStore({
 
 	dialogDelay: 0,
 
+	dialogs: {},
+
 	enableFilmGrain: true,
 
 	failed: false,

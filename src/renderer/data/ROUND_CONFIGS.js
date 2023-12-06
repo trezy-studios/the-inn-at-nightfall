@@ -3,7 +3,7 @@
 
 /**
  * @typedef {object} RoundConfig
- * @property {characterID[]} [add] Characters to be added to the world before starting this round.
+ * @property {string[][]} [add] Characters to be added to the world before starting this round.
  * @property {characterID[]} [bite] Characters to bite this before starting this round.
  */
 
@@ -15,10 +15,10 @@
 export const ROUND_CONFIGS = {
 	0: {
 		add: [
-			'alastair-reid',
-			'cedric-holloway',
-			'lillian-featherstone',
-			'ambrose-blackwood',
+			['alastair-reid', 'alastair-reid-1'],
+			['cedric-holloway', 'cedric-holloway-1'],
+			['benedict-caldwell', 'benedict-caldwell-1'],
+			['lillian-featherstone', 'lillian-featherstone-1'],
 		],
 		bite: [
 			'lillian-featherstone',
@@ -27,20 +27,23 @@ export const ROUND_CONFIGS = {
 
 	1: {
 		add: [
-			'eleanor-whitfield',
-			'benedict-caldwell',
+			['eleanor-whitfield', 'eleanor-whitfield-1'],
+			['ambrose-blackwood', 'ambrose-blackwood-1'],
+			['ivy-fletcher', 'ivy-fletcher-1'],
+			['mark-grimmelstone', 'mark-grimmelstone-1'],
 		],
 	},
 
 	2: {
 		add: [
-			'lillian-featherstone',
+			['lillian-featherstone', 'lillian-featherstone-1'],
+			['samuel-wolffe', 'samuel-wolffe-1'],
 		],
 	},
 
 	3: {
 		add: [
-			'cedric-holloway',
+			['cedric-holloway', 'cedric-holloway-1'],
 		],
 	},
 }

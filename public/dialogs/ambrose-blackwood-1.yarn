@@ -1,0 +1,72 @@
+title: greeting
+position: -78,-147
+---
+Ambrose Blackwood: Good evening. The name is Ambrose Blackwood, purveyor of the rare and the exquisite.
+Ambrose Blackwood: And may I say, your inn's reputation as a haven in these troubled lands precedes it. I trust you have a room where a humble merchant might rest and perhaps share tales of curiosities from afar?
+
+<<jump options>>
+===
+
+title: options
+position: 190,-147
+---
+  -> Where are you coming from?
+    <<jump sourceAnswer>>
+
+  -> Where are you headed?
+    <<jump destinationAnswer>>
+
+  -> Are you in good health?
+    <<jump healthAnswer>>
+
+  -> What's your deal?
+    <<jump confrontAnswer>>
+===
+
+title: sourceAnswer
+position: 519,-60
+---
+You: Where are you coming from?
+Ambrose Blackwood: I've just finished a rather exhilarating deal with a gentleman in Moorfield.
+
+  -> Moorfield? Exhilarating?
+    <<jump questionMoorfield>>
+===
+
+title: questionMoorfield
+position: 519,-60
+---
+You: Moorfield? What could possibly be "exhilarating" in a two-bit town like Moorfield?
+Ambrose Blackwood: I'm afraid I'm not at liberty to discuss an active transaction any further. Perhaps I've already said too much.
+
+<<jump options>>
+===
+
+title: destinationAnswer
+position: 519,-214
+---
+You: Where are you headed?
+Ambrose Blackwood: Can't say I've decided. I may even stay here for a couple of nights, assuming you have space available.
+<<jump options>>
+===
+
+title: healthAnswer
+position: 519,-367
+---
+You: Are you in good health?
+Ambrose Blackwood: I assure you I'm in the best health of my life. The unique charm of the area is doing wonders for my business... and my constitution.
+
+<<jump options>>
+===
+
+title: confrontAnswer
+position: 519,107
+---
+You: What's your deal?
+Ambrose Blackwood: My deal? I specialize in procuring and dispensing unique wares... but only to the right person, at the right time, and for the right price, of course.
+Ambrose Blackwood: In my travels I pick up various bits of information. These are things most people would ignore, but maybe it could be of use to someone in your position. [bold]If[/bold] I'm able to stay and am welcome to return, that is.
+You: What kind of wares?
+Ambrose Blackwood: Unfortunately, I have nothing available currently. That said, I have a feeling I'll be passing back through [italic]very[/italic] soon.
+
+<<jump options>>
+===

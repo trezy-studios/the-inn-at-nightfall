@@ -1,7 +1,15 @@
 // Module imports
 import { app } from 'electron'
 import fs from 'node:fs/promises'
+import JSON5 from 'json5'
 import path from 'node:path'
+
+
+
+
+
+// Local imports
+import packageData from '../../../package.json'
 
 
 
@@ -9,7 +17,6 @@ import path from 'node:path'
 
 // Constants
 const STORE_FILE_PATH = path.join(app.getPath('userData'), 'config.json')
-const UPDATE_QUEUE = []
 
 
 
@@ -21,9 +28,19 @@ const UPDATE_QUEUE = []
  * @param {object} data Updated store data.
  */
 export async function setStore(data) {
-	UPDATE_QUEUE.push(data)
-	// eslint-disable-next-line security/detect-non-literal-fs-filename
-	await fs.writeFile(STORE_FILE_PATH, JSON.stringify(data), 'utf8')
+	let fileHandle = null
+
+	try {
+		// eslint-disable-next-line security/detect-non-literal-fs-filename
+		fileHandle = await fs.open(STORE_FILE_PATH, 'w')
+		await fileHandle.truncate()
+		await fileHandle.write(Buffer.from(JSON5.stringify(data), 'utf8'))
+		await fileHandle.close()
+	} catch (error) {
+		if (fileHandle) {
+			await fileHandle.close()
+		}
+	}
 }
 
 /**
@@ -32,19 +49,31 @@ export async function setStore(data) {
  * @returns {Promise<object>} The full, parsed store object.
  */
 export async function getStore() {
-	let store = '{}'
+	let store = { version: packageData.version }
+	let fileHandle = null
 
 	try {
 		// eslint-disable-next-line security/detect-non-literal-fs-filename
-		const storeFileContent = await fs.readFile(STORE_FILE_PATH, 'utf8')
-		store = storeFileContent
+		fileHandle = await fs.open(STORE_FILE_PATH, 'r')
+		const { buffer } = await fileHandle.read()
+
+		const storeString = buffer
+			.toString('utf8')
+			// eslint-disable-next-line no-control-regex
+			.replace(/\u0000/gu, '')
+
+		store = JSON5.parse(storeString)
+
+		await fileHandle.close()
 	} catch (error) {
-		// eslint-disable-next-line security/detect-non-literal-fs-filename
-		await setStore(JSON.parse(store))
+		if (fileHandle) {
+			await fileHandle.close()
+		}
+
+		await setStore(store)
 	}
 
 	try {
-		store = JSON.parse(store)
 		return store
 	} catch (error) {
 		throw new Error('Store file has been corrupted.')

@@ -14,6 +14,7 @@ import { CreditsScreen } from '../CreditsScreen/CreditsScreen.jsx'
 import { FilmGrain } from '../FilmGrain/FilmGrain.jsx'
 import { LoadingScreen } from '../LoadingScreen/LoadingScreen.jsx'
 import { PlayScreen } from '../PlayScreen/PlayScreen.jsx'
+import { RoundLoadingScreen } from '../RoundLoadingScreen/RoundLoadingScreen.jsx'
 import { SCREENS } from '../../data/SCREENS.js'
 import { SettingsScreen } from '../SettingsScreen/SettingsScreen.jsx'
 import { store } from '../../store/store.js'
@@ -40,6 +41,10 @@ export function App() {
 				<div className={styles['app']}>
 					{(screen === SCREENS.CREDITS) && (
 						<CreditsScreen />
+					)}
+
+					{(screen === SCREENS.LOAD_ROUND) && (
+						<RoundLoadingScreen />
 					)}
 
 					{(screen === SCREENS.LOADING) && (
