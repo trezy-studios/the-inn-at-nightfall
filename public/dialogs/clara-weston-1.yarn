@@ -1,0 +1,72 @@
+title: greeting
+---
+Clara Weston: Sorry about that. I hope Emily didn't footle about too much. I'm Clara Weston I hope you have another room. We're traveling together and I won't stay without her.
+
+<<jump options>>
+===
+
+title: options
+position: -3,182
+---
+	-> Where are you coming from?
+		<<jump sourceAnswer>>
+
+	-> Where are you headed?
+		<<jump destinationAnswer>>
+
+	-> Are you in good health?
+		<<jump heathAnswer>>
+
+  -> So you're traveling together?
+    <<jump travelingTogetherAnswer>>
+===
+
+title: sourceAnswer
+position: -254,359
+---
+You: Where are you coming from?
+Clara Weston: We're traveling from Bramblewick. Moving actually. We only have what's in our packs though. No luggage.
+
+<<jump options>>
+===
+
+title: destinationAnswer
+position: -12,369
+---
+You: Where are you going?
+Clara Weston: We'll be moving on to Stonehearth. But Emily did sprain her ankle a bit a little ways up the road, so we might stay a couple nights if we can afford it, to let it heal up a bit before the long walk. My back could use a rest too, if I'm being honest. She's heavier than she looks.
+[action]Clara rubs her lower back absently[/action]
+
+<<jump options>>
+===
+
+title: heathAnswer
+position: 234,362
+---
+You: Are you in good health?
+Clara Weston: Other than a slight backache, yes I suppose so.
+
+<<jump options>>
+===
+
+title: travelingTogetherAnswer
+position: 497,377
+---
+You: So you and Emily. You're traveling together?
+[action]Clara eyes your warily[/action]
+Clara Weston: Yes.
+
+<<jump travelingTogetherOptions>>
+===
+
+title: travelingTogetherOptions
+position: 507,617
+---
+  -> Move on
+    <<jump options>>
+
+  -> I'll put your rooms next to each other then.
+    <<jump options>>
+
+===
+

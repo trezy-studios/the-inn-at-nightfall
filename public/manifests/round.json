@@ -65,6 +65,12 @@
 		"type": "character",
 		"loadingCategory": "characters"
 	},
+	{
+		"alias": "clara-weston",
+		"src": "characters/character13.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
 
 	{
 		"alias": "alastair-reid-1",
@@ -129,6 +135,12 @@
 	{
 		"alias": "emily-hartley-1",
 		"src": "dialogs/emily-hartley-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "clara-weston-1",
+		"src": "dialogs/clara-weston-1.yarn",
 		"type": "dialog",
 		"loadingCategory": "dialog"
 	},
@@ -357,6 +369,25 @@
 	{
 		"alias": "emily-hartley::fanged",
 		"src": "sprites/character12.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "clara-weston::normal",
+		"src": "sprites/character13.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "clara-weston::bitten",
+		"src": "sprites/character13.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "clara-weston::fanged",
+		"src": "sprites/character13.fangs.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
