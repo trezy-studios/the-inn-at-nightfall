@@ -59,6 +59,12 @@
 		"type": "character",
 		"loadingCategory": "characters"
 	},
+	{
+		"alias": "emily-hartley",
+		"src": "characters/character12.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
 
 	{
 		"alias": "alastair-reid-1",
@@ -117,6 +123,12 @@
 	{
 		"alias": "ivy-fletcher-1",
 		"src": "dialogs/ivy-fletcher-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "emily-hartley-1",
+		"src": "dialogs/emily-hartley-1.yarn",
 		"type": "dialog",
 		"loadingCategory": "dialog"
 	},
@@ -326,6 +338,25 @@
 	{
 		"alias": "mary-grimmelstone::fanged",
 		"src": "sprites/character07.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "emily-hartley::normal",
+		"src": "sprites/character12.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "emily-hartley::bitten",
+		"src": "sprites/character12.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "emily-hartley::fanged",
+		"src": "sprites/character12.fangs.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},

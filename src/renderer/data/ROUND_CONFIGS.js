@@ -31,12 +31,13 @@ export const ROUND_CONFIGS = {
 			['ambrose-blackwood', 'ambrose-blackwood-1'],
 			['ivy-fletcher', 'ivy-fletcher-1'],
 			['mark-grimmelstone', 'mark-grimmelstone-1'],
+			['mary-grimmelstone', 'mary-grimmelstone-1'],
 		],
 	},
 
 	2: {
 		add: [
-			['lillian-featherstone', 'lillian-featherstone-1'],
+			['emily-hartley', 'emily-hartley-1'],
 			['samuel-wolffe', 'samuel-wolffe-1'],
 		],
 	},
