@@ -1,6 +1,6 @@
 title: greeting
 ---
-Samuel Wolffe: Salutations, Innkeeper. I am Samuel Wolffe of Wolffe's Kennel and Hunting Supplies. Do you have room for a fellow business owner.
+Samuel Wolffe: Salutations, Innkeeper. I am Samuel Wolffe of Wolffe's Kennel and Hunting Supplies. Do you have room for a fellow business owner?
 [action]Samuel Wolffe scratches behind his ear abruptly.[/action]
 
 <<jump options>>
@@ -54,7 +54,7 @@ position: 488,602
 ---
 	-> Move on
     <<jump options>>
-  
+
 	-> So are you a werewolf or what?
 		<<jump shortAnswer>>
 
@@ -79,7 +79,7 @@ position: 796,810
 ---
 You: Out with it then. What's with this whole ensemble?
 Samuel Wolffe: I beg your pardon. What do you think I'm just running around biting people? If there was a werewolf problem don't you think we'd all know about it by now.
-Samuel Wolffe: Is this how you treat all your potential guests? Hard to imagine you'd stay in business if you had any competition. 
+Samuel Wolffe: Is this how you treat all your potential guests? Hard to imagine you'd stay in business if you had any competition.
 Samuel Wolffe: I was born this way and train hounds for a living and I won't apologize for either. Do you have a room or not?
 [action]Sameul Wolffe's nostrils flare in anger.[/action]
 
@@ -96,8 +96,6 @@ position: 642,1031
 
   -> Move on
     <<jump options>>
-
-<<jump options>>
 ===
 
 title: apology
@@ -110,4 +108,3 @@ Samuel Wolffe: To be honest I've heard it too. Even I wouldn't want to be caught
 
 <<jump options>>
 ===
-
