@@ -37,9 +37,14 @@
 \******************************************************************************/
 
 * {
+  --scrollbar-background: rgba(var(--palette-pure-white-rgb), 0.1);
+	--scrollbar-foreground: rgba(var(--palette-pure-white-rgb), 0.3);
+  --scrollbar-foreground-hovered: rgba(var(--palette-pure-white-rgb), 0.5);
+
 	box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
 	image-rendering: pixelated;
+  scrollbar-color: var(--scrollbar-foreground) var(--scrollbar-background);
 	text-overflow: ellipsis;
 	text-rendering: optimizeLegibility;
 
@@ -51,6 +56,22 @@
 			animation-delay: 0.0001s !important;
 			transition-duration: 0.0001s !important;
 			transition-delay: 0.0001s !important;
+		}
+	}
+
+	&::-webkit-scrollbar {
+		width: 1rem;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: var(--scrollbar-background);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--scrollbar-foreground);
+
+		&:hover {
+			background-color: var(--scrollbar-foreground-hovered);
 		}
 	}
 }

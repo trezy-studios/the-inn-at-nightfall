@@ -1,0 +1,110 @@
+title: greeting
+---
+Samuel Wolffe: Salutations, Innkeeper. I am Samuel Wolffe of Wolffe's Kennel and Hunting Supplies. Do you have room for a fellow business owner?
+[action]Samuel Wolffe scratches behind his ear abruptly.[/action]
+
+<<jump options>>
+===
+
+title: options
+position: 0,193
+---
+	-> Where are you coming from?
+		<<jump sourceAnswer>>
+
+	-> Where are you headed?
+		<<jump destinationAnswer>>
+
+	-> Are you in good health?
+		<<jump heathAnswer>>
+===
+
+title: sourceAnswer
+position: 13,443
+---
+You: Where are you coming from?
+Samuel Wolffe: I set out on a nice walk south from my shop in Bramblewick, to the north of course.
+
+<<jump options>>
+===
+
+title: destinationAnswer
+position: -268,429
+---
+You: Where are you headed?
+Samuel Wolffe: I heard reports of some potentially interesting game in the woods around Moorfield. I'm on my way to scout it out. If the reports are true, I can dig up a paid group for an hunt through my shop.
+
+<<jump options>>
+===
+
+title: heathAnswer
+group: health
+position: 475,414
+---
+You: Are you in good health?
+Samuel Wolffe: Never been healthier. Especially after that brisk walk from Bramblewick. Like a dog with a bone I am with a good walk in the fine weather.
+[action]A bird takes off from the treeline behind Samuel and you'd swear his ears perk up at the rustling of the leaves.[/action]
+
+<<jump healthQuestions>>
+===
+
+title: healthQuestions
+group: health
+position: 488,602
+---
+	-> Move on
+    <<jump options>>
+
+	-> So are you a werewolf or what?
+		<<jump shortAnswer>>
+
+  -> Out with it then...
+		<<jump abrasiveAnswer>>
+===
+
+title: shortAnswer
+group: health
+position: 499,818
+---
+You: So are you a werewolf or what? Because I can't let a werewolf stay at my inn.
+Samuel Wolffe: Most people don't have the gall to just come out and say it so directly. I don't really appreciate it, but I can assure you I was born with more hair than most, and I spend a lot of time around my hounds. Dogs don't judge.
+Samuel Wolffe: Can't say the same for people.
+
+<<jump apologyChoice>>
+===
+
+title: abrasiveAnswer
+group: health
+position: 796,810
+---
+You: Out with it then. What's with this whole ensemble?
+Samuel Wolffe: I beg your pardon. What do you think I'm just running around biting people? If there was a werewolf problem don't you think we'd all know about it by now.
+Samuel Wolffe: Is this how you treat all your potential guests? Hard to imagine you'd stay in business if you had any competition.
+Samuel Wolffe: I was born this way and train hounds for a living and I won't apologize for either. Do you have a room or not?
+[action]Sameul Wolffe's nostrils flare in anger.[/action]
+
+<<jump apologyChoice>>
+===
+
+title: apologyChoice
+group: health
+position: 642,1031
+---
+
+  -> Apologize
+    <<jump apology>>
+
+  -> Move on
+    <<jump options>>
+===
+
+title: apology
+group: health
+position: 659,1289
+---
+You: I'm sorry for the question. There's just been reports of some... I don't even know what to call it, and I didn't feel like I'd have done my job to keep the inn safe if I didn't ask. But I didn't have to ask like that.
+[action]Samuel Wolffe is taken off guard by your genuine apology[/action]
+Samuel Wolffe: To be honest I've heard it too. Even I wouldn't want to be caught out after dark on a night like tonight.
+
+<<jump options>>
+===

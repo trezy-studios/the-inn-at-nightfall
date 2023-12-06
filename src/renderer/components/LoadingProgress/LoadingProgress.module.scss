@@ -1,0 +1,29 @@
+.loading-progress {
+	align-items: center;
+	color: rgba(var(--palette-pure-white-rgb), 0.6);
+	display: flex;
+	flex-direction: column;
+	font-size: 0.8em;
+	gap: 1rem;
+}
+
+.details {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.progress-bar {
+	appearance: none;
+	border-radius: 0;
+	height: 1rem;
+	width: 100%;
+
+	&::-webkit-progress-bar {
+		background-color: rgba(var(--palette-pure-white-rgb), 0.1);
+	}
+
+	&::-webkit-progress-value {
+		background-color: rgba(var(--palette-pure-white-rgb), 0.3);
+	}
+}

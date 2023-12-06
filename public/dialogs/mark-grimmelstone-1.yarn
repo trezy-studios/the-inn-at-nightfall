@@ -1,0 +1,52 @@
+title: greeting
+---
+[action]A deep cough and sigh preceeds the next person in line.[/action]
+Mark Grimmelstone: Mark Grimmelstone. Do you have a room?
+
+<<jump options>>
+===
+
+title: options
+position: -3,182
+---
+	-> Where are you coming from?
+		<<jump sourceAnswer>>
+
+	-> Where are you headed?
+		<<jump destinationAnswer>>
+
+	-> Are you in good health?
+		<<jump heathAnswer>>
+
+===
+
+title: sourceAnswer
+position: -257,372
+---
+You: Where are you coming from?
+Mark Grimmelstone: Bramblewick.
+
+<<jump options>>
+===
+
+title: destinationAnswer
+position: -12,369
+---
+You: Where are you going?
+[action]Mark Grimmelstone grumbles under his breath[/action]
+Mark Grimmelstone: To an early grave if I'm lucky.
+You: Pardon?
+Mark Grimmelstone: Moorfield.
+
+<<jump options>>
+===
+
+title: heathAnswer
+position: 238,369
+---
+You: Are you in good health?
+Mark Grimmelstone: Let me put it this way: I'm in better heath than most of of the company I keep at work. That's for sure.
+[action]Mark Grimmelstone laughs at that so hard he gives himself a coughing fit.[/action]
+
+<<jump options>>
+===

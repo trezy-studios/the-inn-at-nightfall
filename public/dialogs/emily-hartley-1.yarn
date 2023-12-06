@@ -1,0 +1,50 @@
+title: greeting
+---
+Emily Hartley: Hello! What a beautiful day. Well at least I hope you're enjoying this beautiful day. I'm looking for a room for the night if you've got one!
+
+<<jump options>>
+===
+
+title: options
+position: -3,182
+---
+  -> Where are you coming from?
+    <<jump sourceAnswer>>
+
+  -> Where are you headed?
+    <<jump destinationAnswer>>
+
+  -> Are you in good health?
+    <<jump heathAnswer>>
+===
+
+title: sourceAnswer
+position: -254,359
+---
+You: Where are you coming from?
+Emily Hartley: Well. We left this morning from Bramblewick. I had some last minute packing to do, so I didn't get out the door on time. We did make up some time on the way, but Clara also says I was stopping too often pick flowers, but who can resist these colors!
+[action]Emily Hartley brandishes a small bouquet of slightly wilted flowers in your direction that matches her flower crown around her head.[/action]
+Emily Hartley: I guess it's already getting dark, so I guess she had a point.
+
+<<jump options>>
+===
+
+title: destinationAnswer
+position: 2,350
+---
+You: Where are you going?
+Emily Hartley: We're headed to Stonehearth! I've never been but I think I'd love to see the ocean. Clara says I'll probably love it, but maybe not right away. Getting some peace and quiet for a couple days might be nice. And it's awfully quiet around here.
+[action]Emily Hartley starts humming and picking at the petals of the flowers in her hand[/action]
+
+<<jump options>>
+===
+
+title: heathAnswer
+position: 285,348
+---
+You: Are you in good health?
+Emily Hartley: As soon as we got out of Bramblewick I felt like a whole bag of stones had just been lifted from my chest. I swear if I got any lighter, I'd be floating! I'm great honestly. Staying at your charming inn would just be the the best end to this beautiful day.
+Emily Hartley: Well. I was looking at this cloud I swear looked just like a snail, then I tripped and skinned my knee a bit. At least I didn't stain my dress.
+
+<<jump options>>
+===
