@@ -1,0 +1,48 @@
+title: greeting
+---
+Mary Grimmelstone: Oh dear. Don't mind him. I'm Mary Grimmelstone. You've just had the pleasure of meeting my dear of a husband, Mark Grimmelstone. He's not one for travel if I'm being honest.
+
+<<jump options>>
+===
+
+title: options
+position: -3,182
+---
+	-> Where are you coming from?
+		<<jump sourceAnswer>>
+
+	-> Where are you headed?
+		<<jump destinationAnswer>>
+
+	-> Are you in good health?
+		<<jump heathAnswer>>
+
+===
+
+title: sourceAnswer
+position: -257,372
+---
+You: Where are you coming from?
+Mary Grimmelstone: We've just walked from Bramblewick. My husband Mark is a grave keeper there. Being around the dead all day, it makes it a bit hard for him to remember how to talk to those of us on this side of veil I'm afraid. Hope he didn't grumble at you too much.
+
+<<jump options>>
+===
+
+title: destinationAnswer
+position: -12,369
+---
+You: Where are you going?
+Mary Grimmelstone: Oh, we're on our way to Moorfield. Apparently there's been some... issues and they need some help with digging some extra graves.
+Mary Grimmelstone: With all the trouble folks are having on the road these days, I didn't want him traveling alone. If I wasn't here he might have tried to walk through the night just so he didn't have to bother sorting a room.
+
+<<jump options>>
+===
+
+title: heathAnswer
+position: 238,369
+---
+You: Are you in good health?
+Mary Grimmelstone: Oh sure. Can't complain. My feet are a little sore from the walk, but nothing a good night's sleep won't cure.
+
+<<jump options>>
+===

@@ -42,6 +42,12 @@
 		"loadingCategory": "characters"
 	},
 	{
+		"alias": "mary-grimmelstone",
+		"src": "characters/character07.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
 		"alias": "samuel-wolffe",
 		"src": "characters/character09.json",
 		"type": "character",
@@ -93,6 +99,12 @@
 	{
 		"alias": "mark-grimmelstone-1",
 		"src": "dialogs/mark-grimmelstone-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "mary-grimmelstone-1",
+		"src": "dialogs/mary-grimmelstone-1.yarn",
 		"type": "dialog",
 		"loadingCategory": "dialog"
 	},
@@ -295,6 +307,25 @@
 	{
 		"alias": "mark-grimmelstone::fanged",
 		"src": "sprites/character06.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "mary-grimmelstone::normal",
+		"src": "sprites/character07.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "mary-grimmelstone::bitten",
+		"src": "sprites/character07.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "mary-grimmelstone::fanged",
+		"src": "sprites/character07.fangs.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
