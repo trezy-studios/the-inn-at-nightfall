@@ -30,6 +30,7 @@ export const ROUND_CONFIGS = {
 			['eleanor-whitfield', 'eleanor-whitfield-1'],
 			['ambrose-blackwood', 'ambrose-blackwood-1'],
 			['ivy-fletcher', 'ivy-fletcher-1'],
+			['mark-grimmelstone', 'mark-grimmelstone-1'],
 		],
 	},
 

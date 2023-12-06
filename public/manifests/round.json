@@ -36,6 +36,12 @@
 		"loadingCategory": "characters"
 	},
 	{
+		"alias": "mark-grimmelstone",
+		"src": "characters/character06.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
 		"alias": "samuel-wolffe",
 		"src": "characters/character09.json",
 		"type": "character",
@@ -81,6 +87,12 @@
 	{
 		"alias": "lillian-featherstone-1",
 		"src": "dialogs/lillian-featherstone-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "mark-grimmelstone-1",
+		"src": "dialogs/mark-grimmelstone-1.yarn",
 		"type": "dialog",
 		"loadingCategory": "dialog"
 	},
@@ -264,6 +276,25 @@
 	{
 		"alias": "ivy-fletcher::fanged",
 		"src": "sprites/character10.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "mark-grimmelstone::normal",
+		"src": "sprites/character06.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "mark-grimmelstone::bitten",
+		"src": "sprites/character06.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "mark-grimmelstone::fanged",
+		"src": "sprites/character06.fangs.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
