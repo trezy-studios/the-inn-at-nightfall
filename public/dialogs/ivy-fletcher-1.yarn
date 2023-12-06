@@ -1,0 +1,49 @@
+title: greeting
+---
+Ivy Fletcher: Good day. My name is Ivy Fletcher. Do you have a room available for the night? I'll be out at first light if that helps at all. I'd even be wiling to stay in the common room. I doubt I'll get a wink of sleep tonight.
+[action]Ivy Fletcher's eyes are wide, her brow creased, and she looks like she's about to vibrate right out of her skin.[/action]
+
+<<jump options>>
+===
+
+title: options
+position: -3,182
+---
+	-> Where are you coming from?
+		<<jump sourceAnswer>>
+
+	-> Where are you headed?
+		<<jump destinationAnswer>>
+
+	-> Are you in good health?
+		<<jump heathAnswer>>
+===
+
+title: sourceAnswer
+position: -254,359
+---
+You: Where are you coming from?
+Ivy Fletcher: I've just arrived from Duskmire to the east. I work as a maid for a family there. The Shepards, if you heard of 'em.
+
+<<jump options>>
+===
+
+title: destinationAnswer
+position: 2,350
+---
+You: Where are you going?
+Ivy Fletcher: I'm headed to Moorfield see my da. I got a letter from my sister saying he's awfully sick, bless 'im.
+[action]Ivy Fletcher clutches something you can't see through the fabric of her shirt below the collar and fidgets with it, saying something more under her breath.[/action]
+Ivy Fletcher: I wanted to leave yesterday, but it the sun was already gettin' low, so one of the other girls talked me out of it. I was off like a shot first thing this morning though.
+
+<<jump options>>
+===
+
+title: heathAnswer
+position: 285,348
+---
+You: Are you in good health?
+Ivy Fletcher: Me? I mean if feel as if my heart's about to beat right out of my chest if I'm being honest. I'll feel loads better when I can see my da.
+
+<<jump options>>
+===

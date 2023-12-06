@@ -83,10 +83,10 @@ export function SettingsScreen() {
 					</span>
 
 					<input
-						max={1}
+						max={1000}
 						min={0}
 						onChange={handleDialogDelayChange}
-						step={0.1}
+						step={50}
 						type={'range'}
 						value={dialogDelay} />
 				</label>
