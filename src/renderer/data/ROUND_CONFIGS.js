@@ -35,6 +35,7 @@ export const ROUND_CONFIGS = {
 	2: {
 		add: [
 			['lillian-featherstone', 'lillian-featherstone-1'],
+			['samuel-wolffe', 'samuel-wolffe-1'],
 		],
 	},
 

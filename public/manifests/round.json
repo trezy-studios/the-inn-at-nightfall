@@ -6,20 +6,8 @@
 		"loadingCategory": "characters"
 	},
 	{
-		"alias": "ambrose-blackwood",
-		"src": "characters/character05.json",
-		"type": "character",
-		"loadingCategory": "characters"
-	},
-	{
 		"alias": "benedict-caldwell",
 		"src": "characters/character01.json",
-		"type": "character",
-		"loadingCategory": "characters"
-	},
-	{
-		"alias": "cedric-holloway",
-		"src": "characters/character04.json",
 		"type": "character",
 		"loadingCategory": "characters"
 	},
@@ -32,6 +20,24 @@
 	{
 		"alias": "lillian-featherstone",
 		"src": "characters/character03.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "cedric-holloway",
+		"src": "characters/character04.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "ambrose-blackwood",
+		"src": "characters/character05.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "samuel-wolffe",
+		"src": "characters/character09.json",
 		"type": "character",
 		"loadingCategory": "characters"
 	},
@@ -69,6 +75,12 @@
 	{
 		"alias": "lillian-featherstone-1",
 		"src": "dialogs/lillian-featherstone-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "samuel-wolffe-1",
+		"src": "dialogs/samuel-wolffe-1.yarn",
 		"type": "dialog",
 		"loadingCategory": "dialog"
 	},
@@ -202,6 +214,25 @@
 	{
 		"alias": "ambrose-blackwood::fanged",
 		"src": "sprites/character05.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "samuel-wolffe::normal",
+		"src": "sprites/character09.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "samuel-wolffe::bitten",
+		"src": "sprites/character09.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "samuel-wolffe::fanged",
+		"src": "sprites/character09.fangs.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
