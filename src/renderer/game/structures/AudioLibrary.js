@@ -3,7 +3,6 @@ import {
 	Howl,
 	Howler,
 } from 'howler'
-import { setLoadingItem } from '../../store/reducers/setLoadingItem.js'
 
 
 
@@ -17,22 +16,7 @@ import { store } from '../../store/store.js'
 
 
 // Constants
-const music = [
-	{
-		alias: 'nightfall',
-		intro: [0, 16039],
-		loop: [16039, 32052],
-		outro: [48091, 16039],
-		url: 'music/nightfall.mp3',
-	},
-	{
-		alias: 'title',
-		intro: [0, 16039],
-		loop: [16039, 32052],
-		outro: [48091, 16039],
-		url: 'music/title.mp3',
-	},
-]
+const DEFAULT_FADE_DURATION = 1000
 
 
 
@@ -43,6 +27,12 @@ export const AudioLibrary = new class AudioLibraryClass {
 	/****************************************************************************\
 	 * Private instance properties
 	\****************************************************************************/
+
+	/** @type {number} */
+	#currentSoundID
+
+	/** @type {Howl} */
+	#currentTrack
 
 	/** @type {{ [key: string]: Howl }} */
 	#library = {}
@@ -64,6 +54,8 @@ export const AudioLibrary = new class AudioLibraryClass {
 				Howler.volume(updates.mainVolume)
 			}
 		})
+
+		Howler.volume(store.state.mainVolume)
 	}
 
 
@@ -114,32 +106,51 @@ export const AudioLibrary = new class AudioLibraryClass {
 
 	/**
 	 * Loads all audio files.
+	 *
+	 * @param {object} assetData
 	 */
-	async load() {
-		let index = 0
+	async load(assetData) {
+		await this.add({
+			alias: assetData.alias,
+			sprite: assetData.sprites,
+			url: assetData.src,
+		})
+	}
 
-		while (index < music.length) {
-			const {
-				alias,
-				intro,
-				loop,
-				outro,
-				url,
-			} = music[index]
+	/**
+	 * Plays a music track.
+	 *
+	 * @param {string} trackID The ID of the track to play.
+	 */
+	play(trackID) {
+		const track = this.get(trackID)
 
-			setLoadingItem(`${alias} (${url})`)
-
-			await this.add({
-				alias,
-				sprite: {
-					intro,
-					loop: [...loop, true],
-					outro,
-				},
-				url,
-			})
-
-			index += 1
+		if (this.#currentTrack === track) {
+			return
 		}
+
+		if (this.#currentSoundID) {
+			this.stop(this.#currentTrack, this.#currentSoundID)
+		}
+
+		this.#currentSoundID = track.play('intro')
+		this.#currentTrack = track
+
+		track.once('end', () => {
+			track.stop(this.#currentSoundID)
+			this.#currentSoundID = track.play('loop')
+		})
+	}
+
+	/**
+	 * Stops a music track.
+	 *
+	 * @param {Howl} track The track the sound belongs to.
+	 * @param {number} soundID The ID of the sound to be stopped.
+	 * @param {number} [fadeDuration] The length of the fade in milliseconds.
+	 */
+	stop(track, soundID, fadeDuration = DEFAULT_FADE_DURATION) {
+		track.fade(1, 0, fadeDuration, soundID)
+		track.once('fade', () => track.stop(soundID))
 	}
 }

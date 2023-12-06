@@ -1,0 +1,181 @@
+title: greeting
+position: 190,-334
+---
+Benedict Caldwell: Evening. The name's Benedict Caldwell. I've been on the road a spell and wouldn't mind a place to bunk down for the night. A quiet room, if you have one... walls can be too thin for an old soldier's liking.
+Benedict Caldwell: I could take a chance and continue on to the next town, but I always follow my gut and it's telling me gettin' caught out here when night falls would spell trouble.
+
+<<jump options>>
+===
+
+title: options
+position: 190,-147
+---
+  -> Where are you coming from?
+    <<jump sourceAnswer>>
+
+  -> Where are you headed?
+    <<jump destinationAnswer>>
+
+  -> Are you in good health?
+    <<jump healthAnswer>>
+===
+
+title: sourceAnswer
+position: -104,125
+---
+You: Where are you coming from?
+Benedict Caldwell: You always ask guests so many questions?
+
+<<jump questionsOptions>>
+===
+
+title: questionsOptions
+position: -106,342
+---
+	-> Beg your pardon, just making conversation.
+		<<jump questionsChatty>>
+
+  -> Yes.
+    <<jump questionsShort>>
+
+  -> I'm the one asking questions here.
+    <<jump questionsAbrasive>>
+===
+
+title: questionsChatty
+position: -415,617
+---
+
+You: Beg your pardon. Making conversation with guests is the highlight of my day. Otherwise, it's just cleaning and cooking.
+
+<<jump questionsAnswer>>
+
+===
+
+title: questionsShort
+position: -104,635
+---
+
+You: Yes.
+
+<<jump questionsAnswer>>
+
+===
+
+title: questionsAbrasive
+position: 199,641
+---
+
+You: You're right. It's quite dangerous at night, and you'd be walking well past dusk to get to the next inn.
+You: Now I'll be the one asking questions here. Answer 'em, or take your chances on the road.
+
+<<jump questionsAnswer>>
+
+===
+
+title: questionsAnswer
+position: -103,827
+---
+
+Benedict Caldwell: I didn't mean to come off so...
+Benedict Caldwell: They don't teach manners in the service. I just arrived in Stonehearth a few days ago. I'm just looking for...
+Benedict Caldwell: Kady Amertine, I think she would have been traveling from Stonehearth, same as me. Do you happen to know where she went? If not...
+Benedict Caldwell: To be honest I'm not sure where to go from here.
+
+<<jump lookingOptions>>
+
+===
+
+title: lookingOptions
+position: -104,1020
+---
+
+  -> Can't say I remember a Kady Amertine.
+  	<<jump lookingNoDontRemember>>
+
+  -> No.
+  	<<jump lookingNoShort>>
+
+  -> I couldn't tell you if I did.
+  	<<jump lookingNoAbrasive>>
+
+===
+
+title: lookingNoDontRemember
+position: -381,1201
+---
+
+You: Sorry, I can't say I remember a Kady Amertine...
+Benedict Caldwell: Look, I could really use some help here. If you could tell me about the area, I'd really appreciate it.
+
+  -> Sure.
+    <<jump aboutTheAreaSure>>
+
+  -> No.
+    <<jump aboutTheAreaNo>>
+
+===
+
+title: aboutTheAreaNo
+---
+
+You: I'm sure you can manage.
+[action]Benedict scowls.[/action]
+
+<<jump options>>
+
+===
+
+title: aboutTheAreaSure
+---
+
+You: Sure, I'd be happy to help.
+You: Stonehearth is the port town you just came from. There's not much else to the West other than the sea.
+You: To the north you'll find Bramblewick. It's a bit of a melting pot up there. Closest thing we have to a big city.
+You: To the East is Duskmire. It's mostly farms and the people who work them. Some of the wealthier folks around like to build their giant estates just outside of town.
+You: Moorfield is to the South. It's a pretty small settlement. They're just doing the best they can with what little they've got.
+Benedict Caldwell: Thank you. Now I actually have something to work with.
+
+<<jump options>>
+
+===
+
+title: lookingNoShort
+position: -103,1215
+---
+
+You: No. Haven't seen a Katy Amertine.
+Benedict Caldwell: I see...
+
+<<jump options>>
+
+===
+
+title: lookingNoAbrasive
+position: 191,1200
+---
+
+You: I'd stay mum if some other traveler asked about your comings and goings, so I'll hold my tongue about other travelers as well. I didn't earn my reputation by sharing everyone's business with anyone traipsing through the area.
+Benedict Caldwell: I understand.
+
+<<jump options>>
+
+===
+
+title: destinationAnswer
+position: 190,125
+---
+You: Where are you headed?
+Benedict Caldwell: I'm not sure. I guess I'll keep heading east.
+
+<<jump options>>
+===
+
+title: healthAnswer
+position: 496,125
+---
+You: Are you in good health?
+Benedict Caldwell: I've been worse.
+
+<<jump options>>
+===

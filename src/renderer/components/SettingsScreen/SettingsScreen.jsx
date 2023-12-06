@@ -13,7 +13,6 @@ import { goToTitle } from '../../store/reducers/goToTitle.js'
 import { Heading } from '../Heading/Heading.jsx'
 import { Screen } from '../Screen/Screen.jsx'
 import { store } from '../../store/store.js'
-import { useLoopingTrack } from '../../hooks/useLoopingTrack.js'
 import { Vignette } from '../Vignette/Vignette.jsx'
 
 
@@ -63,8 +62,6 @@ export function SettingsScreen() {
 		mainVolume,
 	} = useStore(store)
 
-	useLoopingTrack('title')
-
 	return (
 		<Screen className={styles['settings-screen']}>
 			<header className={styles['header']}>
@@ -86,10 +83,10 @@ export function SettingsScreen() {
 					</span>
 
 					<input
-						max={1}
+						max={1000}
 						min={0}
 						onChange={handleDialogDelayChange}
-						step={0.1}
+						step={50}
 						type={'range'}
 						value={dialogDelay} />
 				</label>

@@ -30,9 +30,9 @@ import { store } from '../../store/store.js'
 export function InteriorMidground() {
 	const { viewport } = useStore(store)
 
-	const doorOpenAsset = useMemo(() => Assets.get('interior-door-open'), [])
-	const shelfAsset = useMemo(() => Assets.get('interior-shelf'), [])
-	const wallAsset = useMemo(() => Assets.get('interior-wall'), [])
+	const doorOpenAsset = useMemo(() => Assets.get('interior::door-open'), [])
+	const shelfAsset = useMemo(() => Assets.get('interior::shelf'), [])
+	const wallAsset = useMemo(() => Assets.get('interior::wall'), [])
 
 	const getSpriteProps = useCallback(texture => {
 		let scale = (viewport.height * 1.2) / texture.orig.height

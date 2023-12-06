@@ -34,7 +34,7 @@ export function Responses() {
 
 	const { dialogDelay } = useStore(store)
 
-	const { options } = useDialogMachine({ autoadvanceDelay: dialogDelay * 1000 })
+	const { options } = useDialogMachine({ autoadvanceDelay: dialogDelay })
 
 	const handleAllowClick = useCallback(() => allowCurrentCharacter(), [])
 	const handleDenyClick = useCallback(() => goToNextCharacter(true), [])

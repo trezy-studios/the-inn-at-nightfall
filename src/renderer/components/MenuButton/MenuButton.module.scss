@@ -20,7 +20,6 @@
 	&:hover {
 		font-weight: bold;
 		outline: none;
-		padding-left: 1rem;
 	}
 
 	&.align-center {
@@ -28,19 +27,23 @@
 	}
 
 	&.align-left {
+		padding-right: 1rem;
 		text-align: left;
 
 		&:focus,
 		&:hover {
 			padding-left: 1rem;
+			padding-right: 0;
 		}
 	}
 
 	&.align-right {
+		padding-left: 1rem;
 		text-align: right;
 
 		&:focus,
 		&:hover {
+			padding-left: 0;
 			padding-right: 1rem;
 		}
 	}
