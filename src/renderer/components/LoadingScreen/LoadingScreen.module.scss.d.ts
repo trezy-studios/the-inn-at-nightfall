@@ -1,5 +1,5 @@
 declare const classNames: {
   readonly loading: "loading";
-  readonly "loading-item": "loading-item";
+  readonly "loading-progress": "loading-progress";
 };
 export = classNames;

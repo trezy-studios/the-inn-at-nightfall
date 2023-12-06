@@ -1,0 +1,252 @@
+[
+	{
+		"alias": "alastair-reid",
+		"src": "characters/character00.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "benedict-caldwell",
+		"src": "characters/character01.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "eleanor-whitfield",
+		"src": "characters/character02.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "lillian-featherstone",
+		"src": "characters/character03.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "cedric-holloway",
+		"src": "characters/character04.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "ambrose-blackwood",
+		"src": "characters/character05.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "samuel-wolffe",
+		"src": "characters/character09.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+
+	{
+		"alias": "alastair-reid-1",
+		"src": "dialogs/alastair-reid-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "ambrose-blackwood-1",
+		"src": "dialogs/ambrose-blackwood-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "benedict-caldwell-1",
+		"src": "dialogs/benedict-caldwell-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "cedric-holloway-1",
+		"src": "dialogs/cedric-holloway-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "eleanor-whitfield-1",
+		"src": "dialogs/eleanor-whitfield-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "lillian-featherstone-1",
+		"src": "dialogs/lillian-featherstone-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "samuel-wolffe-1",
+		"src": "dialogs/samuel-wolffe-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+
+	{
+		"src": "backgrounds/creepy-hands.png",
+		"alias": "background::creepy-hands",
+		"type": "sprite",
+		"loadingCategory": "environment sprites"
+	},
+	{
+		"src": "backgrounds/exterior.jpg",
+		"alias": "background::exterior",
+		"type": "sprite",
+		"loadingCategory": "environment sprites"
+	},
+	{
+		"alias": "interior::door-open",
+		"src": "backgrounds/interior.door.open.png",
+		"type": "sprite",
+		"loadingCategory": "environment sprites"
+	},
+	{
+		"alias": "interior::shelf",
+		"src": "backgrounds/interior.shelf.png",
+		"type": "sprite",
+		"loadingCategory": "environment sprites"
+	},
+	{
+		"alias": "interior::wall",
+		"src": "backgrounds/interior.wall.png",
+		"type": "sprite",
+		"loadingCategory": "environment sprites"
+	},
+
+	{
+		"alias": "alastair-reid::normal",
+		"src": "sprites/character00.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "benedict-caldwell::normal",
+		"src": "sprites/character01.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "benedict-caldwell::bitten",
+		"src": "sprites/character01.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "benedict-caldwell::fanged",
+		"src": "sprites/character01.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "eleanor-whitfield::normal",
+		"src": "sprites/character02.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "eleanor-whitfield::bitten",
+		"src": "sprites/character02.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "eleanor-whitfield::fanged",
+		"src": "sprites/character02.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "lillian-featherstone::normal",
+		"src": "sprites/character03.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "lillian-featherstone::bitten",
+		"src": "sprites/character03.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "lillian-featherstone::fanged",
+		"src": "sprites/character03.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "cedric-holloway::normal",
+		"src": "sprites/character04.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "cedric-holloway::bitten",
+		"src": "sprites/character04.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "cedric-holloway::fanged",
+		"src": "sprites/character04.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "ambrose-blackwood::normal",
+		"src": "sprites/character05.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "ambrose-blackwood::bitten",
+		"src": "sprites/character05.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "ambrose-blackwood::fanged",
+		"src": "sprites/character05.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "samuel-wolffe::normal",
+		"src": "sprites/character09.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "samuel-wolffe::bitten",
+		"src": "sprites/character09.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "samuel-wolffe::fanged",
+		"src": "sprites/character09.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "nightfall",
+		"src": "music/nightfall.mp3",
+		"type": "audio",
+		"loadingCategory": "music",
+
+		"sprites": {
+			"intro": [0, 16039],
+			"loop": [16039, 32052, true],
+			"outro": [48091, 16039]
+		}
+	}
+]

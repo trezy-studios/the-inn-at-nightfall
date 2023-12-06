@@ -28,7 +28,7 @@ export function ExteriorBackground() {
 	const { viewport } = useStore(store)
 
 	const spriteProps = useMemo(() => {
-		const texture = Assets.get('backgrounds-exterior')
+		const texture = Assets.get('background::exterior')
 
 		let scale = viewport.height / texture.orig.height
 
