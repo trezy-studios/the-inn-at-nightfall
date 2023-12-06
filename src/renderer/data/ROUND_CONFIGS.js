@@ -17,8 +17,8 @@ export const ROUND_CONFIGS = {
 		add: [
 			['alastair-reid', 'alastair-reid-1'],
 			['cedric-holloway', 'cedric-holloway-1'],
+			['benedict-caldwell', 'benedict-caldwell-1'],
 			['lillian-featherstone', 'lillian-featherstone-1'],
-			['ambrose-blackwood', 'ambrose-blackwood-1'],
 		],
 		bite: [
 			'lillian-featherstone',
@@ -28,13 +28,15 @@ export const ROUND_CONFIGS = {
 	1: {
 		add: [
 			['eleanor-whitfield', 'eleanor-whitfield-1'],
-			['benedict-caldwell', 'benedict-caldwell-1'],
+			['ambrose-blackwood', 'ambrose-blackwood-1'],
+			['ivy-fletcher', 'ivy-fletcher-1'],
 		],
 	},
 
 	2: {
 		add: [
 			['lillian-featherstone', 'lillian-featherstone-1'],
+			['samuel-wolffe', 'samuel-wolffe-1'],
 		],
 	},
 

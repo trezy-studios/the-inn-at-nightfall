@@ -45,7 +45,7 @@ export function useLoadAssets(manifestID, options = {}) {
 	const [manifest, setManifest] = useState(null)
 
 	const getManifest = useCallback(async() => {
-		const manifestResponse = await fetch(`/manifests/${manifestID}.json`)
+		const manifestResponse = await fetch(`manifests/${manifestID}.json`)
 		const manifestData = await manifestResponse.json()
 		setIsRetrievingManifest(true)
 		setManifest(manifestData)

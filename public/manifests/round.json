@@ -1,37 +1,49 @@
 [
 	{
 		"alias": "alastair-reid",
-		"src": "characters/alastair-reid.json",
-		"type": "character",
-		"loadingCategory": "characters"
-	},
-	{
-		"alias": "ambrose-blackwood",
-		"src": "characters/ambrose-blackwood.json",
+		"src": "characters/character00.json",
 		"type": "character",
 		"loadingCategory": "characters"
 	},
 	{
 		"alias": "benedict-caldwell",
-		"src": "characters/benedict-caldwell.json",
-		"type": "character",
-		"loadingCategory": "characters"
-	},
-	{
-		"alias": "cedric-holloway",
-		"src": "characters/cedric-holloway.json",
+		"src": "characters/character01.json",
 		"type": "character",
 		"loadingCategory": "characters"
 	},
 	{
 		"alias": "eleanor-whitfield",
-		"src": "characters/eleanor-whitfield.json",
+		"src": "characters/character02.json",
 		"type": "character",
 		"loadingCategory": "characters"
 	},
 	{
 		"alias": "lillian-featherstone",
-		"src": "characters/lillian-featherstone.json",
+		"src": "characters/character03.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "cedric-holloway",
+		"src": "characters/character04.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "ambrose-blackwood",
+		"src": "characters/character05.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "samuel-wolffe",
+		"src": "characters/character09.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
+	{
+		"alias": "ivy-fletcher",
+		"src": "characters/character10.json",
 		"type": "character",
 		"loadingCategory": "characters"
 	},
@@ -72,6 +84,18 @@
 		"type": "dialog",
 		"loadingCategory": "dialog"
 	},
+	{
+		"alias": "samuel-wolffe-1",
+		"src": "dialogs/samuel-wolffe-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "ivy-fletcher-1",
+		"src": "dialogs/ivy-fletcher-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
 
 	{
 		"src": "backgrounds/creepy-hands.png",
@@ -106,102 +130,140 @@
 
 	{
 		"alias": "alastair-reid::normal",
-		"src": "sprites/alastair-reid.normal.png",
-		"type": "sprite",
-		"loadingCategory": "character sprites"
-	},
-
-	{
-		"alias": "ambrose-blackwood::normal",
-		"src": "sprites/ambrose-blackwood.normal.png",
-		"type": "sprite",
-		"loadingCategory": "character sprites"
-	},
-	{
-		"alias": "ambrose-blackwood::bitten",
-		"src": "sprites/ambrose-blackwood.bitten.png",
-		"type": "sprite",
-		"loadingCategory": "character sprites"
-	},
-	{
-		"alias": "ambrose-blackwood::fanged",
-		"src": "sprites/ambrose-blackwood.fangs.png",
+		"src": "sprites/character00.original.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
 
 	{
 		"alias": "benedict-caldwell::normal",
-		"src": "sprites/benedict-caldwell.normal.png",
+		"src": "sprites/character01.original.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
 	{
 		"alias": "benedict-caldwell::bitten",
-		"src": "sprites/benedict-caldwell.bitten.png",
+		"src": "sprites/character01.bitten.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
 	{
 		"alias": "benedict-caldwell::fanged",
-		"src": "sprites/benedict-caldwell.fangs.png",
-		"type": "sprite",
-		"loadingCategory": "character sprites"
-	},
-
-	{
-		"alias": "cedric-holloway::normal",
-		"src": "sprites/cedric-holloway.normal.png",
-		"type": "sprite",
-		"loadingCategory": "character sprites"
-	},
-	{
-		"alias": "cedric-holloway::bitten",
-		"src": "sprites/cedric-holloway.bitten.png",
-		"type": "sprite",
-		"loadingCategory": "character sprites"
-	},
-	{
-		"alias": "cedric-holloway::fanged",
-		"src": "sprites/cedric-holloway.fangs.png",
+		"src": "sprites/character01.fangs.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
 
 	{
 		"alias": "eleanor-whitfield::normal",
-		"src": "sprites/eleanor-whitfield.normal.png",
+		"src": "sprites/character02.original.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
 	{
 		"alias": "eleanor-whitfield::bitten",
-		"src": "sprites/eleanor-whitfield.bitten.png",
+		"src": "sprites/character02.bitten.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
 	{
 		"alias": "eleanor-whitfield::fanged",
-		"src": "sprites/eleanor-whitfield.fangs.png",
+		"src": "sprites/character02.fangs.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
 
 	{
 		"alias": "lillian-featherstone::normal",
-		"src": "sprites/lillian-featherstone.normal.png",
+		"src": "sprites/character03.original.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
 	{
 		"alias": "lillian-featherstone::bitten",
-		"src": "sprites/lillian-featherstone.bitten.png",
+		"src": "sprites/character03.bitten.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
 	{
 		"alias": "lillian-featherstone::fanged",
-		"src": "sprites/lillian-featherstone.fangs.png",
+		"src": "sprites/character03.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "cedric-holloway::normal",
+		"src": "sprites/character04.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "cedric-holloway::bitten",
+		"src": "sprites/character04.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "cedric-holloway::fanged",
+		"src": "sprites/character04.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "ambrose-blackwood::normal",
+		"src": "sprites/character05.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "ambrose-blackwood::bitten",
+		"src": "sprites/character05.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "ambrose-blackwood::fanged",
+		"src": "sprites/character05.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "samuel-wolffe::normal",
+		"src": "sprites/character09.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "samuel-wolffe::bitten",
+		"src": "sprites/character09.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "samuel-wolffe::fanged",
+		"src": "sprites/character09.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "ivy-fletcher::normal",
+		"src": "sprites/character10.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "ivy-fletcher::bitten",
+		"src": "sprites/character10.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "ivy-fletcher::fanged",
+		"src": "sprites/character10.fangs.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
