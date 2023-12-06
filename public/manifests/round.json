@@ -41,6 +41,12 @@
 		"type": "character",
 		"loadingCategory": "characters"
 	},
+	{
+		"alias": "ivy-fletcher",
+		"src": "characters/character10.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
 
 	{
 		"alias": "alastair-reid-1",
@@ -81,6 +87,12 @@
 	{
 		"alias": "samuel-wolffe-1",
 		"src": "dialogs/samuel-wolffe-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "ivy-fletcher-1",
+		"src": "dialogs/ivy-fletcher-1.yarn",
 		"type": "dialog",
 		"loadingCategory": "dialog"
 	},
@@ -233,6 +245,25 @@
 	{
 		"alias": "samuel-wolffe::fanged",
 		"src": "sprites/character09.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "ivy-fletcher::normal",
+		"src": "sprites/character10.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "ivy-fletcher::bitten",
+		"src": "sprites/character10.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "ivy-fletcher::fanged",
+		"src": "sprites/character10.fangs.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
