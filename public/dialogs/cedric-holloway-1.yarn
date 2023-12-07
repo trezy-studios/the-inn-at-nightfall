@@ -1,4 +1,132 @@
 title: greeting
 ---
-Rev. Cedric Holloway: Blessings upon this house. I am Reverend Cedric Holloway from Moorfield. I'm in need of shelter for the night as I journey to serve the Lord's calling. Might your inn spare a humble room for a servant of the faith?
+Rev. Cedric Holloway: Blessings upon this house. I am Reverend Cedric Holloway and I'm in need of shelter for the night as I journey to serve the Lord's calling. Might your inn spare a humble room for a servant of the faith?
+
+<<jump options>>
+===
+
+title: options
+position: -1,166
+---
+  -> Where are you coming from?
+    <<jump sourceAnswer>>
+
+  -> Where are you headed?
+    <<jump destinationAnswer>>
+
+  -> Are you in good health?
+    <<jump heathAnswer>>
+===
+
+title: sourceAnswer
+position: -256,357
+---
+You: Where are you coming from?
+Rev. Cedric Holloway: I serve my parish at Our Lady of Sorrows north in Bramblewick. I left from there early this morning.
+[action]Rev. Cedric Holloway gives you a tight but genuine smile pulls that at the corners of his tired eyes.[/action]
+
+<<jump options>>
+===
+
+title: destinationAnswer
+position: 4,360
+---
+You: Where are you going?
+Rev. Cedric Holloway: I'm headed south to Moorfield. I've been in Bramblewick for the past 15 years, but I'm originally from Moorfield. A family friend has written to me about some, let's call it troubling, issues in my hometown beseeching me for help. And when a friend asks for help, you help them. I hope these issues don't end up troubling you here as the bastion of this crossroads, Innkeeper. 
+
+<<jump troubleQuestions>>
+===
+
+title: troubleQuestions
+group: trouble
+position: 5,563
+---
+  -> Move on
+    <<jump options>>
+
+  -> I heard some troubled rumblings just this morning.
+    <<jump chattyAnswer>>
+
+  -> What kind of "troubling" issues?
+    <<jump shortAnswer>>
+
+  -> If you want a room, I need more details.
+    <<jump abrasiveAnswer>>
+===
+
+title: chattyAnswer
+group: trouble
+position: -259,758
+---
+You: I heard some troubled rumblings just this morning. Do you know what I should be on the look out for to keep the Inn and my guests safe, Reverend?
+
+<<jump advice>>
+===
+
+title: shortAnswer
+group: trouble
+position: 8,751
+---
+You: What kind of "troubling" issues?
+Rev. Cedric Holloway: Hopefully it's nothing to worry about. Just a bad memory surfacing in a crisis. By his grace, may it be a mistake.
+
+<<jump insistOptions>>
+===
+
+title: abrasiveAnswer
+group: trouble
+position: 292,746
+---
+You: If you want a room, I need more details.
+Rev. Cedric Holloway: I don't appreciate your tone, Innkeeper.
+
+<<jump insistOptions>>
+===
+
+title: insistOptions
+group: trouble
+position: 161,944
+---
+
+  -> Move on
+    <<jump options>>
+
+  -> Insist
+    <<jump insist>>
+
+===
+
+title: insist
+group: trouble
+position: 161,1126
+---
+You: I insist on some details, Reverend.
+[action]Rev. Cedric Holloway looks into your eyes with a cool appraising stare[/action]
+Rev. Cedric Holloway: I choose believe you heart is soft, even if your words are not.
+
+<<jump advice>>
+===
+
+title: advice
+group: trouble
+position: -172,1294
+---
+[action]Rev. Cedric Holloway leans in closer and lowers his voice[/action]
+Rev. Cedric Holloway: I haven't heard rumors the likes of this since... well for over a decade. I'll tell you this, there's no folk charm or ward that repels this evil, save for the sanctity of the threshold.
+[action]Rev. Cedric Holloway pulls a small vial of oil from his pocket, places it on the wood of the threshold.[/action]
+[action] Rev. Cedric Holloway rises with his eyes closed, his lips move silently. He places his hand on the doorframe next to you.
+[action] Suddenly he smashes the vial with sole of his boot. The earthy scent of of the liquid from the vial reaches your nose.[/action]
+Rev. Cedric Holloway: Amen.
+Rev. Cedric Holloway: Be careful who you invite in, Innkeeper.
+
+<<jump options>>
+===
+
+title: heathAnswer
+position: 287,353
+---
+You: Are you in good health?
+Rev. Cedric Holloway: I can say, thankfully, I am in excellent health. I appreciate your care and concern for your establishment and your guests.
+
+<<jump options>>
 ===
