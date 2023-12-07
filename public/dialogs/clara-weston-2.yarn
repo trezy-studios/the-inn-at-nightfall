@@ -1,0 +1,46 @@
+title: greeting
+---
+Clara Weston: Hello again. Emily's anxious to move on, I hope you weren't the target of her pent up energy just now.
+
+<<jump options>>
+===
+
+title: options
+position: -3,182
+---
+	-> Where are you coming from?
+		<<jump sourceAnswer>>
+
+	-> Where are you headed?
+		<<jump destinationAnswer>>
+
+	-> Are you in good health?
+		<<jump heathAnswer>>
+===
+
+title: sourceAnswer
+position: -254,372
+---
+You: Where are you coming from?
+Clara Weston: We couldn't make it far yesterday, so we stayed here. I won't leave Emily alone.
+
+<<jump options>>
+===
+
+title: destinationAnswer
+position: -12,369
+---
+You: Where are you going?
+Clara Weston: We're still planning on going to Stonehearth, but not until Emily can manage the walk on her ankle.
+
+<<jump options>>
+===
+
+title: heathAnswer
+position: 233,371
+---
+You: Are you in good health?
+Clara Weston: Yes. My back is feeling much improved from practically carrying Emily part of the way here.
+
+<<jump options>>
+===
