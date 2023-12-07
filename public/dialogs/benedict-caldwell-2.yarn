@@ -1,0 +1,47 @@
+title: greeting
+position: 190,-334
+---
+Benedict Caldwell: Evening. I'm looking for a room for the night.
+
+<<jump options>>
+===
+
+title: options
+position: 190,-147
+---
+  -> Where are you coming from?
+    <<jump sourceAnswer>>
+
+  -> Where are you headed?
+    <<jump destinationAnswer>>
+
+  -> Are you in good health?
+    <<jump healthAnswer>>
+===
+
+title: sourceAnswer
+position: -104,125
+---
+You: Where are you coming from?
+Benedict Caldwell: I didn't find what I was looking for to the east, over in Duskmire. I spent a day just asking around... No one has seen Kady there.
+
+<<jump options>>
+===
+
+title: destinationAnswer
+position: 190,125
+---
+You: Where are you headed?
+Benedict Caldwell: I'm not sure... I'll probably try to the south. Moorfield if memory serves.
+
+<<jump options>>
+===
+
+title: healthAnswer
+position: 496,125
+---
+You: Are you in good health?
+Benedict Caldwell: I'm well enough to keep looking... nothin' to complain about.
+
+<<jump options>>
+===
