@@ -1,0 +1,46 @@
+title: greeting
+---
+Emily Hartley: Hello again! Might you have room for tonight?
+
+<<jump options>>
+===
+
+title: options
+position: -3,182
+---
+  -> Where are you coming from?
+    <<jump sourceAnswer>>
+
+  -> Where are you headed?
+    <<jump destinationAnswer>>
+
+  -> Are you in good health?
+    <<jump heathAnswer>>
+===
+
+title: sourceAnswer
+position: -254,359
+---
+You: Where are you coming from?
+Emily Hartley: Well. I still can't walk to great, and Clara's insisting I rest my ankle as much as possible, so we just stayed here.
+
+<<jump options>>
+===
+
+title: destinationAnswer
+position: 2,350
+---
+You: Where are you going?
+Emily Hartley: I guess that all depends on how my ankle is faring after tonight. Hopefully on to Stonehearth, but only if Clara thinks I'm good for the walk.
+
+<<jump options>>
+===
+
+title: heathAnswer
+position: 285,348
+---
+You: Are you in good health?
+Emily Hartley: My knee still hurts a bit, and my ankle, but other than that I mostly just bundle of nerves. I can hardly wait to move on.
+
+<<jump options>>
+===
