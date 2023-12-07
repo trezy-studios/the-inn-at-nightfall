@@ -1,0 +1,46 @@
+title: greeting
+---
+Lily Featherstone: Hello again Innkeeper. Do you have another room for me?
+
+<<jump options>>
+===
+
+title: options
+position: 0,201
+---
+	-> Where are you coming from?
+		<<jump source>>
+
+	-> Where are you headed?
+		<<jump destination>>
+
+	-> Are you recovered from the attack?
+		<<jump checkIn>>
+===
+
+title: destination
+position: 4,391
+---
+You: Where are you headed?
+Lily Featherstone: Here of course. After that, who knows.
+
+<<jump options>>
+===
+
+title: checkIn
+position: 259,398
+---
+You: Are you recovered from the attack?
+Lily Featherstone: Oh yes. Never been better honestly. I could just do for a nice stay at the inn tonight.
+
+<<jump options>>
+===
+
+title: source
+position: -271,389
+---
+You: Where are you coming from?
+Lily Featherstone: Oh just from Stonehearth in the west.
+
+<<jump options>>
+===

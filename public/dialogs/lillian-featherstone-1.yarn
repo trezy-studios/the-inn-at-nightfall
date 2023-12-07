@@ -7,6 +7,7 @@ Lily Featherstone: Do you have any rooms? I'd heard the area could be dangerous.
 ===
 
 title: options
+position: 0,212
 ---
 	-> Where are you coming from?
 		<<jump source>>
@@ -19,7 +20,8 @@ title: options
 ===
 
 title: destination
----
+position: 16,417
+---~
 You: Where are you headed?
 Lily Featherstone: I'm on my way to Bramblewick! I'm to be a governess for the Hornton family. I'm over the moon about the opportunity.
 
@@ -27,6 +29,7 @@ Lily Featherstone: I'm on my way to Bramblewick! I'm to be a governess for the H
 ===
 
 title: checkIn
+position: 267,404
 ---
 You: Oh my... are you okay?
 Lily Featherstone: He left me with a bit of a scratch, but I should be fine.
@@ -35,6 +38,7 @@ Lily Featherstone: He left me with a bit of a scratch, but I should be fine.
 ===
 
 title: source
+position: -255,418
 ---
 You: Where are you coming from?
 Lily Featherstone: I've spent my entire life in Moorfield. This is my first time out-of-town!
