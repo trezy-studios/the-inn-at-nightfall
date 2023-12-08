@@ -17,6 +17,7 @@ import { Menu } from '../Menu/Menu.jsx'
 import { Modal } from '../Modal/Modal.jsx'
 import { Paragraph } from '../Paragraph/Paragraph.jsx'
 import { quitGame } from '../../store/reducers/quitGame.js'
+import { ROUND_CONFIGS } from '../../data/ROUND_CONFIGS.js'
 import { startRound } from '../../store/reducers/startRound.js'
 import { store } from '../../store/store.js'
 import { useMemo } from 'react'
@@ -32,20 +33,56 @@ import { useMemo } from 'react'
  */
 export function RoundScore() {
 	const {
-		allowedCharacters,
 		characters,
+		currentGuests,
+		currentRound,
 		failed,
-		wallet,
 	} = useStore(store)
 
-	const humansAllowedCount = useMemo(() => {
-		return allowedCharacters
-			.filter(characterID => !characters[characterID].isVampire)
+	const currentGuestsList = useMemo(() => {
+		return currentGuests
+			.map((characterID, index) => {
+				const character = characters[characterID]
+				return (
+					<li key={index}>
+						{character.name}
+					</li>
+				)
+			})
+	}, [
+		characters,
+		currentGuests,
+	])
+
+	const morningDepartureCount = useMemo(() => {
+		return ROUND_CONFIGS[currentRound - 1]
+			.departure
+			.filter(characterID => currentGuests.includes(characterID))
 			.length
 	}, [
-		allowedCharacters,
-		characters,
+		currentGuests,
+		currentRound,
 	])
+
+	const morningDeparturesList = useMemo(() => {
+		const departureIDs = ROUND_CONFIGS[currentRound - 1].departure
+
+		return departureIDs
+			.filter(characterID => currentGuests.includes(characterID))
+			.map((characterID, index) => {
+				const character = characters[characterID]
+				return (
+					<li key={index}>
+						{character.name}
+					</li>
+				)
+			})
+	}, [
+		characters,
+		currentGuests,
+		currentRound,
+	])
+
 
 	return (
 		<Modal>
@@ -56,19 +93,62 @@ export function RoundScore() {
 					</Heading>
 
 					<Paragraph>{'Rest easy, for all is well this evening.'}</Paragraph>
-					<Paragraph><strong>{humansAllowedCount}</strong>{' guests are relaxing by the fire, enjoying their drink and the company.'}</Paragraph>
-					<Paragraph>{'You have earned '}<strong>{`£${wallet}`}</strong>{' for the day\'s work.'}</Paragraph>
+					<Paragraph>
+						<strong>{currentGuests.length}</strong>
+						{' guests are relaxing by the fire, enjoying their drink and the company.'}
+					</Paragraph>
+
+					{(morningDepartureCount > 0) && (
+						<Paragraph>
+							<strong>{morningDepartureCount}</strong>
+							{` guest${(morningDepartureCount > 1) ? 's' : ''} plan${(morningDepartureCount > 1) ? '' : 's'} to depart in the morning.`}
+						</Paragraph>
+					)}
+
+					{(currentGuests.length > 0) && (
+						<Paragraph>
+							{'You have earned '}
+							<strong>{`£${currentGuests.length * 10}`}</strong>
+							{' for the day\'s work.'}
+						</Paragraph>
+					)}
+
+					<details className={styles['details']}>
+						<div className={styles['details-content']}>
+							<div className={styles['column']}>
+								<header>{'Current Guests'}</header>
+								<ul>
+									{currentGuestsList}
+								</ul>
+							</div>
+
+							<div className={styles['column']}>
+								<header>{'Departing in the Morning'}</header>
+								<ul>
+									{morningDeparturesList}
+								</ul>
+							</div>
+						</div>
+					</details>
+
+					{(currentRound === 5) && (
+						<Paragraph>
+							{'You\'ve reached the end of the demo! Thanks for playing!'}
+						</Paragraph>
+					)}
 
 					<Menu className={styles['options']}>
 						<MenuButton onClick={quitGame}>
 							{'Menu'}
 						</MenuButton>
 
-						<MenuButton
-							align={ALIGNMENT.RIGHT}
-							onClick={startRound}>
-							{'Continue'}
-						</MenuButton>
+						{(currentRound < 5) && (
+							<MenuButton
+								align={ALIGNMENT.RIGHT}
+								onClick={startRound}>
+								{'Continue'}
+							</MenuButton>
+						)}
 					</Menu>
 				</>
 			)}

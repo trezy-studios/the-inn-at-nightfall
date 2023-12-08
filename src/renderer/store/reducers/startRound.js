@@ -17,13 +17,15 @@ export function startRound() {
 			characters,
 			currentRound,
 			dialogs,
+			currentGuests,
 		} = state
 
 		const characterQueue = []
+		const previousRoundConfig = ROUND_CONFIGS[currentRound - 1]
 		const roundConfig = ROUND_CONFIGS[currentRound]
 
 		if (roundConfig) {
-			roundConfig.add?.forEach(([characterID, dialogAlias]) => {
+			roundConfig.arrival?.forEach(([characterID, dialogAlias]) => {
 				const character = characters[characterID]
 				character.dialogMachine = dialogs[dialogAlias]
 				characterQueue.push(characterID)
@@ -31,7 +33,7 @@ export function startRound() {
 			roundConfig.bite?.forEach(characterID => characters[characterID].bite())
 		}
 
-		return {
+		const patch = {
 			allowedCharacters: [],
 			characterQueue,
 			characterQueueIndex: 0,
@@ -42,5 +44,11 @@ export function startRound() {
 			timeAvailable: ROUND_DEFAULTS.LENGTH_MS,
 			timeRemaining: ROUND_DEFAULTS.LENGTH_MS,
 		}
+
+		if (currentRound > 0) {
+			patch.currentGuests = currentGuests.filter(characterID => !previousRoundConfig.departure.includes(characterID))
+		}
+
+		return patch
 	})
 }

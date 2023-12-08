@@ -39,6 +39,9 @@ export const store = makeStore({
 	/** @type {Map<string, import('../types/DialogMessage.js').DialogMessage>} */
 	currentDialogHistory: new Map,
 
+	/** @type {string[]} */
+	currentGuests: [],
+
 	/** @type {null | string} */
 	currentLoadingCategory: null,
 

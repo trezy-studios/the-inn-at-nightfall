@@ -11,8 +11,15 @@ import { store } from '../store.js'
  */
 export function quitGame() {
 	store.set(() => ({
+		allowedCharacters: [],
+		characterQueue: [],
+		characterQueueIndex: 0,
+		currentDialogHistory: new Map,
+		currentGuests: [],
 		currentRound: 0,
 		failed: false,
+		isPaused: false,
+		isRoundOver: false,
 		screen: SCREENS.TITLE,
 		totalGuestsAllowed: 0,
 		wallet: 0,

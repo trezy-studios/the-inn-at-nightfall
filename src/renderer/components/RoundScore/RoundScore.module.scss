@@ -24,6 +24,20 @@
 	text-align: center;
 }
 
+.details {
+	width: 100%;
+}
+
+.details-content {
+	display: flex;
+	gap: 2rem;
+	text-align: left;
+
+	.column header {
+		font-weight: bold;
+	}
+}
+
 .options {
 	display: flex;
 	flex-direction: row;

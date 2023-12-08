@@ -23,19 +23,22 @@ export function roundManagementSystem() {
 			const {
 				allowedCharacters,
 				characters,
+				currentGuests,
 				wallet,
 			} = state
 
+			const newGuests = Array.from(new Set([
+				...currentGuests,
+				...allowedCharacters,
+			]))
+
+			const failed = Boolean(
+				allowedCharacters
+					.filter(characterID => characters[characterID].isVampire)
+					.length,
+			)
+
 			let newWallet = wallet
-			let failed = false
-
-			const humansAllowedCount = allowedCharacters
-				.filter(characterID => {
-					const character = characters[characterID]
-
-					return !(character.isVampire || character.isMerchant)
-				})
-				.length
 
 			// Bite all characters that are still outside.
 			characterQueue
@@ -47,13 +50,12 @@ export function roundManagementSystem() {
 					}
 				})
 
-			if (humansAllowedCount === allowedCharacters.length) {
-				newWallet += humansAllowedCount * 10
-			} else {
-				failed = true
+			if (!failed) {
+				newWallet += newGuests.length * 10
 			}
 
 			return {
+				currentGuests: newGuests,
 				failed,
 				isPaused: false,
 				isRoundOver: true,
