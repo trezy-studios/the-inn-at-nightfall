@@ -23,7 +23,7 @@ position: -254,359
 ---
 You: Where are you coming from?
 Emily Hartley: Well. We left this morning from Bramblewick. I had some last minute packing to do, so I didn't get out the door on time. We did make up some time on the way, but Clara also says I was stopping too often pick flowers, but who can resist these colors!
-[action]Emily Hartley brandishes a small bouquet of slightly wilted flowers in your direction that matches her flower crown around her head.[/action]
+[action]Emily Hartley brandishes a small bouquet of slightly wilted flowers in your direction.[/action]
 Emily Hartley: I guess it's already getting dark, so I guess she had a point.
 
 <<jump options>>

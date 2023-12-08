@@ -91,6 +91,12 @@
 		"loadingCategory": "dialog"
 	},
 	{
+		"alias": "benedict-caldwell-2",
+		"src": "dialogs/benedict-caldwell-2.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
 		"alias": "cedric-holloway-1",
 		"src": "dialogs/cedric-holloway-1.yarn",
 		"type": "dialog",
@@ -105,6 +111,12 @@
 	{
 		"alias": "lillian-featherstone-1",
 		"src": "dialogs/lillian-featherstone-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "lillian-featherstone-2",
+		"src": "dialogs/lillian-featherstone-2.yarn",
 		"type": "dialog",
 		"loadingCategory": "dialog"
 	},
@@ -135,6 +147,12 @@
 	{
 		"alias": "emily-hartley-1",
 		"src": "dialogs/emily-hartley-1.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "emily-hartley-2",
+		"src": "dialogs/emily-hartley-2.yarn",
 		"type": "dialog",
 		"loadingCategory": "dialog"
 	},

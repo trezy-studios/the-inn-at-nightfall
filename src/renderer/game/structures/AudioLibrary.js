@@ -110,6 +110,10 @@ export const AudioLibrary = new class AudioLibraryClass {
 	 * @param {object} assetData
 	 */
 	async load(assetData) {
+		if (this.get(assetData.alias)) {
+			return
+		}
+
 		await this.add({
 			alias: assetData.alias,
 			sprite: assetData.sprites,
