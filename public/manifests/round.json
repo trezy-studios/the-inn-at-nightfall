@@ -162,6 +162,12 @@
 		"type": "dialog",
 		"loadingCategory": "dialog"
 	},
+	{
+		"alias": "clara-weston-2",
+		"src": "dialogs/clara-weston-2.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
 
 	{
 		"src": "backgrounds/creepy-hands.png",
