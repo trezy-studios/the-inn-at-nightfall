@@ -81,7 +81,9 @@ export function Responses() {
 	])
 
 	return (
-		<Menu className={styles['responses']}>
+		<Menu
+			className={styles['responses']}
+			hideSelectorOnExit>
 			{renderedResponses}
 		</Menu>
 	)

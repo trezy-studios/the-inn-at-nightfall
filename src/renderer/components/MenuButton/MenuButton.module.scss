@@ -6,8 +6,8 @@
 	display: flex;
 	padding-bottom: 1rem;
 	padding-top: 1rem;
-	padding-left: 0;
-	padding-right: 0;
+	padding-left: 1rem;
+	padding-right: 1rem;
 	position: relative;
 	transition-duration: 0.3s;
 	transition-property:
@@ -27,24 +27,24 @@
 	}
 
 	&.align-left {
-		padding-right: 1rem;
+		padding-right: 2rem;
 		text-align: left;
 
 		&:focus,
 		&:hover {
-			padding-left: 1rem;
-			padding-right: 0;
+			padding-left: 2rem;
+			padding-right: 1rem;
 		}
 	}
 
 	&.align-right {
-		padding-left: 1rem;
+		padding-left: 2rem;
 		text-align: right;
 
 		&:focus,
 		&:hover {
-			padding-left: 0;
-			padding-right: 1rem;
+			padding-left: 1rem;
+			padding-right: 2rem;
 		}
 	}
 }

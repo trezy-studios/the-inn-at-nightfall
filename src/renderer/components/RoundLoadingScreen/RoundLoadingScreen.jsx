@@ -67,13 +67,12 @@ const HEADING_VARIANTS = {
 const MENU_VARIANTS = {
 	initial: {
 		opacity: 0,
-		y: '-5rem',
+		y: '5rem',
 	},
 	animate: {
 		opacity: 1,
 		y: 0,
 		transition: {
-			delay: 7.5,
 			duration: 1,
 		},
 	},
@@ -127,16 +126,20 @@ export function RoundLoadingScreen() {
 				</motion.span>
 			</motion.blockquote>
 
-			<LoadingProgress className={styles['round-loading-progress']} />
+			{isDoneLoading && (
+				<Menu
+					className={styles['start-menu']}
+					variants={MENU_VARIANTS}>
+					<MenuButton
+						key={'start-button'}
+						isDisabled={!isDoneLoading}
+						onClick={startRound}>
+						{'Start'}
+					</MenuButton>
+				</Menu>
+			)}
 
-			<Menu variants={MENU_VARIANTS}>
-				<MenuButton
-					key={'start-button'}
-					isDisabled={!isDoneLoading}
-					onClick={startRound}>
-					{'Start'}
-				</MenuButton>
-			</Menu>
+			<LoadingProgress className={styles['round-loading-progress']} />
 
 			<Vignette />
 		</Screen>

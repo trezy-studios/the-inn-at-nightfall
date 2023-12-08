@@ -33,15 +33,18 @@ export function Menu(props) {
 		children,
 		className,
 		exit,
+		hideSelectorOnExit,
 		initial,
 		variants,
 	} = props
 
-	const [currentTargetIndex, setCurrentTargetIndex] = useState(null)
+	const [currentTargetIndex, setCurrentTargetIndex] = useState(hideSelectorOnExit ? null : 0)
 
 	const handleTargetMouseOut = useCallback(() => () => {
-		setCurrentTargetIndex(null)
-	}, [])
+		if (hideSelectorOnExit) {
+			setCurrentTargetIndex(null)
+		}
+	}, [hideSelectorOnExit])
 
 	const handleTargetMouseOver = useCallback(index => () => {
 		setCurrentTargetIndex(index)
@@ -87,6 +90,7 @@ Menu.defaultProps = {
 	children: null,
 	className: '',
 	exit: 'exit',
+	hideSelectorOnExit: false,
 	initial: 'initial',
 	variants: {},
 }
@@ -96,6 +100,7 @@ Menu.propTypes = {
 	children: PropTypes.node,
 	className: PropTypes.string,
 	exit: PropTypes.string,
+	hideSelectorOnExit: PropTypes.bool,
 	initial: PropTypes.string,
 	variants: PropTypes.object,
 }
