@@ -26,6 +26,7 @@ export function MenuItem(props) {
 		children,
 		index,
 		isActive,
+		menuID,
 		onBlur,
 		onFocus,
 		onMouseOut,
@@ -48,7 +49,7 @@ export function MenuItem(props) {
 			{children}
 
 			{isActive && (
-				<TargetIndicator />
+				<TargetIndicator menuID={menuID} />
 			)}
 		</li>
 	)
@@ -62,6 +63,7 @@ MenuItem.propTypes = {
 	children: PropTypes.node,
 	index: PropTypes.number.isRequired,
 	isActive: PropTypes.bool.isRequired,
+	menuID: PropTypes.string.isRequired,
 	onBlur: PropTypes.func.isRequired,
 	onFocus: PropTypes.func.isRequired,
 	onMouseOut: PropTypes.func.isRequired,

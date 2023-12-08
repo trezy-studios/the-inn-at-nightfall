@@ -8,6 +8,7 @@ import {
 import classnames from 'classnames'
 import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
+import { v4 as uuid } from 'uuid'
 
 
 
@@ -38,6 +39,8 @@ export function Menu(props) {
 		variants,
 	} = props
 
+	const [menuID] = useState(uuid())
+
 	const [currentTargetIndex, setCurrentTargetIndex] = useState(hideSelectorOnExit ? null : 0)
 
 	const handleTargetMouseOut = useCallback(() => () => {
@@ -58,6 +61,7 @@ export function Menu(props) {
 				<MenuItem
 					key={index}
 					isActive={currentTargetIndex === index}
+					menuID={menuID}
 					onBlur={handleTargetMouseOut()}
 					onFocus={handleTargetMouseOver(index)}
 					onMouseOut={handleTargetMouseOut()}
@@ -71,6 +75,7 @@ export function Menu(props) {
 		currentTargetIndex,
 		handleTargetMouseOut,
 		handleTargetMouseOver,
+		menuID,
 	])
 
 	return (

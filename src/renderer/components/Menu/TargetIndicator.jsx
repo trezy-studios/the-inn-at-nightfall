@@ -1,5 +1,6 @@
 // Module imports
 import { motion } from 'framer-motion'
+import PropTypes from 'prop-types'
 
 
 
@@ -12,30 +13,21 @@ import styles from './Menu.module.scss'
 
 
 
-// Constants
-// const VARIANTS = {
-// 	animate: { opacity: 1 },
-// 	exit: { opacity: 0 },
-// 	initial: { opacity: 0 },
-// }
-
-
-
-
-
 /**
  * Renders the target indicator for a menu.
  *
  * @component
  */
-export function TargetIndicator() {
+export function TargetIndicator(props) {
+	const { menuID } = props
+
 	return (
 		<motion.div
 			className={styles['target-indicator']}
-			// animate={'animate'}
-			// exit={'exit'}
-			// initial={'initial'}
-			/* variants={VARIANTS} */
-			layoutId={'target-indicator'} />
+			layoutId={`target-indicator::${menuID}`} />
 	)
+}
+
+TargetIndicator.propTypes = {
+	menuID: PropTypes.string.isRequired,
 }
