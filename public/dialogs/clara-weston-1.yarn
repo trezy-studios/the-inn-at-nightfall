@@ -35,7 +35,7 @@ position: -12,369
 ---
 You: Where are you going?
 Clara Weston: We'll be moving on to Stonehearth. But Emily did sprain her ankle a bit a little ways up the road, so we might stay a couple nights if we can afford it, to let it heal up a bit before the long walk. My back could use a rest too, if I'm being honest. She's heavier than she looks.
-[action]Clara rubs her lower back absently[/action]
+[action]Clara rubs her lower back absent mindedly[/action]
 
 <<jump options>>
 ===
