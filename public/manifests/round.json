@@ -109,6 +109,12 @@
 		"loadingCategory": "dialog"
 	},
 	{
+		"alias": "lillian-featherstone-2",
+		"src": "dialogs/lillian-featherstone-2.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
 		"alias": "mark-grimmelstone-1",
 		"src": "dialogs/mark-grimmelstone-1.yarn",
 		"type": "dialog",
