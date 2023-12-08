@@ -151,6 +151,12 @@
 		"loadingCategory": "dialog"
 	},
 	{
+		"alias": "emily-hartley-2",
+		"src": "dialogs/emily-hartley-2.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
 		"alias": "clara-weston-1",
 		"src": "dialogs/clara-weston-1.yarn",
 		"type": "dialog",
