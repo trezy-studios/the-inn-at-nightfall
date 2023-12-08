@@ -91,6 +91,12 @@
 		"loadingCategory": "dialog"
 	},
 	{
+		"alias": "benedict-caldwell-2",
+		"src": "dialogs/benedict-caldwell-2.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
 		"alias": "cedric-holloway-1",
 		"src": "dialogs/cedric-holloway-1.yarn",
 		"type": "dialog",
