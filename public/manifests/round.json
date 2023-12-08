@@ -71,6 +71,12 @@
 		"type": "character",
 		"loadingCategory": "characters"
 	},
+	{
+		"alias": "martin-butler",
+		"src": "characters/character16.json",
+		"type": "character",
+		"loadingCategory": "characters"
+	},
 
 	{
 		"alias": "alastair-reid-1",
@@ -165,6 +171,12 @@
 	{
 		"alias": "clara-weston-2",
 		"src": "dialogs/clara-weston-2.yarn",
+		"type": "dialog",
+		"loadingCategory": "dialog"
+	},
+	{
+		"alias": "martin-butler-1",
+		"src": "dialogs/martin-butler-1.yarn",
 		"type": "dialog",
 		"loadingCategory": "dialog"
 	},
@@ -412,6 +424,25 @@
 	{
 		"alias": "clara-weston::fanged",
 		"src": "sprites/character13.fangs.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+
+	{
+		"alias": "martin-butler::normal",
+		"src": "sprites/character16.original.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "martin-butler::bitten",
+		"src": "sprites/character16.bitten.png",
+		"type": "sprite",
+		"loadingCategory": "character sprites"
+	},
+	{
+		"alias": "martin-butler::fanged",
+		"src": "sprites/character16.fangs.png",
 		"type": "sprite",
 		"loadingCategory": "character sprites"
 	},
