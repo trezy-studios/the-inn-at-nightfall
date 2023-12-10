@@ -44,29 +44,54 @@
 
 		cite {
 			color: var(--palette-light-grey);
-			margin-top: 2rem;
+			margin-top: 1rem;
 
 			&:before {
 				content: '- ';
 			}
 		}
+
+		&:not(:last-child) {
+			margin-bottom: 3rem;
+		}
 	}
 
-	dl {
+	.credit-list {
 		display: grid;
 		gap: 2rem;
 		grid-template-columns: repeat(2, 1fr);
 
-		dt {
+		.title {
 			color: var(--palette-light-grey);
 			text-align: right;
 		}
 
-		dd {
+		.people {
 			text-align: left;
 
-			+ dd {
+			+ .people {
 				grid-column: 2;
+			}
+
+			+ .multirole-credit {
+				margin-top: 4rem;
+			}
+		}
+
+		.multirole-credit {
+			grid-column: span 2;
+
+			.people,
+			.title {
+				text-align: center;
+			}
+
+			.title {
+				font-size: 0.8em;
+			}
+
+			+ .title {
+				margin-top: 4rem;
 			}
 		}
 	}

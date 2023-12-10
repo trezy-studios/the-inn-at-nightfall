@@ -4,6 +4,10 @@ export const PEOPLE = {
 		name: 'Danielle Albertyn',
 		url: 'https://linktr.ee/milowildcat',
 	},
+	LIZ_PHILLIPS: {
+		name: 'Liz Phillips',
+		url: 'https://lizkristinaphillips.com',
+	},
 	JAMES_BELANGIA: {
 		name: 'James Belangia',
 		url: 'https://james-belangia.webador.com',
@@ -16,15 +20,19 @@ export const PEOPLE = {
 		name: 'Trezy',
 		url: 'https://trezy.codes',
 	},
+	ZOE_BELOVARAC: {
+		name: 'Zoë Belovarac',
+		url: '',
+	},
 
 	// Special thanks
 	AGNES_MAE: { name: 'Agnes Mae' },
 
 	ELIAS_JAMES: { name: 'Elias James' },
 
-	LIZ_PHILLIPS: { name: 'Liz Phillips' },
-
 	MATT_HORNBACK: { name: 'Matt C. Hornback' },
 
 	MEG_WALTZ_PEEBLES: { name: 'Meg Waltz Peebles' },
+
+	RAFI_RIZWAN: { name: 'Rafi Rizwan' },
 }

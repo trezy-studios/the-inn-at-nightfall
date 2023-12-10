@@ -7,24 +7,6 @@ import { PEOPLE } from './PEOPLE.js'
 
 export const CREDITS = [
 	{
-		title: 'Story',
-		credits: [
-			{
-				title: 'Lead Writer',
-				people: [PEOPLE.DANIELLE_ALBERTYN],
-			},
-			{
-				title: 'Copy Editor',
-				people: [PEOPLE.TREZY],
-			},
-			{
-				title: 'Gameplay Designer',
-				people: [PEOPLE.TREZY],
-			},
-		],
-	},
-
-	{
 		title: 'Executive Team',
 		credits: [
 			{
@@ -35,9 +17,30 @@ export const CREDITS = [
 				title: 'Producer',
 				people: [PEOPLE.DANIELLE_ALBERTYN],
 			},
+		],
+	},
+
+	{
+		title: 'Story',
+		credits: [
 			{
-				title: 'Project Manager',
+				title: 'Lead Writer',
+				people: [PEOPLE.LIZ_PHILLIPS],
+			},
+			{
+				title: 'Writer',
+				people: [PEOPLE.DANIELLE_ALBERTYN],
+			},
+			{
+				title: 'Editor',
 				people: [PEOPLE.TREZY],
+			},
+			{
+				title: 'Character Development',
+				people: [
+					PEOPLE.LIZ_PHILLIPS,
+					PEOPLE.ZOE_BELOVARAC,
+				],
 			},
 		],
 	},
@@ -46,23 +49,17 @@ export const CREDITS = [
 		title: 'Art & Design',
 		credits: [
 			{
-				title: 'Creative Director',
+				type: 'multirole',
+				titles: [
+					'Concept Art',
+					'Character Art',
+					'Set Design',
+				],
 				people: [PEOPLE.DANIELLE_ALBERTYN],
 			},
 			{
-				title: 'Concept Artist',
-				people: [PEOPLE.DANIELLE_ALBERTYN],
-			},
-			{
-				title: 'Character Artist',
-				people: [PEOPLE.DANIELLE_ALBERTYN],
-			},
-			{
-				title: 'Set Designer',
-				people: [PEOPLE.DANIELLE_ALBERTYN],
-			},
-			{
-				title: 'UI Designer',
+				type: 'multirole',
+				titles: ['UI Designer'],
 				people: [PEOPLE.TREZY],
 			},
 		],
@@ -74,10 +71,6 @@ export const CREDITS = [
 			{
 				title: 'Composer',
 				people: [PEOPLE.JAMES_BELANGIA],
-			},
-			{
-				title: 'Foley Capture',
-				people: [PEOPLE.TOMAS_CASTILLO],
 			},
 			{
 				title: 'Sound Design',
@@ -94,8 +87,8 @@ export const CREDITS = [
 				people: [PEOPLE.TREZY],
 			},
 			{
-				title: 'User Experience Designer',
-				people: [PEOPLE.TREZY],
+				title: 'Dialog Development',
+				people: [PEOPLE.LIZ_PHILLIPS],
 			},
 		],
 	},
@@ -106,8 +99,8 @@ export const CREDITS = [
 			{
 				title: 'Playtester',
 				people: [
-					PEOPLE.LIZ_PHILLIPS,
 					PEOPLE.MATT_HORNBACK,
+					PEOPLE.RAFI_RIZWAN,
 				],
 			},
 		],
@@ -117,10 +110,10 @@ export const CREDITS = [
 		title: 'Special Thanks',
 		people: [
 			PEOPLE.MEG_WALTZ_PEEBLES,
-			PEOPLE.LIZ_PHILLIPS,
 			PEOPLE.MATT_HORNBACK,
 			PEOPLE.ELIAS_JAMES,
 			PEOPLE.AGNES_MAE,
+			PEOPLE.RAFI_RIZWAN,
 		],
 	},
 
@@ -130,6 +123,10 @@ export const CREDITS = [
 			{
 				author: PEOPLE.DANIELLE_ALBERTYN,
 				content: 'Special thanks to my partner for his patience with me and my weird habits. Massive hugs to my friends near, far and far too many to list here; for the memes, mentorship and love.',
+			},
+			{
+				author: PEOPLE.TREZY,
+				content: 'Thanks so much to my wife, my kids, and my parents for always being there for me, and supporting me as I pursue the things that make me happy. Love y\'all.',
 			},
 		],
 	},

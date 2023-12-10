@@ -1,6 +1,5 @@
 // Module imports
 import {
-	Fragment,
 	useCallback,
 	useEffect,
 	useRef,
@@ -16,8 +15,8 @@ import styles from './CreditsScreen.module.scss'
 
 import { Button } from '../Button/Button.jsx'
 import { CREDITS } from '../../data/CREDITS.js'
+import { Credits } from './Credits.jsx'
 import { goToTitle } from '../../store/reducers/goToTitle.js'
-import { Link } from '../Link/Link.jsx'
 import { Paragraph } from '../Paragraph/Paragraph.jsx'
 import { Screen } from '../Screen/Screen.jsx'
 import { Vignette } from '../Vignette/Vignette.jsx'
@@ -111,28 +110,10 @@ export function CreditsScreen() {
 						</header>
 
 						{Boolean(section.credits) && (
-							<dl>
-								{section.credits.map(credit => (
-									<Fragment key={credit.title}>
-										<dt>{credit.title}</dt>
-
-										{credit.people.map((person, index) => (
-											<dd key={`${credit.title}::${index}`}>
-												{Boolean(person.url) && (
-													<Link
-														href={person.url}
-														onMouseOut={handleLinkMouseOut}
-														onMouseOver={handleLinkMouseOver}>
-														{person.name}
-													</Link>
-												)}
-
-												{!person.url && person.name}
-											</dd>
-										))}
-									</Fragment>
-								))}
-							</dl>
+							<Credits
+								credits={section.credits}
+								onLinkMouseOut={handleLinkMouseOut}
+								onLinkMouseOver={handleLinkMouseOver} />
 						)}
 
 						{Boolean(section.people) && (
