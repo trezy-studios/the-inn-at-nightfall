@@ -1,7 +1,6 @@
 // Module imports
 import { app } from 'electron'
 import fs from 'node:fs/promises'
-import JSON5 from 'json5'
 import path from 'node:path'
 
 
@@ -34,7 +33,7 @@ export async function setStore(data) {
 		// eslint-disable-next-line security/detect-non-literal-fs-filename
 		fileHandle = await fs.open(STORE_FILE_PATH, 'w')
 		await fileHandle.truncate()
-		await fileHandle.write(Buffer.from(JSON5.stringify(data), 'utf8'))
+		await fileHandle.write(Buffer.from(JSON.stringify(data), 'utf8'))
 		await fileHandle.close()
 	} catch (error) {
 		if (fileHandle) {
@@ -62,7 +61,7 @@ export async function getStore() {
 			// eslint-disable-next-line no-control-regex
 			.replace(/\u0000/gu, '')
 
-		store = JSON5.parse(storeString)
+		store = JSON.parse(storeString)
 
 		await fileHandle.close()
 	} catch (error) {
