@@ -86,7 +86,13 @@ export function useLoadAssets(manifestID, options = {}) {
 				case 'dialog': {
 					const dialogResponse = await fetch(asset.src)
 					const dialogText = await dialogResponse.text()
-					addDialog(asset.alias, parseScript(dialogText))
+					addDialog(asset.alias, parseScript(dialogText, {
+						validMarkup: [
+							'action',
+							'bold',
+							'italic',
+						],
+					}))
 					break
 				}
 

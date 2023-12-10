@@ -32,7 +32,7 @@ title: destinationAnswer
 position: 4,360
 ---
 You: Where are you going?
-Rev. Cedric Holloway: I'm headed south to Moorfield. I've been in Bramblewick for the past 15 years, but I'm originally from Moorfield. A family friend has written to me about some, let's call it troubling, issues in my hometown beseeching me for help. And when a friend asks for help, you help them. I hope these issues don't end up troubling you here as the bastion of this crossroads, Innkeeper. 
+Rev. Cedric Holloway: I'm headed south to Moorfield. I've been in Bramblewick for the past 15 years, but I'm originally from Moorfield. A family friend has written to me about some, let's call it troubling, issues in my hometown beseeching me for help. And when a friend asks for help, you help them. I hope these issues don't end up troubling you here as the bastion of this crossroads, Innkeeper.
 
 <<jump troubleQuestions>>
 ===
@@ -111,11 +111,11 @@ title: advice
 group: trouble
 position: -172,1294
 ---
-[action]Rev. Cedric Holloway leans in closer and lowers his voice[/action]
+[action]Rev. Cedric Holloway leans in closer and lowers his voice.[/action]
 Rev. Cedric Holloway: I haven't heard rumors the likes of this since... well for over a decade. I'll tell you this, there's no folk charm or ward that repels this evil, save for the sanctity of the threshold.
 [action]Rev. Cedric Holloway pulls a small vial of oil from his pocket, places it on the wood of the threshold.[/action]
-[action] Rev. Cedric Holloway rises with his eyes closed, his lips move silently. He places his hand on the doorframe next to you.
-[action] Suddenly he smashes the vial with sole of his boot. The earthy scent of of the liquid from the vial reaches your nose.[/action]
+[action]Rev. Cedric Holloway rises with his eyes closed, his lips move silently. He places his hand on the doorframe next to you.[/action]
+[action]Suddenly he smashes the vial with sole of his boot. The earthy scent of of the liquid from the vial reaches your nose.[/action]
 Rev. Cedric Holloway: Amen.
 Rev. Cedric Holloway: Be careful who you invite in, Innkeeper.
 
