@@ -16,6 +16,7 @@ import { useStore } from 'statery'
 // Local imports
 import styles from './PlayScreen.module.scss'
 
+import { CurrentGameStats } from '../CurrentGameStats/CurrentGameStats.jsx'
 import { Debugger } from '../Debugger/Debugger.jsx'
 import { Game } from '../Game/Game.jsx'
 import { GameDialog } from '../GameDialog/GameDialog.jsx'
@@ -78,6 +79,8 @@ export function PlayScreen() {
 				<PixiStage>
 					<Game resizeToRef={gameWrapperRef} />
 				</PixiStage>
+
+				<CurrentGameStats />
 
 				<Vignette />
 			</div>

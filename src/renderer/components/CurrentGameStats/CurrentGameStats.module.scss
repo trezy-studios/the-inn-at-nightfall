@@ -1,0 +1,13 @@
+.current-game-stats {
+	background-color: var(--palette-grey);
+	left: 5rem;
+	font-size: 0.6em;
+	padding: 2rem;
+	position: absolute;
+	top: 5rem;
+
+	td {
+		padding-left: 1rem;
+		text-align: right;
+	}
+}
