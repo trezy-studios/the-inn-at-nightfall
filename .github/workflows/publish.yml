@@ -152,6 +152,7 @@ jobs:
           path: |
             out/
             !out/make/
+          retention-days: 1
 
   release:
     needs:
