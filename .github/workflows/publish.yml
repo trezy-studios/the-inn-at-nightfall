@@ -148,7 +148,7 @@ jobs:
       - name: Archive builds
         uses: actions/upload-artifact@v3
         with:
-          name: build-${{ needs.draft-release.outputs.version }}-${{ matrix.os }}
+          name: ${{ needs.draft-release.outputs.version }}-${{ matrix.os }}
           path: |
             out/
             !out/make/
