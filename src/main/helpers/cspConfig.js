@@ -24,7 +24,7 @@ export const cspConfig = {
 		{ development: ['\'unsafe-inline\''] },
 	],
 	'style-src-elem': [
-		{ development: ['\'unsafe-inline\''] },
+		'\'unsafe-inline\'',
 		{ production: 'file:' },
 	],
 	'worker-src': [
