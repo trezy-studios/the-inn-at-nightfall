@@ -58,6 +58,12 @@ jobs:
       operatingSystem: ${{ matrix.os }}
       version: ${{ needs.get-next-version.outputs.version }}
     secrets:
+      appleAPIIssuerID: ${{ secrets.APPLE_API_ISSUER_ID }}
+      appleAPIKeyContent: ${{ secrets.APPLE_API_KEY_CONTENT }}
+      appleAPIKeyID: ${{ secrets.APPLE_API_KEY_ID }}
+      appleCertData: ${{ secrets.APPLE_CERT_DATA }}
+      appleCertKeychainPassword: ${{ secrets.APPLE_CERT_KEYCHAIN_PASSWORD }}
+      appleCertPassword: ${{ secrets.APPLE_CERT_PASSWORD }}
       token: ${{ secrets.GITHUB_TOKEN }}
 
   publish-github-release:

@@ -18,6 +18,13 @@ const packageData = require('./package.json')
 module.exports = {
 	packagerConfig: {
 		executableName: packageData.name,
+		osxNotarize: {
+			tool: 'notarytool',
+			appleApiKey: process.env.APPLE_API_KEY,
+			appleApiKeyId: process.env.APPLE_API_KEY_ID,
+			appleApiIssuer: process.env.APPLE_API_ISSUER_ID,
+		},
+		osxSign: {},
 	},
 	rebuildConfig: {},
 	makers: [
