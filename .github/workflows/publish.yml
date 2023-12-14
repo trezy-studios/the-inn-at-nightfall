@@ -26,6 +26,7 @@ concurrency:
 
 jobs:
   get-next-version:
+    name: Get Next Version
     uses: ./.github/workflows/get-next-version.yml
     with:
       ref: ${{ github.ref_name }}
@@ -33,6 +34,7 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
 
   create-draft-release:
+    name: Create Draft Release
     uses: ./.github/workflows/create-draft-release.yml
     needs:
       - get-next-version
@@ -44,6 +46,7 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
 
   build-electron-app:
+    name: Build Electron App
     uses: ./.github/workflows/build-electron-app.yml
     needs:
       - get-next-version
@@ -67,6 +70,7 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
 
   publish-github-release:
+    name: Publish Github Release
     uses: ./.github/workflows/publish-github-release.yml
     needs:
       - create-draft-release
@@ -77,6 +81,7 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
 
   publish-to-steam:
+    name: Publish to Steam
     uses: ./.github/workflows/publish-to-steam.yml
     needs:
       - get-next-version
