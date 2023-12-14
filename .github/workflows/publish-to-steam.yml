@@ -1,0 +1,97 @@
+name: Publish to Steam
+
+on:
+  workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+      platformAlias:
+        required: true
+        type: string
+      operatingSystem:
+        required: true
+        type: string
+      steamReleaseBranch:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+      zipName:
+        required: true
+        type: string
+    secrets:
+      steamBuildUsername:
+        required: true
+      steamBuildConfigVDF:
+        required: true
+      steamDemoAppID:
+        required: true
+      steamAppID:
+        required: true
+      token:
+        required: true
+
+jobs:
+  make-github-release:
+    runs-on: ${{ inputs.operatingSystem }}
+
+    steps:
+      - name: Download Builds
+        uses: robinraju/release-downloader@v1.8
+        with:
+          fileName: ${{ inputs.zipName }}
+          out-file-path: artifacts
+          repository: ${{ github.repository }}
+          tag: v${{ inputs.version }}
+          token: ${{ secrets.token }}
+
+      # Rewrite the Windows zip to use forward slashes instead of backslashes.
+      - name: Convert Archive to Forward Slashes
+        run: 7z rn artifacts/${{ inputs.zipName }} $(7z l artifacts/${{ inputs.zipName }} | grep '\\' | awk '{ print $6, gensub(/\\/, "/", "g", $6); }' | paste -s)
+        if: ${{ inputs.platformAlias == 'win32' }}
+
+      # Ensure the directories exist before extracting builds.
+      - run: mkdir -p builds/${{ inputs.platformAlias }}
+
+      - name: Decompress Build Archive
+        uses: TonyBogdanov/zip@1.0
+        with:
+          args: unzip -qq artifacts/${{ inputs.zipName }} -d builds/${{ inputs.platformAlias }}
+
+      - name: Publish Windows build to Steam
+        uses: game-ci/steam-deploy@v3
+        if: ${{ inputs.platformAlias == 'win32' }}
+        with:
+          username: ${{ secrets.steamBuildUsername }}
+          configVdf: ${{ secrets.steamBuildConfigVDF }}
+          appId: ${{ inputs.branch == 'demo' && secrets.steamDemoAppID || secrets.steamAppID }}
+          buildDescription: ${{ inputs.version }}
+          rootPath: builds
+          depot1Path: win32
+          releaseBranch: ${{ inputs.steamReleaseBranch }}
+
+      - name: Publish macOS build to Steam
+        uses: game-ci/steam-deploy@v3
+        if: ${{ inputs.platformAlias == 'darwin' }}
+        with:
+          username: ${{ secrets.steamBuildUsername }}
+          configVdf: ${{ secrets.steamBuildConfigVDF }}
+          appId: ${{ inputs.branch == 'demo' && secrets.steamDemoAppID || secrets.steamAppID }}
+          buildDescription: ${{ inputs.version }}
+          rootPath: builds
+          depot2Path: darwin
+          releaseBranch: ${{ inputs.steamReleaseBranch }}
+
+      - name: Publish Linux build to Steam
+        uses: game-ci/steam-deploy@v3
+        if: ${{ inputs.platformAlias == 'linux' }}
+        with:
+          username: ${{ secrets.steamBuildUsername }}
+          configVdf: ${{ secrets.steamBuildConfigVDF }}
+          appId: ${{ inputs.branch == 'demo' && secrets.steamDemoAppID || secrets.steamAppID }}
+          buildDescription: ${{ inputs.version }}
+          rootPath: builds
+          depot3Path: linux
+          releaseBranch: ${{ inputs.steamReleaseBranch }}

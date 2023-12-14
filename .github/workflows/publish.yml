@@ -21,94 +21,60 @@ on:
       - LICENSE
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   get-next-version:
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/get-next-version.yml
+    with:
+      ref: ${{ github.ref_name }}
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
 
-    permissions:
-      contents: write
-      issues: write
-      pull-requests: write
-      id-token: write
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          fetch-tags: true
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
-
-      - name: Install Packages
-        run: yarn install
-
-      - name: Get Next Version
-        run: npx semantic-release --dry-run
-        id: get-next-version
-        env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
-
-      - name: Show Version
-        run: echo "Next version is ${{ steps.get-next-version.outputs.new-release-version }} (${{ github.ref_name }})"
-
-    outputs:
-      published: ${{ steps.get-next-version.outputs.new-release-published }}
-      version: ${{ steps.get-next-version.outputs.new-release-version }}
-      notes: ${{ steps.get-next-version.outputs.new-release-notes }}
-
-  draft-release:
+  create-draft-release:
+    uses: ./.github/workflows/create-draft-release.yml
     needs:
       - get-next-version
-
-    runs-on: ubuntu-latest
-
     if: needs.get-next-version.outputs.published == 'true'
+    with:
+      notes: ${{ needs.get-next-version.outputs.notes }}
+      version: ${{ needs.get-next-version.outputs.version }}
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-tags: true
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
-
-      - name: Get Last Git Tag
-        id: tag
-        run: echo "last-tag=$(git describe --tags --abbrev=0 || git rev-list --max-parents=0 ${{github.ref}})" >> $GITHUB_OUTPUT
-
-      - name: Delete Outdated Drafts
-        uses: hugo19941994/delete-draft-releases@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create Release Draft
-        uses: softprops/action-gh-release@v0.1.15
-        env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
-        with:
-          prerelease: true
-          draft: true
-          tag_name: v${{ needs.get-next-version.outputs.version }}
-          name: v${{ needs.get-next-version.outputs.version }}
-          body: ${{ needs.get-next-version.outputs.notes }}
-
-  make-github-release:
+  build-electron-app:
+    uses: ./.github/workflows/build-electron-app.yml
     needs:
       - get-next-version
-      - draft-release
+      - create-draft-release
+    strategy:
+      matrix:
+        os:
+          - macos-latest
+          - ubuntu-latest
+          - windows-latest
+    with:
+      operatingSystem: ${{ matrix.os }}
+      version: ${{ needs.get-next-version.outputs.version }}
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
 
+  publish-github-release:
+    uses: ./.github/workflows/publish-github-release.yml
+    needs:
+      - create-draft-release
+      - build-electron-app
+    with:
+      repo: ${{ github.repository }}
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-to-steam:
+    uses: ./.github/workflows/publish-to-steam.yml
+    needs:
+      - get-next-version
+      - publish-github-release
     strategy:
       matrix:
         os:
@@ -117,106 +83,21 @@ jobs:
           - windows-latest
         include:
           - os: macos-latest
-            platformName: darwin
+            platformAlias: darwin
           - os: ubuntu-latest
-            platformName: linux
+            platformAlias: linux
           - os: windows-latest
-            platformName: win32
-
-    runs-on: ${{ matrix.os }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
-
-      - name: Install Packages
-        run: yarn install --network-timeout 600000
-
-      - name: Update Version
-        run: yarn version --new-version ${{ needs.get-next-version.outputs.version }} --no-commit-hooks --no-git-tag-version
-
-      - name: Build and Publish to Github
-        run: yarn run publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  publish-github-release:
-    needs:
-      - draft-release
-      - make-github-release
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Undraft the release
-        uses: LogicOverSnacks/actions-publish@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          repo: ${{ github.repository }}
-
-  release:
-    needs:
-      - get-next-version
-      - publish-github-release
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Download Builds
-        uses: robinraju/release-downloader@v1.8
-        with:
-          fileName: '*.zip'
-          out-file-path: artifacts
-          repository: ${{ github.repository }}
-          tag: v${{ needs.get-next-version.outputs.version }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      # Rewrite the Windows zip to use forward slashes instead of backslashes.
-      - run: 7z rn artifacts/The.Inn.at.Nightfall-win32-x64-${{ needs.get-next-version.outputs.version }}.zip $(7z l artifacts/The.Inn.at.Nightfall-win32-x64-${{ needs.get-next-version.outputs.version }}.zip | grep '\\' | awk '{ print $6, gensub(/\\/, "/", "g", $6); }' | paste -s)
-
-      - run: mkdir -p builds/linux
-      - run: mkdir -p builds/darwin
-      - run: mkdir -p builds/win32
-
-      - name: Decompress Linux Build Archive
-        uses: TonyBogdanov/zip@1.0
-        with:
-          args: unzip -qq artifacts/The.Inn.at.Nightfall-linux-x64-${{ needs.get-next-version.outputs.version }}.zip -d builds/linux
-
-      - name: Decompress macOS Build Archive
-        uses: TonyBogdanov/zip@1.0
-        with:
-          args: unzip -qq artifacts/The.Inn.at.Nightfall-darwin-x64-${{ needs.get-next-version.outputs.version }}.zip -d builds/darwin
-
-      - name: Decompress Windows Build Archive
-        uses: TonyBogdanov/zip@1.0
-        with:
-          args: unzip -qq artifacts/The.Inn.at.Nightfall-win32-x64-${{ needs.get-next-version.outputs.version }}.zip -d builds/win32
-
-      - name: Generate TOTP
-        uses: CyberAndrii/steam-totp@v1
-        id: steam-totp
-        with:
-          shared_secret: ${{ secrets.STEAM_BUILD_SHARED_SECRET }}
-
-      - name: Publish builds to Steam
-        uses: game-ci/steam-deploy@v3
-        with:
-          username: ${{ secrets.STEAM_BUILD_USERNAME }}
-          configVdf: ${{ secrets.STEAM_BUILD_CONFIG_VDF }}
-          appId: ${{ github.ref_name == 'demo' && secrets.STEAM_DEMO_APP_ID || secrets.STEAM_APP_ID }}
-          buildDescription: ${{ needs.get-next-version.outputs.version }}
-          rootPath: builds
-          depot1Path: win32
-          depot2Path: darwin
-          depot3Path: linux
-          releaseBranch: ${{ github.ref_name == 'beta' && 'beta' || 'prerelease' }}
+            platformAlias: win32
+    with:
+      branch: ${{ github.ref_name }}
+      platformAlias: ${{ matrix.platformAlias }}
+      operatingSystem: ${{ matrix.os }}
+      steamReleaseBranch: ${{ github.ref_name == 'beta' && 'beta' || 'prerelease' }}
+      version: ${{ needs.get-next-version.outputs.version }}
+      zipName: The.Inn.at.Nightfall-${{ matrix.platformAlias }}-x64-${{ needs.get-next-version.outputs.version }}.zip
+    secrets:
+      steamAppID: ${{ secrets.STEAM_APP_ID }}
+      steamBuildUsername: ${{ secrets.STEAM_BUILD_USERNAME }}
+      steamBuildConfigVDF: ${{ secrets.STEAM_BUILD_CONFIG_VDF }}
+      steamDemoAppID: ${{ secrets.STEAM_DEMO_APP_ID }}
+      token: ${{ secrets.GITHUB_TOKEN }}

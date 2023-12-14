@@ -1,0 +1,23 @@
+name: Publish Github Release
+
+on:
+  workflow_call:
+    inputs:
+      repo:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
+
+jobs:
+  publish-github-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Undraft the release
+        uses: LogicOverSnacks/actions-publish@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.token }}
+        with:
+          repo: ${{ inputs.repo }}

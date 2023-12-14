@@ -1,0 +1,41 @@
+name: Build Electron App
+
+on:
+  workflow_call:
+    inputs:
+      operatingSystem:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
+
+jobs:
+  make-github-release:
+    runs-on: ${{ inputs.operatingSystem }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install Packages
+        run: yarn install --network-timeout 600000
+
+      - name: Update Version
+        run: yarn version --new-version ${{ inputs.version }} --no-commit-hooks --no-git-tag-version
+
+      - name: Build and Publish to Github
+        run: yarn run publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.token }}
