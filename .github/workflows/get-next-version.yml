@@ -31,6 +31,9 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
+      - name: List Git Tags
+        run: git tag
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:

@@ -6,6 +6,9 @@ on:
       notes:
         required: true
         type: string
+      target:
+        required: true
+        type: string
       version:
         required: true
         type: string
@@ -40,8 +43,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.token }}
         with:
-          prerelease: true
-          draft: true
-          tag_name: v${{ inputs.version }}
-          name: v${{ inputs.version }}
           body: ${{ inputs.notes }}
+          draft: true
+          prerelease: true
+          name: v${{ inputs.version }}
+          tag_name: v${{ inputs.version }}
+          target_commitish: ${{ inputs.target }}

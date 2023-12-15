@@ -41,6 +41,7 @@ jobs:
     if: needs.get-next-version.outputs.published == 'true'
     with:
       notes: ${{ needs.get-next-version.outputs.notes }}
+      target: ${{ github.ref_name }}
       version: ${{ needs.get-next-version.outputs.version }}
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
