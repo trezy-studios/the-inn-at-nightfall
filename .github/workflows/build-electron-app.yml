@@ -31,8 +31,13 @@ jobs:
 
     steps:
       - name: Write the Apple App Connect API Key to Disk
-        run: echo '${{ secrets.appleAPIKeyContent }}' | base64 -D > apikey.p8
+        uses: timheuer/base64-to-file@v1.2
+        id: writeAPIKey
         if: ${{ inputs.operatingSystem == 'macos-latest' }}
+        with:
+          encodedString: ${{ secrets.appleAPIKeyContent }}
+          fileName: apikey.p8
+
 
       - name: Add Signing Certificate to Keychain
         uses: BoundfoxStudios/action-import-signing-certificate@v1
@@ -65,6 +70,6 @@ jobs:
         run: yarn run publish
         env:
           APPLE_API_ISSUER_ID: ${{ secrets.appleAPIIssuerID }}
-          APPLE_API_KEY: apikey.p8
+          APPLE_API_KEY: ${{ steps.writeAPIKey.outputs.filePath }}
           APPLE_API_KEY_ID: ${{ secrets.appleAPIKeyID }}
           GITHUB_TOKEN: ${{ secrets.token }}
