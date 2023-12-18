@@ -45,7 +45,7 @@ jobs:
         with:
           body: ${{ inputs.notes }}
           draft: true
-          prerelease: true
+          prerelease: ${{ inputs.target != 'main' }}
           name: v${{ inputs.version }}
           tag_name: v${{ inputs.version }}
           target_commitish: ${{ inputs.target }}

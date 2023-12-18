@@ -74,7 +74,6 @@ jobs:
     name: Publish Github Release
     uses: ./.github/workflows/publish-github-release.yml
     needs:
-      - create-draft-release
       - build-electron-app
     with:
       repo: ${{ github.repository }}
