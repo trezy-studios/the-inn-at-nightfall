@@ -3,7 +3,13 @@ name: Publish Github Release
 on:
   workflow_call:
     inputs:
+      branch:
+        required: true
+        type: string
       repo:
+        required: true
+        type: string
+      version:
         required: true
         type: string
     secrets:
@@ -15,6 +21,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create the semantic-release note
+        run: git notes --ref semantic-release add -f -m '{"channels":["${{ inputs.branch }}"]}' ${{ inputs.version }}
+
+      - name: Push semantic-release note
+        run: git push --force origin refs/notes/semantic-release
+
       - name: Undraft the release
         uses: LogicOverSnacks/actions-publish@v2
         env:

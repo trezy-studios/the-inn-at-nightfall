@@ -50,8 +50,8 @@ jobs:
     name: Build Electron App
     uses: ./.github/workflows/build-electron-app.yml
     needs:
-      - get-next-version
       - create-draft-release
+      - get-next-version
     strategy:
       matrix:
         os:
@@ -75,8 +75,11 @@ jobs:
     uses: ./.github/workflows/publish-github-release.yml
     needs:
       - build-electron-app
+      - get-next-version
     with:
+      branch: ${{ github.ref_name }}
       repo: ${{ github.repository }}
+      version: ${{ needs.get-next-version.outputs.version }}
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
 
