@@ -78,6 +78,8 @@ jobs:
       - get-next-version
     with:
       branch: ${{ github.ref_name }}
+      gitEmail: ${{ github.actor }}+${{ github.actor_id }}@trezy.com
+      gitUsername: ${{ github.actor }}
       repo: ${{ github.repository }}
       version: ${{ needs.get-next-version.outputs.version }}
     secrets:

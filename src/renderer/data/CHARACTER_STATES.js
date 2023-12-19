@@ -4,7 +4,7 @@
 export const CHARACTER_STATES = {
 	BITTEN: 'bitten',
 	DIRTY: 'dirty',
-	FANGS: 'fangs',
+	FANGS: 'fanged',
 	NERVOUS: 'nervous',
 	NORMAL: 'normal',
 	SICK: 'sick',
