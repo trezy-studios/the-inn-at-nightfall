@@ -30,8 +30,8 @@ const BLOCKQUOTE_VARIANTS = {
 	animate: {
 		opacity: 1,
 		transition: {
-			delayChildren: 0.5,
-			staggerChildren: 1.5,
+			delayChildren: 1,
+			staggerChildren: 0.75,
 		},
 	},
 }
@@ -58,7 +58,6 @@ const HEADING_VARIANTS = {
 		scale: 1,
 		transition: {
 			bounce: 0.1,
-			delay: 6.5,
 			duration: 1.5,
 			type: 'spring',
 		},
