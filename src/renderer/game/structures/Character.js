@@ -1,14 +1,13 @@
 // Local imports
 import { CHARACTER_STATES } from '../../data/CHARACTER_STATES.js'
 import { EventEmitter } from './EventEmitter.js'
+import { store } from '../../store/store.js'
 
 
 
 
 
 // Types
-/** @event Character#stateChanged */
-
 /** @typedef {string} Event */
 
 /**
@@ -41,19 +40,19 @@ export class Character extends EventEmitter {
 	 * Private instance properties
 	\****************************************************************************/
 
+	#bittenRound = null
+
 	#entryState = null
 
 	#id
 
-	#isMerchant = false
+	#isBitten = false
 
-	#isVampire = false
+	#isMerchant = false
 
 	#name
 
 	#sprite
-
-	#state = 'normal'
 
 
 
@@ -97,14 +96,22 @@ export class Character extends EventEmitter {
 	\****************************************************************************/
 
 	/**
-	 * Bites this character, affecting them with vampirism.
+	 * Whether the character has transformed into a vampire.
 	 *
-	 * @param {import('../../data/CHARACTER_STATES.js').CharacterState} state The new state.
-	 * @fires Character#STATE_CHANGED
+	 * @returns {boolean} Whether the character has transformed into a vampire.
 	 */
-	#setState(state) {
-		this.#state = state
-		this.emit(EVENTS.STATE_CHANGED)
+	#hasTransformed() {
+		if (!this.#isBitten) {
+			return false
+		}
+
+		const hasEnoughTimePassed = store.state.currentRound >= (this.#bittenRound + 1)
+
+		if (hasEnoughTimePassed) {
+			return true
+		}
+
+		return false
 	}
 
 
@@ -117,11 +124,14 @@ export class Character extends EventEmitter {
 
 	/**
 	 * Bites this character, affecting them with vampirism.
+	 *
+	 * @fires Character#STATE_CHANGED
 	 */
 	bite() {
 		if (!this.#isMerchant) {
-			this.#isVampire = true
-			this.#setState(CHARACTER_STATES.BITTEN)
+			this.#isBitten = true
+			this.#bittenRound = store.state.currentRound
+			this.emit(EVENTS.STATE_CHANGED)
 		}
 	}
 
@@ -144,13 +154,18 @@ export class Character extends EventEmitter {
 	}
 
 	/** @returns {boolean} Whether the character is a merchant. */
+	get isBitten() {
+		return this.#isBitten
+	}
+
+	/** @returns {boolean} Whether the character is a merchant. */
 	get isMerchant() {
-		return Boolean(this.#isMerchant)
+		return this.#isMerchant
 	}
 
 	/** @returns {boolean} Whether the character is a vampire. */
 	get isVampire() {
-		return Boolean(this.#isVampire)
+		return this.#hasTransformed()
 	}
 
 	/** @returns {string} The character's name. */
@@ -160,11 +175,19 @@ export class Character extends EventEmitter {
 
 	/** @returns {string} The name of the character's sprite. */
 	get sprite() {
-		return `${this.#sprite}::${this.#state}`
+		return `${this.#sprite}::${this.state}`
 	}
 
 	/** @returns {string} The character's current state. */
 	get state() {
-		return this.#state
+		if (this.#isBitten) {
+			if (this.#hasTransformed()) {
+				return CHARACTER_STATES.FANGS
+			}
+
+			return CHARACTER_STATES.BITTEN
+		}
+
+		return CHARACTER_STATES.NORMAL
 	}
 }
