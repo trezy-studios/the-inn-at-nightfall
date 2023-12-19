@@ -88,21 +88,13 @@ jobs:
       - publish-github-release
     strategy:
       matrix:
-        os:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
-        include:
-          - os: macos-latest
-            platformAlias: darwin
-          - os: ubuntu-latest
-            platformAlias: linux
-          - os: windows-latest
-            platformAlias: win32
+        platformAlias:
+          - darwin
+          - linux
+          - win32
     with:
       branch: ${{ github.ref_name }}
       platformAlias: ${{ matrix.platformAlias }}
-      operatingSystem: ${{ matrix.os }}
       steamReleaseBranch: ${{ github.ref_name == 'beta' && 'beta' || 'prerelease' }}
       version: ${{ needs.get-next-version.outputs.version }}
       zipName: The.Inn.at.Nightfall-${{ matrix.platformAlias }}-x64-${{ needs.get-next-version.outputs.version }}.zip

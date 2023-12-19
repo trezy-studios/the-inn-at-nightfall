@@ -9,9 +9,6 @@ on:
       platformAlias:
         required: true
         type: string
-      operatingSystem:
-        required: true
-        type: string
       steamReleaseBranch:
         required: true
         type: string
@@ -34,7 +31,7 @@ on:
         required: true
 
 jobs:
-  make-github-release:
+  publish-to-steam:
     runs-on: ubuntu-latest
 
     steps:
@@ -68,8 +65,8 @@ jobs:
           configVdf: ${{ secrets.steamBuildConfigVDF }}
           appId: ${{ inputs.branch == 'demo' && secrets.steamDemoAppID || secrets.steamAppID }}
           buildDescription: ${{ inputs.version }}
-          rootPath: builds
-          depot1Path: win32
+          rootPath: builds/${{ inputs.platformAlias }}
+          depot1Path: .
           releaseBranch: ${{ inputs.steamReleaseBranch }}
 
       - name: Publish macOS build to Steam
@@ -80,8 +77,8 @@ jobs:
           configVdf: ${{ secrets.steamBuildConfigVDF }}
           appId: ${{ inputs.branch == 'demo' && secrets.steamDemoAppID || secrets.steamAppID }}
           buildDescription: ${{ inputs.version }}
-          rootPath: builds
-          depot2Path: darwin
+          rootPath: builds/${{ inputs.platformAlias }}
+          depot2Path: .
           releaseBranch: ${{ inputs.steamReleaseBranch }}
 
       - name: Publish Linux build to Steam
@@ -92,6 +89,6 @@ jobs:
           configVdf: ${{ secrets.steamBuildConfigVDF }}
           appId: ${{ inputs.branch == 'demo' && secrets.steamDemoAppID || secrets.steamAppID }}
           buildDescription: ${{ inputs.version }}
-          rootPath: builds
-          depot3Path: linux
+          rootPath: builds/${{ inputs.platformAlias }}
+          depot3Path: .
           releaseBranch: ${{ inputs.steamReleaseBranch }}
