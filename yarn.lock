@@ -9295,10 +9295,9 @@ yarn-or-npm@^3.0.1:
     cross-spawn "^6.0.5"
     pkg-dir "^4.2.0"
 
-yarn-spinner-xstate@^1.0.0-beta.8:
-  version "1.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/yarn-spinner-xstate/-/yarn-spinner-xstate-1.0.0-beta.8.tgz#9ce93ba5d39c95a5e0e234265f4c42d54e50b8b9"
-  integrity sha512-CHm/wGqPAqxynhOdbuUXV5AvN42A2cIQXVCKzuRQWQJaRY883/ChfhnzcmYuEliPSwdXkAtNNDDLgOzk/EXSFw==
+"yarn-spinner-xstate@git+https://github.com/trezy/yarn-spinner-xstate.git#beta":
+  version "0.0.0-development"
+  resolved "git+https://github.com/trezy/yarn-spinner-xstate.git#6b36cd439b8d241854564eff681f97602c515040"
   dependencies:
     bbcode-ast "^1.1.0"
     uuid "^9.0.1"
