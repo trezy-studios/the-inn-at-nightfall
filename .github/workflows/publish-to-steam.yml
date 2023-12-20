@@ -98,6 +98,6 @@ jobs:
         if: failure()
         with:
           compression-level: 0
-          name: logs
+          name: ${{ inputs.platformAlias }}-logs
           path: BuildOutput
           retention-days: 30
