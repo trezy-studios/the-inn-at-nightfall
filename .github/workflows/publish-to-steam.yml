@@ -92,3 +92,12 @@ jobs:
           rootPath: builds/${{ inputs.platformAlias }}
           depot3Path: .
           releaseBranch: ${{ inputs.steamReleaseBranch }}
+
+      - name: Print Steam logs
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          compression-level: 0
+          name: logs
+          path: BuildOutput
+          retention-days: 30
