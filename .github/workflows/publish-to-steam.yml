@@ -33,6 +33,7 @@ on:
 jobs:
   publish-to-steam:
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     steps:
       - name: Download Builds
