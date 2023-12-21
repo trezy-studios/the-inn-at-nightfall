@@ -91,26 +91,11 @@ jobs:
     needs:
       - get-next-version
       - publish-github-release
-    strategy:
-      fail-fast: false
-      matrix:
-        platformAlias:
-          - darwin
-          - linux
-          - win32
-        include:
-          - platformAlias: darwin
-            depotID: 2729162
-          - platformAlias: linux
-            depotID: 2729163
-          - platformAlias: win32
-            depotID: 2729161
     with:
       branch: ${{ github.ref_name }}
-      platformAlias: ${{ matrix.platformAlias }}
       steamReleaseBranch: ${{ github.ref_name == 'beta' && 'beta' || 'prerelease' }}
       version: ${{ needs.get-next-version.outputs.version }}
-      zipName: The.Inn.at.Nightfall-${{ matrix.platformAlias }}-x64-${{ needs.get-next-version.outputs.version }}.zip
+      zipPrefix: The.Inn.at.Nightfall
     secrets:
       steamAppID: ${{ secrets.STEAM_APP_ID }}
       steamBuildUsername: ${{ secrets.STEAM_BUILD_USERNAME }}

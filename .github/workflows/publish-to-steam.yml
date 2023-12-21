@@ -6,19 +6,13 @@ on:
       branch:
         required: true
         type: string
-      platformAlias:
-        required: true
-        type: string
-      depotID:
-        required: true
-        type: string
       steamReleaseBranch:
         required: true
         type: string
       version:
         required: true
         type: string
-      zipName:
+      zipPrefix:
         required: true
         type: string
     secrets:
@@ -42,7 +36,7 @@ jobs:
       - name: Download Builds
         uses: robinraju/release-downloader@v1.8
         with:
-          fileName: ${{ inputs.zipName }}
+          fileName: '*.zip'
           out-file-path: artifacts
           repository: ${{ github.repository }}
           tag: v${{ inputs.version }}
@@ -50,34 +44,46 @@ jobs:
 
       # Rewrite the Windows zip to use forward slashes instead of backslashes.
       - name: Convert Archive to Forward Slashes
-        run: 7z rn artifacts/${{ inputs.zipName }} $(7z l artifacts/${{ inputs.zipName }} | grep '\\' | awk '{ print $6, gensub(/\\/, "/", "g", $6); }' | paste -s)
-        if: ${{ inputs.platformAlias == 'win32' }}
+        run: 7z rn artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip $(7z l artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip | grep '\\' | awk '{ print $6, gensub(/\\/, "/", "g", $6); }' | paste -s)
 
       # Ensure the directories exist before extracting builds.
-      - run: mkdir -p builds/${{ inputs.platformAlias }}
+      - run: mkdir -p builds/darwin
+      - run: mkdir -p builds/linux
+      - run: mkdir -p builds/win32
 
-      - name: Decompress Build Archive
+      - name: Decompress Windows Archive
         uses: TonyBogdanov/zip@1.0
         with:
-          args: unzip -qq artifacts/${{ inputs.zipName }} -d builds/${{ inputs.platformAlias }}
+          args: unzip -qq artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip -d builds/win32
 
-      - name: Publish ${{ inputs.platformAlias }} build to Steam
+      - name: Decompress macOS Archive
+        uses: TonyBogdanov/zip@1.0
+        with:
+          args: unzip -qq artifacts/${{ inputs.zipPrefix }}-darwin-x64-${{ inputs.version }}.zip -d builds/darwin
+
+      - name: Decompress Linux Archive
+        uses: TonyBogdanov/zip@1.0
+        with:
+          args: unzip -qq artifacts/${{ inputs.zipPrefix }}-linux-x64-${{ inputs.version }}.zip -d builds/linux
+
+      - name: Publish Builds to Steam
         uses: game-ci/steam-deploy@v3
         with:
           username: ${{ secrets.steamBuildUsername }}
           configVdf: ${{ secrets.steamBuildConfigVDF }}
           appId: ${{ inputs.branch == 'demo' && secrets.steamDemoAppID || secrets.steamAppID }}
           buildDescription: ${{ inputs.version }}
-          rootPath: builds/${{ inputs.platformAlias }}
-          firstDepotIdOverride: ${{ inputs.depotID }}
-          depot1Path: .
+          rootPath: builds
+          depot1Path: win32
+          depot2Path: darwin
+          depot3Path: linux
           releaseBranch: ${{ inputs.steamReleaseBranch }}
 
-      - name: Print Steam logs
+      - name: Save Steam Logs on Error
         uses: actions/upload-artifact@v4
         if: failure()
         with:
           compression-level: 0
-          name: ${{ inputs.platformAlias }}-logs
+          name: logs
           path: BuildOutput
           retention-days: 30
