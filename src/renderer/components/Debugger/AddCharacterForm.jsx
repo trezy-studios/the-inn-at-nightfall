@@ -1,11 +1,10 @@
-/* eslint-disable @next/next/no-img-element,react/forbid-elements */
+/* eslint-disable react/forbid-elements */
 // Module imports
 import {
 	useCallback,
 	useState,
 } from 'react'
 import { Assets } from 'pixi.js'
-import { faker } from '@faker-js/faker'
 import PropTypes from 'prop-types'
 import { v4 as uuid } from 'uuid'
 
@@ -35,26 +34,12 @@ export function AddCharacterForm(props) {
 
 	const [characterImageFile, setCharacterImageFile] = useState(null)
 	const [characterSex, setCharacterSex] = useState(/** @type {'female' | 'male' | 'nonbinary'} */ ((Math.random() > 0.5) ? 'male' : 'female'))
-	const [characterName, setCharacterName] = useState(faker.person.fullName({
-		sex: /** @type {'female' | 'male'} */ (characterSex),
-	}))
+	const [characterName, setCharacterName] = useState('')
 	const [isSaving, setIsSaving] = useState(false)
 
 	const handleCharacterImageChange = useCallback(event => setCharacterImageFile(event.target.files[0]), [setCharacterImageFile])
 	const handleCharacterNameChange = useCallback(event => setCharacterName(event.target.value), [setCharacterName])
 	const handleCharacterSexChange = useCallback(event => setCharacterSex(event.target.value), [setCharacterSex])
-	const handleRegenerateName = useCallback(() => {
-		const options = {}
-
-		if (characterSex !== 'nonbinary') {
-			options.sex = characterSex
-		}
-
-		setCharacterName(faker.person.fullName(options))
-	}, [
-		characterSex,
-		setCharacterName,
-	])
 	const handleSave = useCallback(async() => {
 		setIsSaving(true)
 
@@ -102,9 +87,6 @@ export function AddCharacterForm(props) {
 								disabled={isSaving}
 								onChange={handleCharacterNameChange}
 								value={characterName} />
-							<button onClick={handleRegenerateName}>
-								{'Regenerate'}
-							</button>
 						</td>
 					</tr>
 
