@@ -9290,10 +9290,10 @@ yarn-or-npm@^3.0.1:
     cross-spawn "^6.0.5"
     pkg-dir "^4.2.0"
 
-yarn-spinner-xstate@1.0.0-beta.16:
-  version "1.0.0-beta.16"
-  resolved "https://registry.yarnpkg.com/yarn-spinner-xstate/-/yarn-spinner-xstate-1.0.0-beta.16.tgz#070b7cde4366097f8f0dca0362afe1f00f83f6a7"
-  integrity sha512-NlPhOLZiG7Lrni/u6v08sf02N7L5+j8zbol1NVB38Dn0EODAg9JbWMJfmrn2LBKJSMv7STtyT3pBK64iB+4f/A==
+yarn-spinner-xstate@1.0.0-beta.17:
+  version "1.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/yarn-spinner-xstate/-/yarn-spinner-xstate-1.0.0-beta.17.tgz#cbc4bd8f2b7b35b52e945e03491eeab00f71c951"
+  integrity sha512-lSpNiBI0NJM4u5YAm6dFGFLQ0M/Z5AEqrPgdf0oqQZJXDve6hmdibFP0BT9XVW8t3+nQ5ly1r2VSPvhwLrXUqA==
   dependencies:
     bbcode-ast "^1.1.0"
     uuid "^9.0.1"
