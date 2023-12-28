@@ -91,7 +91,12 @@ export function RoundLoadingScreen() {
 
 	const [isDoneLoading, setIsDoneLoading] = useState(false)
 
-	useLoadAssets('round', {
+	useLoadAssets([
+		'demo',
+		// #v-ifdef NODE_ENV !== 'demo'
+			'base',
+		// #v-endif
+	], {
 		// eslint-disable-next-line jsdoc/require-jsdoc
 		onDone: () => setIsDoneLoading(true),
 	})

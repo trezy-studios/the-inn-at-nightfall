@@ -27,13 +27,13 @@ import { store } from '../store/store.js'
 /**
  * Hook for loading assets.
  *
- * @param {string} manifestID The ID of the manifest to load.
+ * @param {string[]} manifestIDs The manifest IDs to be loaded.
  * @param {object} [options] All options.
  * @param {Function} [options.onAssetLoadStart] Fired before an asset starts loading.
  * @param {Function} [options.onAssetLoadEnd] Fired when an asset is finished loading.
  * @param {Function} [options.onDone] Fired when all associated assets have been loaded.
  */
-export function useLoadAssets(manifestID, options = {}) {
+export function useLoadAssets(manifestIDs, options = {}) {
 	const {
 		onAssetLoadEnd,
 		onAssetLoadStart,
@@ -45,12 +45,13 @@ export function useLoadAssets(manifestID, options = {}) {
 	const [manifest, setManifest] = useState(null)
 
 	const getManifest = useCallback(async() => {
-		const manifestResponse = await fetch(`manifests/${manifestID}.json`)
-		const manifestData = await manifestResponse.json()
+		const manifestResponses = await Promise.all(manifestIDs.map(manifestID => fetch(`manifests/${manifestID}.json`)))
+		const manifestData = await Promise.all(manifestResponses.map(manifestResponse => manifestResponse.json()))
+
 		setIsRetrievingManifest(true)
-		setManifest(manifestData)
+		setManifest(manifestData.flat())
 	}, [
-		manifestID,
+		manifestIDs,
 		setIsRetrievingManifest,
 		setManifest,
 	])

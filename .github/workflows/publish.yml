@@ -59,6 +59,7 @@ jobs:
           - ubuntu-latest
           - windows-latest
     with:
+      branch: ${{ github.ref_name }}
       operatingSystem: ${{ matrix.os }}
       version: ${{ needs.get-next-version.outputs.version }}
     secrets:

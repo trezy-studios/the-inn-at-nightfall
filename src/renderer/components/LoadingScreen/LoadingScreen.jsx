@@ -26,7 +26,7 @@ import { Vignette } from '../Vignette/Vignette.jsx'
  * @component
  */
 export function LoadingScreen() {
-	useLoadAssets('critical', {
+	useLoadAssets(['critical'], {
 		// eslint-disable-next-line jsdoc/require-jsdoc
 		onDone: () => store.set(() => ({ screen: SCREENS.TITLE })),
 	})

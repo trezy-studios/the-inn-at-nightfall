@@ -3,6 +3,9 @@ name: Build Electron App
 on:
   workflow_call:
     inputs:
+      branch:
+        required: true
+        type: string
       operatingSystem:
         required: true
         type: string
@@ -26,7 +29,7 @@ on:
         required: true
 
 jobs:
-  make-github-release:
+  build-electron-app:
     runs-on: ${{ inputs.operatingSystem }}
 
     steps:
@@ -37,7 +40,6 @@ jobs:
         with:
           encodedString: ${{ secrets.appleAPIKeyContent }}
           fileName: apikey.p8
-
 
       - name: Add Signing Certificate to Keychain
         uses: BoundfoxStudios/action-import-signing-certificate@v1
@@ -73,3 +75,4 @@ jobs:
           APPLE_API_KEY: ${{ steps.writeAPIKey.outputs.filePath }}
           APPLE_API_KEY_ID: ${{ secrets.appleAPIKeyID }}
           GITHUB_TOKEN: ${{ secrets.token }}
+          NODE_ENV: ${{ inputs.branch }}
