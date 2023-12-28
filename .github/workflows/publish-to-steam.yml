@@ -42,29 +42,23 @@ jobs:
           tag: v${{ inputs.version }}
           token: ${{ secrets.token }}
 
-      # Rewrite the Windows zip to use forward slashes instead of backslashes.
-      - name: Convert Archive to Forward Slashes
-        run: 7z rn artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip $(7z l artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip | grep '\\' | awk '{ print $6, gensub(/\\/, "/", "g", $6); }' | paste -s)
-
       # Ensure the directories exist before extracting builds.
       - run: mkdir -p builds/darwin
       - run: mkdir -p builds/linux
       - run: mkdir -p builds/win32
 
+      # Rewrite the Windows zip to use forward slashes instead of backslashes.
+      - name: Convert Windows Archive to Forward Slashes
+        run: 7z rn artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip $(7z l artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip | grep '\\' | awk '{ print $6, gensub(/\\/, "/", "g", $6); }' | paste -s)
+
       - name: Decompress Windows Archive
-        uses: TonyBogdanov/zip@1.0
-        with:
-          args: unzip -qq artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip -d builds/win32
+        run: 7z x artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip builds/win32
 
       - name: Decompress macOS Archive
-        uses: TonyBogdanov/zip@1.0
-        with:
-          args: unzip -qq artifacts/${{ inputs.zipPrefix }}-darwin-x64-${{ inputs.version }}.zip -d builds/darwin
+        run: 7z x artifacts/${{ inputs.zipPrefix }}-darwin-x64-${{ inputs.version }}.zip builds/darwin
 
       - name: Decompress Linux Archive
-        uses: TonyBogdanov/zip@1.0
-        with:
-          args: unzip -qq artifacts/${{ inputs.zipPrefix }}-linux-x64-${{ inputs.version }}.zip -d builds/linux
+        run: 7z x artifacts/${{ inputs.zipPrefix }}-linux-x64-${{ inputs.version }}.zip builds/linux
 
       - name: Publish Builds to Steam
         uses: game-ci/steam-deploy@v3
