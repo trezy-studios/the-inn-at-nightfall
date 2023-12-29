@@ -94,7 +94,6 @@ jobs:
       - publish-github-release
     with:
       branch: ${{ github.ref_name }}
-      steamReleaseBranch: ${{ github.ref_name == 'beta' && 'beta' || 'prerelease' }}
       version: ${{ needs.get-next-version.outputs.version }}
       zipPrefix: The.Inn.at.Nightfall
     secrets:

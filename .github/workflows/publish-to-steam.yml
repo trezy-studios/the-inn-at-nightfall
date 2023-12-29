@@ -6,9 +6,6 @@ on:
       branch:
         required: true
         type: string
-      steamReleaseBranch:
-        required: true
-        type: string
       version:
         required: true
         type: string
@@ -71,7 +68,7 @@ jobs:
           depot1Path: win32
           depot2Path: darwin
           depot3Path: linux
-          releaseBranch: ${{ inputs.steamReleaseBranch }}
+          releaseBranch: ${{ inputs.branch }}
 
       - name: Save Steam Logs on Error
         uses: actions/upload-artifact@v4
