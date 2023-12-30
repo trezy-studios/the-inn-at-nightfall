@@ -131,7 +131,7 @@ export function RoundScore() {
 						</div>
 					</details>
 
-					{/* #v-ifdef NODE_ENV !== 'demo' */}
+					{/* #v-ifdef NODE_ENV === 'demo' */}
 					{(currentRound === 5) && (
 						<Paragraph>
 							{'You\'ve reached the end of the demo! Thanks for playing!'}
@@ -144,7 +144,7 @@ export function RoundScore() {
 							{'Menu'}
 						</MenuButton>
 
-						{/* #v-ifdef NODE_ENV !== 'demo' */}
+						{/* #v-ifdef NODE_ENV === 'demo' */}
 						{(currentRound < 5) && (
 							<MenuButton
 								align={ALIGNMENT.RIGHT}
