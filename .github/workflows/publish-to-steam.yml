@@ -49,13 +49,13 @@ jobs:
         run: 7z rn artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip $(7z l artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip | grep '\\' | awk '{ print $6, gensub(/\\/, "/", "g", $6); }' | paste -s)
 
       - name: Decompress Windows Archive
-        run: 7z x artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip builds/win32
+        run: 7z x artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip -obuilds/win32
 
       - name: Decompress macOS Archive
-        run: 7z x artifacts/${{ inputs.zipPrefix }}-darwin-x64-${{ inputs.version }}.zip builds/darwin
+        run: 7z x artifacts/${{ inputs.zipPrefix }}-darwin-x64-${{ inputs.version }}.zip -obuilds/darwin
 
       - name: Decompress Linux Archive
-        run: 7z x artifacts/${{ inputs.zipPrefix }}-linux-x64-${{ inputs.version }}.zip builds/linux
+        run: 7z x artifacts/${{ inputs.zipPrefix }}-linux-x64-${{ inputs.version }}.zip -obuilds/linux
 
       - name: Publish Builds to Steam
         uses: game-ci/steam-deploy@v3
