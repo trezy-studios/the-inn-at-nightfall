@@ -5,7 +5,6 @@
   "productDescription": "A remote inn stands as an unsuspected fortress. Beneath its humble exterior, it's the last refuge against a shadowy evil concealed by the forest. As the innkeeper, your role isn't just hospitality. It's a test of discernment - distinguishing genuine travelers from the vampires lurking in the surrounding forest. Can you maintain the sanctuary and keep the darkness out?",
   "version": "1.0.0",
   "main": ".vite/build/main.js",
-  "license": "BSD-3-Clause",
   "scripts": {
     "lint": "eslint --ext .js,.jsx .",
     "make": "electron-forge make",
