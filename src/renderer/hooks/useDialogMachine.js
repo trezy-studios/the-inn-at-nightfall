@@ -20,6 +20,7 @@ import { useCharacter } from './useCharacter.js'
 
 
 
+// Types
 /**
  * @typedef {object} useDialogMachineProps
  * @property {object} dialogMeta Metadata for the parent state machine.
@@ -30,6 +31,25 @@ import { useCharacter } from './useCharacter.js'
  * @property {Function} sendNext Send the next event to the machine.
  * @property {import('xstate').StateConfig} state The machine's current state.
  */
+
+
+
+
+
+// Functions
+/**
+ * @param {import('xstate').AnyMachineSnapshot} snapshot The state to be analysed.
+ * @returns {string[]} A  list of possible next events.
+ */
+function getNextEvents(snapshot) {
+	return Array.from(new Set([
+		...snapshot._nodes.flatMap(({ ownEvents }) => ownEvents),
+	]))
+}
+
+
+
+
 
 /**
  * Retrieves the dialog machine for the current character.
@@ -80,11 +100,13 @@ export function useDialogMachine(options = {}) {
 		const nodeMetaKey = `${state.machine.id}.${nodeID}`
 		const lineMetaKey = `${nodeMetaKey}.${lineID}`
 
-		const result = { nodeMeta: state.meta[nodeMetaKey] }
+		const result = {
+			nodeMeta: state.getMeta()[nodeMetaKey],
+		}
 
 		if (typeof lineID === 'string') {
 			result.lineMeta = {
-				...state.meta[lineMetaKey],
+				...state.getMeta()[lineMetaKey],
 				id: lineID,
 			}
 		} else {
@@ -95,7 +117,7 @@ export function useDialogMachine(options = {}) {
 				return {
 					handleSelect: createOptionSelectHandler(id),
 					id,
-					...state.meta[`${nodeMetaKey}.${parallelStateID}.${id}`],
+					...state.getMeta()[`${nodeMetaKey}.${parallelStateID}.${id}`],
 				}
 			})
 		}
@@ -108,15 +130,17 @@ export function useDialogMachine(options = {}) {
 
 	const dialogMeta = useMemo(() => {
 		const metaKey = `${state.machine.id}.${state.value}`
-		return state.meta[metaKey]
+		return state.getMeta()[metaKey]
 	}, [state])
 
 	useEffect(() => {
-		if (lineMeta && !state.done) {
+		const isStateDone = state.status === 'done'
+
+		if (lineMeta && !isStateDone) {
 			addMessageToDialog(lineMeta)
 		}
 
-		if (state.done) {
+		if (isStateDone) {
 			setIsDone(true)
 
 			if (currentCharacter.isMerchant) {
@@ -131,9 +155,11 @@ export function useDialogMachine(options = {}) {
 	])
 
 	useEffect(() => {
-		if (autoadvance && !state.done) {
+		const isStateDone = state.status === 'done'
+		if (autoadvance && !isStateDone) {
 			const timeoutID = setTimeout(() => {
-				if ((state.nextEvents[0] === 'next') && (state.nextEvents.length === 1)) {
+				const nextEvents = getNextEvents(state)
+				if ((nextEvents[0] === 'next') && (nextEvents.length === 1)) {
 					sendNext()
 				}
 			}, autoadvanceDelay)
