@@ -55,7 +55,6 @@
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "@vitejs/plugin-react": "^4.1.0",
-    "better-docs": "^2.7.2",
     "electron": "^28.0.0",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.51.0",
