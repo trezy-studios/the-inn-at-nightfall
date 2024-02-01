@@ -284,6 +284,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.23.9":
+  version: 7.23.9
+  resolution: "@babel/runtime@npm:7.23.9"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 10c0/e71205fdd7082b2656512cc98e647d9ea7e222e4fe5c36e9e5adc026446fcc3ba7b3cdff8b0b694a0b78bb85db83e7b1e3d4c56ef90726682b74f13249cf952d
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.22.15":
   version: 7.23.9
   resolution: "@babel/template@npm:7.23.9"
@@ -1900,7 +1909,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/app@npm:7.4.0":
+"@pixi/app@npm:7.4.0, @pixi/app@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/app@npm:7.4.0"
   peerDependencies:
@@ -1910,7 +1919,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/assets@npm:7.4.0":
+"@pixi/assets@npm:7.4.0, @pixi/assets@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/assets@npm:7.4.0"
   dependencies:
@@ -1947,14 +1956,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/constants@npm:7.4.0":
+"@pixi/constants@npm:7.4.0, @pixi/constants@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/constants@npm:7.4.0"
   checksum: 10c0/9aa9c58047d971438bb3ac387bfc29eaf2cb2b8c064a236b9d016ee98675976344613a9be39b93e2f45c7a2aa87a7338673f4f53605f96bbc0250fe31d9756e2
   languageName: node
   linkType: hard
 
-"@pixi/core@npm:7.4.0":
+"@pixi/core@npm:7.4.0, @pixi/core@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/core@npm:7.4.0"
   dependencies:
@@ -1970,7 +1979,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/display@npm:7.4.0":
+"@pixi/display@npm:7.4.0, @pixi/display@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/display@npm:7.4.0"
   peerDependencies:
@@ -1989,7 +1998,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/extensions@npm:7.4.0":
+"@pixi/extensions@npm:7.4.0, @pixi/extensions@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/extensions@npm:7.4.0"
   checksum: 10c0/e7f2d2e5b92c8420cc99154ff3291607dbb6ac34216a990c74afb348fe001fd79493dd07d88c74e4a4b6261d881c40abe2f5943be910b4b3ae6ddf0778479c25
@@ -2059,7 +2068,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/graphics@npm:7.4.0":
+"@pixi/graphics@npm:7.4.0, @pixi/graphics@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/graphics@npm:7.4.0"
   peerDependencies:
@@ -2070,14 +2079,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/math@npm:7.4.0":
+"@pixi/math@npm:7.4.0, @pixi/math@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/math@npm:7.4.0"
   checksum: 10c0/1b2a2ac2c935709ae09345b58fe2bbeb643cfb041490c4fc3bda5894a5cad004ce994163d9464502b49fa1c6c9cddcc2bba9b9b23d26b1a2871490b39d08b20e
   languageName: node
   linkType: hard
 
-"@pixi/mesh-extras@npm:7.4.0":
+"@pixi/mesh-extras@npm:7.4.0, @pixi/mesh-extras@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/mesh-extras@npm:7.4.0"
   peerDependencies:
@@ -2087,7 +2096,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/mesh@npm:7.4.0":
+"@pixi/mesh@npm:7.4.0, @pixi/mesh@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/mesh@npm:7.4.0"
   peerDependencies:
@@ -2127,7 +2136,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/particle-container@npm:7.4.0":
+"@pixi/particle-container@npm:7.4.0, @pixi/particle-container@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/particle-container@npm:7.4.0"
   peerDependencies:
@@ -2201,7 +2210,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/sprite-animated@npm:7.4.0":
+"@pixi/sprite-animated@npm:7.4.0, @pixi/sprite-animated@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/sprite-animated@npm:7.4.0"
   peerDependencies:
@@ -2211,7 +2220,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/sprite-tiling@npm:7.4.0":
+"@pixi/sprite-tiling@npm:7.4.0, @pixi/sprite-tiling@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/sprite-tiling@npm:7.4.0"
   peerDependencies:
@@ -2222,7 +2231,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/sprite@npm:7.4.0":
+"@pixi/sprite@npm:7.4.0, @pixi/sprite@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/sprite@npm:7.4.0"
   peerDependencies:
@@ -2242,7 +2251,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/text-bitmap@npm:7.4.0":
+"@pixi/text-bitmap@npm:7.4.0, @pixi/text-bitmap@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/text-bitmap@npm:7.4.0"
   peerDependencies:
@@ -2267,7 +2276,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/text@npm:7.4.0":
+"@pixi/text@npm:7.4.0, @pixi/text@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/text@npm:7.4.0"
   peerDependencies:
@@ -2277,7 +2286,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/ticker@npm:7.4.0":
+"@pixi/ticker@npm:7.4.0, @pixi/ticker@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/ticker@npm:7.4.0"
   dependencies:
@@ -9243,7 +9252,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.32":
+"postcss@npm:^8.4.32, postcss@npm:^8.4.33":
   version: 8.4.33
   resolution: "postcss@npm:8.4.33"
   dependencies:
@@ -10791,6 +10800,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "the-inn-at-nightfall@workspace:."
   dependencies:
+    "@babel/runtime": "npm:^7.23.9"
     "@electron-forge/cli": "npm:^7.2.0"
     "@electron-forge/maker-zip": "npm:^7.2.0"
     "@electron-forge/plugin-auto-unpack-natives": "npm:^7.2.0"
@@ -10801,7 +10811,24 @@ __metadata:
     "@fortawesome/free-regular-svg-icons": "npm:^6.4.2"
     "@fortawesome/free-solid-svg-icons": "npm:^6.4.2"
     "@fortawesome/react-fontawesome": "npm:^0.2.0"
+    "@pixi/app": "npm:^7.4.0"
+    "@pixi/assets": "npm:^7.4.0"
+    "@pixi/constants": "npm:^7.4.0"
+    "@pixi/core": "npm:^7.4.0"
+    "@pixi/display": "npm:^7.4.0"
+    "@pixi/extensions": "npm:^7.4.0"
+    "@pixi/graphics": "npm:^7.4.0"
+    "@pixi/math": "npm:^7.4.0"
+    "@pixi/mesh": "npm:^7.4.0"
+    "@pixi/mesh-extras": "npm:^7.4.0"
+    "@pixi/particle-container": "npm:^7.4.0"
     "@pixi/react": "npm:^7.1.1"
+    "@pixi/sprite": "npm:^7.4.0"
+    "@pixi/sprite-animated": "npm:^7.4.0"
+    "@pixi/sprite-tiling": "npm:^7.4.0"
+    "@pixi/text": "npm:^7.4.0"
+    "@pixi/text-bitmap": "npm:^7.4.0"
+    "@pixi/ticker": "npm:^7.4.0"
     "@pixi/unsafe-eval": "npm:^7.3.2"
     "@semantic-release/commit-analyzer": "npm:^11.0.0"
     "@types/howler": "npm:^2.2.10"
@@ -10835,6 +10862,7 @@ __metadata:
     howler: "npm:^2.2.4"
     js-yaml: "npm:^4.1.0"
     pixi.js: "npm:^7.3.1"
+    postcss: "npm:^8.4.33"
     prettier: "npm:^3.0.3"
     prop-types: "npm:^15.8.1"
     react: "npm:^18.2.0"
