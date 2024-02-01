@@ -16,6 +16,9 @@ const packageData = require('./package.json')
 
 
 module.exports = {
+	makers: [
+		{ name: '@electron-forge/maker-zip' },
+	],
 	packagerConfig: {
 		executableName: packageData.name,
 		osxNotarize: {
@@ -26,10 +29,6 @@ module.exports = {
 		},
 		osxSign: {},
 	},
-	rebuildConfig: {},
-	makers: [
-		{ name: '@electron-forge/maker-zip' },
-	],
 	plugins: [
 		new VitePlugin({
 			build: [
@@ -59,4 +58,5 @@ module.exports = {
 			prerelease: true,
 		}),
 	],
+	rebuildConfig: {},
 }
