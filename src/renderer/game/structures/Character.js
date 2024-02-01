@@ -105,7 +105,7 @@ export class Character extends EventEmitter {
 			return false
 		}
 
-		const hasEnoughTimePassed = store.state.currentRound >= (this.#bittenRound + 1)
+		const hasEnoughTimePassed = store.state.currentRound > (this.#bittenRound + 2)
 
 		if (hasEnoughTimePassed) {
 			return true
