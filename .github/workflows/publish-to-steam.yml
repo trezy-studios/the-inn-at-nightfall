@@ -52,7 +52,7 @@ jobs:
         run: 7z x artifacts/${{ inputs.zipPrefix }}-win32-x64-${{ inputs.version }}.zip -obuilds/win32
 
       - name: Decompress macOS Archive
-        run: 7z x artifacts/${{ inputs.zipPrefix }}-darwin-x64-${{ inputs.version }}.zip -obuilds/darwin
+        run: 7z x artifacts/${{ inputs.zipPrefix }}-darwin-universal-${{ inputs.version }}.zip -obuilds/darwin
 
       - name: Decompress Linux Archive
         run: 7z x artifacts/${{ inputs.zipPrefix }}-linux-x64-${{ inputs.version }}.zip -obuilds/linux

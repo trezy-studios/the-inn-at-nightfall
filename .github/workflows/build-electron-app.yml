@@ -36,14 +36,14 @@ jobs:
       - name: Write the Apple App Connect API Key to Disk
         uses: timheuer/base64-to-file@v1.2
         id: writeAPIKey
-        if: ${{ inputs.operatingSystem == 'macos-latest' }}
+        if: ${{ startsWith(inputs.operatingSystem, 'macos') }}
         with:
           encodedString: ${{ secrets.appleAPIKeyContent }}
           fileName: apikey.p8
 
       - name: Add Signing Certificate to Keychain
         uses: BoundfoxStudios/action-import-signing-certificate@v1
-        if: ${{ inputs.operatingSystem == 'macos-latest' }}
+        if: ${{ startsWith(inputs.operatingSystem, 'macos') }}
         with:
           certificate-data: ${{ secrets.appleCertData }}
           certificate-passphrase: ${{ secrets.appleCertPassword }}
@@ -69,7 +69,7 @@ jobs:
         run: yarn version --new-version ${{ inputs.version }} --no-commit-hooks --no-git-tag-version
 
       - name: Build and Publish to Github
-        run: yarn run publish
+        run: yarn run publish ${{ startsWith(inputs.operatingSystem, 'macos') && '--arch=universal' }}
         env:
           APPLE_API_ISSUER_ID: ${{ secrets.appleAPIIssuerID }}
           APPLE_API_KEY: ${{ steps.writeAPIKey.outputs.filePath }}
