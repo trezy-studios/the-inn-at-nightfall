@@ -66,7 +66,7 @@ jobs:
         run: yarn install --network-timeout 600000
 
       - name: Update Version
-        run: yarn version --new-version ${{ inputs.version }} --no-commit-hooks --no-git-tag-version
+        run: yarn version ${{ inputs.version }}
 
       - name: Build and Publish to Github
         run: yarn run publish ${{ startsWith(inputs.operatingSystem, 'macos') && '--arch=universal' }}
