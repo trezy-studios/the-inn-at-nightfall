@@ -6,6 +6,13 @@ import { Stage } from '@pixi/react'
 
 
 
+// Local imports
+import { LayersStage } from '../LayersStage/LayersStage.jsx'
+
+
+
+
+
 /**
  * Attaches the app to the global scope so it can be used with the Pixi dev tools.
  *
@@ -29,7 +36,9 @@ export function PixiStage(props) {
 
 	return (
 		<Stage onMount={handleMount}>
-			{children}
+			<LayersStage>
+				{children}
+			</LayersStage>
 		</Stage>
 	)
 }
