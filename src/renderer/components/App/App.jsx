@@ -18,7 +18,9 @@ import { RoundLoadingScreen } from '../RoundLoadingScreen/RoundLoadingScreen.jsx
 import { SCREENS } from '../../data/SCREENS.js'
 import { SettingsScreen } from '../SettingsScreen/SettingsScreen.jsx'
 import { store } from '../../store/store.js'
+import { TitleCreditsScreen } from '../TitleCreditsScreen/TitleCreditsScreen.jsx'
 import { TitleScreen } from '../TitleScreen/TitleScreen.jsx'
+import { useLoadAssets } from '../../hooks/useLoadAssets.js'
 
 
 
@@ -34,6 +36,11 @@ export function App() {
 		enableFilmGrain,
 		screen,
 	} = useStore(store)
+
+	useLoadAssets(['critical'], {
+		// eslint-disable-next-line jsdoc/require-jsdoc
+		onDone: () => store.set(() => ({ isDoneLoadingCriticalAssets: true })),
+	})
 
 	return (
 		<AudioContextProvider>
@@ -57,6 +64,10 @@ export function App() {
 
 					{(screen === SCREENS.SETTINGS) && (
 						<SettingsScreen />
+					)}
+
+					{(screen === SCREENS.TITLE_CREDITS) && (
+						<TitleCreditsScreen />
 					)}
 
 					{(screen === SCREENS.TITLE) && (

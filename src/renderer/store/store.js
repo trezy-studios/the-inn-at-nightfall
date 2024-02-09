@@ -62,7 +62,7 @@ export const store = makeStore({
 
 	failed: false,
 
-	isLoadingAssets: false,
+	isDoneLoadingCriticalAssets: false,
 
 	isInitialized: false,
 
@@ -81,7 +81,7 @@ export const store = makeStore({
 
 	musicVolume: 0,
 
-	screen: SCREENS.LOADING,
+	screen: SCREENS.TITLE_CREDITS,
 
 	/** @type {null | number} */
 	timeAvailable: null,
