@@ -17,7 +17,6 @@ import { useStore } from 'statery'
 import styles from './PlayScreen.module.scss'
 
 import { CurrentGameStats } from '../CurrentGameStats/CurrentGameStats.jsx'
-import { Debugger } from '../Debugger/Debugger.jsx'
 import { Game } from '../Game/Game.jsx'
 import { GameDialog } from '../GameDialog/GameDialog.jsx'
 import { pauseGame } from '../../store/reducers/pauseGame.js'
@@ -86,8 +85,6 @@ export function PlayScreen() {
 			</div>
 
 			<GameDialog />
-
-			<Debugger />
 
 			<AnimatePresence>
 				{isRoundOver && (

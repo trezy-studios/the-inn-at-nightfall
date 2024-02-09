@@ -69,9 +69,13 @@ export function TrezyStudiosTitleCredit(props) {
 			ref={videoRef}
 			className={styles['title-credit']}
 			controls={false}
-			muted
 			preload={'auto'}
-			src={'title-credits/trezy-studios.webm'} />
+			src={'title-credits/trezy-studios.webm'}>
+			<track
+				kind={'captions'}
+				src={'title-credits/trezy-studios.vtt'}
+				srcLang={'en'} />
+		</video>
 	)
 }
 
