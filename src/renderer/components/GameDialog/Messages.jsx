@@ -3,7 +3,7 @@ import {
 	useMemo,
 	useRef,
 } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 
 
@@ -37,12 +37,11 @@ export function Messages() {
 	)), [currentDialog])
 
 	return (
-		<div
+		<motion.div
 			ref={callRef}
-			className={styles['messages']}>
-			<AnimatePresence>
-				{renderedMessages}
-			</AnimatePresence>
-		</div>
+			className={styles['messages']}
+			layout>
+			{renderedMessages}
+		</motion.div>
 	)
 }

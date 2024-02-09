@@ -41,14 +41,6 @@ export function MessageGroup(props) {
 				when: 'beforeChildren',
 			},
 		},
-		exit: {
-			x: -100,
-			opacity: 0,
-			transition: {
-				tween: 1.5,
-				type: 'tween',
-			},
-		},
 		initial: {
 			height: 0,
 			opacity: 0,
@@ -57,10 +49,10 @@ export function MessageGroup(props) {
 
 	const compiledStyle = useMemo(() => ({ order }), [order])
 
-	const renderedMessages = useMemo(() => messages.map((message, messageIndex) => (
+	const renderedMessages = useMemo(() => messages.map(message => (
 		<Message
 			key={message.id}
-			index={messageIndex}
+			layoutId={message.id}
 			message={message} />
 	)), [messages])
 
@@ -69,13 +61,15 @@ export function MessageGroup(props) {
 			key={id}
 			animate={'animate'}
 			className={styles['message-group']}
-			exit={'exit'}
 			initial={'initial'}
+			layout
 			style={compiledStyle}
 			variants={variants}>
-			<motion.div className={styles['author']}>
-				<strong>{author}</strong>
-			</motion.div>
+			{Boolean(author) && (
+				<motion.div className={styles['author']}>
+					<strong>{author}</strong>
+				</motion.div>
+			)}
 
 			<div className={styles['content']}>
 				{renderedMessages}
@@ -86,7 +80,7 @@ export function MessageGroup(props) {
 
 MessageGroup.propTypes = {
 	messageGroup: PropTypes.shape({
-		author: PropTypes.string.isRequired,
+		author: PropTypes.string,
 		id: PropTypes.string.isRequired,
 		messages: PropTypes.arrayOf(PropTypes.object).isRequired,
 	}).isRequired,

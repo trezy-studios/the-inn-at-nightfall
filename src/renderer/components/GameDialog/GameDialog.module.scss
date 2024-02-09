@@ -46,11 +46,15 @@
 	}
 }
 
+.message-group {
+	margin-top: 3rem;
+	overflow-y: visible;
+}
+
 .messages {
 	display: flex;
 	flex-direction: column-reverse;
 	flex-grow: 1;
-	gap: 3rem;
 	margin-right: -1.25rem;
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -63,6 +67,12 @@
 		+ p {
 			margin-top: 1rem;
 		}
+	}
+
+	.author,
+	.content,
+	.dialog-action {
+		width: 100%;
 	}
 
 	.author {

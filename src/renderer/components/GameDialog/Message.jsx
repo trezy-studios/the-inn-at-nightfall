@@ -76,28 +76,12 @@ function parseASTNode(node, index = 0) {
  */
 export function Message(props) {
 	const {
-		index,
+		layoutId,
 		message: {
 			ast,
 			id,
 		},
 	} = props
-
-	const variants = useMemo(() => ({
-		animate: {
-			x: 0,
-			opacity: 1,
-			transition: {
-				delay: index * 0.1,
-				tween: 1,
-				type: 'tween',
-			},
-		},
-		initial: {
-			x: 100,
-			opacity: 0,
-		},
-	}), [index])
 
 	const parsedBody = useMemo(() => parseASTNode(ast), [ast])
 
@@ -106,14 +90,14 @@ export function Message(props) {
 			key={id}
 			animate={'animate'}
 			initial={'initial'}
-			variants={variants}>
+			layoutId={layoutId}>
 			{parsedBody}
 		</motion.p>
 	)
 }
 
 Message.propTypes = {
-	index: PropTypes.number.isRequired,
+	layoutId: PropTypes.string.isRequired,
 	message: PropTypes.shape({
 		action: PropTypes.string,
 		ast: PropTypes.object.isRequired,
