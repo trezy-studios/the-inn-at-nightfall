@@ -1,5 +1,5 @@
 declare const classNames: {
-  readonly button: "button";
+  readonly "menu-button": "menu-button";
   readonly "align-center": "align-center";
   readonly "align-left": "align-left";
   readonly "align-right": "align-right";

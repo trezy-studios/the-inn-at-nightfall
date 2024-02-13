@@ -13,9 +13,8 @@ import { useStore } from 'statery'
 import styles from './GameDialog.module.scss'
 
 import { allowCurrentCharacter } from '../../store/reducers/allowCurrentCharacter.js'
+import { Button } from '../Button/Button.jsx'
 import { goToNextCharacter } from '../../store/reducers/goToNextCharacter.js'
-import { Menu } from '../Menu/Menu.jsx'
-import { MenuButton } from '../MenuButton/MenuButton.jsx'
 import { store } from '../../store/store.js'
 import { useCharacter } from '../../hooks/useCharacter.js'
 import { useDialogMachine } from '../../hooks/useDialogMachine.js'
@@ -45,46 +44,42 @@ export function Responses() {
 		if (options) {
 			options.forEach(option => {
 				responses.push((
-					<MenuButton
+					<Button
 						key={option.id}
+						className={styles['button']}
 						onClick={option.handleSelect}>
 						{option.body}
-					</MenuButton>
+					</Button>
 				))
 			})
 		}
 
-		if (!currentCharacter.isMerchant) {
-			responses.push((
-				<MenuButton
-					key={'allow'}
-					onClick={handleAllowClick}>
-					{'Allow'}
-				</MenuButton>
-			))
-
-			responses.push((
-				<MenuButton
-					key={'deny'}
-					onClick={handleDenyClick}>
-					{'Deny'}
-				</MenuButton>
-			))
-		}
-
 		return responses
-	}, [
-		currentCharacter,
-		handleAllowClick,
-		handleDenyClick,
-		options,
-	])
+	}, [options])
 
 	return (
-		<Menu
-			className={styles['responses']}
-			hideSelectorOnExit>
-			{renderedResponses}
-		</Menu>
+		<div className={styles['responses-wrapper']}>
+			<div className={styles['responses']}>
+				{renderedResponses}
+			</div>
+
+			{(!currentCharacter.isMerchant) && (
+				<>
+					<Button
+						key={'allow'}
+						className={styles['button']}
+						onClick={handleAllowClick}>
+						{'Allow'}
+					</Button>
+
+					<Button
+						key={'deny'}
+						className={styles['button']}
+						onClick={handleDenyClick}>
+						{'Deny'}
+					</Button>
+				</>
+			)}
+		</div>
 	)
 }

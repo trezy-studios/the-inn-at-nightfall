@@ -24,6 +24,7 @@ import { useMemo } from 'react'
 export function MenuItem(props) {
 	const {
 		children,
+		className,
 		index,
 		isActive,
 		menuID,
@@ -36,7 +37,10 @@ export function MenuItem(props) {
 	const compiledClassName = useMemo(() => classnames({
 		[styles['menu-item']]: true,
 		[styles['is-active']]: isActive,
-	}), [isActive])
+	}, className), [
+		className,
+		isActive,
+	])
 
 	return (
 		<li
@@ -57,10 +61,12 @@ export function MenuItem(props) {
 
 MenuItem.defaultProps = {
 	children: null,
+	className: '',
 }
 
 MenuItem.propTypes = {
 	children: PropTypes.node,
+	className: PropTypes.string,
 	index: PropTypes.number.isRequired,
 	isActive: PropTypes.bool.isRequired,
 	menuID: PropTypes.string.isRequired,

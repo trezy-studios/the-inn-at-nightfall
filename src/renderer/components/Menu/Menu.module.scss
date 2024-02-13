@@ -2,18 +2,18 @@
 	transition-duration: 0.1s;
 	transition-property: padding-left;
 
-	.menu-item {
-		position: relative;
-		transition-duration: 0.2s;
-		transition-property: opacity;
-	}
-
 	&:focus,
 	&:hover {
 		.menu-item:not(.is-active) {
-			opacity: 0.4;
+			color: var(--palette-light-grey);
 		}
 	}
+}
+
+.menu-item {
+	position: relative;
+	transition-duration: 0.2s;
+	transition-property: color;
 }
 
 .target-indicator-wrapper {
@@ -21,13 +21,45 @@
 }
 
 .target-indicator {
-	background-image: url('ui/target-indicator.svg');
-	background-position: center right;
-	background-repeat: no-repeat;
-	background-size: contain;
+	align-items: center;
 	bottom: 0;
+	display: flex;
 	height: 100%;
 	position: absolute;
 	right: 100%;
+	top: 0;
 	width: 3rem;
+}
+
+.target-indicator-cap {
+	grid-area: cap;
+	height: 3.3rem;
+	object-fit: contain;
+	width: 75%;
+}
+
+.target-indicator-bar {
+	align-content: stretch;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 25%;
+}
+
+.target-indicator-bar-bottom,
+.target-indicator-bar-top {
+	flex-grow: 1;
+	height: 50%;
+	object-fit: cover;
+	width: 100%;
+}
+
+.target-indicator-bar-bottom {
+	grid-area: bar-bottom;
+	object-position: bottom left;
+}
+
+.target-indicator-bar-top {
+	grid-area: bar-top;
+	object-position: top left;
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="no-decoration" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 2000">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <path id="left" class="cls-1" d="M1.7,1990V10H0v1980h1.7ZM6.7,1990V10h-1.7v1980h1.7Z"/>
+  <path id="bottom_left" data-name="bottom left" class="cls-1" d="M10,1998.3H1.7v-8.3H0v10h10v-1.7ZM10,1993.35c-1.84,0-3.3-1.51-3.3-3.35h-1.7c0,2.76,2.24,5,5,5v-1.65Z"/>
+  <path id="bottom" class="cls-1" d="M10,2000h1980v-1.7H10v1.7ZM10.03,1994.99h1979.97s0-1.69,0-1.69l-1979.97.03v1.65Z"/>
+  <path id="bottom_right" data-name="bottom right" class="cls-1" d="M1990,2000h10s0-10,0-10h-1.7s0,8.3,0,8.3h-8.3v1.7ZM1990,1995c2.76,0,5-2.24,5-5h-1.7c0,1.84-1.46,3.3-3.3,3.3v1.7Z"/>
+  <path id="right" class="cls-1" d="M2000,1990V10s-1.7,0-1.7,0v1980h1.7ZM1995,1990V10h-1.7v1980h1.7Z"/>
+  <path id="bottom_left-2" data-name="bottom left" class="cls-1" d="M10,0H0v10h1.7V1.7h8.3V0ZM10,5c-2.77,0-5,2.23-5,5h1.7c0-1.84,1.46-3.3,3.3-3.3v-1.7Z"/>
+  <path id="bottom-2" data-name="bottom" class="cls-1" d="M10,1.7h1980V0H10v1.7ZM10,6.7h1980v-1.7H10v1.7Z"/>
+  <path id="bottom_right-2" data-name="bottom right" class="cls-1" d="M1990,1.7h8.3v8.3h1.7V0h-10v1.7ZM1990,6.7c1.84,0,3.3,1.46,3.3,3.3h1.7c0-2.77-2.23-5-5-5v1.7Z"/>
+</svg>

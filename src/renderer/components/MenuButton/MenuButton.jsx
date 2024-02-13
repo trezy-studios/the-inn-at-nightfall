@@ -42,7 +42,7 @@ export function MenuButton(props) {
 	} = props
 
 	const compiledClassName = useMemo(() => classnames({
-		[styles['button']]: true,
+		[styles['menu-button']]: true,
 		[styles['align-center']]: align === ALIGNMENT.CENTER,
 		[styles['align-left']]: align === ALIGNMENT.LEFT,
 		[styles['align-right']]: align === ALIGNMENT.RIGHT,

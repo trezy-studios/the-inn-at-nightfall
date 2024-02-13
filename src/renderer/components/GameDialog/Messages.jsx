@@ -37,11 +37,14 @@ export function Messages() {
 	)), [currentDialog])
 
 	return (
-		<motion.div
+		<div
 			ref={callRef}
-			className={styles['messages']}
-			layout>
-			{renderedMessages}
-		</motion.div>
+			className={styles['messages-wrapper']}>
+			<motion.div
+				className={styles['messages']}
+				layout>
+				{renderedMessages}
+			</motion.div>
+		</div>
 	)
 }

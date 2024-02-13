@@ -6,6 +6,18 @@
 		"loadingCategory": "user interface sprites"
 	},
 	{
+		"alias": "dialog frame",
+		"src": "ui/dialog-frame.with-decoration.svg",
+		"type": "image",
+		"loadingCategory": "user interface sprites"
+	},
+	{
+		"alias": "dialog frame (no decoration)",
+		"src": "ui/dialog-frame.no-decoration.svg",
+		"type": "image",
+		"loadingCategory": "user interface sprites"
+	},
+	{
 		"alias": "floating frame (center)",
 		"src": "ui/floating-frame.center.svg",
 		"type": "image",
@@ -24,8 +36,20 @@
 		"loadingCategory": "user interface sprites"
 	},
 	{
-		"alias": "selection indicator",
-		"src": "ui/target-indicator.svg",
+		"alias": "vertical selection indicator (cap)",
+		"src": "ui/target-indicator.vertical.cap.svg",
+		"type": "image",
+		"loadingCategory": "user interface sprites"
+	},
+	{
+		"alias": "vertical selection indicator (bar top)",
+		"src": "ui/target-indicator.vertical.bar.top.svg",
+		"type": "image",
+		"loadingCategory": "user interface sprites"
+	},
+	{
+		"alias": "vertical selection indicator (bar bottom)",
+		"src": "ui/target-indicator.vertical.bar.bottom.svg",
 		"type": "image",
 		"loadingCategory": "user interface sprites"
 	},

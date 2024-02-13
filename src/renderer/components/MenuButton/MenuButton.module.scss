@@ -1,4 +1,4 @@
-.button {
+.menu-button {
 	border-color: var(--text-color);
 	border-width: 0;
 	border-style: solid;
@@ -18,7 +18,6 @@
 
 	&:focus,
 	&:hover {
-		font-weight: bold;
 		outline: none;
 	}
 
