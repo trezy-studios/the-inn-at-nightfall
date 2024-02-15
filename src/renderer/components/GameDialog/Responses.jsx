@@ -2,7 +2,11 @@
 import {
 	useCallback,
 	useMemo,
+	useRef,
+	useState,
 } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import classnames from 'classnames'
 import { useStore } from 'statery'
 
 
@@ -18,6 +22,31 @@ import { goToNextCharacter } from '../../store/reducers/goToNextCharacter.js'
 import { store } from '../../store/store.js'
 import { useCharacter } from '../../hooks/useCharacter.js'
 import { useDialogMachine } from '../../hooks/useDialogMachine.js'
+import { useResizeObserver } from '../../hooks/useResizeObserver.js'
+
+
+
+
+
+// Constants
+const BUTTON_VARIANTS = {
+	hidden: {
+		opacity: 0,
+		translate: '-10rem 0',
+	},
+	visible: {
+		opacity: 1,
+		translate: '0rem 0',
+	},
+}
+
+const DENY_BUTTON_VARIANTS = {
+	...BUTTON_VARIANTS,
+	hidden: {
+		...BUTTON_VARIANTS.hidden,
+		translate: '10rem 0',
+	},
+}
 
 
 
@@ -29,6 +58,8 @@ import { useDialogMachine } from '../../hooks/useDialogMachine.js'
  * @component
  */
 export function Responses() {
+	const responsesRef = useRef(null)
+
 	const currentCharacter = useCharacter()
 
 	const { dialogDelay } = useStore(store)
@@ -38,16 +69,29 @@ export function Responses() {
 	const handleAllowClick = useCallback(() => allowCurrentCharacter(), [])
 	const handleDenyClick = useCallback(() => goToNextCharacter(true), [])
 
+	const [isScrollable, setIsScrollable] = useState(false)
+
+	const handleResize = useCallback(() => {
+		const responsesElement = responsesRef.current
+
+		setIsScrollable(responsesElement.scrollHeight !== responsesElement.offsetHeight)
+	}, [])
+
 	const renderedResponses = useMemo(() => {
 		const responses = []
 
 		if (options) {
-			options.forEach(option => {
+			options.forEach((option, optionIndex) => {
+				// eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
+				const OPTION_TRANSITION = { delay: optionIndex * 0.1 }
+
 				responses.push((
 					<Button
 						key={option.id}
 						className={styles['button']}
-						onClick={option.handleSelect}>
+						onClick={option.handleSelect}
+						transition={OPTION_TRANSITION}
+						variants={BUTTON_VARIANTS}>
 						{option.body}
 					</Button>
 				))
@@ -57,28 +101,46 @@ export function Responses() {
 		return responses
 	}, [options])
 
+	const compiledResponsesClassName = classnames({
+		[styles['is-scrollable']]: isScrollable,
+		[styles['responses']]: true,
+	})
+
+	useResizeObserver({
+		targetRef: responsesRef,
+		onResize: handleResize,
+	})
+
 	return (
-		<div className={styles['responses-wrapper']}>
-			<div className={styles['responses']}>
-				{renderedResponses}
+		<div className={styles['interrogation-wrapper']}>
+			<div
+				ref={responsesRef}
+				className={compiledResponsesClassName}>
+				<AnimatePresence mode={'wait'}>
+					{renderedResponses}
+				</AnimatePresence>
 			</div>
 
 			{(!currentCharacter.isMerchant) && (
-				<>
-					<Button
-						key={'allow'}
-						className={styles['button']}
-						onClick={handleAllowClick}>
-						{'Allow'}
-					</Button>
+				<div className={styles['entrance-controls']}>
+					<AnimatePresence>
+						<Button
+							key={'allow'}
+							className={classnames(styles['button'], styles['allow'])}
+							onClick={handleAllowClick}
+							variants={BUTTON_VARIANTS}>
+							{'Allow'}
+						</Button>
 
-					<Button
-						key={'deny'}
-						className={styles['button']}
-						onClick={handleDenyClick}>
-						{'Deny'}
-					</Button>
-				</>
+						<Button
+							key={'deny'}
+							className={classnames(styles['button'], styles['deny'])}
+							onClick={handleDenyClick}
+							variants={DENY_BUTTON_VARIANTS}>
+							{'Deny'}
+						</Button>
+					</AnimatePresence>
+				</div>
 			)}
 		</div>
 	)

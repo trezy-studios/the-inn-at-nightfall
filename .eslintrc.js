@@ -175,6 +175,12 @@ module.exports = {
 				'xstate-layout',
 			],
 		}],
+		'jsdoc/no-undefined-types': ['error', {
+			definedTypes: [
+				'ResizeObserverCallback',
+				'ResizeObserverOptions',
+			],
+		}],
 		'jsdoc/require-jsdoc': ['error', {
 			require: {
 				ArrowFunctionExpression: true,

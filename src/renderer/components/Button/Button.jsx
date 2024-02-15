@@ -1,5 +1,6 @@
 // Module imports
 import classnames from 'classnames'
+import { motion } from 'framer-motion'
 import PropTypes from 'prop-types'
 import { useMemo } from 'react'
 
@@ -21,10 +22,15 @@ import styles from './Button.module.scss'
  */
 export function Button(props) {
 	const {
+		animate,
 		children,
 		className,
+		exit,
+		initial,
 		isDisabled,
 		onClick,
+		transition,
+		variants,
 	} = props
 
 	const compiledClassName = useMemo(() => {
@@ -39,24 +45,38 @@ export function Button(props) {
 	])
 
 	return (
-		// eslint-disable-next-line react/forbid-elements
-		<button
+		<motion.button
+			animate={animate ?? (variants.animate && 'animate') ?? (variants.visible && 'visible')}
 			className={compiledClassName}
 			disabled={isDisabled}
-			onClick={onClick}>
+			exit={exit ?? (variants.exit && 'exit') ?? (variants.hidden && 'hidden')}
+			initial={initial ?? (variants.initial && 'initial') ?? (variants.hidden && 'hidden')}
+			onClick={onClick}
+			transition={transition}
+			variants={variants}>
 			{children}
-		</button>
+		</motion.button>
 	)
 }
 
 Button.defaultProps = {
+	animate: null,
 	className: '',
+	exit: null,
+	initial: null,
 	isDisabled: false,
+	transition: {},
+	variants: {},
 }
 
 Button.propTypes = {
+	animate: PropTypes.string,
 	children: PropTypes.node.isRequired,
 	className: PropTypes.string,
+	exit: PropTypes.string,
+	initial: PropTypes.string,
 	isDisabled: PropTypes.bool,
 	onClick: PropTypes.func.isRequired,
+	transition: PropTypes.object,
+	variants: PropTypes.object,
 }

@@ -7,8 +7,13 @@ declare const classNames: {
   readonly content: "content";
   readonly "dialog-action": "dialog-action";
   readonly "messages-wrapper": "messages-wrapper";
-  readonly "responses-wrapper": "responses-wrapper";
+  readonly "interrogation-wrapper": "interrogation-wrapper";
   readonly button: "button";
+  readonly allow: "allow";
+  readonly deny: "deny";
+  readonly "entrance-controls": "entrance-controls";
   readonly responses: "responses";
+  readonly "is-scrollable": "is-scrollable";
+  readonly scroller: "scroller";
 };
 export = classNames;
