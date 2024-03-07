@@ -16,6 +16,27 @@ import { Message } from './Message.jsx'
 
 
 
+// Constants
+const VARIANTS = {
+	animate: {
+		height: 'auto',
+		opacity: 1,
+		transition: {
+			tween: 1.5,
+			type: 'tween',
+			when: 'beforeChildren',
+		},
+	},
+	initial: {
+		height: 0,
+		opacity: 0,
+	},
+}
+
+
+
+
+
 /**
  * Renders a group of messages belonging to a character.
  *
@@ -30,22 +51,6 @@ export function MessageGroup(props) {
 		},
 		order,
 	} = props
-
-	const variants = useMemo(() => ({
-		animate: {
-			height: 'auto',
-			opacity: 1,
-			transition: {
-				tween: 1.5,
-				type: 'tween',
-				when: 'beforeChildren',
-			},
-		},
-		initial: {
-			height: 0,
-			opacity: 0,
-		},
-	}), [])
 
 	const compiledStyle = useMemo(() => ({ order }), [order])
 
@@ -64,7 +69,7 @@ export function MessageGroup(props) {
 			initial={'initial'}
 			layout
 			style={compiledStyle}
-			variants={variants}>
+			variants={VARIANTS}>
 			{Boolean(author) && (
 				<motion.div className={styles['author']}>
 					<strong>{author}</strong>
