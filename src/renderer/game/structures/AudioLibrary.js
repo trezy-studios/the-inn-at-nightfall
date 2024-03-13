@@ -163,6 +163,7 @@ export const AudioLibrary = new class AudioLibraryClass {
 			track.once('end', () => {
 				track.stop(this.#currentSoundID)
 				this.#currentSoundID = track.play('loop')
+				this.#currentTrack.volume(store.state.musicVolume, this.#currentSoundID)
 			})
 		}
 
