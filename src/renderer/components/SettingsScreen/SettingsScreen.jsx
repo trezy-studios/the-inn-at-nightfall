@@ -38,12 +38,30 @@ function handleEnableFilmGrainChange(event) {
 }
 
 /**
- * Updaes the music volume.
+ * Updtaes the volume for all audio.
  *
  * @param {import('react').ChangeEvent<HTMLInputElement>} event The change event.
  */
 function handleMainVolumeChange(event) {
 	store.set(() => ({ mainVolume: Number(event.target.value) }))
+}
+
+/**
+ * Updates the music volume.
+ *
+ * @param {import('react').ChangeEvent<HTMLInputElement>} event The change event.
+ */
+function handleMusicVolumeChange(event) {
+	store.set(() => ({ musicVolume: Number(event.target.value) }))
+}
+
+/**
+ * Updates the sound effects volume.
+ *
+ * @param {import('react').ChangeEvent<HTMLInputElement>} event The change event.
+ */
+function handleSoundEffectsVolumeChange(event) {
+	store.set(() => ({ soundEffectsVolume: Number(event.target.value) }))
 }
 
 
@@ -60,6 +78,8 @@ export function SettingsScreen() {
 		dialogDelay,
 		enableFilmGrain,
 		mainVolume,
+		musicVolume,
+		soundEffectsVolume,
 	} = useStore(store)
 
 	return (
@@ -126,6 +146,36 @@ export function SettingsScreen() {
 						step={0.01}
 						type={'range'}
 						value={mainVolume} />
+				</label>
+
+				<label className={styles['form-field']}>
+					<span>
+						{'Music Volume'}
+					</span>
+
+					<input
+						disabled={mainVolume === 0}
+						max={1}
+						min={0}
+						onChange={handleMusicVolumeChange}
+						step={0.01}
+						type={'range'}
+						value={musicVolume} />
+				</label>
+
+				<label className={styles['form-field']}>
+					<span>
+						{'Sound Effects Volume'}
+					</span>
+
+					<input
+						disabled={mainVolume === 0}
+						max={1}
+						min={0}
+						onChange={handleSoundEffectsVolumeChange}
+						step={0.01}
+						type={'range'}
+						value={soundEffectsVolume} />
 				</label>
 			</form>
 

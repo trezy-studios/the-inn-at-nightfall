@@ -42,9 +42,9 @@ export function AudioContextProvider(props) {
 
 	useEffect(() => {
 		if ([SCREENS.SETTINGS, SCREENS.TITLE].includes(screen)) {
-			AudioLibrary.play('title')
+			AudioLibrary.playMusic('title')
 		} else if (screen === SCREENS.PLAY) {
-			AudioLibrary.play('nightfall')
+			AudioLibrary.playMusic('nightfall')
 		}
 	}, [screen])
 

@@ -37,6 +37,12 @@ export const AudioLibrary = new class AudioLibraryClass {
 	/** @type {{ [key: string]: Howl }} */
 	#library = {}
 
+	/** @type {Map<number, Howl>} */
+	#music = new Map
+
+	/** @type {Map<number, Howl>} */
+	#soundEffects = new Map
+
 
 
 
@@ -52,6 +58,22 @@ export const AudioLibrary = new class AudioLibraryClass {
 		store.subscribe(updates => {
 			if ('mainVolume' in updates) {
 				Howler.volume(updates.mainVolume)
+			}
+		})
+
+		store.subscribe(updates => {
+			if ('musicVolume' in updates) {
+				for (const [soundID, track] of this.#music.entries()) {
+					track.volume(updates.musicVolume, soundID)
+				}
+			}
+		})
+
+		store.subscribe(updates => {
+			if ('soundEffectsVolume' in updates) {
+				for (const [soundID, track] of this.#soundEffects.entries()) {
+					track.volume(updates.soundEffectsVolume, soundID)
+				}
 			}
 		})
 
@@ -126,24 +148,40 @@ export const AudioLibrary = new class AudioLibraryClass {
 	 *
 	 * @param {string} trackID The ID of the track to play.
 	 */
-	play(trackID) {
+	playMusic(trackID) {
 		const track = this.get(trackID)
 
-		if (this.#currentTrack === track) {
-			return
+		if (this.#currentTrack !== track) {
+			if (this.#currentSoundID) {
+				this.stop(this.#currentTrack, this.#currentSoundID)
+			}
+
+			this.#currentSoundID = track.play('intro')
+			this.#currentTrack = track
+			this.#currentTrack.volume(store.state.musicVolume, this.#currentSoundID)
+
+			track.once('end', () => {
+				track.stop(this.#currentSoundID)
+				this.#currentSoundID = track.play('loop')
+			})
 		}
 
-		if (this.#currentSoundID) {
-			this.stop(this.#currentTrack, this.#currentSoundID)
-		}
+		this.#music.set(this.#currentSoundID, this.#currentTrack)
+	}
 
-		this.#currentSoundID = track.play('intro')
-		this.#currentTrack = track
+	/**
+	 * Plays a sound effect.
+	 *
+	 * @param {string} trackID The ID of the track to play.
+	 * @param {string} [spriteID] The ID of the sprite to be played from the track.
+	 */
+	playSoundEffect(trackID, spriteID) {
+		const track = this.get(trackID)
+		const soundID = track.play(spriteID)
 
-		track.once('end', () => {
-			track.stop(this.#currentSoundID)
-			this.#currentSoundID = track.play('loop')
-		})
+		track.volume(store.state.musicVolume, soundID)
+
+		this.#soundEffects.set(soundID, track)
 	}
 
 	/**

@@ -81,9 +81,12 @@ export const store = makeStore({
 
 	musicVolume: 0,
 
+	soundEffectsVolume: 0,
+
 	renderScale: 1,
 
-	screen: SCREENS.TITLE_CREDITS,
+	// screen: SCREENS.TITLE_CREDITS,
+	screen: SCREENS.LOADING,
 
 	/** @type {null | number} */
 	timeAvailable: null,
@@ -124,6 +127,10 @@ store.subscribe(updates => {
 
 	if ('musicVolume' in updates) {
 		patch['settings::sound::musicVolume'] = updates.musicVolume
+	}
+
+	if ('soundEffectsVolume' in updates) {
+		patch['settings::sound::soundEffectsVolume'] = updates.soundEffectsVolume
 	}
 
 	if (Object.keys(patch).length) {

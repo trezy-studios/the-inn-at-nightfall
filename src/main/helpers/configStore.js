@@ -12,5 +12,6 @@ export const configStore = new DiskStore({
 		'settings::graphics::enableFilmGrain': true,
 		'settings::sound::mainVolume': 0.8,
 		'settings::sound::musicVolume': 0.8,
+		'settings::sound::soundEffectsVolume': 0.8,
 	},
 })
