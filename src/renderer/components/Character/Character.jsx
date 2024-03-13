@@ -87,7 +87,7 @@ export function Character(props) {
 		return {
 			position: {
 				x: (viewport.width / 2) + offset.x,
-				y: (viewport.height / 2) + offset.y + 150,
+				y: (viewport.height / 2) + offset.y + 170,
 			},
 			scale,
 		}
@@ -106,7 +106,7 @@ export function Character(props) {
 		const filters = [colorMatrixFilter]
 
 		const texture = Assets.get(spriteName)
-		const height = viewport.height * 0.8
+		const height = viewport.height * 0.7
 
 		const scale = height / texture?.orig.height
 		const width = texture?.orig.width * scale

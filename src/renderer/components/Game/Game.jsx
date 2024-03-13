@@ -1,6 +1,9 @@
 // Module imports
+import {
+	Container,
+	useApp,
+} from '@pixi/react'
 import PropTypes from 'prop-types'
-import { useApp } from '@pixi/react'
 import { useEffect } from 'react'
 import { useStore } from 'statery'
 
@@ -84,12 +87,12 @@ export function Game(props) {
 	}
 
 	return (
-		<>
+		<Container x={100}>
 			<ExteriorBackground />
 			<CreepyHandsBackground />
 			<CharacterQueue />
 			<InteriorMidground />
-		</>
+		</Container>
 	)
 }
 

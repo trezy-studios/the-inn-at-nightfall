@@ -81,6 +81,8 @@ export const store = makeStore({
 
 	musicVolume: 0,
 
+	renderScale: 1,
+
 	screen: SCREENS.TITLE_CREDITS,
 
 	/** @type {null | number} */
