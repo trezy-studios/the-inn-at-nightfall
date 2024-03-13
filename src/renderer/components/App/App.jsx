@@ -1,5 +1,6 @@
 // Module imports
 import { AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
 import { useStore } from 'statery'
 
 
@@ -12,6 +13,7 @@ import styles from './App.module.scss'
 import { AudioContextProvider } from '../AudioContext/AudioContext.jsx'
 import { CreditsScreen } from '../CreditsScreen/CreditsScreen.jsx'
 import { FilmGrain } from '../FilmGrain/FilmGrain.jsx'
+import { Innkeeper } from '../../helpers/Innkeeper.js'
 import { LoadingScreen } from '../LoadingScreen/LoadingScreen.jsx'
 import { PlayScreen } from '../PlayScreen/PlayScreen.jsx'
 import { RoundLoadingScreen } from '../RoundLoadingScreen/RoundLoadingScreen.jsx'
@@ -34,6 +36,7 @@ import { useLoadAssets } from '../../hooks/useLoadAssets.js'
 export function App() {
 	const {
 		enableFilmGrain,
+		isDoneLoadingCriticalAssets,
 		screen,
 	} = useStore(store)
 
@@ -41,6 +44,38 @@ export function App() {
 		// eslint-disable-next-line jsdoc/require-jsdoc
 		onDone: () => store.set(() => ({ isDoneLoadingCriticalAssets: true })),
 	})
+
+	useEffect(() => {
+		if (isDoneLoadingCriticalAssets) {
+			store.subscribe(updates => {
+				const patch = {}
+
+				if ('dialogDelay' in updates) {
+					patch['settings::gameplay::dialogDelay'] = updates.dialogDelay
+				}
+
+				if ('enableFilmGrain' in updates) {
+					patch['settings::graphics::enableFilmGrain'] = updates.enableFilmGrain
+				}
+
+				if ('mainVolume' in updates) {
+					patch['settings::sound::mainVolume'] = updates.mainVolume
+				}
+
+				if ('musicVolume' in updates) {
+					patch['settings::sound::musicVolume'] = updates.musicVolume
+				}
+
+				if ('soundEffectsVolume' in updates) {
+					patch['settings::sound::soundEffectsVolume'] = updates.soundEffectsVolume
+				}
+
+				if (Object.keys(patch).length) {
+					Innkeeper.setConfig(patch)
+				}
+			})
+		}
+	}, [isDoneLoadingCriticalAssets])
 
 	return (
 		<AudioContextProvider>

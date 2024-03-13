@@ -85,8 +85,7 @@ export const store = makeStore({
 
 	renderScale: 1,
 
-	// screen: SCREENS.TITLE_CREDITS,
-	screen: SCREENS.LOADING,
+	screen: SCREENS.TITLE_CREDITS,
 
 	/** @type {null | number} */
 	timeAvailable: null,
