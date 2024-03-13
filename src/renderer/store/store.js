@@ -9,7 +9,6 @@ import { makeStore } from 'statery'
 // Local imports
 import { Character } from '../game/structures/Character.js'
 import { generateInitialControlState } from './helpers/generateInitialControlState.js'
-import { Innkeeper } from '../helpers/Innkeeper.js'
 import { SCREENS } from '../data/SCREENS.js'
 
 
@@ -108,31 +107,3 @@ if (typeof window !== 'undefined') {
 	// @ts-ignore
 	window.store = store
 }
-
-store.subscribe(updates => {
-	const patch = {}
-
-	if ('dialogDelay' in updates) {
-		patch['settings::gameplay::dialogDelay'] = updates.dialogDelay
-	}
-
-	if ('enableFilmGrain' in updates) {
-		patch['settings::graphics::enableFilmGrain'] = updates.enableFilmGrain
-	}
-
-	if ('mainVolume' in updates) {
-		patch['settings::sound::mainVolume'] = updates.mainVolume
-	}
-
-	if ('musicVolume' in updates) {
-		patch['settings::sound::musicVolume'] = updates.musicVolume
-	}
-
-	if ('soundEffectsVolume' in updates) {
-		patch['settings::sound::soundEffectsVolume'] = updates.soundEffectsVolume
-	}
-
-	if (Object.keys(patch).length) {
-		Innkeeper.setConfig(patch)
-	}
-})
