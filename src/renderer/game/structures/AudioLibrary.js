@@ -193,7 +193,19 @@ export const AudioLibrary = new class AudioLibraryClass {
 	 * @param {number} [fadeDuration] The length of the fade in milliseconds.
 	 */
 	stop(track, soundID, fadeDuration = DEFAULT_FADE_DURATION) {
-		track.fade(1, 0, fadeDuration, soundID)
-		track.once('fade', () => track.stop(soundID))
+		let startVolume = 0
+
+		if (this.#music.get(soundID)) {
+			startVolume = store.state.musicVolume
+		} else if (this.#soundEffects.get(soundID)) {
+			startVolume = store.state.soundEffectsVolume
+		}
+
+		if (startVolume > 0) {
+			track.fade(startVolume, 0, fadeDuration, soundID)
+			track.once('fade', () => track.stop(soundID))
+		} else {
+			track.stop(soundID)
+		}
 	}
 }
