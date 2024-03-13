@@ -93,5 +93,11 @@
 		"loadingCategory": "settings",
 		"path": "settings::sound::musicVolume",
 		"type": "setting"
+	},
+	{
+		"alias": "soundEffectsVolume",
+		"loadingCategory": "settings",
+		"path": "settings::sound::soundEffectsVolume",
+		"type": "setting"
 	}
 ]
