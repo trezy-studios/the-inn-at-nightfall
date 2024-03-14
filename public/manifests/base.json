@@ -194,11 +194,6 @@
 		"loadingCategory": "environment sprites"
 	},
 
-
-
-
-
-
 	{
 		"alias": "interior::afternoon::book",
 		"src": "backgrounds/interior.afternoon.book.png",
@@ -385,12 +380,6 @@
 		"type": "sprite",
 		"loadingCategory": "environment sprites"
 	},
-
-
-
-
-
-
 
 	{
 		"alias": "alastair-reid::normal",
@@ -637,6 +626,18 @@
 			"intro": [0, 16039],
 			"loop": [16039, 32052, true],
 			"outro": [48091, 16039]
+		}
+	},
+
+	{
+		"alias": "clock::tick",
+		"src": "sound-effects/clock-tick.mp3",
+		"type": "audio",
+		"loadingCategory": "sound effects",
+
+		"sprites": {
+			"tick": [323, 706],
+			"tock": [1287, 1551]
 		}
 	}
 ]

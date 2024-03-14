@@ -18,8 +18,17 @@ import { useStore } from 'statery'
 
 // Local imports
 import { ANCHORS } from '../../data/ANCHORS.js'
+import { AudioLibrary } from '../../game/structures/AudioLibrary.js'
 import { store } from '../../store/store.js'
 import { useTimeStageAlpha } from '../../hooks/useTimeStageAlpha.js'
+
+
+
+
+
+// Variables
+let isTickPlaying = false
+let isTockPlaying = false
 
 
 
@@ -46,11 +55,23 @@ export function Clock() {
 	useTick(() => {
 		const currentSeconds = performance.now() / 1000
 		const timeUsed = timeAvailable - timeRemaining
+		const localPendulumRotation = Math.sin(currentSeconds * Math.PI) * 0.2
 
 		setHourHandRotation((timeUsed / timeAvailable) * (2 * Math.PI))
 		setMinuteHandRotation(((timeUsed / timeAvailable) * 12) * (2 * Math.PI))
 
-		setPendulumRotation(Math.sin(currentSeconds * Math.PI) * 0.2)
+		setPendulumRotation(localPendulumRotation)
+
+		if (!isTickPlaying && (0.19 <= localPendulumRotation) && (localPendulumRotation <= 0.2)) {
+			isTickPlaying = true
+			isTockPlaying = false
+			AudioLibrary.playSoundEffect('clock::tick', 'tick')
+		} else if (!isTockPlaying && (-0.19 >= localPendulumRotation) && (localPendulumRotation >= -0.2)) {
+			isTickPlaying = false
+			isTockPlaying = true
+
+			AudioLibrary.playSoundEffect('clock::tick', 'tock')
+		}
 	})
 
 	const assets = useMemo(() => ({
