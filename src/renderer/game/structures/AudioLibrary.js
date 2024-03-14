@@ -180,7 +180,7 @@ export const AudioLibrary = new class AudioLibraryClass {
 		const track = this.get(trackID)
 		const soundID = track.play(spriteID)
 
-		track.volume(store.state.musicVolume, soundID)
+		track.volume(store.state.soundEffectsVolume, soundID)
 
 		this.#soundEffects.set(soundID, track)
 	}
