@@ -29,6 +29,10 @@ export function Button(props) {
 		initial,
 		isDisabled,
 		onClick,
+		onMouseDown,
+		onMouseOut,
+		onMouseOver,
+		onMouseUp,
 		transition,
 		variants,
 	} = props
@@ -52,6 +56,10 @@ export function Button(props) {
 			exit={exit ?? (variants.exit && 'exit') ?? (variants.hidden && 'hidden')}
 			initial={initial ?? (variants.initial && 'initial') ?? (variants.hidden && 'hidden')}
 			onClick={onClick}
+			onMouseDown={onMouseDown}
+			onMouseOut={onMouseOut}
+			onMouseOver={onMouseOver}
+			onMouseUp={onMouseUp}
 			transition={transition}
 			variants={variants}>
 			{children}
@@ -65,6 +73,16 @@ Button.defaultProps = {
 	exit: null,
 	initial: null,
 	isDisabled: false,
+	// eslint-disable-next-line jsdoc/require-jsdoc
+	onClick: () => {},
+	// eslint-disable-next-line jsdoc/require-jsdoc
+	onMouseDown: () => {},
+	// eslint-disable-next-line jsdoc/require-jsdoc
+	onMouseOut: () => {},
+	// eslint-disable-next-line jsdoc/require-jsdoc
+	onMouseOver: () => {},
+	// eslint-disable-next-line jsdoc/require-jsdoc
+	onMouseUp: () => {},
 	transition: {},
 	variants: {},
 }
@@ -76,7 +94,11 @@ Button.propTypes = {
 	exit: PropTypes.string,
 	initial: PropTypes.string,
 	isDisabled: PropTypes.bool,
-	onClick: PropTypes.func.isRequired,
+	onClick: PropTypes.func,
+	onMouseDown: PropTypes.func,
+	onMouseOut: PropTypes.func,
+	onMouseOver: PropTypes.func,
+	onMouseUp: PropTypes.func,
 	transition: PropTypes.object,
 	variants: PropTypes.object,
 }

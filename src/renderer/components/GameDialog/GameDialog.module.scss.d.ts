@@ -11,6 +11,7 @@ declare const classNames: {
   readonly button: "button";
   readonly allow: "allow";
   readonly deny: "deny";
+  readonly "is-pressed": "is-pressed";
   readonly "entrance-controls": "entrance-controls";
   readonly responses: "responses";
   readonly "is-scrollable": "is-scrollable";

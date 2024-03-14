@@ -19,6 +19,7 @@ import styles from './GameDialog.module.scss'
 import { allowCurrentCharacter } from '../../store/reducers/allowCurrentCharacter.js'
 import { Button } from '../Button/Button.jsx'
 import { goToNextCharacter } from '../../store/reducers/goToNextCharacter.js'
+import { Response } from './Response.jsx'
 import { store } from '../../store/store.js'
 import { useCharacter } from '../../hooks/useCharacter.js'
 import { useDialogMachine } from '../../hooks/useDialogMachine.js'
@@ -78,27 +79,16 @@ export function Responses() {
 	}, [])
 
 	const renderedResponses = useMemo(() => {
-		const responses = []
-
-		if (options) {
-			options.forEach((option, optionIndex) => {
-				// eslint-disable-next-line react-perf/jsx-no-new-object-as-prop
-				const OPTION_TRANSITION = { delay: optionIndex * 0.1 }
-
-				responses.push((
-					<Button
-						key={option.id}
-						className={styles['button']}
-						onClick={option.handleSelect}
-						transition={OPTION_TRANSITION}
-						variants={BUTTON_VARIANTS}>
-						{option.body}
-					</Button>
-				))
-			})
+		if (!options) {
+			return []
 		}
 
-		return responses
+		return options.map((option, optionIndex) => (
+			<Response
+				key={option.id}
+				index={optionIndex}
+				option={option} />
+		))
 	}, [options])
 
 	const compiledResponsesClassName = classnames({

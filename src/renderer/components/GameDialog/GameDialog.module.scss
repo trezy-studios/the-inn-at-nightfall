@@ -116,6 +116,9 @@
 		background-color: var(--palette-pure-black);
 		padding: 1.5rem 3rem;
 		position: relative;
+		transform: translateY(0rem);
+		transition-duration: 0.1s;
+		transition-property: transform;
 
 		&:after {
 			border-image-repeat: repeat;
@@ -137,6 +140,10 @@
 		&.allow,
 		&.deny {
 			text-align: center;
+		}
+
+		&.is-pressed {
+			transform: translateY(0.3rem);
 		}
 	}
 
