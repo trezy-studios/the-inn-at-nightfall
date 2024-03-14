@@ -639,5 +639,11 @@
 			"tick": [323, 706],
 			"tock": [1287, 1551]
 		}
+	},
+	{
+		"alias": "wind",
+		"src": "sound-effects/wind.mp3",
+		"type": "audio",
+		"loadingCategory": "sound effects"
 	}
 ]

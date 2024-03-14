@@ -3,8 +3,11 @@ import {
 	Container,
 	Sprite,
 } from '@pixi/react'
+import {
+	useEffect,
+	useMemo,
+} from 'react'
 import { Assets } from 'pixi.js'
-import { useMemo } from 'react'
 import { useStore } from 'statery'
 
 
@@ -13,6 +16,7 @@ import { useStore } from 'statery'
 
 // Local imports
 import { ANCHORS } from '../../data/ANCHORS.js'
+import { AudioLibrary } from '../../game/structures/AudioLibrary.js'
 import { store } from '../../store/store.js'
 
 
@@ -42,8 +46,6 @@ export function ExteriorBackground() {
 			width = width * scale
 		}
 
-		// spriteData.y = -200
-
 		return {
 			anchor: ANCHORS.BOTTOM_CENTER,
 			height,
@@ -53,6 +55,15 @@ export function ExteriorBackground() {
 			y: viewport.height,
 		}
 	}, [viewport])
+
+	useEffect(() => {
+		const {
+			track,
+			soundID,
+		} = AudioLibrary.playSoundEffect('wind', { isLoop: true })
+
+		return () => AudioLibrary.stop(track, soundID)
+	}, [])
 
 	return (
 		<Container>

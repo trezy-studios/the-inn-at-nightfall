@@ -65,12 +65,12 @@ export function Clock() {
 		if (!isTickPlaying && (0.19 <= localPendulumRotation) && (localPendulumRotation <= 0.2)) {
 			isTickPlaying = true
 			isTockPlaying = false
-			AudioLibrary.playSoundEffect('clock::tick', 'tick')
+			AudioLibrary.playSoundEffect('clock::tick', { spriteID: 'tick' })
 		} else if (!isTockPlaying && (-0.19 >= localPendulumRotation) && (localPendulumRotation >= -0.2)) {
 			isTickPlaying = false
 			isTockPlaying = true
 
-			AudioLibrary.playSoundEffect('clock::tick', 'tock')
+			AudioLibrary.playSoundEffect('clock::tick', { spriteID: 'tock' })
 		}
 	})
 

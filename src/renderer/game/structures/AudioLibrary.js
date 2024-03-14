@@ -147,6 +147,7 @@ export const AudioLibrary = new class AudioLibraryClass {
 	 * Plays a music track.
 	 *
 	 * @param {string} trackID The ID of the track to play.
+	 * @returns {import('../../types/AudioPlayResult.js').AudioPlayResult} Result.
 	 */
 	playMusic(trackID) {
 		const track = this.get(trackID)
@@ -168,21 +169,40 @@ export const AudioLibrary = new class AudioLibraryClass {
 		}
 
 		this.#music.set(this.#currentSoundID, this.#currentTrack)
+
+		return {
+			track: this.#currentTrack,
+			soundID: this.#currentSoundID,
+		}
 	}
 
 	/**
 	 * Plays a sound effect.
 	 *
 	 * @param {string} trackID The ID of the track to play.
-	 * @param {string} [spriteID] The ID of the sprite to be played from the track.
+	 * @param {object} [options] All options.
+	 * @param {string} [options.spriteID] The ID of the sprite to be played from the track.
+	 * @param {boolean} [options.isLoop] Whether the sound should be looped.
+	 * @returns {import('../../types/AudioPlayResult.js').AudioPlayResult} Result.
 	 */
-	playSoundEffect(trackID, spriteID) {
+	playSoundEffect(trackID, options = {}) {
+		const {
+			spriteID,
+			isLoop = false,
+		} = options
+
 		const track = this.get(trackID)
 		const soundID = track.play(spriteID)
 
 		track.volume(store.state.soundEffectsVolume, soundID)
+		track.loop(isLoop, soundID)
 
 		this.#soundEffects.set(soundID, track)
+
+		return {
+			track,
+			soundID,
+		}
 	}
 
 	/**
