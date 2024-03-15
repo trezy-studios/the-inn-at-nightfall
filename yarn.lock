@@ -2400,29 +2400,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pixi/layers@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@pixi/layers@npm:2.1.0"
-  peerDependencies:
-    "@pixi/canvas-renderer": ^7.0.0
-    "@pixi/core": ^7.0.0
-    "@pixi/display": ^7.0.0
-  checksum: 10c0/3157bc6493a034582b574bec2f47adf00b796a9643704fd4499eaf36ee1c9e61bc53f82647700ab3133502f35261d34e11e45a6a11f514f27d678b070e94bd22
-  languageName: node
-  linkType: hard
-
-"@pixi/lights@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "@pixi/lights@npm:4.1.0"
-  peerDependencies:
-    "@pixi/core": ^7.0.0
-    "@pixi/display": ^7.0.0
-    "@pixi/layers": ^2.0.1
-    "@pixi/mesh": ^7.0.0
-  checksum: 10c0/89c1f87d2542c17c845e53c929fcf60ee7bdb32e678c0bb2f37aa107209c4d6144c21b23e05f130ee7c0d8bf3d2a74dbf50023db86b7f6839b06063be2949e5c
-  languageName: node
-  linkType: hard
-
 "@pixi/math@npm:7.4.0, @pixi/math@npm:^7.4.0":
   version: 7.4.0
   resolution: "@pixi/math@npm:7.4.0"
@@ -11202,8 +11179,6 @@ __metadata:
     "@pixi/display": "npm:^7.4.0"
     "@pixi/extensions": "npm:^7.4.0"
     "@pixi/graphics": "npm:^7.4.0"
-    "@pixi/layers": "npm:^2.1.0"
-    "@pixi/lights": "npm:^4.1.0"
     "@pixi/math": "npm:^7.4.0"
     "@pixi/mesh": "npm:^7.4.0"
     "@pixi/mesh-extras": "npm:^7.4.0"

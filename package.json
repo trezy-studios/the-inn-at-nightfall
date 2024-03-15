@@ -23,8 +23,6 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@pixi/layers": "^2.1.0",
-    "@pixi/lights": "^4.1.0",
     "@pixi/react": "^7.1.1",
     "@pixi/unsafe-eval": "^7.4.0",
     "@xstate/react": "^4.1.0",
