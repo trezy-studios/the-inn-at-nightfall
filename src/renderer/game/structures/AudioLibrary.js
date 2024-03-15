@@ -228,4 +228,13 @@ export const AudioLibrary = new class AudioLibraryClass {
 			track.stop(soundID)
 		}
 	}
+
+	/**
+	 * Stops all sound effects.
+	 */
+	stopAllSoundEffects() {
+		for (const [soundID, track] of this.#soundEffects.entries()) {
+			track.stop(soundID)
+		}
+	}
 }

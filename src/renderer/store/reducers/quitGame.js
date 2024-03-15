@@ -1,4 +1,5 @@
 // Local imports
+import { AudioLibrary } from '../../game/structures/AudioLibrary.js'
 import { SCREENS } from '../../data/SCREENS.js'
 import { store } from '../store.js'
 
@@ -10,6 +11,8 @@ import { store } from '../store.js'
  * Starts a round of play.
  */
 export function quitGame() {
+	AudioLibrary.stopAllSoundEffects()
+
 	store.set(() => ({
 		allowedCharacters: [],
 		characterQueue: [],
