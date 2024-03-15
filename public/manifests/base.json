@@ -641,7 +641,26 @@
 		}
 	},
 	{
-		"alias": "wind",
+	{
+		"alias": "exterior::crow",
+		"src": "sound-effects/nature-crow.mp3",
+		"type": "audio",
+		"loadingCategory": "sound effects"
+	},
+	{
+		"alias": "exterior::raven",
+		"src": "sound-effects/nature-raven.mp3",
+		"type": "audio",
+		"loadingCategory": "sound effects"
+	},
+	{
+		"alias": "exterior::wolf",
+		"src": "sound-effects/nature-wolf.mp3",
+		"type": "audio",
+		"loadingCategory": "sound effects"
+	},
+	{
+		"alias": "exterior::wind",
 		"src": "sound-effects/wind.mp3",
 		"type": "audio",
 		"loadingCategory": "sound effects"

@@ -22,6 +22,34 @@ import { store } from '../../store/store.js'
 
 
 
+// Variables
+let natureSoundTimerID
+
+
+
+
+
+// Functions
+/** Plays a random nature sound every so often. */
+function natureLoop() {
+	const natureSounds = [
+		'crow',
+		'raven',
+		'wolf',
+	]
+
+	natureSoundTimerID = setTimeout(() => {
+		const natureSound = natureSounds[Math.floor(Math.random() * natureSounds.length)]
+
+		AudioLibrary.playSoundEffect(`exterior::${natureSound}`)
+
+		natureLoop()
+	}, 30000 + (Math.random() * 60000))
+}
+
+
+
+
 
 /**
  * Renders the game sky and adjusta its position based on the current time in the round.
@@ -60,9 +88,14 @@ export function ExteriorBackground() {
 		const {
 			track,
 			soundID,
-		} = AudioLibrary.playSoundEffect('wind', { isLoop: true })
+		} = AudioLibrary.playSoundEffect('exterior::wind', { isLoop: true })
 
-		return () => AudioLibrary.stop(track, soundID)
+		natureLoop()
+
+		return () => {
+			clearTimeout(natureSoundTimerID)
+			AudioLibrary.stop(track, soundID)
+		}
 	}, [])
 
 	return (
