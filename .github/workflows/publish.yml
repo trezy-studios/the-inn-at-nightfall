@@ -4,8 +4,9 @@ on:
   push:
     branches:
       - main
-      - beta
       - demo
+      - beta
+      - alpha
     paths-ignore:
       - '**.md'
       - .editorconfig
