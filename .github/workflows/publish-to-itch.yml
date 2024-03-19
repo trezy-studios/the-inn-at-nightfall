@@ -46,9 +46,14 @@ jobs:
       - name: Setup Butler
         run: |
           curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
-          7z x butler.zip
+          7z x -obutler butler.zip
           chmod +x butler
-          mv butler /usr/bin
+        working-directory: ${{ runner.temp }}
+
+      - name: Install the Butler binary
+        uses: AnimMouse/tool-cache@v1
+        with:
+          folder_name: butler
 
       - name: Download Build
         uses: robinraju/release-downloader@v1.8
