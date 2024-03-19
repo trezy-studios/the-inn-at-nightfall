@@ -6,11 +6,11 @@ import { Container } from '@pixi/react'
 
 
 // Local imports
-import { Book } from './Book.jsx'
-import { Clock } from './Clock.jsx'
-import { Door } from './Door.jsx'
-import { Sideboard } from './Sideboard.jsx'
-import { Wall } from './Wall.jsx'
+import { Clock } from '../Clock/Clock.jsx'
+import { Door } from '../Door/Door.jsx'
+import { Guestbook } from '../Guestbook/Guestbook.jsx'
+import { Sideboard } from '../Sideboard/Sideboard.jsx'
+import { Wall } from '../Wall/Wall.jsx'
 
 
 
@@ -27,7 +27,7 @@ export function InteriorMidground() {
 			<Wall />
 			<Door />
 			<Sideboard />
-			<Book />
+			<Guestbook />
 			<Clock />
 		</Container>
 	)

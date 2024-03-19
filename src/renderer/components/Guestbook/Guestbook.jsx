@@ -30,7 +30,7 @@ import { useTimeStageAlpha } from '../../hooks/useTimeStageAlpha.js'
  *
  * @component
  */
-export function Book() {
+export function Guestbook() {
 	const {
 		renderScale,
 		viewport,
