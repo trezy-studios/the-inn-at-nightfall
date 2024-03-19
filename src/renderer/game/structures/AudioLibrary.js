@@ -230,11 +230,20 @@ export const AudioLibrary = new class AudioLibraryClass {
 	}
 
 	/**
+	 * Stops all music.
+	 */
+	stopAllMusic() {
+		for (const [soundID, track] of this.#music.entries()) {
+			this.stop(track, soundID)
+		}
+	}
+
+	/**
 	 * Stops all sound effects.
 	 */
 	stopAllSoundEffects() {
 		for (const [soundID, track] of this.#soundEffects.entries()) {
-			track.stop(soundID)
+			this.stop(track, soundID)
 		}
 	}
 }

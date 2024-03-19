@@ -2,20 +2,9 @@
 import {
 	createContext,
 	useContext,
-	useEffect,
 	useMemo,
 } from 'react'
 import PropTypes from 'prop-types'
-import { useStore } from 'statery'
-
-
-
-
-
-// Local imports
-import { AudioLibrary } from '../../game/structures/AudioLibrary.js'
-import { SCREENS } from '../../data/SCREENS.js'
-import { store } from '../../store/store.js'
 
 
 
@@ -36,17 +25,7 @@ export const AudioContext = createContext({})
 export function AudioContextProvider(props) {
 	const { children } = props
 
-	const { screen } = useStore(store)
-
 	const providerState = useMemo(() => ({}), [])
-
-	useEffect(() => {
-		if ([SCREENS.SETTINGS, SCREENS.TITLE].includes(screen)) {
-			AudioLibrary.playMusic('title')
-		} else if (screen === SCREENS.PLAY) {
-			AudioLibrary.playMusic('nightfall')
-		}
-	}, [screen])
 
 	return (
 		<AudioContext.Provider value={providerState}>

@@ -16,6 +16,7 @@ import { useStore } from 'statery'
 // Local imports
 import styles from './PlayScreen.module.scss'
 
+import { AudioLibrary } from '../../game/structures/AudioLibrary.js'
 import { CurrentGameStats } from '../CurrentGameStats/CurrentGameStats.jsx'
 import { Game } from '../Game/Game.jsx'
 import { GameDialog } from '../GameDialog/GameDialog.jsx'
@@ -69,6 +70,10 @@ export function PlayScreen() {
 			window.removeEventListener('keyup', handleEscapeKeyPress)
 		}
 	}, [handleEscapeKeyPress])
+
+	useEffect(() => {
+		AudioLibrary.stopAllMusic()
+	}, [])
 
 	return (
 		<Screen className={compiledClassName}>
