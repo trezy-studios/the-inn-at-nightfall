@@ -1,0 +1,78 @@
+name: Publish to Steam
+
+on:
+  workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+      platformAlias:
+        required: true
+        type: string
+      platformArch:
+        required: true
+        type: string
+      platformName:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+      zipPrefix:
+        required: true
+        type: string
+    secrets:
+      butlerAPIKey:
+        required: true
+      itchUsername:
+        required: true
+      steamBuildUsername:
+        required: true
+      steamBuildConfigVDF:
+        required: true
+      steamDemoAppID:
+        required: true
+      steamAppID:
+        required: true
+      token:
+        required: true
+
+jobs:
+  publish-to-steam:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - name: Setup Butler
+        uses: supplypike/setup-bin@v3
+        with:
+          name: butler
+          uri: https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          version: latest
+
+      - name: Download Build
+        uses: robinraju/release-downloader@v1.8
+        with:
+          fileName: '*.zip'
+          out-file-path: artifacts
+          repository: ${{ github.repository }}
+          tag: v${{ inputs.version }}
+          token: ${{ secrets.token }}
+
+      # Ensure the directories exist before extracting builds.
+      - run: mkdir -p builds/${{ inputs.platformName }}
+
+      # Rewrite the Windows zip to use forward slashes instead of backslashes.
+      - name: Convert Windows Archive to Forward Slashes
+        run: 7z rn artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.version }}.zip $(7z l artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.version }}.zip | grep '\\' | awk '{ print $6, gensub(/\\/, "/", "g", $6); }' | paste -s)
+        if: ${{ inputs.platformAlias == 'windows' }}
+
+      - name: Publish Build to Itch
+        uses: KikimoraGames/itch-publish
+        with:
+          buildChannel: ${{ inputs.platformAlias }}-${{ inputs.branch }}
+          buildNumber: ${{ inputs.version }}
+          butlerApiKey: ${{ secrets.butlerAPIKey }}
+          gameData: artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.version }}.zip
+          itchGameId: the-inn-at-nightfall
+          itchUsername: ${{ inputs.itchUsername }}
