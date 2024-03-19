@@ -9,15 +9,8 @@ import {
 
 
 /**
- * @typedef {object} useResizeObserverProps
- * @property {import('react').RefObject} targetRef A react ref connected to the element to be watched for resizes.
- * @property {ResizeObserverCallback} onResize A function to be called when the target element is resized.
- * @property {ResizeObserverOptions} [options] Options to be passed to the resize observer.
- */
-
-/**
  * @component
- * @param {useResizeObserverProps} props All props.
+ * @param {import('../types/useResizeObserverProps.js').useResizeObserverProps} props All props.
  * @param {import('react').DependencyList} [dependencies] Additional dependencies.
  */
 export function useResizeObserver(props, dependencies = []) {

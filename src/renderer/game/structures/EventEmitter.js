@@ -1,15 +1,4 @@
 /**
- * @typedef {object} UnsubscribeResults
- * @property {number} matchCount The number of matching listeners that were found.
- * @property {number} remainingCount The number of listeners that match but remain subscribed.
- * @property {number} unsubscribeCount The number of listeners that were unsubscribed.
- */
-
-
-
-
-
-/**
  * An entity that emits events.
  */
 export class EventEmitter {
@@ -52,7 +41,7 @@ export class EventEmitter {
 	 *
 	 * @param {string} eventName The name of the event to remove the listener from.
 	 * @param {Function} [callback] The listener to be removed.
-	 * @returns {UnsubscribeResults} Details of the unsubscribe operation.
+	 * @returns {import('../../types/EventUnsubscribeResults.js').EventUnsubscribeResults} Details of the unsubscribe operation.
 	 */
 	off(eventName, callback) {
 		const listeners = this.#events.get(eventName)

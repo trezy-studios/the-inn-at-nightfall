@@ -20,22 +20,6 @@ import { useCharacter } from './useCharacter.js'
 
 
 
-// Types
-/**
- * @typedef {object} useDialogMachineProps
- * @property {object} dialogMeta Metadata for the parent state machine.
- * @property {boolean} isDone Whether the state machine has reached a final state.
- * @property {object} meta Metadata for the current node.
- * @property {Array} options A list of options if we've reached a parallel state.
- * @property {Function} sendEvent Send an arbitrary event to the machine.
- * @property {Function} sendNext Send the next event to the machine.
- * @property {import('xstate').StateConfig} state The machine's current state.
- */
-
-
-
-
-
 // Functions
 /**
  * @param {import('xstate').AnyMachineSnapshot} snapshot The state to be analysed.
@@ -57,7 +41,7 @@ function getNextEvents(snapshot) {
  * @param {object} [options] All options.
  * @param {boolean} [options.autoadvance] Whether to automatically advance when the new state has only a `next` event.
  * @param {number} [options.autoadvanceDelay] The time to wait (in milliseconds) before automatically advancing to the next line.
- * @returns {useDialogMachineProps} All props.
+ * @returns {import('../types/useDialogMachineProps.js').useDialogMachineProps} All props.
  */
 export function useDialogMachine(options = {}) {
 	const {

@@ -13,23 +13,10 @@ import { store } from '../store/store.js'
 
 
 
-// Types
-/**
- * @typedef {object} TimeStageAlpha
- * @property {number} morning The opacity of morning sprites.
- * @property {number} midday The opacity of midday sprites.
- * @property {number} afternoon The opacity of afternoon sprites.
- * @property {number} night The opacity of night sprites.
- */
-
-
-
-
-
 /**
  * Calculates the opacity for each stage time stage based on the current time remaining.
  *
- * @returns {TimeStageAlpha} The caluclated time stage alphas.
+ * @returns {import('../types/TimeStageAlpha.js').TimeStageAlpha} The caluclated time stage alphas.
  */
 export function useTimeStageAlpha() {
 	const {

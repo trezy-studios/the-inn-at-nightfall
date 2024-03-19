@@ -1,18 +1,4 @@
-// Types
-/** @typedef {string} characterID The ID of the character. */
-
-/**
- * @typedef {object} RoundConfig
- * @property {string[][]} [arrival] Characters that will arrive at the beginning of this round.
- * @property {characterID[]} [departure] Characters that will depart at the end of this round.
- * @property {characterID[]} [bite] Characters to bite this before starting this round.
- */
-
-
-
-
-
-/** @type {{ [key: number]: RoundConfig }} */
+/** @type {{ [key: number]: import('../types/RoundConfig.js').RoundConfig }} */
 export const ROUND_CONFIGS = {
 	0: {
 		arrival: [
