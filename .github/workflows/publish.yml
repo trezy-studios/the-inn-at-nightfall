@@ -116,7 +116,7 @@ jobs:
           - alias: linux
             arch: x64
             name: linux
-          - alias: macos
+          - alias: osx
             arch: universal
             name: darwin
           - alias: windows
