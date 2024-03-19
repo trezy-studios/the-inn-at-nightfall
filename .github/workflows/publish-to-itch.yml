@@ -67,12 +67,12 @@ jobs:
         run: 7z rn artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.version }}.zip $(7z l artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.version }}.zip | grep '\\' | awk '{ print $6, gensub(/\\/, "/", "g", $6); }' | paste -s)
         if: ${{ inputs.platformAlias == 'windows' }}
 
-      - name: Publish Build to Itch
-        uses: KikimoraGames/itch-publish
-        with:
-          buildChannel: ${{ inputs.platformAlias }}-${{ inputs.branch }}
-          buildNumber: ${{ inputs.version }}
-          butlerApiKey: ${{ secrets.butlerAPIKey }}
-          gameData: artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.version }}.zip
-          itchGameId: the-inn-at-nightfall
-          itchUsername: ${{ inputs.itchUsername }}
+      # - name: Publish Build to Itch
+      #   uses: KikimoraGames/itch-publish
+      #   with:
+      #     buildChannel: ${{ inputs.platformAlias }}-${{ inputs.branch }}
+      #     buildNumber: ${{ inputs.version }}
+      #     butlerApiKey: ${{ secrets.butlerAPIKey }}
+      #     gameData: artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.version }}.zip
+      #     itchGameId: the-inn-at-nightfall
+      #     itchUsername: ${{ inputs.itchUsername }}
