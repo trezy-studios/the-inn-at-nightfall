@@ -44,11 +44,11 @@ jobs:
 
     steps:
       - name: Setup Butler
-        uses: supplypike/setup-bin@v3
-        with:
-          name: butler
-          uri: https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
-          version: latest
+        run: |
+          curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          7z x butler.zip
+          chmod +x butler
+          mv butler /usr/bin
 
       - name: Download Build
         uses: robinraju/release-downloader@v1.8
@@ -58,9 +58,6 @@ jobs:
           repository: ${{ github.repository }}
           tag: v${{ inputs.version }}
           token: ${{ secrets.token }}
-
-      # Ensure the directories exist before extracting builds.
-      - run: mkdir -p builds/${{ inputs.platformName }}
 
       # Rewrite the Windows zip to use forward slashes instead of backslashes.
       - name: Convert Windows Archive to Forward Slashes
