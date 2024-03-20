@@ -1,0 +1,10 @@
+.notifications {
+	display: flex;
+	flex-direction: column;
+	font-size: var(--body-font-size);
+	gap: 1rem;
+	left: 3rem;
+	position: absolute;
+	top: 50%;
+	translate: 0 -50%;
+}

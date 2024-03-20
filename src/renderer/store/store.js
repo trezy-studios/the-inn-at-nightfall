@@ -80,6 +80,9 @@ export const store = makeStore({
 
 	musicVolume: 0,
 
+	/** @type {Set<import('../types/Notification.js').Notification>} */
+	notifications: new Set,
+
 	soundEffectsVolume: 0,
 
 	renderScale: 1,

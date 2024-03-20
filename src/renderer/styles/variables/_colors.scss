@@ -5,6 +5,9 @@
 
 	// Blacks
 	@include generateColourCustomPropertiesFromColour('palette-pure-black', #000000);
+
+	// Whites
+	@include generateColourCustomPropertiesFromColour('palette-off-white', #c8c8c8);
 	@include generateColourCustomPropertiesFromColour('palette-pure-white', #ffffff);
 
 	// Greys

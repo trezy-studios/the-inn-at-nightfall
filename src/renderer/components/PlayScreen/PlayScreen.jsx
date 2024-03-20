@@ -18,6 +18,7 @@ import { AudioLibrary } from '../../game/structures/AudioLibrary.js'
 import { CurrentGameStats } from '../CurrentGameStats/CurrentGameStats.jsx'
 import { Game } from '../Game/Game.jsx'
 import { GameDialog } from '../GameDialog/GameDialog.jsx'
+import { GameNotifications } from '../GameNotifications/GameNotifications.jsx'
 import { pauseGame } from '../../store/reducers/pauseGame.js'
 import { PauseScreen } from '../PauseScreen/PauseScreen.jsx'
 import { PixiStage } from '../PixiStage/PixiStage.jsx'
@@ -76,6 +77,8 @@ export function PlayScreen() {
 				</PixiStage>
 
 				<CurrentGameStats />
+
+				<GameNotifications />
 
 				<Vignette />
 			</div>
