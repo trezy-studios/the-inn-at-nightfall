@@ -3,9 +3,6 @@ name: Publish to Steam
 on:
   workflow_call:
     inputs:
-      branch:
-        required: true
-        type: string
       platformAlias:
         required: true
         type: string
@@ -22,23 +19,15 @@ on:
         required: true
         type: string
     secrets:
-      butlerAPIKey:
+      ITCHIO_BUTLER_API_KEY:
         required: true
-      itchUsername:
+      ITCHIO_USERNAME:
         required: true
-      steamBuildUsername:
-        required: true
-      steamBuildConfigVDF:
-        required: true
-      steamDemoAppID:
-        required: true
-      steamAppID:
-        required: true
-      token:
+      GITHUB_TOKEN:
         required: true
 
 jobs:
-  publish-to-steam:
+  publish-to-itch:
     runs-on: ubuntu-latest
     continue-on-error: true
 
@@ -62,7 +51,7 @@ jobs:
           out-file-path: artifacts
           repository: ${{ github.repository }}
           tag: v${{ inputs.version }}
-          token: ${{ secrets.token }}
+          token: ${{ github.token }}
 
       # Rewrite the Windows zip to use forward slashes instead of backslashes.
       - name: Convert Windows Archive to Forward Slashes
@@ -71,5 +60,5 @@ jobs:
 
       - name: Publish Build to Itch
         env:
-          BUTLER_API_KEY: ${{ secrets.butlerAPIKey }}
-        run: butler push artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.version }}.zip ${{ inputs.itchUsername }}/the-inn-at-nightfall:${{ inputs.platformAlias }}-${{ inputs.branch }} --userversion ${{ inputs.version }}
+          BUTLER_API_KEY: $ITCHIO_BUTLER_API_KEY
+        run: butler push artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.version }}.zip $ITCHIO_USERNAME/the-inn-at-nightfall:${{ inputs.platformAlias }}-${{ github.ref_name }} --userversion ${{ inputs.version }}

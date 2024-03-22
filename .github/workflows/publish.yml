@@ -123,17 +123,9 @@ jobs:
             arch: x64
             name: win32
     with:
-      branch: ${{ github.ref_name }}
       platformAlias: ${{ matrix.platform.alias }}
       platformArch: ${{ matrix.platform.arch }}
       platformName: ${{ matrix.platform.name }}
       version: ${{ needs.get-next-version.outputs.version }}
       zipPrefix: The-Inn-at-Nightfall
-    secrets:
-      butlerAPIKey: ${{ secrets.ITCHIO_BUTLER_API_KEY }}
-      itchUsername: ${{ secrets.ITCHIO_USERNAME }}
-      steamAppID: ${{ secrets.STEAM_APP_ID }}
-      steamBuildUsername: ${{ secrets.STEAM_BUILD_USERNAME }}
-      steamBuildConfigVDF: ${{ secrets.STEAM_BUILD_CONFIG_VDF }}
-      steamDemoAppID: ${{ secrets.STEAM_DEMO_APP_ID }}
-      token: ${{ secrets.GITHUB_TOKEN }}
+    secrets: inherit
